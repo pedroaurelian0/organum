@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import Article from '@layouts/Article.astro';
+import { clusterLabels } from '@content/config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({
+    params: { cluster: entry.data.cluster, slug: entry.slug.split('/').pop() },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const {
+  title,
+  description,
+  publishedAt,
+  updatedAt,
+  author,
+  cluster,
+  ogImage,
+  wordCount,
+  tags,
+} = entry.data;
+
+const clusterLabel = clusterLabels[cluster];
+const canonical = `https://organum.com.br/blog/${cluster}/${entry.slug.split('/').pop()}/`;
+
+// Artigos relacionados do mesmo cluster
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const related = allPosts
+  .filter((p) => p.data.cluster === cluster && p.slug !== entry.slug)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 2);
+---
+
+<Article
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  publishedAt={publishedAt.toISOString()}
+  updatedAt={updatedAt?.toISOString()}
+  author={author}
+  wordCount={wordCount}
+  breadcrumbItems={[
+    { name: 'Blog', url: '/blog' },
+    { name: clusterLabel, url: `/blog/${cluster}` },
+    { name: title, url: canonical },
+  ]}
+>
+  <Content />
+
+  {related.length > 0 && (
+    <aside class="mt-16 pt-10 border-t border-ink-100">
+      <h2 class="text-xl font-bold text-ink-900 mb-6">Leia também</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        {related.map((post) => {
+          const postSlug = post.slug.split('/').pop();
+          return (
+            <a
+              href={`/blog/${post.data.cluster}/${postSlug}`}
+              class="card no-underline group"
+            >
+              <div class="badge-ink mb-2 text-xs">{clusterLabels[post.data.cluster]}</div>
+              <p class="font-semibold text-ink-900 group-hover:text-brand-600 transition-colors leading-snug">
+                {post.data.title}
+              </p>
+              <p class="text-sm text-ink-500 mt-1 line-clamp-2">{post.data.description}</p>
+            </a>
+          );
+        })}
+      </div>
+    </aside>
+  )}
+</Article>

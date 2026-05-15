@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /lp/
+Disallow: /_astro/
+
+Sitemap: https://organum.com.br/sitemap-index.xml

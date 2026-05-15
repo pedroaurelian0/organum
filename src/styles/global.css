@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap');
+
+/* ── Base resets ── */
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply font-sans text-ink-800 bg-white;
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans font-semibold text-ink-950 leading-tight;
+  }
+
+  h1 { @apply text-4xl lg:text-5xl; }
+  h2 { @apply text-3xl lg:text-4xl; }
+  h3 { @apply text-2xl; }
+  h4 { @apply text-xl; }
+
+  a {
+    @apply text-brand-600 underline-offset-2 transition-colors duration-150;
+  }
+  a:hover { @apply text-brand-700; }
+
+  img { @apply max-w-full h-auto; }
+
+  /* Focus ring acessível */
+  :focus-visible {
+    outline: 2px solid #16a34a;
+    outline-offset: 2px;
+  }
+}
+
+/* ── Utilitários de componente ── */
+@layer components {
+  .container-page {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-prose {
+    @apply max-w-3xl mx-auto px-4 sm:px-6;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-brand-600 text-white font-semibold
+           px-6 py-3 rounded-lg transition-all duration-150
+           hover:bg-brand-700 active:scale-95 focus-visible:ring-2 focus-visible:ring-brand-500;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 border border-ink-300 text-ink-700 font-medium
+           px-6 py-3 rounded-lg transition-all duration-150
+           hover:bg-ink-50 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white border border-ink-100 rounded-xl p-6
+           transition-shadow duration-150 hover:shadow-md;
+  }
+
+  .badge {
+    @apply inline-flex items-center text-xs font-medium px-2.5 py-1 rounded-full;
+  }
+
+  .badge-brand {
+    @apply badge bg-brand-100 text-brand-800;
+  }
+
+  .badge-ink {
+    @apply badge bg-ink-100 text-ink-700;
+  }
+
+  /* Seção com fundo escuro (hero, CTA final) */
+  .section-dark {
+    @apply bg-ink-950 text-ink-100;
+  }
+
+  /* Prosa de artigo */
+  .prose-organum {
+    @apply text-ink-700 leading-relaxed;
+  }
+  .prose-organum h2 { @apply text-ink-950 mt-10 mb-4; }
+  .prose-organum h3 { @apply text-ink-900 mt-8 mb-3; }
+  .prose-organum p  { @apply mb-5; }
+  .prose-organum ul { @apply list-disc pl-6 mb-5 space-y-1.5; }
+  .prose-organum ol { @apply list-decimal pl-6 mb-5 space-y-1.5; }
+  .prose-organum a  { @apply text-brand-600 font-medium no-underline hover:underline; }
+  .prose-organum strong { @apply text-ink-900 font-semibold; }
+  .prose-organum blockquote {
+    @apply border-l-4 border-brand-400 pl-5 italic text-ink-500 my-6;
+  }
+  .prose-organum code {
+    @apply bg-ink-100 text-ink-800 text-sm px-1.5 py-0.5 rounded font-mono;
+  }
+}

@@ -1,0 +1,100 @@
+---
+import Base from './Base.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import Breadcrumb from '@components/seo/Breadcrumb.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  client: string;
+  sector: string;
+  result: string;
+  metrics?: Array<{ label: string; value: string }>;
+  breadcrumbItems: Array<{ name: string; url: string }>;
+  schemaExtra?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  client,
+  sector,
+  result,
+  metrics,
+  breadcrumbItems,
+  schemaExtra = [],
+} = Astro.props;
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogType="article"
+  ogImage={ogImage}
+  schemaExtra={schemaExtra}
+>
+  <Header />
+  <main>
+    <div class="container-page">
+      <Breadcrumb items={breadcrumbItems} />
+    </div>
+
+    <!-- Hero do case -->
+    <section class="bg-ink-950 text-white py-16">
+      <div class="container-page max-w-4xl">
+        <div class="badge badge-brand mb-4">{sector}</div>
+        <h1 class="text-white mb-4">{title}</h1>
+        <p class="text-xl text-ink-300 mb-6">{description}</p>
+        <div class="inline-flex items-center gap-2 bg-brand-600/20 border border-brand-500/30 rounded-lg px-4 py-2">
+          <span class="text-brand-400 font-medium text-sm">Resultado:</span>
+          <span class="text-white font-semibold">{result}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Métricas -->
+    {metrics && metrics.length > 0 && (
+      <section class="border-b border-ink-100 py-10">
+        <div class="container-page max-w-4xl">
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
+            {metrics.map((metric) => (
+              <div class="text-center">
+                <div class="text-3xl font-bold text-brand-600">{metric.value}</div>
+                <div class="text-sm text-ink-500 mt-1">{metric.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <!-- Conteúdo MDX -->
+    <article class="container-prose py-12">
+      <div class="prose-organum">
+        <slot />
+      </div>
+    </article>
+
+    <!-- CTA -->
+    <div class="container-page max-w-3xl pb-16">
+      <div class="bg-brand-50 border border-brand-100 rounded-xl p-8 text-center">
+        <p class="text-xl font-semibold text-ink-900 mb-2">
+          Seu negócio pode ter resultados como {client}
+        </p>
+        <p class="text-ink-600 mb-6">
+          Solicite uma auditoria gratuita e descubra o potencial orgânico do seu site.
+        </p>
+        <a href="/auditoria-gratuita" class="btn-primary">
+          Quero uma auditoria gratuita
+        </a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</Base>

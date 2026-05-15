@@ -1,0 +1,138 @@
+---
+import Base from './Base.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import Breadcrumb from '@components/seo/Breadcrumb.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  publishedAt: string;
+  updatedAt?: string;
+  author?: string;
+  wordCount?: number;
+  breadcrumbItems: Array<{ name: string; url: string }>;
+  schemaExtra?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage,
+  publishedAt,
+  updatedAt,
+  author = 'Pedro Aureliano',
+  wordCount,
+  breadcrumbItems,
+  schemaExtra = [],
+} = Astro.props;
+
+const readingTime = wordCount ? Math.ceil(wordCount / 200) : null;
+
+const pubDate = new Date(publishedAt);
+const modDate = updatedAt ? new Date(updatedAt) : null;
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+
+// Article Schema montado a partir das props
+const articleSchema = {
+  '@type': 'Article',
+  '@id': `${Astro.url.href}#article`,
+  headline: title,
+  description,
+  url: Astro.url.href,
+  datePublished: pubDate.toISOString(),
+  dateModified: modDate ? modDate.toISOString() : pubDate.toISOString(),
+  author: {
+    '@type': 'Person',
+    '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person',
+    name: author,
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': 'https://organum.com.br/#organization',
+  },
+  image: ogImage
+    ? { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 }
+    : undefined,
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': Astro.url.href,
+  },
+  inLanguage: 'pt-BR',
+  wordCount: wordCount,
+};
+
+const allSchemas = [articleSchema, ...schemaExtra];
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogType="article"
+  ogImage={ogImage}
+  articlePublishedTime={pubDate.toISOString()}
+  articleModifiedTime={modDate?.toISOString()}
+  articleAuthor={author}
+  schemaExtra={allSchemas}
+>
+  <Header />
+  <main>
+    <div class="container-page">
+      <Breadcrumb items={breadcrumbItems} />
+    </div>
+
+    <article class="container-prose py-10">
+      <!-- Cabeçalho do artigo -->
+      <header class="mb-10">
+        <h1 class="mb-5">{title}</h1>
+        <p class="text-xl text-ink-500 leading-relaxed mb-6">{description}</p>
+
+        <div class="flex flex-wrap items-center gap-4 text-sm text-ink-400 pt-5 border-t border-ink-100">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 text-xs font-bold">
+              PA
+            </div>
+            <span class="font-medium text-ink-600">{author}</span>
+          </div>
+          <time datetime={pubDate.toISOString()}>
+            {formatDate(pubDate)}
+          </time>
+          {modDate && modDate.toDateString() !== pubDate.toDateString() && (
+            <span>Atualizado em <time datetime={modDate.toISOString()}>{formatDate(modDate)}</time></span>
+          )}
+          {readingTime && (
+            <span>{readingTime} min de leitura</span>
+          )}
+          {wordCount && (
+            <span>{wordCount.toLocaleString('pt-BR')} palavras</span>
+          )}
+        </div>
+      </header>
+
+      <!-- Conteúdo MDX -->
+      <div class="prose-organum">
+        <slot />
+      </div>
+
+      <!-- CTA ao final -->
+      <div class="mt-16 p-8 bg-brand-50 border border-brand-100 rounded-xl text-center">
+        <p class="text-lg font-semibold text-ink-900 mb-2">
+          Quer aplicar isso no seu site?
+        </p>
+        <p class="text-ink-600 mb-5">
+          Solicite uma auditoria gratuita e receba o diagnóstico completo em até 48 horas.
+        </p>
+        <a href="/auditoria-gratuita" class="btn-primary">
+          Solicitar auditoria gratuita
+        </a>
+      </div>
+    </article>
+  </main>
+  <Footer />
+</Base>

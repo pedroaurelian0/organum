@@ -1,0 +1,30 @@
+---
+/**
+ * SchemaOrg.astro
+ * Injeta Schema Markup em JSON-LD no <head>.
+ * Aceita schema único ou array de schemas (montados em @graph).
+ */
+
+interface Props {
+  /** Schema único ou array de schemas para injetar */
+  schema: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const { schema } = Astro.props;
+
+// Se receber array, envolve em @graph com @context global
+// Se receber objeto único, injeta diretamente com @context
+const jsonLd = Array.isArray(schema)
+  ? {
+      '@context': 'https://schema.org',
+      '@graph': schema,
+    }
+  : {
+      '@context': 'https://schema.org',
+      ...schema,
+    };
+
+const serialized = JSON.stringify(jsonLd);
+---
+
+<script type="application/ld+json" set:html={serialized} />

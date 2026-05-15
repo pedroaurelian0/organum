@@ -1,0 +1,225 @@
+---
+import LP from '@layouts/LP.astro';
+
+const serviceSchema = {
+  '@type': 'Service',
+  name: 'Auditoria de SEO Gratuita',
+  description: 'Análise técnica gratuita de SEO: Core Web Vitals, arquitetura de silos, Schema Markup e potencial de citação por IA. Resposta em até 48 horas.',
+  provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+  isRelatedTo: { '@type': 'Service', name: 'SEO Orgânico B2B' },
+};
+
+const coverageItems = [
+  'Core Web Vitals e performance técnica (LCP, CLS, INP)',
+  'Arquitetura de silos, crawl budget e indexação',
+  'Schema Markup e dados estruturados (presença e erros)',
+  'Potencial de citação por IAs — GEO/AEO readiness',
+  'Diagnóstico de conteúdo: clusters, E-E-A-T e gaps',
+  'Análise de backlinks e Domain Authority atual',
+];
+
+const miniCases = [
+  { client: 'HunterHunter', tag: 'B2B · Headhunting', result: 'Citada por ChatGPT e Perplexity. Leads orgânicos sem anúncios.' },
+  { client: '7+ Vacations', tag: 'Internacional · Flórida', result: 'SEO bilíngue PT/EN. Autoridade em dois mercados.' },
+];
+
+const faqItems = [
+  {
+    q: 'O que está incluído na auditoria?',
+    a: 'A auditoria cobre 6 áreas: performance técnica (Core Web Vitals), arquitetura do site (silos, crawl budget), Schema Markup e dados estruturados, potencial de GEO/AEO (citação por IAs), diagnóstico de conteúdo e análise de backlinks. Você recebe um relatório técnico detalhado com prioridades.',
+  },
+  {
+    q: 'Para quem é esta auditoria?',
+    a: 'Para empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce com faturamento acima de R$500k/ano que querem entender por que o site não está gerando leads orgânicos.',
+  },
+  {
+    q: 'O que acontece após enviar o formulário?',
+    a: 'Em até 48 horas úteis você recebe o relatório por e-mail. Se fizer sentido avançar, agendamos uma reunião de 30 minutos para apresentar as prioridades. Sem compromisso de contratação.',
+  },
+];
+---
+
+<LP
+  title="Auditoria de SEO gratuita para B2B | Resposta em 48 horas — Organum"
+  description="Receba uma análise técnica gratuita do seu site: Core Web Vitals, arquitetura, Schema Markup e potencial de citação por IA. Sem compromisso."
+  canonical="https://organum.com.br/auditoria-gratuita/"
+  schemaExtra={[serviceSchema]}
+>
+  <!-- Header mínimo -->
+  <header class="border-b border-ink-100 py-4">
+    <div class="container-page flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-ink-950 no-underline">Organum</a>
+      <span class="text-sm text-ink-400 hidden sm:block">Auditoria gratuita — sem compromisso</span>
+    </div>
+  </header>
+
+  <!-- Hero + Formulário -->
+  <section class="py-16 lg:py-24">
+    <div class="container-page">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+
+        <!-- Coluna esquerda: benefícios -->
+        <div>
+          <div class="badge badge-brand mb-5">Resposta em até 48 horas</div>
+          <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
+            Descubra por que seu site não está gerando leads B2B orgânicos
+          </h1>
+          <p class="text-xl text-ink-500 mb-8 leading-relaxed">
+            Análise técnica completa sem custo. Você recebe o diagnóstico — e decide se quer avançar.
+          </p>
+
+          <div class="space-y-3 mb-10">
+            {coverageItems.map((item) => (
+              <div class="flex items-start gap-3">
+                <span class="text-brand-500 mt-0.5 flex-shrink-0">✓</span>
+                <span class="text-ink-700">{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div class="border border-ink-100 rounded-xl p-5 bg-ink-50">
+            <p class="text-sm text-ink-500 mb-2">Empresas que já passaram pela auditoria:</p>
+            <p class="font-semibold text-ink-800">HunterHunter · 7+ Vacations · Global Electronics e outros</p>
+          </div>
+        </div>
+
+        <!-- Coluna direita: formulário -->
+        <div class="bg-white border border-ink-200 rounded-2xl p-8 shadow-sm">
+          <h2 class="text-2xl font-bold text-ink-900 mb-1">Solicite sua auditoria gratuita</h2>
+          <p class="text-ink-500 text-sm mb-7">Preencha abaixo — resposta em até 48 horas úteis.</p>
+
+          <form
+            action="https://link.gohighlevel.com/widget/form/PLACEHOLDER"
+            method="POST"
+            class="space-y-5"
+          >
+            <div>
+              <label for="name" class="block text-sm font-medium text-ink-700 mb-1.5">
+                Nome completo <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder="Pedro Aureliano"
+                class="w-full"
+              />
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-medium text-ink-700 mb-1.5">
+                E-mail corporativo <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="pedro@suaempresa.com.br"
+                class="w-full"
+              />
+            </div>
+
+            <div>
+              <label for="site" class="block text-sm font-medium text-ink-700 mb-1.5">
+                Site da empresa <span class="text-red-500">*</span>
+              </label>
+              <input
+                type="url"
+                id="site"
+                name="site"
+                required
+                placeholder="https://suaempresa.com.br"
+                class="w-full"
+              />
+            </div>
+
+            <div>
+              <label for="revenue" class="block text-sm font-medium text-ink-700 mb-1.5">
+                Faturamento mensal aproximado
+              </label>
+              <select id="revenue" name="revenue" class="w-full">
+                <option value="">Selecione…</option>
+                <option value="ate-250k">Até R$250k</option>
+                <option value="250k-1m">R$250k – R$1M</option>
+                <option value="1m-10m">R$1M – R$10M</option>
+                <option value="acima-10m">Acima de R$10M</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="challenge" class="block text-sm font-medium text-ink-700 mb-1.5">
+                Maior desafio atual com SEO
+              </label>
+              <textarea
+                id="challenge"
+                name="challenge"
+                rows={3}
+                placeholder="Ex: não aparecemos no Google para as palavras-chave certas, tráfego orgânico parado há meses…"
+                class="w-full resize-none"
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary w-full justify-center text-base py-3.5">
+              Solicitar auditoria gratuita
+            </button>
+
+            <p class="text-xs text-ink-400 text-center">
+              Sem spam. Sem vendedor. Apenas o diagnóstico técnico do seu site.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mini cases -->
+  <section class="bg-ink-50 py-16">
+    <div class="container-page max-w-3xl">
+      <p class="text-sm font-medium text-ink-400 text-center uppercase tracking-wider mb-8">
+        Resultados de clientes que começaram com uma auditoria
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {miniCases.map((c) => (
+          <div class="card">
+            <div class="badge-ink mb-3">{c.tag}</div>
+            <p class="font-bold text-ink-900 mb-1">{c.client}</p>
+            <p class="text-sm text-ink-600">{c.result}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-16">
+    <div class="container-page max-w-2xl">
+      <h2 class="text-2xl font-bold text-ink-900 mb-8">Dúvidas frequentes</h2>
+      <div class="space-y-3">
+        {faqItems.map((item) => (
+          <details class="card cursor-pointer group">
+            <summary class="flex items-center justify-between font-semibold text-ink-900 list-none cursor-pointer">
+              {item.q}
+              <span class="text-ink-400 text-xl group-open:rotate-45 transition-transform flex-shrink-0 ml-4">+</span>
+            </summary>
+            <p class="mt-4 text-ink-600 leading-relaxed text-sm">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer mínimo -->
+  <footer class="border-t border-ink-100 py-6">
+    <div class="container-page flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-400">
+      <p>© {new Date().getFullYear()} Organum. Todos os direitos reservados.</p>
+      <div class="flex gap-4">
+        <a href="/privacidade" class="hover:text-ink-600 no-underline">Privacidade</a>
+        <a href="/termos" class="hover:text-ink-600 no-underline">Termos</a>
+        <a href="/" class="hover:text-ink-600 no-underline">← Voltar ao site</a>
+      </div>
+    </div>
+  </footer>
+</LP>

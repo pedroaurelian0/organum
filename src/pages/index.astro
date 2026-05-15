@@ -1,0 +1,290 @@
+---
+import Page from '@layouts/Page.astro';
+import SchemaOrg from '@components/seo/SchemaOrg.astro';
+
+const websiteSchema = {
+  '@type': 'WebSite',
+  '@id': 'https://organum.com.br/#website',
+  url: 'https://organum.com.br',
+  name: 'Organum',
+  description: 'Agência de SEO orgânico B2B — Método ORGANUM',
+  publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+  inLanguage: 'pt-BR',
+};
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'O que é o Método ORGANUM?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'O Método ORGANUM é uma abordagem sistemática de SEO orgânico B2B dividida em 5 camadas: fundação técnica, identidade de entidade, conteúdo de autoridade, GEO + AEO e Digital PR. Juntas, essas camadas transformam uma empresa em autoridade reconhecida pelo Google e pelas IAs generativas, gerando pipeline comercial previsível sem depender de tráfego pago.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Quanto tempo leva para ver resultados de SEO orgânico B2B?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Os primeiros resultados técnicos aparecem em 2 a 4 semanas. Crescimento de tráfego orgânico consistente se consolida entre 3 e 6 meses. Citações por IAs generativas como ChatGPT e Perplexity podem aparecer entre 4 e 8 semanas para marcas com presença digital mínima.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'O que é GEO — Generative Engine Optimization?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'GEO é a otimização do site e do conteúdo para que a empresa seja citada como fonte confiável por IAs generativas como ChatGPT, Gemini, Perplexity, Copilot e Grok. É a Camada 04 do Método ORGANUM e nenhuma agência brasileira a entrega sistematicamente.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'A Organum atende empresas fora de Recife?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Sim. A Organum atende clientes em todo o Brasil e internacionalmente — o case 7+ Vacations é um exemplo de atendimento em inglês para operação na Flórida. Todo o trabalho é remoto com relatórios mensais e reuniões de alinhamento.',
+      },
+    },
+  ],
+};
+
+const layers = [
+  { num: '01', name: 'Fundação técnica', desc: 'Core Web Vitals perfeitos, silos, crawl budget e Schema Markup completo.', href: '/metodo/fundacao' },
+  { num: '02', name: 'Identidade de entidade', desc: 'Knowledge Graph, Wikidata, LinkedIn estruturado e menções cruzadas.', href: '/metodo/entidade' },
+  { num: '03', name: 'Conteúdo de autoridade', desc: 'Clusters semânticos por ICP, E-E-A-T profundo, fonte primária para IAs.', href: '/metodo/conteudo' },
+  { num: '04', name: 'GEO + AEO', desc: 'Citações no ChatGPT, Gemini, Perplexity. Featured snippets e busca por voz.', href: '/metodo/geo-aeo' },
+  { num: '05', name: 'Digital PR', desc: 'Link building editorial, assessoria de imprensa digital, Domain Authority crescente.', href: '/metodo/digital-pr' },
+];
+
+const icps = [
+  {
+    icon: '🛒',
+    title: 'E-commerce',
+    range: 'R$500k – R$30M/ano',
+    ticket: 'R$3.500 – R$9.000/mês',
+    desc: 'Categoria, produto e blog otimizados para capturar demanda orgânica nos momentos de compra.',
+  },
+  {
+    icon: '🏢',
+    title: 'B2B: consultoria, SaaS, indústria',
+    range: 'R$250k – R$2M/mês',
+    ticket: 'R$5.000 – R$8.000/mês',
+    desc: 'Pipeline orgânico para ciclos de venda longos com múltiplos decisores.',
+  },
+  {
+    icon: '🌎',
+    title: 'Operação internacional',
+    range: 'Qualquer porte',
+    ticket: 'Sob consulta',
+    desc: 'SEO bilíngue PT/EN. Autoridade de entidade em múltiplas regiões e idiomas.',
+  },
+];
+
+const cases = [
+  {
+    client: 'HunterHunter',
+    tag: 'Headhunting B2B',
+    result: 'Citada por IA · Leads orgânicos qualificados',
+    href: '/cases/hunterhunter',
+  },
+  {
+    client: '7+ Vacations',
+    tag: 'Gestão de propriedade · Flórida',
+    result: 'SEO bilíngue PT/EN · Case internacional',
+    href: '/cases/7-vacations',
+  },
+];
+
+const faqs = [
+  { q: 'O que é o Método ORGANUM?', a: 'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
+  { q: 'Quanto tempo leva para ver resultado?', a: 'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
+  { q: 'Para quem é a Organum?', a: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce com faturamento acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
+  { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases em inglês para operações nos EUA.' },
+];
+---
+
+<Page
+  title="Agência de SEO orgânico B2B | Método ORGANUM — Recife"
+  description="Transformamos empresas B2B em autoridades no Google e nas IAs com o Método ORGANUM — as 5 camadas que geram pipeline comercial sem tráfego pago."
+  ogType="website"
+  schemaExtra={[websiteSchema, faqSchema]}
+>
+
+  <!-- ── HERO ── -->
+  <section class="section-dark py-24 lg:py-32 relative overflow-hidden">
+    <!-- Elemento geométrico decorativo -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none" aria-hidden="true">
+      <div class="absolute top-0 right-0 w-[600px] h-[600px] border border-white rounded-full translate-x-1/3 -translate-y-1/3"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] border border-white rounded-full -translate-x-1/3 translate-y-1/3"></div>
+    </div>
+
+    <div class="container-page relative">
+      <div class="max-w-3xl">
+        <div class="badge bg-brand-600/20 text-brand-400 border border-brand-500/30 mb-6">
+          Método ORGANUM — 5 camadas comprovadas
+        </div>
+        <h1 class="text-white text-5xl lg:text-6xl font-bold leading-[1.1] mb-6">
+          SEO orgânico que gera pipeline B2B —<br class="hidden lg:block" />
+          <span class="text-brand-400">não apenas cliques</span>
+        </h1>
+        <p class="text-xl text-ink-300 leading-relaxed mb-10 max-w-2xl">
+          O Método ORGANUM leva sua empresa do zero técnico à citação por IA em 5 camadas comprovadas. Sem tráfego pago. Sem dependência de algoritmos de mídia social.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/auditoria-gratuita" class="btn-primary text-base px-7 py-3.5">
+            Solicitar auditoria gratuita
+          </a>
+          <a href="/metodo" class="btn-secondary border-ink-700 text-ink-300 hover:bg-ink-800 text-base px-7 py-3.5">
+            Ver como funciona →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── LOGOS CLIENTES ── -->
+  <section class="border-b border-ink-100 py-12">
+    <div class="container-page">
+      <p class="text-sm font-medium text-ink-400 text-center mb-8 uppercase tracking-wider">
+        Empresas que confiam no Método ORGANUM
+      </p>
+      <div class="flex flex-wrap items-center justify-center gap-10 opacity-60">
+        {['HunterHunter', '7+ Vacations', 'Global Electronics', 'Nexxo Digital'].map((name) => (
+          <span class="text-lg font-semibold text-ink-400">{name}</span>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MÉTODO 5 CAMADAS ── -->
+  <section class="py-20 lg:py-28">
+    <div class="container-page">
+      <div class="max-w-2xl mb-14">
+        <h2 class="mb-4">O Método ORGANUM em 5 camadas</h2>
+        <p class="text-lg text-ink-500">
+          A única abordagem sistemática de SEO B2B que vai do zero técnico à citação por IA. Cada camada é necessária. A ordem importa.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {layers.map((layer) => (
+          <a href={layer.href} class="card group no-underline">
+            <div class="flex items-start gap-4">
+              <span class="text-3xl font-bold text-brand-200 group-hover:text-brand-500 transition-colors flex-shrink-0 leading-none">
+                {layer.num}
+              </span>
+              <div>
+                <h3 class="text-base font-semibold text-ink-900 mb-1">{layer.name}</h3>
+                <p class="text-sm text-ink-500 leading-relaxed">{layer.desc}</p>
+              </div>
+            </div>
+          </a>
+        ))}
+
+        <!-- Card CTA -->
+        <a href="/metodo" class="card group no-underline bg-brand-600 border-brand-700 hover:bg-brand-700">
+          <div class="h-full flex flex-col justify-between">
+            <p class="text-white font-semibold">Ver o método completo</p>
+            <span class="text-brand-200 text-2xl mt-6 group-hover:translate-x-1 transition-transform inline-block">→</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PARA QUEM É ── -->
+  <section class="bg-ink-50 py-20 lg:py-28">
+    <div class="container-page">
+      <div class="max-w-2xl mb-14">
+        <h2 class="mb-4">A Organum é para empresas B2B que querem crescer de forma previsível</h2>
+        <p class="text-lg text-ink-500">Três perfis de cliente com estratégias e resultados distintos.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {icps.map((icp) => (
+          <div class="card">
+            <div class="text-3xl mb-4">{icp.icon}</div>
+            <h3 class="text-lg font-semibold text-ink-900 mb-1">{icp.title}</h3>
+            <div class="flex flex-col gap-1 mb-4">
+              <span class="badge-ink text-xs">{icp.range}</span>
+              <span class="badge-brand text-xs">{icp.ticket}</span>
+            </div>
+            <p class="text-sm text-ink-600 leading-relaxed">{icp.desc}</p>
+            <a href="/auditoria-gratuita" class="mt-5 inline-flex text-sm font-medium text-brand-600 hover:text-brand-700 no-underline">
+              Quero uma auditoria →
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CASES ── -->
+  <section class="py-20 lg:py-28">
+    <div class="container-page">
+      <div class="max-w-2xl mb-14">
+        <h2 class="mb-4">Cases que comprovam o resultado</h2>
+        <p class="text-lg text-ink-500">Empresas reais com resultados mensuráveis.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {cases.map((c) => (
+          <a href={c.href} class="card group no-underline flex flex-col justify-between min-h-[180px]">
+            <div>
+              <div class="badge-ink mb-3">{c.tag}</div>
+              <h3 class="text-xl font-bold text-ink-900 mb-2">{c.client}</h3>
+              <p class="text-brand-600 font-medium text-sm">{c.result}</p>
+            </div>
+            <span class="mt-6 text-sm font-medium text-ink-400 group-hover:text-brand-600 transition-colors">
+              Ver case completo →
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="bg-ink-50 py-20 lg:py-28">
+    <div class="container-page max-w-3xl">
+      <h2 class="mb-10">Perguntas frequentes</h2>
+      <div class="space-y-3">
+        {faqs.map((item) => (
+          <details class="card cursor-pointer group">
+            <summary class="flex items-center justify-between font-semibold text-ink-900 list-none cursor-pointer">
+              {item.q}
+              <span class="text-ink-400 text-xl group-open:rotate-45 transition-transform duration-200 flex-shrink-0 ml-4">+</span>
+            </summary>
+            <p class="mt-4 text-ink-600 leading-relaxed text-sm">{item.a}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
+  <section class="section-dark py-20 lg:py-28">
+    <div class="container-page max-w-3xl text-center">
+      <h2 class="text-white mb-4">Pronto para parar de depender de tráfego pago?</h2>
+      <p class="text-xl text-ink-300 mb-10">
+        Solicite uma auditoria gratuita. Em até 48 horas você recebe o diagnóstico técnico completo do seu site.
+      </p>
+      <form action="/auditoria-gratuita" method="GET" class="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
+        <input
+          type="email"
+          name="email"
+          placeholder="seu@email.com"
+          required
+          class="flex-1 px-4 py-3 rounded-lg bg-ink-800 border border-ink-700 text-white placeholder:text-ink-500 focus:outline-none focus:border-brand-500 text-sm"
+        />
+        <button type="submit" class="btn-primary whitespace-nowrap">
+          Solicitar auditoria
+        </button>
+      </form>
+      <p class="text-xs text-ink-500 mt-4">Sem spam. Sem vendedor. Apenas o diagnóstico técnico do seu site.</p>
+    </div>
+  </section>
+
+</Page>

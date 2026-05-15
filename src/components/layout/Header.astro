@@ -1,0 +1,109 @@
+---
+/**
+ * Header.astro
+ * Navegação principal do site.
+ */
+
+const navLinks = [
+  { label: 'Método', href: '/metodo' },
+  { label: 'Serviços', href: '/servicos' },
+  { label: 'Cases', href: '/cases' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Sobre', href: '/sobre' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm border-b border-ink-100">
+  <div class="container-page">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-2 no-underline group" aria-label="Organum — página inicial">
+        <span class="text-xl font-bold text-ink-950 tracking-tight group-hover:text-brand-600 transition-colors">
+          Organum
+        </span>
+        <span class="hidden sm:inline-block text-xs font-medium text-brand-600 bg-brand-50 px-2 py-0.5 rounded-full border border-brand-100">
+          SEO B2B
+        </span>
+      </a>
+
+      <!-- Nav desktop -->
+      <nav class="hidden md:flex items-center gap-1" aria-label="Navegação principal">
+        {navLinks.map((link) => {
+          const isActive = currentPath.startsWith(link.href);
+          return (
+            <a
+              href={link.href}
+              class:list={[
+                'px-3 py-2 rounded-lg text-sm font-medium transition-colors no-underline',
+                isActive
+                  ? 'text-brand-700 bg-brand-50'
+                  : 'text-ink-600 hover:text-ink-900 hover:bg-ink-50',
+              ]}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
+
+      <!-- CTA -->
+      <div class="flex items-center gap-3">
+        <a href="/auditoria-gratuita" class="btn-primary text-sm py-2 px-4">
+          Auditoria gratuita
+        </a>
+
+        <!-- Hambúrguer mobile -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-ink-600 hover:bg-ink-50 transition-colors"
+          aria-label="Abrir menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <rect x="2" y="4" width="16" height="2" rx="1"/>
+            <rect x="2" y="9" width="16" height="2" rx="1"/>
+            <rect x="2" y="14" width="16" height="2" rx="1"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Menu mobile -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden border-t border-ink-100 bg-white"
+    role="dialog"
+    aria-label="Menu mobile"
+  >
+    <nav class="container-page py-4 flex flex-col gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="px-3 py-2.5 rounded-lg text-sm font-medium text-ink-700 hover:bg-ink-50 transition-colors no-underline"
+        >
+          {link.label}
+        </a>
+      ))}
+      <div class="mt-3 pt-3 border-t border-ink-100">
+        <a href="/auditoria-gratuita" class="btn-primary w-full justify-center text-sm">
+          Auditoria gratuita
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden', isOpen);
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

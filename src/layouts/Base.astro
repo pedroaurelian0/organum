@@ -1,0 +1,108 @@
+---
+import SEOHead from '@components/seo/SEOHead.astro';
+import SchemaOrg from '@components/seo/SchemaOrg.astro';
+import '@styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  ogImage?: string;
+  ogImageAlt?: string;
+  articlePublishedTime?: string;
+  articleModifiedTime?: string;
+  articleAuthor?: string;
+  noindex?: boolean;
+  nofollow?: boolean;
+  /** Schemas adicionais a injetar além dos globais */
+  schemaExtra?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType,
+  ogImage,
+  ogImageAlt,
+  articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
+  noindex,
+  nofollow,
+  schemaExtra = [],
+} = Astro.props;
+
+// Schema Organization — injetado em TODAS as páginas
+const organizationSchema = {
+  '@type': 'Organization',
+  '@id': 'https://organum.com.br/#organization',
+  name: 'Organum',
+  url: 'https://organum.com.br',
+  logo: {
+    '@type': 'ImageObject',
+    url: 'https://organum.com.br/images/logo.png',
+    width: 300,
+    height: 60,
+  },
+  description:
+    'Agência de SEO orgânico B2B especializada no Método ORGANUM — as 5 camadas que levam empresas do zero técnico à citação por IA e ao pipeline comercial.',
+  foundingDate: '2024',
+  founder: {
+    '@type': 'Person',
+    '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Recife',
+    addressRegion: 'PE',
+    addressCountry: 'BR',
+  },
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'customer service',
+    availableLanguage: ['Portuguese', 'English'],
+    url: 'https://organum.com.br/contato',
+  },
+  sameAs: [
+    'https://www.linkedin.com/company/organum',
+    'https://www.instagram.com/organum',
+  ],
+  knowsAbout: [
+    'SEO técnico',
+    'GEO — Generative Engine Optimization',
+    'AEO — Answer Engine Optimization',
+    'SEO B2B',
+    'Link Building editorial',
+    'E-E-A-T',
+    'Schema Markup',
+  ],
+};
+
+// Todos os schemas a injetar nesta página
+const allSchemas = [organizationSchema, ...schemaExtra];
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonical={canonical}
+      ogType={ogType}
+      ogImage={ogImage}
+      ogImageAlt={ogImageAlt}
+      articlePublishedTime={articlePublishedTime}
+      articleModifiedTime={articleModifiedTime}
+      articleAuthor={articleAuthor}
+      noindex={noindex}
+      nofollow={nofollow}
+    />
+    <SchemaOrg schema={allSchemas} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+import Base from './Base.astro';
+import Header from '@components/layout/Header.astro';
+import Footer from '@components/layout/Footer.astro';
+import Breadcrumb from '@components/seo/Breadcrumb.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogType?: 'website' | 'article' | 'profile';
+  ogImage?: string;
+  ogImageAlt?: string;
+  noindex?: boolean;
+  schemaExtra?: Record<string, unknown>[];
+  breadcrumbItems?: Array<{ name: string; url: string }>;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogType,
+  ogImage,
+  ogImageAlt,
+  noindex,
+  schemaExtra,
+  breadcrumbItems,
+} = Astro.props;
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogType={ogType}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
+  noindex={noindex}
+  schemaExtra={schemaExtra}
+>
+  <Header />
+  <main>
+    {breadcrumbItems && breadcrumbItems.length > 0 && (
+      <div class="container-page">
+        <Breadcrumb items={breadcrumbItems} />
+      </div>
+    )}
+    <slot />
+  </main>
+  <Footer />
+</Base>
