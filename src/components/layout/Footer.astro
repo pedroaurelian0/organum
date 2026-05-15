@@ -1,94 +1,90 @@
 ---
 const year = new Date().getFullYear();
-
-const footerLinks = {
-  Serviços: [
-    { label: 'SEO Técnico', href: '/servicos/seo-tecnico' },
-    { label: 'GEO + AEO', href: '/servicos/geo-aeo' },
-    { label: 'Conteúdo de Autoridade', href: '/servicos/conteudo' },
-    { label: 'Link Building', href: '/servicos/link-building' },
-    { label: 'SEO B2B', href: '/servicos/seo-b2b' },
-    { label: 'SEO E-commerce', href: '/servicos/seo-ecommerce' },
+const cols = {
+  'Serviços': [
+    ['SEO Técnico',      '/servicos/seo-tecnico'],
+    ['GEO + AEO',        '/servicos/geo-aeo'],
+    ['Conteúdo',         '/servicos/conteudo'],
+    ['Link Building',    '/servicos/link-building'],
+    ['SEO B2B',          '/servicos/seo-b2b'],
+    ['SEO E-commerce',   '/servicos/seo-ecommerce'],
   ],
-  Método: [
-    { label: 'Visão geral', href: '/metodo' },
-    { label: '01 Fundação técnica', href: '/metodo/fundacao' },
-    { label: '02 Identidade de entidade', href: '/metodo/entidade' },
-    { label: '03 Conteúdo de autoridade', href: '/metodo/conteudo' },
-    { label: '04 GEO + AEO', href: '/metodo/geo-aeo' },
-    { label: '05 Digital PR', href: '/metodo/digital-pr' },
+  'Método': [
+    ['Visão geral',              '/metodo'],
+    ['01 Fundação técnica',      '/metodo/fundacao'],
+    ['02 Identidade de entidade','/metodo/entidade'],
+    ['03 Conteúdo de autoridade','/metodo/conteudo'],
+    ['04 GEO + AEO',             '/metodo/geo-aeo'],
+    ['05 Digital PR',            '/metodo/digital-pr'],
   ],
-  Empresa: [
-    { label: 'Sobre a Organum', href: '/sobre' },
-    { label: 'Pedro Aureliano', href: '/sobre/pedro-aureliano' },
-    { label: 'Cases', href: '/cases' },
-    { label: 'Blog', href: '/blog' },
-    { label: 'Auditoria gratuita', href: '/auditoria-gratuita' },
-    { label: 'Contato', href: '/contato' },
+  'Empresa': [
+    ['Sobre a Organum',     '/sobre'],
+    ['Pedro Aureliano',     '/sobre/pedro-aureliano'],
+    ['Cases',               '/cases'],
+    ['Blog',                '/blog'],
+    ['Auditoria gratuita',  '/auditoria-gratuita'],
   ],
 };
 ---
 
-<footer class="bg-ink-950 text-ink-300 mt-24">
-  <div class="container-page pt-16 pb-10">
+<footer class="site-footer">
+  <div class="wrap">
 
-    <!-- Top: logo + descrição + links -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-
-      <!-- Coluna 1: marca -->
-      <div class="lg:col-span-1">
-        <a href="/" class="inline-block text-2xl font-bold text-white no-underline mb-4">
-          Organum
-        </a>
-        <p class="text-sm text-ink-400 leading-relaxed mb-5">
-          Agência de SEO orgânico B2B especializada no Método ORGANUM — as 5 camadas que levam empresas do zero técnico à citação por IA.
+    <!-- Top -->
+    <div style="display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);"
+         class="footer-grid">
+      <div>
+        <div class="footer-logo">Organum</div>
+        <p style="margin-top:1rem;font-size:.875rem;line-height:1.7;color:rgba(255,255,255,.4);max-width:26ch;">
+          As 5 camadas que levam empresas B2B do zero técnico à citação por IA.
         </p>
-        <p class="text-xs text-ink-500">
+        <p style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.25);letter-spacing:.05em;">
           Recife, PE — atendimento nacional e internacional
         </p>
       </div>
 
-      <!-- Colunas 2–4: links -->
-      {Object.entries(footerLinks).map(([category, links]) => (
+      {Object.entries(cols).map(([title, links]) => (
         <div>
-          <h3 class="text-sm font-semibold text-white uppercase tracking-wider mb-4">
-            {category}
-          </h3>
-          <ul class="space-y-2.5">
-            {links.map((link) => (
-              <li>
-                <a
-                  href={link.href}
-                  class="text-sm text-ink-400 hover:text-white transition-colors no-underline"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <p class="footer-col-title">{title}</p>
+          {links.map(([label, href]) => (
+            <a href={href} class="footer-link">{label}</a>
+          ))}
         </div>
       ))}
     </div>
 
-    <!-- CTA banner -->
-    <div class="border border-ink-800 rounded-xl p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
+    <!-- CTA strip -->
+    <div style="padding:2.5rem 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;">
       <div>
-        <p class="text-white font-semibold">Pronto para parar de depender de tráfego pago?</p>
-        <p class="text-sm text-ink-400 mt-1">Solicite uma auditoria gratuita e receba o diagnóstico técnico em 48 horas.</p>
+        <p style="font-family:var(--font-serif);font-size:1.375rem;font-weight:700;color:white;line-height:1.2;">
+          Pronto para parar de depender de tráfego pago?
+        </p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.4);margin-top:.5rem;">
+          Diagnóstico técnico gratuito em até 48 horas.
+        </p>
       </div>
-      <a href="/auditoria-gratuita" class="btn-primary whitespace-nowrap flex-shrink-0 text-sm">
+      <a href="/auditoria-gratuita" class="btn btn-green" style="white-space:nowrap;flex-shrink:0;">
         Auditoria gratuita
       </a>
     </div>
 
-    <!-- Bottom: copyright e legais -->
-    <div class="border-t border-ink-800 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ink-500">
-      <p>© {year} Organum. Todos os direitos reservados.</p>
-      <div class="flex gap-5">
-        <a href="/privacidade" class="hover:text-ink-300 transition-colors no-underline">Privacidade</a>
-        <a href="/termos" class="hover:text-ink-300 transition-colors no-underline">Termos de uso</a>
+    <!-- Bottom -->
+    <div style="padding-top:1.75rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+      <p style="font-size:.75rem;color:rgba(255,255,255,.2);">© {year} Organum. Todos os direitos reservados.</p>
+      <div style="display:flex;gap:1.5rem;">
+        <a href="/privacidade" class="footer-link" style="font-size:.75rem;">Privacidade</a>
+        <a href="/termos"      class="footer-link" style="font-size:.75rem;">Termos</a>
       </div>
     </div>
 
   </div>
 </footer>
+
+<style>
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr !important; }
+}
+</style>
