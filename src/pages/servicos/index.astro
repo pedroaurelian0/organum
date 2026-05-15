@@ -1,0 +1,74 @@
+---
+import Page from '@layouts/Page.astro';
+
+const serviceSchema = {
+  '@type': 'Service',
+  '@id': 'https://organum.com.br/servicos/#service',
+  name: 'SEO Orgânico B2B — Método ORGANUM',
+  provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+  areaServed: { '@type': 'Country', name: 'Brasil' },
+  description: 'Serviços de SEO orgânico B2B: SEO técnico, GEO, AEO, conteúdo de autoridade, link building e identidade de entidade digital.',
+};
+
+const services = [
+  { name: 'SEO Técnico', slug: 'seo-tecnico', icon: '⚙', desc: 'Core Web Vitals perfeitos, arquitetura de silos, Schema Markup completo. A fundação que tudo depende.', tag: 'Camada 01' },
+  { name: 'Identidade de Entidade', slug: 'identidade-entidade', icon: '◈', desc: 'Knowledge Graph, Wikidata, sameAs cruzados. O que as IAs precisam para reconhecer e recomendar sua marca.', tag: 'Camada 02' },
+  { name: 'Conteúdo de Autoridade', slug: 'conteudo', icon: '✦', desc: 'Clusters semânticos por ICP, 2.000+ palavras, E-E-A-T profundo. Fonte primária para IAs generativas.', tag: 'Camada 03' },
+  { name: 'GEO + AEO', slug: 'geo-aeo', icon: '◎', desc: 'Citado pelo ChatGPT, Gemini e Perplexity. Featured snippets e busca por voz. Único no Brasil.', tag: 'Camada 04' },
+  { name: 'Digital PR e Link Building', slug: 'link-building', icon: '◉', desc: 'Link building editorial, assessoria de imprensa digital, Domain Authority crescente mês a mês.', tag: 'Camada 05' },
+  { name: 'SEO B2B', slug: 'seo-b2b', icon: '▣', desc: 'Pipeline orgânico para ciclos de venda longos. Leads qualificados para consultoria, SaaS e indústria.', tag: 'Especialização' },
+  { name: 'SEO E-commerce', slug: 'seo-ecommerce', icon: '▤', desc: 'Tráfego orgânico que converte para lojas de R$500k a R$30M de faturamento.', tag: 'Especialização' },
+];
+---
+
+<Page
+  title="Serviços de SEO orgânico B2B | Método ORGANUM"
+  description="SEO técnico, GEO, AEO, conteúdo de autoridade, link building e identidade de entidade. As 5 camadas do Método ORGANUM para pipeline B2B sem tráfego pago."
+  canonical="https://organum.com.br/servicos/"
+  breadcrumbItems={[{ name: 'Serviços', url: '/servicos' }]}
+  schemaExtra={[serviceSchema]}
+>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem) 0;">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Método ORGANUM
+    </p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;max-width:18ch;">
+      5 camadas.<br/><em style="color:var(--g400);font-style:italic;">Pipeline B2B sem anúncios.</em>
+    </h1>
+    <p style="margin-top:1.5rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:48ch;line-height:1.7;">
+      Cada serviço corresponde a uma camada do método. A ordem importa — cada camada amplifica todas as outras.
+    </p>
+  </div>
+</section>
+
+<section style="background:var(--n950);padding:4rem clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:rgba(255,255,255,.07);">
+    {services.map((s) => (
+      <a href={`/servicos/${s.slug}`} style="background:var(--n950);padding:2.5rem;display:flex;flex-direction:column;gap:1rem;text-decoration:none;transition:background .2s;group:true;"
+         onmouseover="this.style.background='#111009'" onmouseout="this.style.background='var(--n950)'">
+        <div style="display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:1.5rem;">{s.icon}</span>
+          <span style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);padding:.25rem .75rem;border-radius:999px;">{s.tag}</span>
+        </div>
+        <h2 style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;line-height:1.2;">{s.name}</h2>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.7;flex:1;">{s.desc}</p>
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Ver serviço →</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:780px;margin-inline:auto;text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;">Não sabe por onde começar?</h2>
+    <p style="font-size:1rem;color:var(--n600);line-height:1.7;margin-bottom:2rem;">Solicite uma auditoria gratuita. Em 48 horas você recebe o diagnóstico técnico completo e a recomendação de quais camadas priorizar para o seu perfil de negócio.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--n950);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--g700)'" onmouseout="this.style.background='var(--n950)'">
+      Solicitar auditoria gratuita
+    </a>
+  </div>
+</section>
+
+</Page>

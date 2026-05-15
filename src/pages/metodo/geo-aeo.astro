@@ -1,0 +1,81 @@
+---
+import Page from '@layouts/Page.astro';
+const schema = { '@type': 'Article', '@id': 'https://organum.com.br/metodo/geo-aeo/#article', headline: 'Camada 04 — GEO + AEO: Citações por ChatGPT, Gemini e Perplexity', author: { '@type': 'Person', '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person' }, publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' }, datePublished: '2025-01-15', inLanguage: 'pt-BR' };
+---
+<Page title="Camada 04 — GEO + AEO | Citações por ChatGPT, Gemini e Perplexity | Organum" description="Generative Engine Optimization sistemático: seja citado por ChatGPT, Gemini, Perplexity e Copilot. A Camada 04 do Método ORGANUM — a única que nenhuma agência brasileira entrega." canonical="https://organum.com.br/metodo/geo-aeo/" ogType="article" breadcrumbItems={[{name:'Método',url:'/metodo'},{name:'GEO + AEO',url:'/metodo/geo-aeo'}]} schemaExtra={[schema]}>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(76,175,100,.1);border:1px solid rgba(76,175,100,.2);padding:.375rem 1rem;border-radius:999px;margin-bottom:1.5rem;">
+      <span style="width:6px;height:6px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;"></span>
+      <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g400);">Camada 04 — Nenhuma agência brasileira entrega isso</span>
+    </div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">GEO + AEO:<br/><em style="color:var(--g400);font-style:italic;">de onde vem a vantagem que ninguém tem</em></h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:52ch;">As Camadas 01, 02 e 03 constroem a fundação. A Camada 04 é onde o Método ORGANUM entrega o que nenhuma agência brasileira oferece sistematicamente: a presença da sua empresa nas respostas das IAs.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;margin-top:2.5rem;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Testar minha presença nas IAs</a>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>O que é GEO</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">GEO — Generative Engine Optimization: a próxima fronteira do SEO</h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;max-width:58ch;">GEO é a disciplina de otimizar para ser citado como fonte confiável por IAs generativas. Enquanto o SEO tradicional otimiza para algoritmos de busca baseados em palavras-chave e PageRank, o GEO otimiza para modelos de linguagem — que funcionam de forma completamente diferente.</p>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;max-width:58ch;">Os LLMs (Large Language Models) como GPT-4, Gemini e Claude foram treinados em bilhões de documentos. Eles "aprenderam" quais empresas são referências em cada segmento durante o treinamento — e continuam aprendendo via RAG (Retrieval-Augmented Generation), que busca fontes em tempo real para complementar as respostas.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Os 5 pilares do GEO</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;">Como a Organum otimiza para cada IA generativa</h2>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--n200);">
+      {[
+        { n:'01', t:'Entidade verificável (pré-requisito)', d:'Sem entidade no Knowledge Graph e Wikidata, nenhuma estratégia de GEO funciona. As IAs precisam confirmar que a empresa existe antes de recomendá-la. Por isso a Camada 02 vem antes da Camada 04.' },
+        { n:'02', t:'Conteúdo estruturado para resposta direta', d:'Cada artigo é estruturado para responder diretamente uma pergunta do ICP: definição precisa na abertura, dados concretos no meio, FAQ Schema no final. Esse é o formato que os LLMs usam para extrair informações.' },
+        { n:'03', t:'FAQPage e HowTo Schema', d:'Schema FAQPage e HowTo são consumidos diretamente pelos modelos via dados estruturados. Uma página com FAQPage Schema bem implementado tem probabilidade muito maior de ter seu conteúdo usado como fonte em respostas de IA.' },
+        { n:'04', t:'Autoridade de autor documentada', d:'Articles Schema linkado ao Person Schema do fundador com credenciais verificáveis. Os LLMs dão peso maior a conteúdo com autoria humana identificável e verificável — parte do framework E-E-A-T.' },
+        { n:'05', t:'Monitoramento e iteração semanal', d:'Consultamos ChatGPT, Perplexity e Gemini semanalmente com as queries prioritárias do ICP. Documentamos frequência, contexto e qualidade das citações — e iteramos a estratégia com base nos dados.' },
+      ].map((item, i, arr) => (
+        <div style={`display:grid;grid-template-columns:56px 1fr;gap:1.5rem;padding:2rem;align-items:start;${i < arr.length-1 ? 'border-bottom:1px solid var(--n200);' : ''}`}>
+          <span style="font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--n200);line-height:1;">{item.n}</span>
+          <div>
+            <p style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:var(--n900);margin-bottom:.5rem;">{item.t}</p>
+            <p style="font-size:.875rem;color:var(--n500);line-height:1.7;">{item.d}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.6);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>AEO</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem;">AEO — Answer Engine Optimization: featured snippets e busca por voz</h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;max-width:58ch;">AEO é a otimização para os "answer boxes" — as respostas diretas que o Google exibe no topo dos resultados antes de qualquer link orgânico. Para buscas por voz, esses snippets são a única resposta entregue. A estratégia de AEO usa Schema FAQPage, HowTo e conteúdo estruturado para maximizar a probabilidade de capturar essas posições.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);" class="aeo-types-grid">
+      {[['Featured Snippet','Parágrafo de resposta direta no topo do Google. Captura 30–40% dos cliques da query.'],['People Also Ask','Caixas de perguntas relacionadas. Cada resposta é uma oportunidade de citação.'],['Busca por voz','Google lê o featured snippet. Crescimento de 35%/ano em queries B2B por voz.']].map(([t,d]) => (
+        <div style="background:var(--n950);padding:1.75rem;">
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">{t}</p>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.4);line-height:1.65;">{d}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--n950);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);border-top:1px solid rgba(255,255,255,.06);">
+  <div style="max-width:960px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+    <a href="/metodo/conteudo" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;">← Camada 03: Conteúdo</a>
+    <a href="/metodo/digital-pr" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);text-decoration:none;">Camada 05: Digital PR →</a>
+  </div>
+  <div style="text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">Sua empresa aparece nas IAs?</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;max-width:44ch;margin-inline:auto;">Verificamos seu potencial de GEO gratuitamente em 48 horas.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria GEO gratuita</a>
+  </div>
+</section>
+
+<style>@media(max-width:768px){.aeo-types-grid{grid-template-columns:1fr !important}}</style>
+</Page>

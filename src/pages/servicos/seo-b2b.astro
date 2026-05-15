@@ -1,0 +1,129 @@
+---
+import Page from '@layouts/Page.astro';
+
+const schema = {
+  '@type': 'Service',
+  '@id': 'https://organum.com.br/servicos/seo-b2b/#service',
+  name: 'SEO para empresas B2B',
+  description: 'Pipeline orgânico para consultoria, SaaS e indústria. SEO B2B especializado em ciclos de venda longos, múltiplos decisores e leads qualificados.',
+  provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+};
+---
+
+<Page
+  title="SEO para empresas B2B | Consultoria, SaaS e Indústria | Organum"
+  description="Pipeline orgânico para ciclos de venda longos com múltiplos decisores. SEO B2B especializado para consultoria, SaaS, distribuidora e indústria."
+  canonical="https://organum.com.br/servicos/seo-b2b/"
+  breadcrumbItems={[{ name: 'Serviços', url: '/servicos' }, { name: 'SEO B2B', url: '/servicos/seo-b2b' }]}
+  schemaExtra={[schema]}
+>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:1rem;">Especialização B2B</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;max-width:22ch;">
+      SEO B2B: <em style="color:var(--g400);font-style:italic;">pipeline orgânico para ciclos de venda longos</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:50ch;line-height:1.75;">
+      SEO B2B não é SEO genérico com um lead diferente no final. É uma disciplina completamente diferente que exige conteúdo técnico profundo, jornadas de 3 a 18 meses e múltiplos decisores.
+    </p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;margin-top:2.5rem;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Por que SEO B2B é diferente</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+      O comprador B2B não converte na primeira visita. Ele pesquisa durante meses.
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          No B2C, o usuário pesquisa, clica e compra. O ciclo pode durar minutos. No B2B, o ciclo médio de uma compra acima de R$50k leva entre 3 e 18 meses e envolve de 3 a 8 decisores diferentes.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          Isso significa que sua estratégia de SEO precisa capturar o comprador em diferentes momentos da jornada: quando ele ainda está aprendendo sobre o problema, quando está avaliando soluções e quando está comparando fornecedores.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          <strong style="color:var(--n900);">A Organum mapeia toda a jornada do ICP</strong> e cria clusters de conteúdo que acompanham o comprador do topo ao fundo do funil — gerando leads qualificados que já chegam educados e prontos para uma conversa comercial.
+        </p>
+      </div>
+      <div>
+        {[
+          { stage: 'Topo de funil', intent: 'Aprendizado', example: '"o que é gestão de talentos B2B"', goal: 'Gerar awareness e capturar o ICP cedo' },
+          { stage: 'Meio de funil', intent: 'Consideração', example: '"headhunting vs recrutamento interno"', goal: 'Educar sobre diferenciadores da solução' },
+          { stage: 'Fundo de funil', intent: 'Decisão', example: '"empresa de headhunting para startups Recife"', goal: 'Converter lead qualificado em oportunidade' },
+        ].map((s, i) => (
+          <div style={`padding:1.25rem;border:1px solid var(--n200);background:var(--n0);margin-bottom:${i < 2 ? '.75rem' : '0'}`}>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.625rem;">
+              <p style="font-size:.75rem;font-weight:700;color:var(--n700);">{s.stage}</p>
+              <span style="font-size:.6rem;background:var(--g50);color:var(--g700);border:1px solid var(--g200);padding:.2rem .625rem;border-radius:999px;font-weight:700;">{s.intent}</span>
+            </div>
+            <p style="font-size:.8125rem;color:var(--n500);font-style:italic;margin-bottom:.375rem;">Ex: {s.example}</p>
+            <p style="font-size:.8125rem;color:var(--n700);font-weight:500;">{s.goal}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Para quem</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;">Setores B2B em que o Método ORGANUM gera resultados</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="sectors-grid">
+      {[
+        { sector: 'Consultoria', desc: 'Autoridade técnica profunda que atrai clientes que já chegam convencidos. Pipeline sem cold outreach.' },
+        { sector: 'SaaS', desc: 'Conteúdo educacional que gera trials orgânicos. CAC 60-80% menor que paid para leads de qualidade.' },
+        { sector: 'Distribuidora', desc: 'SEO para produtos específicos e catálogo amplo. Captura compradores em múltiplas categorias.' },
+        { sector: 'Indústria', desc: 'Autoridade técnica em nichos específicos. Leads de engenharia e compras sem intermediários.' },
+        { sector: 'Serviços profissionais', desc: 'Posicionamento de expertise que justifica ticket premium e reduz objeções de preço.' },
+        { sector: 'Agências e bureaux', desc: 'Diferenciação em mercados saturados via autoridade de nicho e casos concretos.' },
+      ].map(s => (
+        <div style="border:1px solid var(--n200);padding:1.75rem;transition:border-color .2s;" onmouseover="this.style.borderColor='var(--g400)'" onmouseout="this.style.borderColor='var(--n200)'">
+          <p style="font-family:var(--serif);font-size:1.125rem;font-weight:700;color:var(--n900);margin-bottom:.5rem;">{s.sector}</p>
+          <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Qualificação de leads</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;">
+      O lead orgânico B2B é o mais qualificado que existe
+    </h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.5rem;max-width:58ch;">
+      Um lead que encontrou sua empresa pesquisando ativamente uma solução para o problema dele já passou por toda a jornada educacional. Ele sabe o que quer, conhece os critérios de escolha e está pronto para uma conversa comercial — não para um pitch frio.
+    </p>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;max-width:58ch;">
+      Comparado com um lead de cold outreach ou de um anúncio interrompido, o lead orgânico B2B converte em média <strong style="color:var(--n900);">3 a 5x mais</strong> e tem ticket médio superior porque chegou no momento certo, com a intenção certa.
+    </p>
+  </div>
+</section>
+
+<section style="background:var(--g800);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">
+      Seu ICP está pesquisando agora. Você aparece?
+    </h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:2rem;">Solicite uma auditoria gratuita e mapeamos junto as queries do seu ICP e o potencial de pipeline orgânico.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--g800);font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+  .two-col-grid { grid-template-columns: 1fr !important; }
+  .sectors-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 480px) {
+  .sectors-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+</Page>

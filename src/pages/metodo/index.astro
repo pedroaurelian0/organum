@@ -1,0 +1,57 @@
+---
+import Page from '@layouts/Page.astro';
+
+const layers = [
+  { num: '01', name: 'Fundação técnica', slug: 'fundacao', sub: 'Core Web Vitals, silos, Schema Markup', tag: 'Base obrigatória', color: 'rgba(255,255,255,.06)' },
+  { num: '02', name: 'Identidade de entidade', slug: 'entidade', sub: 'Knowledge Graph, Wikidata, sameAs', tag: 'Diferencial Organum', color: 'rgba(76,175,100,.06)' },
+  { num: '03', name: 'Conteúdo de autoridade', slug: 'conteudo', sub: 'Clusters semânticos, E-E-A-T, 2.000+ palavras', tag: 'Fonte para IA', color: 'rgba(255,255,255,.06)' },
+  { num: '04', name: 'GEO + AEO', slug: 'geo-aeo', sub: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'Nenhuma agência entrega', color: 'rgba(76,175,100,.06)' },
+  { num: '05', name: 'Digital PR', slug: 'digital-pr', sub: 'Link building editorial, assessoria digital', tag: 'Autoridade externa', color: 'rgba(255,255,255,.06)' },
+];
+---
+
+<Page
+  title="Método ORGANUM | As 5 camadas do SEO orgânico B2B"
+  description="A única abordagem sistemática de SEO B2B que vai do zero técnico à citação por IA. 5 camadas integradas: fundação técnica, entidade, conteúdo, GEO e Digital PR."
+  canonical="https://organum.com.br/metodo/"
+  breadcrumbItems={[{ name: 'Método', url: '/metodo' }]}
+>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);margin-bottom:1rem;">A abordagem da Organum</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:900;line-height:.93;letter-spacing:-.03em;color:#fff;max-width:22ch;">
+      O Método ORGANUM:<br/><em style="color:var(--g400);font-style:italic;">as únicas 5 camadas que geram pipeline B2B sem tráfego pago</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:52ch;line-height:1.75;">
+      Cada camada é pré-requisito da próxima. Pular uma quebra o sistema. A ordem importa porque cada entrega amplifica todas as outras.
+    </p>
+  </div>
+</section>
+
+<section style="background:var(--n950);border-top:1px solid rgba(255,255,255,.06);">
+  {layers.map((l, i) => (
+    <a href={`/metodo/${l.slug}`} style={`display:grid;grid-template-columns:80px 1fr auto;gap:2rem;align-items:center;padding:2.5rem clamp(1rem,4vw,3rem);max-width:1280px;margin-inline:auto;border-bottom:1px solid rgba(255,255,255,.06);text-decoration:none;transition:background .2s;background:${l.color};`}
+       onmouseover="this.style.background='rgba(255,255,255,.04)'" onmouseout={`this.style.background='${l.color}'`}>
+      <span style="font-family:var(--serif);font-size:3.5rem;font-weight:700;color:rgba(255,255,255,.15);line-height:1;">{l.num}</span>
+      <div>
+        <p style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;margin-bottom:.375rem;">{l.name}</p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.4);">{l.sub}</p>
+      </div>
+      <div style="text-align:right;flex-shrink:0;">
+        <span style="display:inline-block;font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.06);color:rgba(255,255,255,.4);padding:.3rem .875rem;border-radius:999px;margin-bottom:.75rem;">{l.tag}</span>
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Ver camada →</p>
+      </div>
+    </a>
+  ))}
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:780px;margin-inline:auto;text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;">Por onde começar?</h2>
+    <p style="font-size:1rem;color:var(--n600);line-height:1.7;margin-bottom:2rem;">Solicite uma auditoria gratuita. Diagnosticamos em qual camada seu site está e qual é a sequência de prioridades para o seu perfil de negócio.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--n950);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+</Page>

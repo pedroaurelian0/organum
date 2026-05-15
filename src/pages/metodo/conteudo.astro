@@ -1,0 +1,90 @@
+---
+import Page from '@layouts/Page.astro';
+const schema = { '@type': 'Article', '@id': 'https://organum.com.br/metodo/conteudo/#article', headline: 'Camada 03 — Conteúdo de Autoridade: Clusters Semânticos e E-E-A-T', author: { '@type': 'Person', '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person' }, publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' }, datePublished: '2025-01-15', inLanguage: 'pt-BR' };
+---
+<Page title="Camada 03 — Conteúdo de Autoridade | Clusters Semânticos e E-E-A-T | Organum" description="Clusters semânticos por ICP, artigos 2.000+ palavras, E-E-A-T profundo. Conteúdo que serve como fonte primária para IAs generativas. Camada 03 do Método ORGANUM." canonical="https://organum.com.br/metodo/conteudo/" ogType="article" breadcrumbItems={[{name:'Método',url:'/metodo'},{name:'Conteúdo de Autoridade',url:'/metodo/conteudo'}]} schemaExtra={[schema]}>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.375rem 1rem;border-radius:999px;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;">Camada 03 — Fonte para IA</span>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">Conteúdo de autoridade:<br/><em style="color:var(--g400);font-style:italic;">o que as IAs usam como fonte</em></h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:52ch;">Conteúdo genérico não posiciona e não é citado por IAs. Conteúdo de autoridade — profundo, verificável, estruturado para responder diretamente às perguntas do ICP — é o que separa quem aparece de quem não existe.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;margin-top:2.5rem;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Solicitar auditoria de conteúdo gratuita</a>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Clusters semânticos</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">Por que clusters semânticos geram autoridade — e conteúdo avulso não gera</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">Um cluster semântico é um grupo de conteúdos profundamente relacionados: uma página pilar cobre um tópico amplo com profundidade, e diversas páginas de suporte cobrem subtópicos específicos — todos linkando entre si e para a pilar.</p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">Para o Google, um site com 10 artigos densos sobre headhunting B2B tem muito mais autoridade no tema do que um site com 50 artigos genéricos sobre RH. Para as IAs, um cluster bem estruturado é mais fácil de usar como fonte porque as respostas estão organizadas e interligadas.</p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">Na Organum, <strong style="color:var(--n900);">mapeamos os clusters a partir do ICP</strong>, não de ferramentas de keyword. A pergunta é: quais temas o decisor da sua empresa-cliente pesquisa durante a jornada de compra? Esse mapeamento guia toda a produção de conteúdo.</p>
+      </div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">O que compõe um cluster de autoridade</p>
+        {[
+          { t: 'Página pilar (2.000–4.000 palavras)', d: 'Cobre o tema principal com profundidade total. Responde todas as perguntas relevantes.' },
+          { t: 'Artigos de suporte (1.500–2.500 palavras)', d: 'Cada subtópico tratado em detalhe. Linkam para a pilar e entre si.' },
+          { t: 'FAQs e glossários', d: 'Respostas diretas para queries informacionais. Alta probabilidade de featured snippet.' },
+          { t: 'Cases e estudos de caso', d: 'Provas concretas com dados reais. E-E-A-T em ação — experiência verificável.' },
+          { t: 'Guias comparativos', d: 'Fundo de funil: compara soluções. Captura decisores em fase de escolha.' },
+        ].map(item => (
+          <div style="padding:.75rem 0;border-bottom:1px solid var(--n100);">
+            <p style="font-size:.875rem;font-weight:600;color:var(--n800);margin-bottom:.25rem;">{item.t}</p>
+            <p style="font-size:.8125rem;color:var(--n500);line-height:1.5;">{item.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>E-E-A-T</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;">E-E-A-T: Experiência, Expertise, Autoridade e Confiabilidade</h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.5rem;max-width:60ch;">O E-E-A-T é o framework que o Google usa para avaliar a qualidade do conteúdo. O primeiro E (Experiência) foi adicionado em 2022 — e é o diferencial que separa conteúdo de IA genérico de conteúdo de autoridade real.</p>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:2rem;" class="eeat-grid">
+      {[
+        { letter: 'E', word: 'Experiência', desc: 'O autor tem experiência real com o tópico? Cases reais, dados próprios e perspectivas de primeira mão.' },
+        { letter: 'E', word: 'Expertise', desc: 'O autor tem conhecimento técnico profundo? Credenciais, publicações e referências verificáveis.' },
+        { letter: 'A', word: 'Autoridade', desc: 'O site é reconhecido como referência no tema? Menções externas, backlinks e cobertura de imprensa.' },
+        { letter: 'T', word: 'Confiabilidade', desc: 'O conteúdo é preciso e verificável? Fontes citadas, dados concretos, transparência sobre autoria.' },
+      ].map(e => (
+        <div style="background:var(--n50);border:1px solid var(--n200);padding:1.5rem;text-align:center;">
+          <span style="font-family:var(--serif);font-size:3rem;font-weight:900;color:var(--g500);display:block;line-height:1;margin-bottom:.5rem;">{e.letter}</span>
+          <p style="font-size:.875rem;font-weight:700;color:var(--n900);margin-bottom:.5rem;">{e.word}</p>
+          <p style="font-size:.75rem;color:var(--n500);line-height:1.6;">{e.desc}</p>
+        </div>
+      ))}
+    </div>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;max-width:60ch;">Na prática, E-E-A-T profundo significa: artigos assinados por Pedro Aureliano com Schema Person linkado, dados reais de clientes (com permissão), casos concretos numerados, fontes primárias citadas e atualização regular do conteúdo com novas informações.</p>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.6);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Conteúdo como fonte para IA</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem;">O conteúdo da Camada 03 é o combustível do GEO da Camada 04</h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.5rem;max-width:58ch;">As IAs generativas citam conteúdo que responde diretamente a perguntas com dados verificáveis. Um artigo de 2.000 palavras que abre com uma definição precisa, passa por dados concretos e termina com FAQ estruturado é exatamente o tipo de fonte que o ChatGPT usa para compor respostas.</p>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;max-width:58ch;">É por isso que as Camadas 03 e 04 do Método ORGANUM são desenvolvidas em conjunto — o conteúdo é produzido já pensando em como será consumido pelos LLMs, não apenas pelos usuários humanos.</p>
+  </div>
+</section>
+
+<section style="background:var(--n950);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);border-top:1px solid rgba(255,255,255,.06);">
+  <div style="max-width:960px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+    <a href="/metodo/entidade" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;">← Camada 02: Identidade de entidade</a>
+    <a href="/metodo/geo-aeo" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);text-decoration:none;">Camada 04: GEO + AEO →</a>
+  </div>
+  <div style="text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">Seu conteúdo está pronto para ser citado por IA?</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;max-width:44ch;margin-inline:auto;">Auditoria gratuita com diagnóstico de gaps de conteúdo, clusters prioritários e potencial de GEO.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+<style>@media(max-width:768px){.two-col-grid{grid-template-columns:1fr !important}.eeat-grid{grid-template-columns:1fr 1fr !important}}</style>
+</Page>

@@ -1,0 +1,220 @@
+---
+import Page from '@layouts/Page.astro';
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': 'https://organum.com.br/servicos/geo-aeo/#service',
+    name: 'GEO + AEO — Generative Engine Optimization',
+    description: 'Otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz.',
+    provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'O que é GEO — Generative Engine Optimization?', acceptedAnswer: { '@type': 'Answer', text: 'GEO é a otimização de conteúdo e estrutura técnica para que uma empresa seja citada como fonte confiável por IAs generativas como ChatGPT, Gemini, Perplexity, Copilot e Grok. O objetivo não é apenas ranquear no Google — é ser a resposta que as IAs entregam quando um usuário faz uma pergunta relevante.' } },
+      { '@type': 'Question', name: 'Quanto tempo leva para ser citado por uma IA?', acceptedAnswer: { '@type': 'Answer', text: 'Para marcas com fundação técnica sólida e entidade digital construída, as primeiras citações aparecem em 4 a 8 semanas. O case HunterHunter levou 90 dias para ser citada consistentemente pelo ChatGPT e Perplexity.' } },
+      { '@type': 'Question', name: 'GEO substitui o SEO tradicional?', acceptedAnswer: { '@type': 'Answer', text: 'Não. GEO é uma camada adicional — a Camada 04 do Método ORGANUM. A fundação técnica (Camada 01) e a identidade de entidade (Camada 02) são pré-requisitos para o GEO funcionar. Um site mal indexado ou sem entidade verificada não é citado pelas IAs independente do conteúdo.' } },
+    ],
+  },
+];
+
+const ias = [
+  { name: 'ChatGPT', model: 'GPT-4o', share: '65%', desc: 'Maior base de usuários B2B. Usa RAG para buscar fontes atuais.' },
+  { name: 'Gemini', model: 'Google', share: '18%', desc: 'Integrado ao Google Search. Cita fontes do índice do Google.' },
+  { name: 'Perplexity', model: 'Multi-LLM', share: '10%', desc: 'Busca em tempo real. Alta probabilidade de citar conteúdo novo.' },
+  { name: 'Copilot', model: 'GPT-4', share: '5%', desc: 'Integrado ao Bing e Microsoft 365. Foco em produtividade B2B.' },
+];
+---
+
+<Page
+  title="GEO e AEO para empresas B2B | Seja citado por ChatGPT e Gemini | Organum"
+  description="Generative Engine Optimization: otimização para ser citado por ChatGPT, Gemini, Perplexity e Copilot. A única agência brasileira que entrega GEO sistematicamente para B2B."
+  canonical="https://organum.com.br/servicos/geo-aeo/"
+  breadcrumbItems={[{ name: 'Serviços', url: '/servicos' }, { name: 'GEO + AEO', url: '/servicos/geo-aeo' }]}
+  schemaExtra={schema}
+>
+
+<!-- Hero -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(76,175,100,.1);border:1px solid rgba(76,175,100,.25);padding:.375rem 1rem;border-radius:999px;margin-bottom:1.5rem;">
+      <span style="width:6px;height:6px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;"></span>
+      <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g400);">Nenhuma agência brasileira entrega isso sistematicamente</span>
+    </div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5.5rem);font-weight:900;line-height:.93;letter-spacing:-.03em;color:#fff;max-width:20ch;">
+      GEO + AEO:<br/><em style="color:var(--g400);font-style:italic;">sua empresa citada pelas principais IAs</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:48ch;line-height:1.75;">
+      Enquanto seus concorrentes investem em ads e SEO tradicional, os compradores do seu ICP estão perguntando ao ChatGPT quem resolve o problema deles. Se não é você, é alguém que entende de GEO.
+    </p>
+    <div style="margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:.75rem;">
+      <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Solicitar auditoria GEO gratuita</a>
+    </div>
+
+    <!-- IAs grid -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);margin-top:4rem;" class="ias-grid">
+      {ias.map(ia => (
+        <div style="background:var(--n950);padding:1.75rem;border-bottom:none;">
+          <p style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;margin-bottom:.25rem;">{ia.name}</p>
+          <p style="font-size:.7rem;font-weight:600;letter-spacing:.08em;color:var(--g400);margin-bottom:.875rem;">{ia.model}</p>
+          <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.6;">{ia.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- O que é GEO -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Entenda o conceito</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+      O que é GEO e por que é diferente de tudo que você já ouviu sobre SEO
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          <strong style="color:var(--n900);">SEO tradicional</strong> otimiza para algoritmos de busca: palavras-chave, backlinks, autoridade de domínio. O objetivo é aparecer no top 10 do Google. A métrica é posição e tráfego.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          <strong style="color:var(--n900);">GEO — Generative Engine Optimization</strong> otimiza para modelos de linguagem: estrutura de resposta, autoridade de entidade, dados verificáveis, conteúdo que responde diretamente perguntas. O objetivo é ser citado. A métrica é frequência e qualidade da citação.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          Para empresas B2B, GEO é especialmente crítico porque compradores e gestores usam IAs para pesquisar fornecedores, comparar soluções e aprender sobre problemas antes mesmo de entrar em contato com qualquer empresa.
+        </p>
+      </div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">SEO vs. GEO — diferenças práticas</p>
+        {[
+          ['Objetivo', 'Posição no Google', 'Citação por IA'],
+          ['Métrica', 'Tráfego orgânico', 'Frequência de citação'],
+          ['Foco técnico', 'Keywords e backlinks', 'Entidade e estrutura'],
+          ['Conteúdo', 'Otimizado para clique', 'Otimizado para resposta'],
+          ['Resultado', 'Visitante no site', 'Recomendação direta'],
+        ].map(([label, seo, geo]) => (
+          <div style="display:grid;grid-template-columns:100px 1fr 1fr;padding:.75rem 0;border-bottom:1px solid var(--n100);font-size:.8125rem;gap:.5rem;">
+            <span style="color:var(--n400);font-weight:500;">{label}</span>
+            <span style="color:var(--n600);">{seo}</span>
+            <span style="color:var(--g700);font-weight:600;">{geo}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Como entregamos GEO -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Nossa metodologia</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;">
+      Como a Organum entrega GEO sistematicamente
+    </h2>
+    <div style="display:flex;flex-direction:column;gap:0;border:1px solid var(--n200);">
+      {[
+        { step: '01', title: 'Mapeamento de queries do ICP nas IAs', desc: 'Identificamos as perguntas que os compradores do seu mercado fazem ao ChatGPT, Gemini e Perplexity. Essas queries orientam toda a estratégia de conteúdo e estrutura.' },
+        { step: '02', title: 'Auditoria de entidade digital', desc: 'Verificamos se sua empresa existe como entidade verificável no Knowledge Graph e Wikidata — pré-requisito para citação. Se não existe, construímos na Camada 02.' },
+        { step: '03', title: 'Estrutura de conteúdo para resposta direta', desc: 'Cada artigo é estruturado para responder diretamente uma pergunta do ICP. FAQPage Schema, definições claras, dados concretos — o que os LLMs precisam para citar.' },
+        { step: '04', title: 'Otimização de Schema para consumo por IA', desc: 'FAQPage, HowTo, Article e Organization Schema implementados especificamente para ser consumidos por modelos de linguagem como fonte de treinamento e RAG.' },
+        { step: '05', title: 'Monitoramento semanal de citações', desc: 'Consultamos ChatGPT, Perplexity e Gemini semanalmente com queries do ICP e registramos frequência, contexto e qualidade das citações. Relatório mensal incluído.' },
+      ].map((item, i, arr) => (
+        <div style={`display:grid;grid-template-columns:64px 1fr;gap:1.5rem;padding:2rem;align-items:start;${i < arr.length - 1 ? 'border-bottom:1px solid var(--n200);' : ''}`}>
+          <span style="font-family:var(--serif);font-size:2.5rem;font-weight:700;color:var(--n200);line-height:1;">{item.step}</span>
+          <div>
+            <p style="font-family:var(--serif);font-size:1.125rem;font-weight:600;color:var(--n900);margin-bottom:.5rem;">{item.title}</p>
+            <p style="font-size:.875rem;color:var(--n500);line-height:1.7;">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- AEO -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Answer Engine Optimization</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;">
+      AEO: featured snippets e busca por voz para B2B
+    </h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.5rem;max-width:58ch;">
+      Answer Engine Optimization é a otimização para os chamados "answer boxes" — as respostas que o Google exibe diretamente na primeira posição antes de qualquer link orgânico. Para buscas por voz (Google Assistant, Siri, Alexa), esses snippets são a única resposta entregue.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;" class="aeo-grid">
+      {[
+        { type: 'Featured Snippet', desc: 'Parágrafo de resposta direta exibido no topo do Google para queries informacionais. Alta intenção de aprendizado — topo de funil B2B.' },
+        { type: 'Answer Box', desc: 'Caixa de resposta com dados estruturados. Exige Schema FAQPage ou HowTo implementado corretamente.' },
+        { type: 'Busca por voz', desc: 'Google lê o featured snippet para respostas de voz. Crescimento de 35% ao ano em queries B2B por voz em português.' },
+      ].map(a => (
+        <div style="background:var(--n0);border:1px solid var(--n200);padding:1.75rem;">
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--n900);margin-bottom:.625rem;">{a.type}</p>
+          <p style="font-size:.875rem;color:var(--n500);line-height:1.7;">{a.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Case + FAQ + CTA -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.6);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Resultado real</p>
+    <div style="background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);padding:2.5rem;margin-bottom:3rem;">
+      <p style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;margin-bottom:.875rem;line-height:1.3;">
+        HunterHunter: citada pelo ChatGPT e Perplexity em 90 dias
+      </p>
+      <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.5rem;">
+        Empresa de headhunting B2B que chegou à Organum sem presença nas IAs. Após aplicação das Camadas 01 a 04 do Método ORGANUM, a HunterHunter passou a ser citada consistentemente pelo ChatGPT quando usuários perguntavam sobre headhunting executivo em Pernambuco e headhunting para startups de tecnologia.
+      </p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;">
+        {[['12+','Citações verificadas/mês'],['90d','Até primeira citação'],['47+','Novas posições no Google']].map(([n,l]) => (
+          <div style="text-align:center;padding:1rem;background:rgba(76,175,100,.08);border:1px solid rgba(76,175,100,.15);">
+            <span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:var(--g400);display:block;line-height:1;">{n}</span>
+            <span style="font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.35);display:block;margin-top:.375rem;">{l}</span>
+          </div>
+        ))}
+      </div>
+      <a href="/cases/hunterhunter" style="display:inline-flex;margin-top:1.5rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Ver case completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:clamp(3rem,6vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">Perguntas frequentes sobre GEO + AEO</h2>
+    {[
+      { q: 'O que é GEO — Generative Engine Optimization?', a: 'GEO é a otimização de conteúdo e estrutura técnica para que uma empresa seja citada como fonte confiável por IAs generativas como ChatGPT, Gemini, Perplexity, Copilot e Grok. O objetivo não é apenas ranquear no Google — é ser a resposta que as IAs entregam quando um usuário faz uma pergunta relevante.' },
+      { q: 'Quanto tempo leva para ser citado por uma IA?', a: 'Para marcas com fundação técnica sólida e entidade digital construída (Camadas 01 e 02 do Método ORGANUM), as primeiras citações aparecem em 4 a 8 semanas. O case HunterHunter levou 90 dias para citação consistente.' },
+      { q: 'GEO substitui o SEO tradicional?', a: 'Não. GEO é uma camada adicional. A fundação técnica (Camada 01) e a identidade de entidade (Camada 02) são pré-requisitos para o GEO funcionar. Um site mal indexado ou sem entidade verificada não é citado pelas IAs independente do conteúdo.' },
+      { q: 'Como se mede o resultado do GEO?', a: 'Monitoramos semanalmente as principais IAs (ChatGPT, Perplexity, Gemini) com queries do ICP. Medimos frequência de citação, contexto (positivo, neutro, negativo), URLs citadas e posicionamento relativo a concorrentes.' },
+    ].map(item => (
+      <details style="border-bottom:1px solid var(--n200);">
+        <summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">
+          {item.q}
+          <span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span>
+        </summary>
+        <p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<section style="background:var(--g800);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">Seu concorrente já aparece nas IAs?</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:2rem;">Solicite uma auditoria gratuita e descobrimos juntos seu potencial de citação por GEO em 48 horas.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--g800);font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria GEO gratuita</a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+  .two-col-grid { grid-template-columns: 1fr !important; }
+  .ias-grid { grid-template-columns: 1fr 1fr !important; }
+  .aeo-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+</Page>

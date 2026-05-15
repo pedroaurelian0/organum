@@ -1,0 +1,82 @@
+---
+import Page from '@layouts/Page.astro';
+const schema = { '@type': 'Article', '@id': 'https://organum.com.br/metodo/fundacao/#article', headline: 'Camada 01 — Fundação Técnica: Core Web Vitals, Silos e Schema Markup', author: { '@type': 'Person', '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person' }, publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' }, datePublished: '2025-01-15', inLanguage: 'pt-BR' };
+---
+<Page title="Camada 01 — Fundação Técnica | Core Web Vitals e Schema Markup | Organum" description="Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo. A Camada 01 do Método ORGANUM — sem ela, nenhuma outra funciona." canonical="https://organum.com.br/metodo/fundacao/" ogType="article" breadcrumbItems={[{name:'Método',url:'/metodo'},{name:'Fundação Técnica',url:'/metodo/fundacao'}]} schemaExtra={[schema]}>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <span style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.375rem 1rem;border-radius:999px;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:1.5rem;">Camada 01 — Base obrigatória</span>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">Fundação técnica:<br/><em style="color:var(--g400);font-style:italic;">o que o Google precisa antes de tudo</em></h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:52ch;">Não existe ranking, autoridade ou citação por IA que funcione sobre uma base técnica fraca. A Camada 01 é o alicerce que tudo depende — e a maioria das agências ignora.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;margin-top:2.5rem;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Solicitar auditoria técnica gratuita</a>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Core Web Vitals</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">Performance é fator de ranqueamento — e de confiança para as IAs</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">O Google usa Core Web Vitals como fator de ranqueamento desde maio de 2021 através do Page Experience update. Sites que reprovam nas três métricas perdem posições para concorrentes com experiência melhor — mesmo que o conteúdo seja superior.</p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">Para IAs generativas, um site lento ou instável também é um sinal negativo. Modelos que usam RAG para buscar fontes em tempo real priorizam páginas que carregam rápido e têm estrutura clara — porque isso facilita a extração do conteúdo para compor a resposta.</p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">Na Organum, entregamos LCP abaixo de 1.5s, CLS abaixo de 0.05 e INP abaixo de 150ms — muito além dos mínimos do Google. Porque <strong style="color:var(--n900);">performance não é compliance, é vantagem competitiva</strong>.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:.75rem;">
+        {[['LCP — Largest Contentful Paint','< 1.5s','Bom: < 2.5s','Velocidade de carregamento do maior elemento visível'],['CLS — Cumulative Layout Shift','< 0.05','Bom: < 0.1','Estabilidade visual — elementos que não pulam na tela'],['INP — Interaction to Next Paint','< 150ms','Bom: < 200ms','Responsividade a cliques e interações do usuário']].map(([name,target,threshold,desc]) => (
+          <div style="background:var(--n0);border:1px solid var(--n200);padding:1.25rem;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;">
+              <p style="font-size:.875rem;font-weight:600;color:var(--n800);">{name}</p>
+              <span style="font-family:var(--serif);font-size:1.125rem;font-weight:700;color:var(--g600);">Meta: {target}</span>
+            </div>
+            <p style="font-size:.75rem;color:var(--n400);margin-bottom:.375rem;">{threshold}</p>
+            <p style="font-size:.8125rem;color:var(--n500);">{desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Arquitetura de silos</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;">Como a arquitetura de silos semânticos multiplica a autoridade do seu site</h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.5rem;max-width:60ch;">Arquitetura de silos é a organização hierárquica de páginas em grupos temáticos. Uma página hub cobre o tema amplo; páginas filhas cobrem subtemas relacionados. Todas as páginas do silo apontam para a hub e entre si.</p>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:2rem;max-width:60ch;">O resultado: o Google entende que seu site tem autoridade profunda em um tópico específico — não apenas páginas soltas sobre assuntos aleatórios. Para empresas B2B com ICP bem definido, essa estrutura é a diferença entre aparecer na primeira página ou na quinta.</p>
+    <div style="background:var(--n50);border:1px solid var(--n200);padding:2rem;">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">Exemplo: silo de SEO B2B</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        <div style="background:var(--n950);color:#fff;padding:.75rem 1.25rem;font-family:var(--serif);font-size:.9375rem;font-weight:600;">Hub: /blog/seo-b2b — SEO para empresas B2B</div>
+        {['/blog/seo-b2b/seo-para-saas','/blog/seo-b2b/seo-para-consultoria','/blog/seo-b2b/custo-por-lead-organico','/blog/seo-b2b/pipeline-organico-b2b'].map(url => (
+          <div style="background:var(--n0);border:1px solid var(--n200);padding:.625rem 1.25rem;font-size:.8125rem;color:var(--n600);padding-left:2.5rem;">{url}</div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Crawl budget</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:1.5rem;">Crawl budget: como garantir que o Google indexa as páginas certas</h2>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;max-width:60ch;">O Google tem um limite de rastreamento por site. Se esse orçamento é desperdiçado em páginas de filtro, parâmetros de URL e páginas sem valor, as páginas importantes ficam sem indexação suficiente.</p>
+    <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;max-width:60ch;">Na Camada 01, mapeamos todo o crawl do site, identificamos o desperdício e configuramos robots.txt, canonicals e diretivas de indexação para concentrar o orçamento nas páginas que geram tráfego e leads qualificados.</p>
+  </div>
+</section>
+
+<section style="background:var(--n950);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+    <a href="/metodo" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;">← Ver todas as camadas</a>
+    <a href="/metodo/entidade" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);text-decoration:none;">Camada 02: Identidade de entidade →</a>
+  </div>
+  <div style="text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">Sua fundação técnica está aprovada?</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;max-width:44ch;margin-inline:auto;">Auditoria gratuita com diagnóstico completo de Core Web Vitals, Schema e arquitetura em 48 horas.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+<style>@media(max-width:768px){.two-col-grid{grid-template-columns:1fr !important}}</style>
+</Page>

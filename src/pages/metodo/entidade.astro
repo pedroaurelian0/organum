@@ -1,0 +1,215 @@
+---
+import Page from '@layouts/Page.astro';
+
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': 'https://organum.com.br/metodo/entidade/#article',
+    headline: 'Identidade de Entidade Digital: o que as IAs precisam para reconhecer sua marca',
+    description: 'Como construir sua empresa como entidade verificável no Google Knowledge Graph, Wikidata e LinkedIn estruturado para ser citada por IAs generativas.',
+    author: { '@type': 'Person', '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person' },
+    publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+    datePublished: '2025-01-15',
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'O que é identidade de entidade digital?', acceptedAnswer: { '@type': 'Answer', text: 'Identidade de entidade digital é a representação verificável de uma empresa no grafo de conhecimento da internet — conjunto de dados estruturados, perfis verificáveis e menções cruzadas que permitem ao Google e às IAs confirmar que sua empresa existe, o que faz e quem a lidera.' } },
+      { '@type': 'Question', name: 'O que é o Google Knowledge Graph?', acceptedAnswer: { '@type': 'Answer', text: 'O Google Knowledge Graph é o banco de dados de entidades do Google. Quando sua empresa aparece no Knowledge Graph, o Google exibe um painel lateral com informações sobre ela diretamente nos resultados de busca — e as IAs usam esse grafo como fonte primária de informações verificáveis.' } },
+      { '@type': 'Question', name: 'Por que o Wikidata é importante para SEO e GEO?', acceptedAnswer: { '@type': 'Answer', text: 'O Wikidata é a base de dados livre que alimenta o Wikipedia e é consumida diretamente por modelos de linguagem como GPT e Gemini durante o treinamento. Uma empresa com perfil no Wikidata é automaticamente mais confiável para as IAs — elas conseguem verificar a existência e os dados da empresa de forma independente.' } },
+    ],
+  },
+  {
+    '@type': 'HowTo',
+    name: 'Como construir identidade de entidade digital para empresas B2B',
+    description: 'Passo a passo para tornar sua empresa uma entidade verificável pelo Google e pelas IAs generativas usando o Método ORGANUM.',
+    step: [
+      { '@type': 'HowToStep', position: 1, name: 'Implementar Schema Organization completo', text: 'Adicionar Schema Organization com todos os campos obrigatórios no código do site, incluindo sameAs com perfis verificáveis em LinkedIn, Wikidata e redes sociais.' },
+      { '@type': 'HowToStep', position: 2, name: 'Verificar e otimizar Google Business Profile', text: 'Verificar a empresa no Google Business Profile, preencher todas as categorias e adicionar posts regulares para ativar a entidade no Knowledge Graph.' },
+      { '@type': 'HowToStep', position: 3, name: 'Criar perfil no Wikidata', text: 'Criar entrada da empresa no Wikidata com referências verificáveis — CNPJ, site, fundador, sede. Este é o sinal mais forte para reconhecimento por IAs generativas.' },
+      { '@type': 'HowToStep', position: 4, name: 'Gerar menções cruzadas', text: 'Conseguir menções da marca em portais de nicho B2B, assessoria de imprensa digital e artigos de parceiros — cada menção reforça a entidade perante o Google e as IAs.' },
+    ],
+  },
+];
+---
+
+<Page
+  title="Identidade de Entidade Digital: como IAs reconhecem sua marca | Organum"
+  description="Como construir sua empresa como entidade verificável: Knowledge Graph, Wikidata, LinkedIn estruturado e menções cruzadas. A Camada 02 do Método ORGANUM."
+  canonical="https://organum.com.br/metodo/entidade/"
+  ogType="article"
+  breadcrumbItems={[{ name: 'Método', url: '/metodo' }, { name: 'Identidade de Entidade', url: '/metodo/entidade' }]}
+  schemaExtra={schema}
+>
+
+<!-- Hero -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(76,175,100,.1);border:1px solid rgba(76,175,100,.2);padding:.375rem 1rem;border-radius:999px;margin-bottom:1.5rem;">
+      <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g400);">Camada 02 — Diferencial Organum</span>
+    </div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">
+      Identidade de entidade digital:<br/><em style="color:var(--g400);font-style:italic;">o que as IAs precisam para te recomendar</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:54ch;">
+      O ChatGPT não recomenda empresas que não consegue verificar. Independente do seu conteúdo, se sua empresa não é uma entidade reconhecível no grafo de conhecimento da internet, ela simplesmente não existe para as IAs.
+    </p>
+  </div>
+</section>
+
+<!-- O que é entidade digital -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Fundamento</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+      O que é identidade de entidade digital e por que ela é o pré-requisito número 1 para GEO
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          No mundo digital, uma <strong style="color:var(--n900);">entidade</strong> é qualquer coisa sobre a qual é possível fazer afirmações verificáveis: uma pessoa, uma empresa, um lugar, um produto. O Google mantém um "grafo de conhecimento" — um banco de dados de entidades e as relações entre elas.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          Quando você pesquisa "Organum SEO" no Google, o painel lateral que aparece com informações sobre a empresa é o <strong style="color:var(--n900);">Knowledge Panel</strong> — prova de que a entidade está registrada no grafo. Sem isso, você é apenas texto numa página web.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          Para as IAs generativas, o raciocínio é ainda mais crítico: modelos como GPT-4 e Gemini foram treinados em dados que incluem o Wikidata e o Knowledge Graph do Google. Se sua empresa não estava nesses dados durante o treinamento — e não aparece nas fontes verificáveis que os modelos consultam via RAG — você simplesmente não existe para eles.
+        </p>
+      </div>
+      <div>
+        <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;">
+          <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">Componentes da identidade de entidade</p>
+          {[
+            { name: 'Schema Organization', desc: 'Dados estruturados no site que comunicam ao Google quem é a empresa, onde está e quem a fundou.', critical: true },
+            { name: 'Google Knowledge Graph', desc: 'Registro verificado no banco de dados de entidades do Google. Ativa o Knowledge Panel nos resultados.', critical: true },
+            { name: 'Wikidata', desc: 'Base de dados livre consumida por LLMs durante o treinamento. Presença aqui = reconhecimento pelas IAs.', critical: true },
+            { name: 'sameAs cruzados', desc: 'Links entre todos os perfis da empresa (LinkedIn, site, Wikidata) confirmando que são a mesma entidade.', critical: false },
+            { name: 'Google Business Profile', desc: 'Verificação do endereço físico e dados da empresa — ancora a entidade na realidade geográfica.', critical: false },
+            { name: 'Menções editoriais', desc: 'Referências da marca em fontes confiáveis externas — confirmação de terceiros da existência da entidade.', critical: false },
+          ].map(c => (
+            <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.625rem 0;border-bottom:1px solid var(--n100);">
+              <span style={`font-size:.625rem;font-weight:700;flex-shrink:0;margin-top:3px;${c.critical ? 'color:var(--g600)' : 'color:var(--n400)'}`}>{c.critical ? '●' : '○'}</span>
+              <div>
+                <p style="font-size:.875rem;font-weight:600;color:var(--n800);margin-bottom:.2rem;">{c.name}</p>
+                <p style="font-size:.8125rem;color:var(--n500);line-height:1.5;">{c.desc}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Passo a passo -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Como a Organum constrói</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;">
+      Os 4 passos para construir identidade de entidade B2B
+    </h2>
+    {[
+      {
+        step: 1, title: 'Schema Organization completo com sameAs',
+        desc: 'Implementamos o Schema Organization no código do site com todos os campos essenciais: nome legal, URL, logo, fundador (com Schema Person), endereço, e — crucialmente — o campo sameAs apontando para todos os perfis verificáveis da empresa: LinkedIn, Wikidata, Google Business Profile e qualquer portal de terceiro que mencione a empresa.',
+        detail: 'O sameAs é o que diz ao Google e às IAs: "todos esses perfis são a mesma entidade". Sem ele, cada perfil é isolado. Com ele, todos se reforçam mutuamente.',
+      },
+      {
+        step: 2, title: 'Criação e estruturação do perfil no Wikidata',
+        desc: 'O Wikidata é a base de dados livre que alimenta o Wikipedia e é consultada por modelos de linguagem como fonte de informação verificável. Criamos e estruturamos o perfil da empresa com dados concretos e verificáveis: CNPJ, site oficial, fundador, sede, data de fundação, setor de atuação.',
+        detail: 'Empresas com perfil no Wikidata são tratadas como entidades confiáveis pelos LLMs — o Wikidata é uma das fontes de maior peso durante o treinamento de modelos como GPT e Gemini.',
+      },
+      {
+        step: 3, title: 'Verificação e otimização do Google Business Profile',
+        desc: 'O Google Business Profile verificado ancora a entidade da empresa no mundo físico e no grafo do Google. Preenchemos todas as categorias, adicionamos fotos e publicamos posts regulares para manter a entidade ativa e sinalizar que a empresa está operando.',
+        detail: 'Um perfil verificado no Google Business é um dos sinais mais fortes para ativar o Knowledge Panel nos resultados de busca — prova visual de que a entidade foi reconhecida pelo Google.',
+      },
+      {
+        step: 4, title: 'Menções cruzadas e co-citações editoriais',
+        desc: 'Trabalhamos para que a marca seja mencionada em portais de nicho B2B, publicações do setor e conteúdo de parceiros. Cada menção de uma fonte externa confiável é um "voto de confiança" na entidade — confirma ao Google e às IAs que a empresa existe e é relevante.',
+        detail: 'Na Camada 05 (Digital PR), expandimos sistematicamente essas menções via link building editorial e assessoria de imprensa digital — mas a base é construída aqui, na Camada 02.',
+      },
+    ].map((item, i, arr) => (
+      <div style={`display:grid;grid-template-columns:56px 1fr;gap:2rem;padding:2.5rem 0;${i < arr.length - 1 ? 'border-bottom:1px solid var(--n200);' : ''}`}>
+        <span style="font-family:var(--serif);font-size:3rem;font-weight:700;color:var(--n200);line-height:1;">{String(item.step).padStart(2,'0')}</span>
+        <div>
+          <p style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--n900);margin-bottom:.875rem;">{item.title}</p>
+          <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1rem;">{item.desc}</p>
+          <div style="background:var(--g50);border-left:3px solid var(--g500);padding:.875rem 1.25rem;">
+            <p style="font-size:.875rem;color:var(--g800);line-height:1.65;">{item.detail}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<!-- Por que o Wikidata importa -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.6);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>O sinal mais poderoso</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem;">
+      Por que o Wikidata é o maior diferencial da Organum na construção de entidade
+    </h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.5rem;max-width:58ch;">
+      A maioria das agências foca em SEO on-page e backlinks. Algumas avançam para Schema Markup. Quase nenhuma constrói presença no Wikidata — porque é um trabalho manual, exige dados verificáveis e o retorno não é imediato no Google Analytics.
+    </p>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;max-width:58ch;">
+      O retorno está nas IAs. Os modelos de linguagem foram treinados em dados que incluem o dump completo do Wikidata. Quando um usuário pergunta ao ChatGPT sobre empresas de headhunting em Recife, o modelo busca primeiro nas entidades que consegue verificar — e o Wikidata é uma das fontes primárias.
+    </p>
+    <div style="background:rgba(76,175,100,.08);border:1px solid rgba(76,175,100,.2);padding:2rem;max-width:640px;">
+      <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.625rem;line-height:1.3;">
+        "HunterHunter citada pelo ChatGPT em 90 dias após construção de entidade no Wikidata"
+      </p>
+      <p style="font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.65;margin-bottom:1rem;">
+        A HunterHunter não existia como entidade verificável antes da Organum. Após implementação do Schema Organization, criação do perfil no Wikidata e ativação do Knowledge Panel, as primeiras citações pelo ChatGPT apareceram dentro de 90 dias.
+      </p>
+      <a href="/cases/hunterhunter" style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Ver case completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">Perguntas frequentes sobre identidade de entidade</h2>
+    {[
+      { q: 'O que é identidade de entidade digital?', a: 'É a representação verificável de uma empresa no grafo de conhecimento da internet. Inclui Schema Organization, Knowledge Graph, Wikidata, sameAs cruzados e menções editoriais. É o conjunto de sinais que permitem ao Google e às IAs confirmar que sua empresa existe, o que faz e quem a lidera.' },
+      { q: 'O que é o Google Knowledge Graph?', a: 'O Knowledge Graph é o banco de dados de entidades do Google. Quando sua empresa aparece nele, o Google exibe um Knowledge Panel nos resultados de busca e as IAs usam esse grafo como fonte primária de informações verificáveis sobre a empresa.' },
+      { q: 'Por que o Wikidata é importante para GEO?', a: 'O Wikidata é a base de dados livre consumida por LLMs como GPT e Gemini durante o treinamento. Uma empresa com perfil estruturado no Wikidata é automaticamente mais confiável para as IAs — elas conseguem verificar a existência e os dados da empresa de forma independente.' },
+      { q: 'Quanto tempo leva para construir a identidade de entidade?', a: 'A implementação do Schema Organization e as configurações técnicas levam 1 a 2 semanas. A criação e verificação do Wikidata leva mais 1 a 2 semanas. O Knowledge Panel do Google pode aparecer em 4 a 12 semanas após todas as configurações. Citações por IAs começam a aparecer em 4 a 8 semanas após a entidade estar completa.' },
+    ].map(item => (
+      <details style="border-bottom:1px solid var(--n200);">
+        <summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">
+          {item.q}
+          <span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span>
+        </summary>
+        <p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- Nav entre camadas + CTA -->
+<section style="background:var(--n950);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:2rem;margin-bottom:3rem;">
+    <a href="/metodo/fundacao" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);text-decoration:none;">← Camada 01: Fundação técnica</a>
+    <a href="/metodo/conteudo" style="font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);text-decoration:none;">Camada 03: Conteúdo de autoridade →</a>
+  </div>
+  <div style="text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">
+      Sua empresa é uma entidade verificável?
+    </h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;max-width:44ch;margin-inline:auto;">
+      Solicite uma auditoria gratuita e verificamos se sua empresa existe no Knowledge Graph e Wikidata.
+    </p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) { .two-col-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+</Page>

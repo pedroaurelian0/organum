@@ -1,0 +1,280 @@
+---
+import Page from '@layouts/Page.astro';
+
+const schema = [
+  {
+    '@type': 'Service',
+    '@id': 'https://organum.com.br/servicos/seo-tecnico/#service',
+    name: 'SEO Técnico',
+    description: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD para empresas B2B.',
+    provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+    areaServed: { '@type': 'Country', name: 'Brasil' },
+  },
+  {
+    '@type': 'FAQPage',
+    mainEntity: [
+      { '@type': 'Question', name: 'O que é SEO técnico?', acceptedAnswer: { '@type': 'Answer', text: 'SEO técnico é a otimização da estrutura, velocidade e rastreabilidade de um site para que o Google consiga indexar e entender todas as páginas corretamente. Inclui Core Web Vitals, Schema Markup, arquitetura de silos, crawl budget e dados estruturados.' } },
+      { '@type': 'Question', name: 'Por que Core Web Vitals importam para SEO B2B?', acceptedAnswer: { '@type': 'Answer', text: 'Google usa Core Web Vitals (LCP, CLS, INP) como fator de ranqueamento desde 2021. Sites lentos ou instáveis perdem posições para concorrentes mais rápidos, independente da qualidade do conteúdo.' } },
+      { '@type': 'Question', name: 'O que é Schema Markup e por que é essencial?', acceptedAnswer: { '@type': 'Answer', text: 'Schema Markup são dados estruturados em JSON-LD que comunicam ao Google e às IAs generativas o que sua empresa é, o que oferece e quem é o fundador. É pré-requisito para rich results, featured snippets e citação por IAs.' } },
+    ],
+  },
+];
+
+const deliverables = [
+  { title: 'Auditoria técnica completa', desc: 'Varredura de todos os erros de rastreamento, indexação, redirecionamentos e tags duplicadas.' },
+  { title: 'Core Web Vitals', desc: 'LCP abaixo de 2.5s, CLS abaixo de 0.1, INP abaixo de 200ms. Verificação em mobile e desktop.' },
+  { title: 'Arquitetura de silos', desc: 'Estrutura hierárquica de URLs alinhada aos clusters semânticos do ICP. Interna linking estratégico.' },
+  { title: 'Crawl budget', desc: 'Otimização do robots.txt, sitemap e diretivas de canonicalização para garantir indexação das páginas certas.' },
+  { title: 'Schema Markup completo', desc: 'Organization, Person, Service, FAQPage, BreadcrumbList, Article — todos em JSON-LD válido.' },
+  { title: 'Relatório mensal', desc: 'Evolução de Core Web Vitals, cobertura de indexação e erros corrigidos no Google Search Console.' },
+];
+---
+
+<Page
+  title="SEO Técnico para B2B | Core Web Vitals e Schema Markup | Organum"
+  description="Core Web Vitals perfeitos, arquitetura de silos, crawl budget otimizado e Schema Markup completo. A fundação técnica que todas as outras camadas do Método ORGANUM dependem."
+  canonical="https://organum.com.br/servicos/seo-tecnico/"
+  breadcrumbItems={[{ name: 'Serviços', url: '/servicos' }, { name: 'SEO Técnico', url: '/servicos/seo-tecnico' }]}
+  schemaExtra={schema}
+>
+
+<!-- Hero -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="inner-hero-grid">
+    <div>
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+        <span style="display:inline-block;background:rgba(255,255,255,.08);padding:.25rem .75rem;border-radius:999px;">Camada 01 — Fundação técnica</span>
+      </p>
+      <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">
+        SEO técnico:<br/><em style="color:var(--g400);font-style:italic;">a fundação que os outros ignoram</em>
+      </h1>
+      <p style="margin-top:1.5rem;font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:42ch;">
+        Não existe conteúdo de autoridade, GEO ou Digital PR que funcione sobre uma base técnica fraca. O Google precisa rastrear, entender e indexar seu site antes de qualquer outra coisa.
+      </p>
+      <div style="margin-top:2rem;display:flex;flex-wrap:wrap;gap:.75rem;">
+        <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;transition:background .2s;">Solicitar auditoria gratuita</a>
+        <a href="/metodo/fundacao" style="display:inline-flex;align-items:center;gap:.5rem;background:transparent;color:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.15);font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Ver a camada →</a>
+      </div>
+    </div>
+    <!-- SVG animado: Core Web Vitals -->
+    <div style="display:flex;align-items:center;justify-content:center;">
+      <svg viewBox="0 0 400 300" fill="none" style="width:100%;max-width:420px;" aria-label="Dashboard de Core Web Vitals com LCP, CLS e INP no verde">
+        <rect x="20" y="20" width="360" height="260" rx="4" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <text x="36" y="48" fill="rgba(255,255,255,.3)" font-size="9" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">CORE WEB VITALS — organum.com.br</text>
+        <line x1="36" y1="56" x2="364" y2="56" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+        <!-- LCP -->
+        <text x="36" y="80" fill="rgba(255,255,255,.5)" font-size="10" font-family="DM Sans,sans-serif">LCP — Largest Contentful Paint</text>
+        <rect x="36" y="88" width="290" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
+        <rect x="36" y="88" width="0" height="6" rx="3" fill="var(--g400)" id="bar-lcp">
+          <animate attributeName="width" from="0" to="145" begin="0.3s" dur="1s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+        </rect>
+        <text x="334" y="96" fill="var(--g400)" font-size="10" font-weight="700" font-family="DM Sans,sans-serif">1.2s</text>
+        <!-- CLS -->
+        <text x="36" y="118" fill="rgba(255,255,255,.5)" font-size="10" font-family="DM Sans,sans-serif">CLS — Cumulative Layout Shift</text>
+        <rect x="36" y="126" width="290" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
+        <rect x="36" y="126" width="0" height="6" rx="3" fill="var(--g400)" id="bar-cls">
+          <animate attributeName="width" from="0" to="58" begin="0.5s" dur="1s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+        </rect>
+        <text x="334" y="134" fill="var(--g400)" font-size="10" font-weight="700" font-family="DM Sans,sans-serif">0.02</text>
+        <!-- INP -->
+        <text x="36" y="156" fill="rgba(255,255,255,.5)" font-size="10" font-family="DM Sans,sans-serif">INP — Interaction to Next Paint</text>
+        <rect x="36" y="164" width="290" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
+        <rect x="36" y="164" width="0" height="6" rx="3" fill="var(--g400)" id="bar-inp">
+          <animate attributeName="width" from="0" to="96" begin="0.7s" dur="1s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/>
+        </rect>
+        <text x="334" y="172" fill="var(--g400)" font-size="10" font-weight="700" font-family="DM Sans,sans-serif">96ms</text>
+        <!-- Status -->
+        <rect x="36" y="200" width="90" height="28" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.3)" stroke-width="1" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.5s" dur="0.4s" fill="freeze"/>
+        </rect>
+        <text x="81" y="218" fill="var(--g400)" font-size="10" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.5s" dur="0.4s" fill="freeze"/>✓ Bom
+        </text>
+        <rect x="140" y="200" width="110" height="28" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.3)" stroke-width="1" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.7s" dur="0.4s" fill="freeze"/>
+        </rect>
+        <text x="195" y="218" fill="var(--g400)" font-size="10" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.7s" dur="0.4s" fill="freeze"/>✓ Aprovado
+        </text>
+        <rect x="264" y="200" width="92" height="28" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.3)" stroke-width="1" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.9s" dur="0.4s" fill="freeze"/>
+        </rect>
+        <text x="310" y="218" fill="var(--g400)" font-size="10" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="1.9s" dur="0.4s" fill="freeze"/>✓ Rápido
+        </text>
+        <text x="36" y="260" fill="rgba(255,255,255,.2)" font-size="9" font-family="DM Sans,sans-serif" opacity="0">
+          <animate attributeName="opacity" from="0" to="1" begin="2.1s" dur="0.4s" fill="freeze"/>Todas as métricas no verde — site aprovado pelo Google Page Experience</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- O problema -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>O problema que ninguém fala</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+      Você pode ter o melhor conteúdo do mercado. Se o Google não consegue rastrear e entender seu site, ele simplesmente não ranqueia.
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1rem;">
+          A maioria das agências começa pelo conteúdo. Produzem artigos, conseguem backlinks, esperam resultados. Quando não vêm, culpam a concorrência ou o algoritmo do Google.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1rem;">
+          O problema real quase sempre é técnico: <strong style="color:var(--n900);">LCP acima de 4 segundos</strong>, URLs duplicadas sendo indexadas, Schema Markup ausente ou inválido, crawl budget desperdiçado em páginas sem valor.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          No Método ORGANUM, a fundação técnica é a Camada 01 — e nenhuma outra camada começa antes dela estar perfeita. Não porque é nossa preferência, mas porque <strong style="color:var(--n900);">essa é a única sequência que funciona</strong>.
+        </p>
+      </div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">Problemas técnicos mais comuns que encontramos</p>
+        {[
+          'LCP acima de 3.5s em mobile — perde ranqueamento para concorrentes',
+          'URLs duplicadas sem canonical — divide a autoridade da página',
+          'Schema Markup ausente — invisível para featured snippets e IAs',
+          'Crawl budget desperdiçado em páginas de filtro e parâmetros',
+          'Redirecionamentos em cadeia — perda de PageRank a cada salto',
+          'Imagens sem alt text — conteúdo invisível para o Google',
+          'H1 duplicado ou ausente em páginas de serviço',
+          'Sitemap.xml não atualizado após novas páginas',
+        ].map(item => (
+          <div style="display:flex;align-items:flex-start;gap:.75rem;padding:.625rem 0;border-bottom:1px solid var(--n100);">
+            <span style="color:rgba(220,80,60,.8);font-size:.75rem;font-weight:700;flex-shrink:0;margin-top:2px;">✕</span>
+            <p style="font-size:.875rem;color:var(--n600);line-height:1.5;">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- O que entregamos -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>O que entregamos</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;">Cada entrega da fundação técnica</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--n200);border:1px solid var(--n200);">
+      {deliverables.map((d, i) => (
+        <div style={`background:var(--n0);padding:2rem;${i >= deliverables.length - 2 ? '' : 'border-bottom:0;'}`}>
+          <p style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:var(--n900);margin-bottom:.625rem;">{d.title}</p>
+          <p style="font-size:.875rem;color:var(--n500);line-height:1.7;">{d.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Schema Markup em detalhe -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Schema Markup — o elo entre SEO e IA</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem;">
+      Por que Schema Markup é o serviço mais subvalorizado do SEO — e o mais crítico para GEO
+    </h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:1.5rem;max-width:58ch;">
+      Schema Markup em JSON-LD são dados estruturados que comunicam diretamente ao Google e às IAs generativas o que sua empresa é, quem é o fundador, quais serviços oferece e onde está localizada.
+    </p>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;max-width:58ch;">
+      Sem Schema Organization com <strong style="color:#fff;">sameAs</strong> apontando para LinkedIn, Wikidata e perfis verificáveis, o ChatGPT não consegue confirmar que sua empresa existe como entidade confiável. Resultado: você não é citado, mesmo que tenha o melhor conteúdo do mercado.
+    </p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;" class="schema-grid">
+      {[
+        { name: 'Organization', desc: 'Entidade da empresa, fundador, localização, sameAs' },
+        { name: 'Person', desc: 'Autoridade do fundador, credenciais, expertise' },
+        { name: 'Service', desc: 'Serviços oferecidos, área de atuação, público-alvo' },
+        { name: 'FAQPage', desc: 'Featured snippets e fonte direta para IAs' },
+        { name: 'BreadcrumbList', desc: 'Navegação nos resultados do Google' },
+        { name: 'Article', desc: 'Autoria, data e contexto dos conteúdos' },
+      ].map(s => (
+        <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);padding:1.25rem;">
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--g400);margin-bottom:.375rem;">{s.name}</p>
+          <p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.6;">{s.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Por que a Organum -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;"><span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>Por que a Organum</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+      A diferença entre SEO técnico genérico e SEO técnico orientado a GEO
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="two-col-grid">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          Qualquer agência consegue rodar o Screaming Frog e listar erros técnicos. O diferencial da Organum está em implementar a fundação técnica já pensando nas camadas 02 a 05 do método.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          Cada decisão de arquitetura de URL é feita considerando os clusters semânticos que vão alimentar a Camada 03. Cada Schema implementado é pensado para construir a identidade de entidade da Camada 02. Cada otimização de crawl budget libera espaço para as páginas que vão gerar citações nas IAs.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          <strong style="color:var(--n900);">O resultado: você não paga por retrabalho</strong> — a fundação técnica já está pronta para suportar todas as outras camadas do Método ORGANUM.
+        </p>
+      </div>
+      <div style="background:var(--n950);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1.25rem;">Case: HunterHunter</p>
+        <p style="font-family:var(--serif);font-size:1.125rem;font-weight:700;color:#fff;margin-bottom:.875rem;line-height:1.3;">
+          "De LCP 8.2s para 1.1s em 3 semanas"
+        </p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:1.25rem;">
+          A HunterHunter chegou com Core Web Vitals reprovados, sem Schema Markup e com 847 erros de rastreamento. Em 3 semanas de Camada 01, o site passou de reprovado para todos os indicadores no verde — base para as citações por IA que vieram 90 dias depois.
+        </p>
+        <a href="/cases/hunterhunter" style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Ver case completo →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">Perguntas frequentes sobre SEO técnico</h2>
+    {[
+      { q: 'O que é SEO técnico?', a: 'SEO técnico é a otimização da estrutura, velocidade e rastreabilidade de um site para que o Google consiga indexar e entender todas as páginas corretamente. Inclui Core Web Vitals, Schema Markup, arquitetura de silos, crawl budget e dados estruturados. É a Camada 01 do Método ORGANUM — pré-requisito para todas as outras.' },
+      { q: 'Por que Core Web Vitals importam para SEO B2B?', a: 'Google usa Core Web Vitals como fator de ranqueamento desde 2021. Sites lentos ou instáveis perdem posições para concorrentes mais rápidos, independente da qualidade do conteúdo. Em B2B, onde a jornada de compra é longa, um site lento no mobile também prejudica a primeira impressão com decisores.' },
+      { q: 'O que é Schema Markup e por que é essencial?', a: 'Schema Markup são dados estruturados em JSON-LD que comunicam ao Google e às IAs generativas o que sua empresa é, o que oferece e quem é o fundador. É pré-requisito para rich results, featured snippets e — crucialmente — para citação por IAs generativas como ChatGPT e Gemini.' },
+      { q: 'Quanto tempo leva para implementar a fundação técnica?', a: 'A auditoria técnica completa leva 5 dias úteis. A implementação das correções prioritárias (Core Web Vitals, Schema Markup, arquitetura de URLs) leva entre 2 e 4 semanas dependendo da complexidade do site. Resultados no Google Search Console aparecem em 2 a 6 semanas após a implementação.' },
+    ].map(item => (
+      <details style="border-bottom:1px solid var(--n200);">
+        <summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">
+          {item.q}
+          <span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span>
+        </summary>
+        <p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">{item.a}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--g800);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">
+      Sua fundação técnica está aprovada pelo Google?
+    </h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:2rem;">
+      Solicite uma auditoria gratuita e descubra em 48 horas quais problemas técnicos estão impedindo seu site de ranquear e ser citado pelas IAs.
+    </p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--g800);font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;transition:opacity .2s;">
+      Solicitar auditoria gratuita
+    </a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+  .inner-hero-grid { grid-template-columns: 1fr !important; }
+  .two-col-grid { grid-template-columns: 1fr !important; }
+  .schema-grid { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 480px) {
+  .schema-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+</Page>
