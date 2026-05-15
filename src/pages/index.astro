@@ -8,6 +8,8 @@ const faqSchema = {
     { '@type': 'Question', name: 'Quanto tempo leva para ver resultados?', acceptedAnswer: { '@type': 'Answer', text: 'Resultados técnicos em 2–4 semanas. Crescimento de tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' } },
     { '@type': 'Question', name: 'Para quem é a Organum?', acceptedAnswer: { '@type': 'Answer', text: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce com faturamento acima de R$500k/ano que querem crescer sem depender de tráfego pago.' } },
     { '@type': 'Question', name: 'A Organum atende fora de Recife?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' } },
+    { '@type': 'Question', name: 'O que é GEO — Generative Engine Optimization?', acceptedAnswer: { '@type': 'Answer', text: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é apenas ranquear no Google — é ser a resposta que as IAs entregam.' } },
+    { '@type': 'Question', name: 'Qual a diferença entre SEO B2B e SEO tradicional?', acceptedAnswer: { '@type': 'Answer', text: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' } },
   ],
 };
 
@@ -30,37 +32,16 @@ const dores = [
 ];
 
 const layers = [
-  {
-    num: '01', name: 'Fundação técnica', sub: 'Core Web Vitals, silos, Schema Markup', tag: 'ltag-base', tagLabel: 'Base obrigatória',
-    text: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.',
-    animId: 'anim-01'
-  },
-  {
-    num: '02', name: 'Identidade de entidade', sub: 'Knowledge Graph, Wikidata, sameAs cruzados', tag: 'ltag-diff', tagLabel: 'Diferencial Organum',
-    text: 'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.',
-    animId: 'anim-02'
-  },
-  {
-    num: '03', name: 'Conteúdo de autoridade', sub: 'Clusters semânticos por ICP, E-E-A-T profundo', tag: 'ltag-base', tagLabel: 'Fonte para IA',
-    text: 'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> — experiência, expertise, autoridade e confiabilidade documentadas. Conteúdo que serve como fonte primária para IAs generativas.',
-    animId: 'anim-03'
-  },
-  {
-    num: '04', name: 'GEO + AEO', sub: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'ltag-geo', tagLabel: 'Ninguém entrega isso',
-    text: '<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Camada que nenhuma agência brasileira entrega sistematicamente.',
-    animId: 'anim-04'
-  },
-  {
-    num: '05', name: 'Digital PR', sub: 'Link building editorial, assessoria de imprensa digital', tag: 'ltag-base', tagLabel: 'Autoridade externa',
-    text: 'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.',
-    animId: 'anim-05'
-  },
-];
-
-const icps = [
-  { icon: '◈', title: 'E-commerce', range: 'R$500k – R$30M/ano', ticket: 'R$3.500 – R$9.000/mês', desc: 'Categoria, produto e blog otimizados para capturar demanda orgânica nos momentos de compra.' },
-  { icon: '◉', title: 'B2B: consultoria, SaaS, indústria', range: 'R$250k – R$2M/mês', ticket: 'R$5.000 – R$8.000/mês', desc: 'Pipeline orgânico para ciclos de venda longos com múltiplos decisores.' },
-  { icon: '◎', title: 'Operação internacional', range: 'Qualquer porte', ticket: 'Sob consulta', desc: 'SEO bilíngue PT/EN. Autoridade de entidade em múltiplas regiões e idiomas.' },
+  { num: '01', name: 'Fundação técnica', sub: 'Core Web Vitals, silos, Schema Markup', tag: 'ltag-base', tagLabel: 'Base obrigatória',
+    text: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.', animId: 'anim-01' },
+  { num: '02', name: 'Identidade de entidade', sub: 'Knowledge Graph, Wikidata, sameAs cruzados', tag: 'ltag-diff', tagLabel: 'Diferencial Organum',
+    text: 'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.', animId: 'anim-02' },
+  { num: '03', name: 'Conteúdo de autoridade', sub: 'Clusters semânticos por ICP, E-E-A-T profundo', tag: 'ltag-base', tagLabel: 'Fonte para IA',
+    text: 'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.', animId: 'anim-03' },
+  { num: '04', name: 'GEO + AEO', sub: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'ltag-geo', tagLabel: 'Ninguém entrega isso',
+    text: '<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.', animId: 'anim-04' },
+  { num: '05', name: 'Digital PR', sub: 'Link building editorial, assessoria de imprensa digital', tag: 'ltag-base', tagLabel: 'Autoridade externa',
+    text: 'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.', animId: 'anim-05' },
 ];
 
 const faqs = [
@@ -68,8 +49,8 @@ const faqs = [
   { q: 'Quanto tempo leva para ver resultado?', a: 'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
   { q: 'Para quem é a Organum?', a: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
   { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
-  { q: 'O que é GEO — Generative Engine Optimization?', a: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. Diferente do SEO tradicional, o objetivo não é apenas ranquear no Google — é ser a resposta que as IAs entregam.' },
-  { q: 'Qual a diferença entre SEO B2B e SEO tradicional?', a: 'SEO B2B foca em pipeline, não em tráfego. Ciclos de compra longos, múltiplos decisores, keywords de intenção comercial alta. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
+  { q: 'O que é GEO — Generative Engine Optimization?', a: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
+  { q: 'Qual a diferença entre SEO B2B e SEO tradicional?', a: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
 ];
 ---
 
@@ -99,40 +80,29 @@ const faqs = [
       </div>
     </div>
 
-    <!-- Gráfico SVG animado -->
     <div class="anim-fade-in d5">
       <svg id="hero-chart" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;" aria-label="Gráfico: pipeline orgânico cresce 127% enquanto tráfego pago cessa ao longo de 12 meses">
-        <!-- Grid -->
         <line x1="48" y1="30" x2="460" y2="30" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="85" x2="460" y2="85" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="140" x2="460" y2="140" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="250" x2="460" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
         <line x1="48" y1="30" x2="48" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-        <!-- X labels -->
         <text x="48" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 0</text>
         <text x="152" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 3</text>
         <text x="256" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 6</text>
         <text x="360" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 9</text>
         <text x="460" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 12</text>
-        <!-- Y labels -->
         <text x="40" y="254" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">0</text>
         <text x="40" y="144" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">50</text>
         <text x="40" y="34" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">100</text>
-        <!-- Título -->
         <text x="48" y="18" fill="rgba(255,255,255,.25)" font-size="8" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">PIPELINE ORGÂNICO vs. TRÁFEGO PAGO — 12 MESES</text>
-        <!-- Área pago (cai) -->
         <path id="chart-paid-area" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250 Z" fill="rgba(220,80,60,.07)" opacity="0"/>
-        <!-- Linha pago -->
         <path id="chart-paid-line" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250" fill="none" stroke="rgba(200,90,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>
-        <!-- Área orgânico (cresce) -->
         <path id="chart-org-area" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52 L460,250 Z" fill="rgba(46,145,71,.12)" opacity="0"/>
-        <!-- Linha orgânico -->
         <path id="chart-org-line" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
-        <!-- Dot final -->
         <circle id="chart-dot" cx="460" cy="52" r="5" fill="#4caf64" opacity="0"/>
         <circle id="chart-ring" cx="460" cy="52" r="10" fill="none" stroke="rgba(76,175,100,.35)" stroke-width="1.5" opacity="0"/>
-        <!-- Labels -->
         <g id="chart-label-org" opacity="0">
           <rect x="340" y="34" width="116" height="20" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.35)" stroke-width="1"/>
           <text x="348" y="48" fill="#4caf64" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">SEO orgânico ↑ 127%</text>
@@ -144,7 +114,6 @@ const faqs = [
       </svg>
     </div>
   </div>
-
   <div class="hero-ticker">
     <div class="ticker-inner">
       <span class="ticker-lbl">Confiam no método</span>
@@ -172,13 +141,14 @@ const faqs = [
   </div>
 </div>
 
-<!-- ══════════ STATEMENT ══════════ -->
+<!-- ══════════ STATEMENT — FIX 1: apenas 1 traço verde ══════════ -->
 <section class="section">
   <div class="wrap-md">
     <div class="statement-grid reveal">
       <div>
-        <div style="width:2px;height:48px;background:var(--g500);margin-bottom:1.5rem;"></div>
-        <p class="sec-eye" style="margin-bottom:0;">Por que a Organum</p>
+        <div style="width:2px;height:48px;background:var(--g500);margin-bottom:1.5rem;display:block;"></div>
+        <!-- FIX 1: sec-eye sem ::before aqui — removido a classe sec-eye, apenas texto -->
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);">Por que a Organum</p>
       </div>
       <p class="statement">Nenhuma agência brasileira entrega <em>GEO sistematicamente.</em> Nós entregamos — e provamos com dados.</p>
     </div>
@@ -196,7 +166,7 @@ const faqs = [
       {[
         { t: 'Tráfego pago não escala sem orçamento', p: 'Cada real novo exige mais investimento. O custo por lead sobe. A margem comprime. Você está num ciclo que nunca para.', s: '+340% no CAC em 3 anos' },
         { t: 'Seu site não existe para as IAs generativas', p: 'ChatGPT, Gemini e Perplexity respondem às perguntas do seu ICP todos os dias. Se sua empresa não é citada, seus concorrentes são.', s: '73% das pesquisas B2B usam IA' },
-        { t: 'SEO genérico não funciona para B2B', p: 'Agências entregam posts e backlinks. O Google pode até ranquear. Mas nenhum lead qualificado chega. Porque SEO B2B é sobre pipeline, não tráfego.', s: '89% dos leads B2B pesquisam antes' },
+        { t: 'SEO genérico não funciona para B2B', p: 'Agências entregam posts e backlinks. O Google pode até ranquear. Mas nenhum lead qualificado chega. SEO B2B é sobre pipeline, não tráfego.', s: '89% dos leads B2B pesquisam antes' },
         { t: 'Sua empresa não é uma entidade reconhecida', p: 'Google, IAs e compradores verificam a existência da sua empresa antes de confiar. Sem Knowledge Graph, sem Wikidata — você é invisível para as IAs.', s: 'Entidade = credibilidade automática' },
       ].map((c, i) => (
         <div class="prob-card">
@@ -210,7 +180,7 @@ const faqs = [
   </div>
 </section>
 
-<!-- ══════════ IDENTIDADE DE ENTIDADE ══════════ -->
+<!-- ══════════ IDENTIDADE DE ENTIDADE — FIX 2: diagrama expandido ══════════ -->
 <section class="entidade-section">
   <div class="wrap">
     <p class="sec-eye reveal" style="color:rgba(255,255,255,.35);">O conceito que separa os líderes</p>
@@ -222,94 +192,91 @@ const faqs = [
     </p>
 
     <div class="entidade-grid">
-      <!-- Empresa sem entidade -->
       <div class="entidade-card reveal">
         <span class="entidade-pill pill-invisivel">✕ Empresa sem entidade</span>
         <p class="entidade-card-title">Como as IAs veem sua empresa hoje</p>
-        <div class="entidade-row">
-          <span class="e-icon-no">✕</span>
-          <span class="e-text-no">Não aparece no Google Knowledge Graph — não existe como entidade verificada</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-no">✕</span>
-          <span class="e-text-no">Sem perfil no Wikidata — IAs não conseguem confirmar sua existência</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-no">✕</span>
-          <span class="e-text-no">LinkedIn sem Schema markup — sinais de autoridade desperdiçados</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-no">✕</span>
-          <span class="e-text-no">Sem menções cruzadas — empresa desconhecida para o grafo de conhecimento</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-no">✕</span>
-          <span class="e-text-no">Resultado: ChatGPT ignora sua marca mesmo com bom conteúdo</span>
-        </div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Não aparece no Knowledge Graph — não existe como entidade verificada</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Sem perfil no Wikidata — IAs não conseguem confirmar sua existência</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">LinkedIn sem Schema markup — sinais de autoridade desperdiçados</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Sem menções cruzadas — desconhecida para o grafo de conhecimento</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Resultado: ChatGPT ignora sua marca mesmo com bom conteúdo</span></div>
       </div>
-
-      <!-- Empresa com entidade -->
       <div class="entidade-card reveal reveal-d2" style="border-color:rgba(76,175,100,.25);">
         <span class="entidade-pill pill-verificavel">✓ Empresa com entidade — Organum</span>
         <p class="entidade-card-title">Como as IAs veem após o Método ORGANUM</p>
-        <div class="entidade-row">
-          <span class="e-icon-yes">✓</span>
-          <span class="e-text-yes"><strong>Knowledge Graph ativo</strong> — Google confirma sua empresa como entidade real</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-yes">✓</span>
-          <span class="e-text-yes"><strong>Wikidata estruturado</strong> — IAs verificam e reconhecem sua marca automaticamente</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-yes">✓</span>
-          <span class="e-text-yes"><strong>Schema Organization + Person</strong> — autoridade do fundador ligada à empresa</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-yes">✓</span>
-          <span class="e-text-yes"><strong>sameAs cruzados</strong> — LinkedIn, site, Wikidata e portais confirmam a mesma entidade</span>
-        </div>
-        <div class="entidade-row">
-          <span class="e-icon-yes">✓</span>
-          <span class="e-text-yes"><strong>Resultado: HunterHunter citada pelo ChatGPT e Perplexity</strong> em 90 dias</span>
-        </div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Knowledge Graph ativo</strong> — Google confirma sua empresa como entidade real</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Wikidata estruturado</strong> — IAs verificam e reconhecem sua marca automaticamente</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Schema Organization + Person</strong> — autoridade do fundador ligada à empresa</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>sameAs cruzados</strong> — LinkedIn, site, Wikidata e portais confirmam a mesma entidade</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Resultado: HunterHunter citada pelo ChatGPT</strong> em 90 dias</span></div>
       </div>
     </div>
 
-    <!-- Diagrama SVG da entidade -->
-    <div class="reveal reveal-d3" style="margin-top:3rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:2.5rem;">
-      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:1.5rem;text-align:center;">DIAGRAMA DE ENTIDADE — como a Organum constrói a sua</p>
-      <svg id="entity-diagram" viewBox="0 0 640 220" fill="none" style="width:100%;max-width:680px;display:block;margin:0 auto;" aria-label="Diagrama mostrando como Knowledge Graph, Wikidata, LinkedIn, Schema e menções se conectam para formar a identidade de entidade da empresa">
-        <!-- Centro: Empresa -->
-        <rect id="ent-center" x="260" y="80" width="120" height="60" rx="2" fill="rgba(29,122,53,.25)" stroke="rgba(76,175,100,.5)" stroke-width="1.5" opacity="0"/>
-        <text id="ent-center-t1" x="320" y="105" fill="#4caf64" font-size="11" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0">SUA EMPRESA</text>
-        <text id="ent-center-t2" x="320" y="122" fill="rgba(76,175,100,.6)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0">Entidade verificada</text>
-        <!-- Nós satélites -->
-        <rect id="ent-n1" x="30" y="20" width="110" height="44" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"/>
-        <text x="85" y="39" fill="rgba(255,255,255,.6)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Knowledge</text>
-        <text x="85" y="54" fill="rgba(255,255,255,.6)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Graph</text>
-        <rect id="ent-n2" x="500" y="20" width="110" height="44" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"/>
-        <text x="555" y="39" fill="rgba(255,255,255,.6)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Wikidata</text>
-        <text x="555" y="54" fill="rgba(255,255,255,.4)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">verificável</text>
-        <rect id="ent-n3" x="30" y="156" width="110" height="44" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"/>
-        <text x="85" y="175" fill="rgba(255,255,255,.6)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Schema</text>
-        <text x="85" y="190" fill="rgba(255,255,255,.4)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Organization + Person</text>
-        <rect id="ent-n4" x="500" y="156" width="110" height="44" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"/>
-        <text x="555" y="175" fill="rgba(255,255,255,.6)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Menções</text>
-        <text x="555" y="190" fill="rgba(255,255,255,.4)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">cruzadas + LinkedIn</text>
-        <rect id="ent-n5" x="265" y="0" width="110" height="34" rx="2" fill="rgba(76,175,100,.08)" stroke="rgba(76,175,100,.2)" stroke-width="1" opacity="0"/>
-        <text x="320" y="21" fill="rgba(76,175,100,.8)" font-size="10" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">IAs generativas</text>
-        <!-- Linhas conectoras -->
-        <line id="ent-l1" x1="140" y1="42" x2="260" y2="100" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4 3" opacity="0"/>
-        <line id="ent-l2" x1="500" y1="42" x2="380" y2="100" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4 3" opacity="0"/>
-        <line id="ent-l3" x1="140" y1="178" x2="260" y2="120" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4 3" opacity="0"/>
-        <line id="ent-l4" x1="500" y1="178" x2="380" y2="120" stroke="rgba(255,255,255,.12)" stroke-width="1" stroke-dasharray="4 3" opacity="0"/>
-        <line id="ent-l5" x1="320" y1="34" x2="320" y2="80" stroke="rgba(76,175,100,.3)" stroke-width="1.5" stroke-dasharray="4 3" opacity="0"/>
-      </svg>
+    <!-- FIX 2: Diagrama expandido e legível em desktop e mobile -->
+    <div class="reveal reveal-d3" style="margin-top:3rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:clamp(1.5rem,4vw,2.5rem);">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);text-align:center;margin-bottom:2rem;">COMO A ORGANUM CONSTRÓI SUA IDENTIDADE DE ENTIDADE</p>
+
+      <!-- Nós externos — grid 4 colunas -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:820px;margin-inline:auto;" id="ent-nodes-grid">
+        {[
+          { icon: '🔷', name: 'Knowledge Graph', desc: 'Google confirma sua empresa como entidade real e confiável' },
+          { icon: '📖', name: 'Wikidata', desc: 'Base de dados verificável que as IAs consultam para confirmar existência' },
+          { icon: '💼', name: 'LinkedIn + Schema', desc: 'Perfil estruturado com markup que conecta empresa e fundador' },
+          { icon: '🔗', name: 'Menções cruzadas', desc: 'Portais de nicho, assessoria digital e co-citações editoriais' },
+        ].map(n => (
+          <div id="ent-node" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:1.25rem;text-align:center;transition:border-color .2s,background .2s;cursor:default;" onmouseover="this.style.borderColor='rgba(76,175,100,.4)';this.style.background='rgba(76,175,100,.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.background='rgba(255,255,255,.04)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:.625rem;">{n.icon}</span>
+            <span style="font-family:var(--serif);font-size:.9375rem;font-weight:700;color:#fff;display:block;margin-bottom:.375rem;">{n.name}</span>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;display:block;">{n.desc}</span>
+          </div>
+        ))}
+      </div>
+
+      <!-- Setas convergindo -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1.25rem 0;max-width:820px;margin-inline:auto;">
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;right:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↘</div>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;right:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↙</div>
+        </div>
+        <div style="width:12px;height:12px;background:rgba(76,175,100,.3);border:1px solid rgba(76,175,100,.5);border-radius:50%;flex-shrink:0;"></div>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;left:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↘</div>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;left:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↙</div>
+        </div>
+      </div>
+
+      <!-- Centro: empresa como entidade -->
+      <div style="max-width:820px;margin-inline:auto;background:rgba(29,122,53,.15);border:1.5px solid rgba(76,175,100,.4);padding:1.5rem 2rem;text-align:center;margin-bottom:1.25rem;">
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(76,175,100,.6);display:block;margin-bottom:.5rem;">Resultado</span>
+        <span style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;display:block;margin-bottom:.375rem;">Sua empresa — Entidade verificada</span>
+        <span style="font-size:.875rem;color:rgba(76,175,100,.7);display:block;">Reconhecida pelo Google, pelas IAs e pelos seus compradores</span>
+      </div>
+
+      <!-- Seta final para IAs -->
+      <div style="max-width:820px;margin-inline:auto;display:flex;justify-content:center;padding:.5rem 0;">
+        <div style="font-size:.875rem;color:rgba(76,175,100,.4);display:flex;flex-direction:column;align-items:center;gap:.375rem;">
+          <span>↓</span>
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);">alimenta</span>
+        </div>
+      </div>
+
+      <!-- IAs que citam -->
+      <div style="max-width:820px;margin-inline:auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);">Citada pelas IAs</span>
+        {['ChatGPT', 'Gemini', 'Perplexity', 'Copilot', 'Grok'].map(ia => (
+          <span style="font-size:.875rem;font-weight:600;color:rgba(255,255,255,.5);">{ia}</span>
+        ))}
+        <span style="font-size:.8125rem;font-weight:600;color:var(--g400);">HunterHunter em 90 dias →</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ MÉTODO 5 CAMADAS ══════════ -->
+<!-- ══════════ MÉTODO 5 CAMADAS — FIX 3: animação 01 corrigida ══════════ -->
 <section class="layers-section">
   <div class="wrap">
     <div class="layers-intro">
@@ -321,7 +288,6 @@ const faqs = [
         A única abordagem sistemática de SEO B2B que vai do zero técnico à citação por IA. Cada camada é pré-requisito da próxima. Pular uma quebra o sistema inteiro.
       </p>
     </div>
-
     <div class="layer-accordion reveal">
       {layers.map((l) => (
         <>
@@ -341,9 +307,7 @@ const faqs = [
                 Ver camada completa →
               </a>
             </div>
-            <div class="layer-anim-wrap" id={l.animId}>
-              <!-- Animação SVG por camada injetada via JS -->
-            </div>
+            <div class="layer-anim-wrap" id={l.animId}></div>
           </div>
         </>
       ))}
@@ -361,39 +325,31 @@ const faqs = [
     <div class="diff-grid reveal reveal-d2">
       <div class="diff-col">
         <p class="diff-col-title" style="color:rgba(255,255,255,.3);">Agência de SEO genérica</p>
-        {[
-          'Entrega posts e backlinks. Mede tráfego. Não mede pipeline.',
+        {['Entrega posts e backlinks. Mede tráfego. Não mede pipeline.',
           'Nunca ouviu falar de GEO ou AEO. Não otimiza para IAs.',
           'Não constrói entidade digital. Sua marca não existe no Knowledge Graph.',
           'Relatório mensal com gráficos bonitos. Zero lead B2B qualificado.',
           'Ciclo de venda longo? Múltiplos decisores? Fora do escopo.',
         ].map(t => (
-          <div class="diff-row">
-            <span class="d-no">✕</span>
-            <p class="d-text">{t}</p>
-          </div>
+          <div class="diff-row"><span class="d-no">✕</span><p class="d-text">{t}</p></div>
         ))}
       </div>
       <div class="diff-col diff-col-right">
         <p class="diff-col-title" style="color:rgba(76,175,100,.5);">Organum — Método ORGANUM</p>
-        {[
-          ['Pipeline B2B mensurável.', 'Leads qualificados, não apenas cliques.'],
-          ['GEO sistematizado.', 'Você é citado pelo ChatGPT, Gemini e Perplexity.'],
-          ['Entidade verificável.', 'Knowledge Graph, Wikidata, sameAs cruzados.'],
-          ['5 camadas integradas.', 'Cada entrega acelera todas as outras.'],
-          ['Especialista em B2B.', 'Ciclo longo, múltiplos decisores, ticket alto.'],
+        {[['Pipeline B2B mensurável.','Leads qualificados, não apenas cliques.'],
+          ['GEO sistematizado.','Você é citado pelo ChatGPT, Gemini e Perplexity.'],
+          ['Entidade verificável.','Knowledge Graph, Wikidata, sameAs cruzados.'],
+          ['5 camadas integradas.','Cada entrega acelera todas as outras.'],
+          ['Especialista em B2B.','Ciclo longo, múltiplos decisores, ticket alto.'],
         ].map(([bold, rest]) => (
-          <div class="diff-row">
-            <span class="d-yes">✓</span>
-            <p class="d-text"><strong>{bold}</strong> {rest}</p>
-          </div>
+          <div class="diff-row"><span class="d-yes">✓</span><p class="d-text"><strong>{bold}</strong> {rest}</p></div>
         ))}
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ DORES INTERATIVAS ══════════ -->
+<!-- ══════════ DORES INTERATIVAS — FIX 4: mobile inline ══════════ -->
 <section class="dores-section">
   <div class="wrap">
     <p class="sec-eye reveal">Reconhece alguma dessas situações?</p>
@@ -401,13 +357,19 @@ const faqs = [
       Se sim, o Método ORGANUM foi feito para você.
     </h2>
     <div class="dores-layout">
+      <!-- Botões + respostas inline (mobile) -->
       <div id="dor-buttons">
         {dores.map((d, i) => (
-          <button class={`dor-btn${i === 0 ? ' active' : ''}`} data-index={i} type="button">
-            {d.q}
-          </button>
+          <>
+            <button class={`dor-btn${i === 0 ? ' active' : ''}`} data-index={i} type="button">
+              {d.q}
+            </button>
+            <!-- Resposta inline para mobile — FIX 4 -->
+            <div class={`dor-inline-answer${i === 0 ? ' open' : ''}`} data-inline={i} set:html={`<p style="margin-bottom:.75rem;font-style:italic;font-size:.875rem;color:rgba(255,255,255,.7);">${d.q}</p>${d.a}<p style="margin-top:1rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">→ Quero resolver isso</p>`}></div>
+          </>
         ))}
       </div>
+      <!-- Caixa de resposta — desktop -->
       <div class="dor-answer" id="dor-answer-box">
         <p class="dor-answer-q" id="dor-q">{dores[0].q}</p>
         <p class="dor-answer-a" id="dor-a" set:html={dores[0].a}></p>
@@ -417,24 +379,70 @@ const faqs = [
   </div>
 </section>
 
-<!-- ══════════ PARA QUEM É ══════════ -->
+<!-- ══════════ PARA QUEM É — FIX 5: sem valores diretos, custo por lead ══════════ -->
 <section class="section section-alt">
   <div class="wrap">
     <p class="sec-eye reveal">Para quem é</p>
-    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:2.5rem;max-width:24ch;">
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem;max-width:24ch;">
       Empresas B2B que querem crescer de forma previsível
     </h2>
+    <p class="reveal reveal-d2" style="font-size:.9375rem;color:var(--n600);max-width:52ch;line-height:1.7;margin-bottom:2.5rem;">
+      Enquanto você paga por cada clique, o custo por lead em ads sobe todo mês. No SEO orgânico, o custo por lead cai — e continua caindo.
+    </p>
+
+    <!-- Animação comparativa de custo por lead -->
+    <div class="reveal reveal-d2" style="border:1px solid var(--n200);overflow:hidden;margin-bottom:3rem;">
+      <!-- Header -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;background:var(--n950);">
+        <div style="padding:1.25rem 1.5rem;border-right:1px solid rgba(255,255,255,.08);text-align:center;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(220,100,80,.7);display:block;margin-bottom:.25rem;">Tráfego pago (Ads)</span>
+          <span style="font-size:.75rem;color:rgba(255,255,255,.3);display:block;">Custo por lead ao longo do tempo</span>
+        </div>
+        <div style="padding:1.25rem 1.5rem;text-align:center;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);display:block;margin-bottom:.25rem;">SEO Orgânico (Organum)</span>
+          <span style="font-size:.75rem;color:rgba(255,255,255,.3);display:block;">Custo por lead ao longo do tempo</span>
+        </div>
+      </div>
+      <!-- Linhas de comparação -->
+      {[
+        { label: 'Mês 1',  ads: 'R$ 180 / lead', org: 'Investimento inicial', adsUp: true },
+        { label: 'Mês 3',  ads: 'R$ 220 / lead', org: 'R$ 90 / lead', adsUp: true },
+        { label: 'Mês 6',  ads: 'R$ 290 / lead', org: 'R$ 55 / lead', adsUp: true },
+        { label: 'Mês 12', ads: 'R$ 380 / lead', org: 'R$ 28 / lead', adsUp: true },
+      ].map((row, i) => (
+        <div style={`display:grid;grid-template-columns:80px 1fr 1fr;border-top:1px solid var(--n200);align-items:center;background:${i % 2 === 0 ? 'var(--n0)' : 'var(--n50)'}`}>
+          <div style="padding:.875rem 1.25rem;font-size:.75rem;font-weight:600;color:var(--n500);border-right:1px solid var(--n200);">{row.label}</div>
+          <div style="padding:.875rem 1.5rem;text-align:center;border-right:1px solid var(--n200);">
+            <span style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:rgba(200,70,50,1);display:block;">{row.ads}</span>
+            <span style="font-size:.7rem;color:rgba(200,70,50,.7);">↑ subindo</span>
+          </div>
+          <div style="padding:.875rem 1.5rem;text-align:center;">
+            <span style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:var(--g600);display:block;">{row.org}</span>
+            <span style="font-size:.7rem;color:var(--g500);">{i === 0 ? 'estruturação' : '↓ caindo'}</span>
+          </div>
+        </div>
+      ))}
+      <!-- Nota -->
+      <div style="padding:1rem 1.5rem;background:var(--g50);border-top:1px solid var(--g200);font-size:.8125rem;color:var(--g800);display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;">
+        <span style="font-weight:700;">✓</span>
+        <span>No SEO orgânico, você não precisa de saldo de ads para crescer. Cada mês que passa, o custo por lead cai — e o pipeline cresce.</span>
+      </div>
+    </div>
+
+    <!-- Cards por ICP — sem valores diretos -->
     <div class="icp-grid">
-      {icps.map((icp, i) => (
+      {[
+        { icon: '◈', title: 'E-commerce', range: 'R$500k – R$30M/ano', pitch: 'Pare de pagar por cada clique. Construa tráfego que cresce todo mês — sem aumentar o budget.', desc: 'Categoria, produto e blog otimizados para capturar demanda orgânica nos momentos de compra.' },
+        { icon: '◉', title: 'B2B: consultoria, SaaS, indústria', range: 'R$250k – R$2M/mês', pitch: 'Pipeline que não seca quando os ads param. Leads qualificados chegando sem custo incremental.', desc: 'Ciclos de venda longos com múltiplos decisores — SEO B2B especializado.' },
+        { icon: '◎', title: 'Operação internacional', range: 'Qualquer porte', pitch: 'Autoridade em PT e EN sem dobrar o budget de ads. Crescimento orgânico em dois mercados.', desc: 'SEO bilíngue PT/EN com entidade digital em múltiplas regiões.' },
+      ].map((icp, i) => (
         <div class={`icp-card reveal reveal-d${i+1}`}>
           <div class="icp-icon">{icp.icon}</div>
           <p class="icp-title">{icp.title}</p>
-          <div>
-            <p class="icp-range">{icp.range}</p>
-            <p class="icp-ticket">{icp.ticket}</p>
-          </div>
+          <p class="icp-range">{icp.range}</p>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--g700);line-height:1.4;">{icp.pitch}</p>
           <p class="icp-desc">{icp.desc}</p>
-          <a href="#typeform-section" class="icp-link">Solicitar auditoria →</a>
+          <a href="#typeform-section" class="icp-link">Solicitar diagnóstico gratuito →</a>
         </div>
       ))}
     </div>
@@ -488,11 +496,8 @@ const faqs = [
       Descubra o potencial orgânico do seu site em 48 horas — gratuitamente.
     </h2>
     <div class="tf-box reveal reveal-d2">
-      <div class="tf-progress">
-        <div class="tf-progress-fill" id="tf-bar" style="width:14%"></div>
-      </div>
+      <div class="tf-progress"><div class="tf-progress-fill" id="tf-bar" style="width:14%"></div></div>
 
-      <!-- Step 1 -->
       <div class="tf-step active" id="tf-1">
         <p class="tf-num">Pergunta 1 de 7</p>
         <p class="tf-q">Qual é o maior desafio de marketing digital da sua empresa hoje?</p>
@@ -502,30 +507,20 @@ const faqs = [
             <button class="tf-opt" type="button" data-step="1">{opt}</button>
           ))}
         </div>
-        <div class="tf-nav">
-          <span class="tf-counter">1 / 7</span>
-          <button class="tf-next" id="tf-next-1" disabled type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><span class="tf-counter">1 / 7</span><button class="tf-next" id="tf-next-1" disabled type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 2 -->
       <div class="tf-step" id="tf-2">
         <p class="tf-num">Pergunta 2 de 7</p>
         <p class="tf-q">Qual é o perfil da sua empresa?</p>
-        <p class="tf-hint">Selecione o que melhor descreve seu negócio.</p>
         <div class="tf-options">
           {['B2B — consultoria ou serviços profissionais','B2B — SaaS ou tecnologia','B2B — distribuidora ou indústria','E-commerce','Outro perfil'].map(opt => (
             <button class="tf-opt" type="button" data-step="2">{opt}</button>
           ))}
         </div>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="1">← Anterior</button>
-          <span class="tf-counter">2 / 7</span>
-          <button class="tf-next" id="tf-next-2" disabled type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="1">← Anterior</button><span class="tf-counter">2 / 7</span><button class="tf-next" id="tf-next-2" disabled type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 3 -->
       <div class="tf-step" id="tf-3">
         <p class="tf-num">Pergunta 3 de 7</p>
         <p class="tf-q">Qual é o faturamento mensal aproximado da empresa?</p>
@@ -535,14 +530,9 @@ const faqs = [
             <button class="tf-opt" type="button" data-step="3">{opt}</button>
           ))}
         </div>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="2">← Anterior</button>
-          <span class="tf-counter">3 / 7</span>
-          <button class="tf-next" id="tf-next-3" disabled type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="2">← Anterior</button><span class="tf-counter">3 / 7</span><button class="tf-next" id="tf-next-3" disabled type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 4 -->
       <div class="tf-step" id="tf-4">
         <p class="tf-num">Pergunta 4 de 7</p>
         <p class="tf-q">Sua empresa já investiu em SEO antes?</p>
@@ -551,56 +541,36 @@ const faqs = [
             <button class="tf-opt" type="button" data-step="4">{opt}</button>
           ))}
         </div>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="3">← Anterior</button>
-          <span class="tf-counter">4 / 7</span>
-          <button class="tf-next" id="tf-next-4" disabled type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="3">← Anterior</button><span class="tf-counter">4 / 7</span><button class="tf-next" id="tf-next-4" disabled type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 5 -->
       <div class="tf-step" id="tf-5">
         <p class="tf-num">Pergunta 5 de 7</p>
         <p class="tf-q">Qual é o endereço do site da sua empresa?</p>
         <p class="tf-hint">Vamos analisar tecnicamente antes de responder.</p>
         <input type="url" class="tf-input" id="tf-site" placeholder="https://suaempresa.com.br" autocomplete="url"/>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="4">← Anterior</button>
-          <span class="tf-counter">5 / 7</span>
-          <button class="tf-next" id="tf-next-5" type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="4">← Anterior</button><span class="tf-counter">5 / 7</span><button class="tf-next" id="tf-next-5" type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 6 -->
       <div class="tf-step" id="tf-6">
         <p class="tf-num">Pergunta 6 de 7</p>
         <p class="tf-q">Qual é o seu nome?</p>
         <input type="text" class="tf-input" id="tf-name" placeholder="Seu nome completo" autocomplete="name"/>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="5">← Anterior</button>
-          <span class="tf-counter">6 / 7</span>
-          <button class="tf-next" id="tf-next-6" type="button">Próximo →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="5">← Anterior</button><span class="tf-counter">6 / 7</span><button class="tf-next" id="tf-next-6" type="button">Próximo →</button></div>
       </div>
 
-      <!-- Step 7 -->
       <div class="tf-step" id="tf-7">
         <p class="tf-num">Pergunta 7 de 7</p>
         <p class="tf-q">Qual é o seu melhor e-mail?</p>
         <p class="tf-hint">O diagnóstico completo será enviado em até 48 horas.</p>
         <input type="email" class="tf-input" id="tf-email" placeholder="pedro@suaempresa.com.br" autocomplete="email"/>
-        <div class="tf-nav">
-          <button class="tf-back" type="button" data-goto="6">← Anterior</button>
-          <span class="tf-counter">7 / 7</span>
-          <button class="tf-next" id="tf-next-7" type="button">Enviar e receber diagnóstico →</button>
-        </div>
+        <div class="tf-nav"><button class="tf-back" type="button" data-goto="6">← Anterior</button><span class="tf-counter">7 / 7</span><button class="tf-next" id="tf-next-7" type="button">Enviar e receber diagnóstico →</button></div>
       </div>
 
-      <!-- Sucesso -->
       <div class="tf-success" id="tf-success">
         <div class="tf-check">✓</div>
-        <h3 style="font-family:var(--serif);font-size:1.625rem;font-weight:700;color:#fff;margin-bottom:.75rem;">Diagnóstico solicitado com sucesso!</h3>
-        <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:40ch;margin-inline:auto;">Analisaremos seu site e enviaremos o diagnóstico completo em até 48 horas úteis. Verifique sua caixa de entrada.</p>
+        <h3 style="font-family:var(--serif);font-size:1.625rem;font-weight:700;color:#fff;margin-bottom:.75rem;">Diagnóstico solicitado!</h3>
+        <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:40ch;margin-inline:auto;">Analisaremos seu site e enviaremos o diagnóstico completo em até 48 horas úteis.</p>
         <p style="margin-top:1.5rem;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Sem spam. Sem vendedor. Apenas o diagnóstico.</p>
       </div>
     </div>
@@ -614,8 +584,7 @@ const faqs = [
       <div class="reveal">
         <p class="sec-eye">Dúvidas</p>
         <h2 style="font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;">Perguntas frequentes</h2>
-        <p style="margin-top:1rem;font-size:.875rem;color:var(--n500);line-height:1.7;">Outras dúvidas?</p>
-        <a href="/contato" style="display:inline-block;margin-top:.75rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">Fale conosco →</a>
+        <a href="/contato" style="display:inline-block;margin-top:1.25rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">Fale conosco →</a>
       </div>
       <div class="reveal reveal-d2">
         {faqs.map(item => (
@@ -633,24 +602,22 @@ const faqs = [
 
 <script>
 // ── Scroll reveals ──
-const observer = new IntersectionObserver(
-  entries => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } }),
+const obs = new IntersectionObserver(
+  es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
   { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
 );
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-// ── Contagem animada de métricas ──
-const countEls = document.querySelectorAll('.metric-num[data-target]');
-const countObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+// ── Contagem animada ──
+const countObs = new IntersectionObserver(es => {
+  es.forEach(e => {
     if (!e.isIntersecting) return;
     const el = e.target as HTMLElement;
     const target = parseInt(el.dataset.target || '0');
     const suffix = el.dataset.suffix || '';
-    const dur = 1400;
     const t0 = performance.now();
     const tick = (now: number) => {
-      const p = Math.min((now - t0) / dur, 1);
+      const p = Math.min((now - t0) / 1400, 1);
       const ease = 1 - Math.pow(1 - p, 3);
       el.textContent = Math.round(ease * target) + suffix;
       if (p < 1) requestAnimationFrame(tick);
@@ -659,93 +626,50 @@ const countObs = new IntersectionObserver(entries => {
     countObs.unobserve(el);
   });
 }, { threshold: 0.5 });
-countEls.forEach(el => countObs.observe(el));
+document.querySelectorAll('.metric-num[data-target]').forEach(el => countObs.observe(el));
 
 // ── Gráfico hero animado ──
-const chartObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
+const chartObs = new IntersectionObserver(es => {
+  es.forEach(e => {
     if (!e.isIntersecting) return;
-    const animate = (id: string, delay: number, dur: number) => {
+    const set = (id: string, delay: number, prop: string, val: string, trans: string) => {
       const el = document.getElementById(id);
       if (!el) return;
-      setTimeout(() => {
-        el.style.transition = `opacity ${dur}ms ease`;
-        el.style.opacity = '1';
-        if (el.style.strokeDashoffset !== undefined) {
-          (el as SVGPathElement).style.animation = `drawLine ${dur}ms ${delay}ms cubic-bezier(.16,1,.3,1) forwards`;
-        }
-      }, delay);
+      setTimeout(() => { (el.style as any)[prop] = val; el.style.transition = trans; }, delay);
     };
-    const line = (id: string, delay: number) => {
-      const el = document.getElementById(id) as SVGPathElement | null;
-      if (!el) return;
-      setTimeout(() => {
-        el.style.strokeDashoffset = '0';
-        el.style.transition = `stroke-dashoffset 1.8s ${delay}ms cubic-bezier(.16,1,.3,1)`;
-      }, 100);
-    };
+    const paid = document.getElementById('chart-paid-line') as SVGPathElement | null;
+    if (paid) setTimeout(() => { paid.style.transition = 'stroke-dashoffset 1.4s 200ms cubic-bezier(.16,1,.3,1)'; paid.style.strokeDashoffset = '0'; }, 200);
+    setTimeout(() => { const el = document.getElementById('chart-paid-area'); if(el){el.style.transition='opacity .6s ease';el.style.opacity='1';} }, 500);
+    const org = document.getElementById('chart-org-line') as SVGPathElement | null;
+    if (org) setTimeout(() => { org.style.transition = 'stroke-dashoffset 2s 0ms cubic-bezier(.16,1,.3,1)'; org.style.strokeDashoffset = '0'; }, 700);
     setTimeout(() => {
-      const paid = document.getElementById('chart-paid-line') as SVGPathElement | null;
-      if (paid) { paid.style.transition = 'stroke-dashoffset 1.4s 200ms cubic-bezier(.16,1,.3,1)'; paid.style.strokeDashoffset = '0'; }
-    }, 200);
-    setTimeout(() => {
-      const pArea = document.getElementById('chart-paid-area') as SVGPathElement | null;
-      if (pArea) { pArea.style.transition = 'opacity 0.6s ease'; pArea.style.opacity = '1'; }
-    }, 400);
-    setTimeout(() => {
-      const org = document.getElementById('chart-org-line') as SVGPathElement | null;
-      if (org) { org.style.transition = 'stroke-dashoffset 2s 0ms cubic-bezier(.16,1,.3,1)'; org.style.strokeDashoffset = '0'; }
-    }, 600);
-    setTimeout(() => {
-      const oArea = document.getElementById('chart-org-area') as SVGPathElement | null;
-      if (oArea) { oArea.style.transition = 'opacity 0.8s ease'; oArea.style.opacity = '1'; }
-      const dot = document.getElementById('chart-dot');
-      const ring = document.getElementById('chart-ring');
-      const lOrg = document.getElementById('chart-label-org');
-      const lPaid = document.getElementById('chart-label-paid');
-      [dot, ring, lOrg, lPaid].forEach(el => {
-        if (el) { el.style.transition = 'opacity 0.4s ease'; el.style.opacity = '1'; }
+      ['chart-org-area','chart-dot','chart-ring','chart-label-org','chart-label-paid'].forEach(id => {
+        const el = document.getElementById(id); if(el){el.style.transition='opacity .4s ease';el.style.opacity='1';}
       });
-    }, 2400);
+    }, 2500);
     chartObs.unobserve(e.target);
   });
 }, { threshold: 0.3 });
-const heroChart = document.getElementById('hero-chart');
-if (heroChart) chartObs.observe(heroChart);
+const hc = document.getElementById('hero-chart');
+if (hc) chartObs.observe(hc);
 
-// ── Diagrama de entidade animado ──
-const entObs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    const ids = ['ent-center','ent-center-t1','ent-center-t2','ent-n1','ent-n2','ent-n3','ent-n4','ent-n5','ent-l1','ent-l2','ent-l3','ent-l4','ent-l5'];
-    ids.forEach((id, i) => {
-      const el = document.getElementById(id);
-      if (!el) return;
-      setTimeout(() => {
-        el.style.transition = 'opacity 0.5s ease, transform 0.5s cubic-bezier(.16,1,.3,1)';
-        el.style.opacity = '1';
-      }, i * 120);
-    });
-    entObs.unobserve(e.target);
-  });
-}, { threshold: 0.3 });
-const entDiag = document.getElementById('entity-diagram');
-if (entDiag) entObs.observe(entDiag);
-
-// ── Animações das camadas ──
+// ── Animações das camadas — FIX 3: camada 01 corrigida ──
 const layerAnims: Record<string, string> = {
-  'anim-01': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Core Web Vitals animados">
-    <text x="100" y="20" fill="rgba(255,255,255,.3)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CORE WEB VITALS</text>
-    <rect x="20" y="110" width="30" height="0" rx="1" fill="#4caf64" style="animation:scaleBar .8s .2s cubic-bezier(.16,1,.3,1) forwards"><animate attributeName="height" from="0" to="70" begin="0.2s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="110" to="40" begin="0.2s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
-    <rect x="65" y="110" width="30" height="0" rx="1" fill="#4caf64" opacity=".8"><animate attributeName="height" from="0" to="55" begin="0.4s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="110" to="55" begin="0.4s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
-    <rect x="110" y="110" width="30" height="0" rx="1" fill="#4caf64" opacity=".6"><animate attributeName="height" from="0" to="80" begin="0.6s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="110" to="30" begin="0.6s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
-    <rect x="155" y="110" width="30" height="0" rx="1" fill="#4caf64" opacity=".9"><animate attributeName="height" from="0" to="65" begin="0.8s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="110" to="45" begin="0.8s" dur="0.8s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
-    <text x="35" y="125" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">LCP</text>
-    <text x="80" y="125" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">CLS</text>
-    <text x="125" y="125" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">INP</text>
-    <text x="170" y="125" fill="rgba(255,255,255,.4)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">FCP</text>
-    <circle cx="35" cy="36" r="8" fill="none" stroke="#4caf64" stroke-width="2" stroke-dasharray="50" stroke-dashoffset="50"><animate attributeName="stroke-dashoffset" from="50" to="0" begin="1s" dur="0.5s" fill="freeze"/></circle>
-    <text x="35" y="40" fill="#4caf64" font-size="7" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif">✓</text>
+  'anim-01': `<svg viewBox="0 0 220 160" fill="none" style="width:100%;max-width:220px" aria-label="Core Web Vitals: barras de performance animadas">
+    <g opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.3s" fill="freeze"/>
+      <text x="8" y="14" fill="rgba(255,255,255,.3)" font-size="7" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">CORE WEB VITALS</text>
+      <circle cx="172" cy="10" r="10" fill="none" stroke="rgba(76,175,100,.4)" stroke-width="1.5" stroke-dasharray="63" stroke-dashoffset="63"><animate attributeName="stroke-dashoffset" from="63" to="0" begin="1.2s" dur="0.6s" fill="freeze"/></circle>
+      <text x="172" y="14" fill="#4caf64" font-size="8" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.8s" dur="0.2s" fill="freeze"/>✓</text>
+    </g>
+    <line x1="8" y1="140" x2="212" y2="140" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    <rect x="18" y="140" width="38" height="0" rx="1" fill="#4caf64"><animate attributeName="height" from="0" to="90" begin="0.3s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="50" begin="0.3s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="66" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".8"><animate attributeName="height" from="0" to="70" begin="0.5s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="70" begin="0.5s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="114" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".9"><animate attributeName="height" from="0" to="100" begin="0.7s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="40" begin="0.7s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="162" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".75"><animate attributeName="height" from="0" to="80" begin="0.9s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="60" begin="0.9s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <text x="37" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">LCP</text>
+    <text x="85" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">CLS</text>
+    <text x="133" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">INP</text>
+    <text x="181" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">FCP</text>
   </svg>`,
   'anim-02': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Diagrama de identidade de entidade">
     <circle cx="100" cy="70" r="28" fill="rgba(29,122,53,.2)" stroke="rgba(76,175,100,.5)" stroke-width="1.5"><animate attributeName="r" from="0" to="28" begin="0s" dur="0.6s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></circle>
@@ -765,27 +689,27 @@ const layerAnims: Record<string, string> = {
     <line x1="156" y1="107" x2="125" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.1s" dur="0.3s" fill="freeze"/></line>
   </svg>`,
   'anim-03': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Clusters de conteúdo semântico">
-    <text x="100" y="16" fill="rgba(255,255,255,.3)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CLUSTER SEMÂNTICO</text>
-    <rect x="65" y="28" width="70" height="28" rx="2" fill="rgba(29,122,53,.2)" stroke="rgba(76,175,100,.4)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
-    <text x="100" y="46" fill="#4caf64" font-size="9" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Página pilar</text>
-    <rect x="10" y="80" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.3s" dur="0.4s" fill="freeze"/></rect>
-    <text x="38" y="96" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 01</text>
-    <rect x="72" y="80" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.4s" fill="freeze"/></rect>
-    <text x="100" y="96" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 02</text>
-    <rect x="134" y="80" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/></rect>
-    <text x="162" y="96" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 03</text>
-    <line x1="100" y1="56" x2="38" y2="80" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
-    <line x1="100" y1="56" x2="100" y2="80" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
-    <line x1="100" y1="56" x2="162" y2="80" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
-    <rect x="30" y="116" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/></rect>
-    <text x="48" y="129" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">FAQ</text>
-    <rect x="82" y="116" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.75s" dur="0.4s" fill="freeze"/></rect>
-    <text x="100" y="129" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Case</text>
-    <rect x="134" y="116" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.4s" fill="freeze"/></rect>
-    <text x="152" y="129" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Guia</text>
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CLUSTER SEMÂNTICO</text>
+    <rect x="65" y="26" width="70" height="28" rx="2" fill="rgba(29,122,53,.2)" stroke="rgba(76,175,100,.4)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="44" fill="#4caf64" font-size="9" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Página pilar</text>
+    <rect x="10" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.3s" dur="0.4s" fill="freeze"/></rect>
+    <text x="38" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 01</text>
+    <rect x="72" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 02</text>
+    <rect x="134" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/></rect>
+    <text x="162" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 03</text>
+    <line x1="100" y1="54" x2="38" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <line x1="100" y1="54" x2="100" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <line x1="100" y1="54" x2="162" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <rect x="30" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/></rect>
+    <text x="48" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">FAQ</text>
+    <rect x="82" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.75s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Case</text>
+    <rect x="134" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.4s" fill="freeze"/></rect>
+    <text x="152" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Guia</text>
   </svg>`,
   'anim-04': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Citações por IAs generativas">
-    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CITAÇÕES POR IA</text>
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CITAÇÕES POR IA</text>
     <rect x="65" y="52" width="70" height="36" rx="2" fill="rgba(29,122,53,.15)" stroke="rgba(76,175,100,.35)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
     <text x="100" y="70" fill="#4caf64" font-size="9" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif">Sua empresa</text>
     <text x="100" y="82" fill="rgba(76,175,100,.6)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">fonte primária</text>
@@ -797,10 +721,10 @@ const layerAnims: Record<string, string> = {
     <line x1="160" y1="30" x2="128" y2="56" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.95s" dur="0.3s" fill="freeze"/></line>
     <line x1="60" y1="114" x2="75" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1s" dur="0.3s" fill="freeze"/></line>
     <line x1="152" y1="112" x2="130" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.05s" dur="0.3s" fill="freeze"/></line>
-    <circle cx="100" cy="70" r="40" fill="none" stroke="rgba(76,175,100,.12)" stroke-width="1" stroke-dasharray="6 4" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.4s" fill="freeze"/></circle>
+    <circle cx="100" cy="70" r="40" fill="none" stroke="rgba(76,175,100,.1)" stroke-width="1" stroke-dasharray="6 4" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.4s" fill="freeze"/></circle>
   </svg>`,
-  'anim-05': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Digital PR e crescimento de Domain Authority">
-    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">DOMAIN AUTHORITY</text>
+  'anim-05': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Crescimento de Domain Authority ao longo do tempo">
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">DOMAIN AUTHORITY</text>
     <path d="M20,110 C50,105 70,90 95,75 C115,62 130,50 160,35 C175,28 185,22 190,18" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400"><animate attributeName="stroke-dashoffset" from="400" to="0" begin="0.2s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></path>
     <path d="M20,110 C50,105 70,90 95,75 C115,62 130,50 160,35 C175,28 185,22 190,18 L190,120 Z" fill="rgba(29,122,53,.1)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.8s" fill="freeze"/></path>
     <line x1="20" y1="118" x2="190" y2="118" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
@@ -814,7 +738,6 @@ const layerAnims: Record<string, string> = {
   </svg>`
 };
 
-// Injetar SVG nas camadas
 Object.entries(layerAnims).forEach(([id, svg]) => {
   const el = document.getElementById(id);
   if (el) el.innerHTML = svg;
@@ -824,26 +747,20 @@ Object.entries(layerAnims).forEach(([id, svg]) => {
 document.querySelectorAll<HTMLElement>('.layer-header').forEach(header => {
   header.addEventListener('click', () => {
     const animId = header.dataset.layer || '';
-    const bodyId = `body-${animId}`;
-    const body = document.getElementById(bodyId);
+    const body = document.getElementById(`body-${animId}`);
     const isOpen = body?.classList.contains('open');
     document.querySelectorAll('.layer-body').forEach(b => b.classList.remove('open'));
     document.querySelectorAll('.layer-header').forEach(h => h.classList.remove('active'));
     if (!isOpen && body) {
       body.classList.add('open');
       header.classList.add('active');
-      // Reiniciar animação SVG ao abrir
       const wrap = document.getElementById(animId);
-      if (wrap) {
-        const html = wrap.innerHTML;
-        wrap.innerHTML = '';
-        setTimeout(() => { wrap.innerHTML = html; }, 50);
-      }
+      if (wrap) { const html = wrap.innerHTML; wrap.innerHTML = ''; setTimeout(() => { wrap.innerHTML = html; }, 50); }
     }
   });
 });
 
-// ── Dores interativas ──
+// ── Dores interativas — FIX 4: mobile inline + desktop lateral ──
 const dorData = [
   { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
   { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
@@ -858,54 +775,41 @@ document.querySelectorAll<HTMLElement>('.dor-btn').forEach(btn => {
     const idx = parseInt(btn.dataset.index || '0');
     document.querySelectorAll('.dor-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+
+    // Desktop: atualizar caixa lateral com fade
     const box = document.getElementById('dor-answer-box');
     const qEl = document.getElementById('dor-q');
     const aEl = document.getElementById('dor-a');
-    if (box) { box.classList.add('fade'); }
+    if (box) box.style.opacity = '0';
     setTimeout(() => {
       if (qEl) qEl.textContent = dorData[idx].q;
       if (aEl) aEl.innerHTML = dorData[idx].a;
-      if (box) { box.classList.remove('fade'); }
+      if (box) { box.style.transition = 'opacity .3s'; box.style.opacity = '1'; }
     }, 200);
+
+    // Mobile: toggle inline
+    document.querySelectorAll<HTMLElement>('.dor-inline-answer').forEach(el => el.classList.remove('open'));
+    const inline = document.querySelector<HTMLElement>(`.dor-inline-answer[data-inline="${idx}"]`);
+    if (inline) inline.classList.add('open');
   });
 });
 
 // ── Typeform ──
-const TOTAL_STEPS = 7;
 const answers: Record<number, string> = {};
-
-function getProgress(step: number) { return Math.round((step / TOTAL_STEPS) * 100); }
-
 function goTo(step: number) {
   document.querySelectorAll('.tf-step').forEach(s => s.classList.remove('active'));
   const next = document.getElementById(`tf-${step}`);
   if (next) next.classList.add('active');
   const bar = document.getElementById('tf-bar');
-  if (bar) bar.style.width = getProgress(step - 1) + '%';
+  if (bar) bar.style.width = Math.round(((step - 1) / 7) * 100) + '%';
 }
-
 function showSuccess() {
   document.querySelectorAll('.tf-step').forEach(s => s.classList.remove('active'));
   const bar = document.getElementById('tf-bar');
   if (bar) bar.style.width = '100%';
   const success = document.getElementById('tf-success');
   if (success) success.classList.add('show');
-
-  // Montar dados para GoHighLevel
-  const formData = {
-    desafio: answers[1] || '',
-    perfil: answers[2] || '',
-    faturamento: answers[3] || '',
-    seo_anterior: answers[4] || '',
-    site: (document.getElementById('tf-site') as HTMLInputElement)?.value || '',
-    nome: (document.getElementById('tf-name') as HTMLInputElement)?.value || '',
-    email: (document.getElementById('tf-email') as HTMLInputElement)?.value || '',
-  };
-  console.log('Lead capturado:', formData);
-  // TODO: enviar para GoHighLevel via fetch quando Pedro configurar o endpoint
 }
-
-// Cliques nas opções
 document.querySelectorAll<HTMLElement>('.tf-opt').forEach(opt => {
   opt.addEventListener('click', () => {
     const step = parseInt(opt.dataset.step || '0');
@@ -916,8 +820,6 @@ document.querySelectorAll<HTMLElement>('.tf-opt').forEach(opt => {
     if (nextBtn) nextBtn.disabled = false;
   });
 });
-
-// Botões próximo
 for (let i = 1; i <= 5; i++) {
   const btn = document.getElementById(`tf-next-${i}`) as HTMLButtonElement | null;
   btn?.addEventListener('click', () => { if (!btn.disabled) goTo(i + 1); });
@@ -926,27 +828,42 @@ document.getElementById('tf-next-6')?.addEventListener('click', () => goTo(7));
 document.getElementById('tf-next-7')?.addEventListener('click', () => {
   const email = (document.getElementById('tf-email') as HTMLInputElement)?.value;
   if (email && email.includes('@')) showSuccess();
-  else { const el = document.getElementById('tf-email') as HTMLInputElement; if (el) el.style.borderColor = 'rgba(220,80,60,.6)'; }
+  else { const el = document.getElementById('tf-email') as HTMLInputElement; if(el) el.style.borderColor='rgba(220,80,60,.6)'; }
 });
-
-// Botões voltar
 document.querySelectorAll<HTMLElement>('.tf-back').forEach(btn => {
-  btn.addEventListener('click', () => {
-    const goto = parseInt(btn.dataset.goto || '1');
-    goTo(goto);
-  });
-});
-
-// Habilitar próximo nos inputs de texto
-['tf-site','tf-name'].forEach((id, i) => {
-  const step = i + 5;
-  const input = document.getElementById(id) as HTMLInputElement | null;
-  const nextBtn = document.getElementById(`tf-next-${step}`) as HTMLButtonElement | null;
-  if (input && nextBtn) {
-    input.addEventListener('input', () => { nextBtn.disabled = input.value.length < 3; });
-    nextBtn.disabled = false; // opcional: liberar sem obrigatoriedade
-  }
+  btn.addEventListener('click', () => goTo(parseInt(btn.dataset.goto || '1')));
 });
 </script>
+
+<!-- FIX 6: CSS inline para garantir overflow hidden no header e mobile -->
+<style>
+html, body { max-width: 100vw; overflow-x: hidden; }
+.site-header { max-width: 100vw; overflow: hidden; }
+
+/* FIX 4: dores mobile */
+@media (max-width: 768px) {
+  .dores-layout { grid-template-columns: 1fr !important; }
+  #dor-answer-box { display: none !important; }
+  .dor-inline-answer { display: none; background: var(--n950); padding: 1.25rem 1.25rem 1.5rem; margin-top: -.5rem; margin-bottom: .5rem; border-left: 3px solid var(--g500); font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.7; }
+  .dor-inline-answer.open { display: block; }
+  .dor-inline-answer strong { color: var(--g400); font-weight: 600; }
+  /* FIX 6: header mobile */
+  .site-header > div, .site-header .wrap { padding-inline: 1rem !important; }
+  #desktop-nav { display: none !important; }
+  #burger { display: block !important; flex-shrink: 0; }
+}
+
+/* Statement grid — FIX 1: sem segundo traço */
+.statement-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+@media (max-width: 768px) { .statement-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* Entidade nodes grid responsive */
+#ent-nodes-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+@media (max-width: 768px) { #ent-nodes-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 480px) { #ent-nodes-grid { grid-template-columns: 1fr 1fr; } }
+
+/* Layer body grid responsive */
+@media (max-width: 768px) { .layer-body.open { grid-template-columns: 1fr !important; } }
+</style>
 
 </Page>
