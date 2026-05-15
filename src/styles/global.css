@@ -1,9 +1,8 @@
+/* ── Google Fonts ── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* ── Google Fonts ── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300..700;1,14..32,300..700&display=swap');
 
 /* ── Base resets ── */
 @layer base {
