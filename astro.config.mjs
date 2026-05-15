@@ -1,20 +1,13 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   site: 'https://organum.com.br',
-  integrations: [
-    mdx(),
-    sitemap({sitemap({
-      filter: (page) => !page.includes('/lp/'),
-    }),}),
-    tailwind({ applyBaseStyles: false }),
-  ],
+  integrations: [mdx()],
   output: 'static',
   compressHTML: true,
-  build: {
-    inlineStylesheets: 'auto',
+  vite: {
+    plugins: [tailwindcss()],
   },
 });
