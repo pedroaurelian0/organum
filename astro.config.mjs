@@ -7,13 +7,9 @@ export default defineConfig({
   site: 'https://organum.com.br',
   integrations: [
     mdx(),
-    sitemap({
-      changefreq: 'weekly',
-      priority: 0.7,
-      lastmod: new Date(),
-      customPages: ['https://organum.com.br/auditoria-gratuita/'],
+    sitemap({sitemap({
       filter: (page) => !page.includes('/lp/'),
-    }),
+    }),}),
     tailwind({ applyBaseStyles: false }),
   ],
   output: 'static',
