@@ -1,0 +1,175 @@
+---
+import { getCollection } from 'astro:content';
+import Page from '@layouts/Page.astro';
+import { clusterLabels } from '@content/config';
+
+const posts = await getCollection('blog', ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+
+const byCluster = posts.reduce((acc, post) => {
+  const c = post.data.cluster;
+  if (!acc[c]) acc[c] = [];
+  acc[c].push(post);
+  return acc;
+}, {} as Record<string, typeof posts>);
+
+const formatDate = (d: Date) =>
+  d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'short', year: 'numeric' });
+
+const clusterIcons: Record<string, string> = {
+  'geo-aeo': '◎',
+  'seo-tecnico': '⚙',
+  'seo-b2b': '▣',
+  'seo-ecommerce': '▤',
+  'entidade': '◈',
+  'digital-pr': '◉',
+};
+---
+
+<Page
+  title="Blog de SEO orgânico B2B | Organum"
+  description="Conteúdo técnico sobre GEO, identidade de entidade, SEO B2B e as 5 camadas do Método ORGANUM. Escrito por Pedro Aureliano com base em dados reais."
+  canonical="https://organum.com.br/blog/"
+  breadcrumbItems={[{ name: 'Blog', url: '/blog' }]}
+>
+
+<!-- Hero do blog -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Conteúdo técnico
+    </p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;max-width:18ch;">
+      Blog sobre SEO orgânico B2B — <em style="color:var(--g400);font-style:italic;">e o que vem depois do Google</em>
+    </h1>
+    <p style="margin-top:1.5rem;font-size:1rem;color:rgba(255,255,255,.45);max-width:48ch;line-height:1.75;">
+      Artigos técnicos sobre GEO, identidade de entidade, SEO B2B e as 5 camadas do Método ORGANUM. Baseados em dados reais de clientes.
+    </p>
+
+    {/* Clusters como filtros visuais */}
+    <div style="display:flex;flex-wrap:wrap;gap:.625rem;margin-top:2rem;">
+      {Object.entries(clusterLabels).map(([slug, label]) => (
+        <a
+          href={`#cluster-${slug}`}
+          style="display:inline-flex;align-items:center;gap:.375rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);font-size:.75rem;font-weight:600;letter-spacing:.06em;padding:.375rem .875rem;border-radius:999px;text-decoration:none;transition:all .2s;"
+          onmouseover="this.style.background='rgba(76,175,100,.12)';this.style.borderColor='rgba(76,175,100,.3)';this.style.color='var(--g400)'"
+          onmouseout="this.style.background='rgba(255,255,255,.05)';this.style.borderColor='rgba(255,255,255,.1)';this.style.color='rgba(255,255,255,.5)'"
+        >
+          {clusterIcons[slug]} {label}
+        </a>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- Artigos por cluster -->
+<section style="padding:clamp(3rem,8vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+
+    {posts.length === 0 ? (
+      <div style="text-align:center;padding:5rem 0;color:var(--n400);">
+        <p style="font-family:var(--serif);font-size:1.5rem;color:var(--n500);">Em breve os primeiros artigos.</p>
+        <a href="/auditoria-gratuita" style="display:inline-flex;margin-top:1.5rem;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita</a>
+      </div>
+    ) : (
+      <div style="display:flex;flex-direction:column;gap:5rem;">
+        {Object.entries(byCluster).map(([cluster, clusterPosts]) => (
+          <div id={`cluster-${cluster}`}>
+            {/* Cabeçalho do cluster */}
+            <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid var(--n200);">
+              <div style="display:flex;align-items:center;gap:.75rem;">
+                <span style="font-size:1.5rem;color:var(--g500);">{clusterIcons[cluster]}</span>
+                <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;color:var(--n950);letter-spacing:-.02em;">
+                  {clusterLabels[cluster as keyof typeof clusterLabels]}
+                </h2>
+              </div>
+              <a
+                href={`/blog/${cluster}`}
+                style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);text-decoration:none;white-space:nowrap;"
+              >
+                Ver todos →
+              </a>
+            </div>
+
+            {/* Grid de artigos */}
+            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem;" class="posts-grid">
+              {clusterPosts.map((post, i) => {
+                const slug = post.slug.split('/').pop();
+                const isPilar = i === 0;
+                return (
+                  <a
+                    href={`/blog/${cluster}/${slug}`}
+                    style={`border:1px solid var(--n200);padding:2rem;text-decoration:none;display:flex;flex-direction:column;gap:.875rem;transition:border-color .2s,transform .2s,background .2s;${isPilar ? 'border-left:3px solid var(--g500);' : ''}`}
+                    onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-3px)';this.style.background='var(--n50)'"
+                    onmouseout={`this.style.borderColor='${isPilar ? 'var(--g500)' : 'var(--n200)'}';this.style.transform='translateY(0)';this.style.background='transparent'`}
+                  >
+                    {/* Tag cluster + pilar */}
+                    <div style="display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;">
+                      <span style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--g50);color:var(--g700);border:1px solid var(--g200);padding:.2rem .625rem;border-radius:999px;">
+                        {clusterLabels[post.data.cluster]}
+                      </span>
+                      {isPilar && (
+                        <span style="font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--n950);color:var(--g400);border:1px solid rgba(76,175,100,.2);padding:.2rem .625rem;border-radius:999px;">
+                          Artigo pilar
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Título */}
+                    <h3 style="font-family:var(--serif);font-size:clamp(1.0625rem,2vw,1.25rem);font-weight:700;color:var(--n950);line-height:1.25;">
+                      {post.data.title}
+                    </h3>
+
+                    {/* Descrição */}
+                    <p style="font-size:.875rem;color:var(--n500);line-height:1.65;flex:1;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;">
+                      {post.data.description}
+                    </p>
+
+                    {/* Footer do card */}
+                    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;padding-top:.875rem;border-top:1px solid var(--n100);">
+                      <div style="display:flex;align-items:center;gap:.75rem;">
+                        <time datetime={post.data.publishedAt.toISOString()} style="font-size:.75rem;color:var(--n400);">
+                          {formatDate(post.data.publishedAt)}
+                        </time>
+                        {post.data.readingTime && (
+                          <span style="font-size:.75rem;color:var(--n400);">{post.data.readingTime} min</span>
+                        )}
+                      </div>
+                      <span style="font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);">
+                        Ler →
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</section>
+
+<!-- CTA final -->
+<section style="background:var(--n950);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">
+      Quer aplicar o Método ORGANUM na sua empresa?
+    </h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:2rem;">
+      Auditoria gratuita com diagnóstico técnico completo em até 48 horas.
+    </p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;">
+      Solicitar auditoria gratuita
+    </a>
+  </div>
+</section>
+
+</Page>
+
+<style>
+@media (max-width: 640px) {
+  .posts-grid { grid-template-columns: 1fr !important; }
+}
+</style>

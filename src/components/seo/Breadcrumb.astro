@@ -1,31 +1,17 @@
 ---
-/**
- * Breadcrumb.astro
- * Renderiza navegação de breadcrumb acessível + BreadcrumbList Schema.
- * O item "Home" é adicionado automaticamente como primeiro item.
- */
 import SchemaOrg from './SchemaOrg.astro';
 
 interface BreadcrumbItem {
   name: string;
   url: string;
 }
-
 interface Props {
   items: BreadcrumbItem[];
 }
-
 const { items } = Astro.props;
-
 const BASE = 'https://organum.com.br';
+const allItems: BreadcrumbItem[] = [{ name: 'Home', url: `${BASE}/` }, ...items];
 
-// Prepend Home automaticamente
-const allItems: BreadcrumbItem[] = [
-  { name: 'Home', url: `${BASE}/` },
-  ...items,
-];
-
-// Montar BreadcrumbList Schema
 const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: allItems.map((item, index) => ({
@@ -39,27 +25,22 @@ const breadcrumbSchema = {
 
 <SchemaOrg schema={breadcrumbSchema} />
 
-<nav aria-label="Breadcrumb" class="py-3">
-  <ol class="flex flex-wrap items-center gap-1.5 text-sm text-ink-400">
+<nav aria-label="Breadcrumb">
+  <ol style="display:flex;flex-wrap:wrap;align-items:center;gap:.375rem;list-style:none;padding:0;margin:0;">
     {allItems.map((item, index) => {
       const isLast = index === allItems.length - 1;
       return (
-        <li class="flex items-center gap-1.5">
+        <li style="display:flex;align-items:center;gap:.375rem;">
           {isLast ? (
-            <span class="text-ink-600 font-medium" aria-current="page">
+            <span style="font-size:.75rem;font-weight:600;color:var(--n600);" aria-current="page">
               {item.name}
             </span>
           ) : (
             <>
-              <a
-                href={item.url}
-                class="hover:text-brand-600 transition-colors no-underline"
-              >
+              <a href={item.url} style="font-size:.75rem;font-weight:500;color:var(--n400);text-decoration:none;transition:color .15s;" onmouseover="this.style.color='var(--n700)'" onmouseout="this.style.color='var(--n400)'">
                 {item.name}
               </a>
-              <span aria-hidden="true" class="text-ink-200 select-none">
-                /
-              </span>
+              <span style="font-size:.65rem;color:var(--n300);user-select:none;" aria-hidden="true">/</span>
             </>
           )}
         </li>

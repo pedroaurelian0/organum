@@ -1,0 +1,71 @@
+---
+import { getCollection } from 'astro:content';
+import Article from '@layouts/Article.astro';
+import { clusterLabels } from '@content/config';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((entry) => ({
+    params: { cluster: entry.data.cluster, slug: entry.slug.split('/').pop() },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const { title, description, publishedAt, updatedAt, author, cluster, ogImage, wordCount } = entry.data;
+const canonical = `https://organum.com.br/blog/${cluster}/${entry.slug.split('/').pop()}/`;
+
+const allPosts = await getCollection('blog', ({ data }) => !data.draft);
+const related = allPosts
+  .filter((p) => p.data.cluster === cluster && p.slug !== entry.slug)
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+  .slice(0, 2);
+---
+
+<Article
+  title={title}
+  description={description}
+  canonical={canonical}
+  ogImage={ogImage}
+  publishedAt={publishedAt.toISOString()}
+  updatedAt={updatedAt?.toISOString()}
+  author={author}
+  wordCount={wordCount}
+  cluster={cluster}
+  breadcrumbItems={[
+    { name: 'Blog', url: '/blog' },
+    { name: clusterLabels[cluster], url: `/blog/${cluster}` },
+    { name: title, url: canonical },
+  ]}
+>
+  <Content />
+
+  {related.length > 0 && (
+    <aside style="margin-top:4rem;padding-top:2.5rem;border-top:1px solid var(--n200);">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">Leia também</p>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;" class="related-grid">
+        {related.map((post) => {
+          const postSlug = post.slug.split('/').pop();
+          return (
+            <a
+              href={`/blog/${post.data.cluster}/${postSlug}`}
+              style="border:1px solid var(--n200);padding:1.5rem;text-decoration:none;transition:border-color .2s,background .2s;display:block;"
+              onmouseover="this.style.borderColor='var(--g400)';this.style.background='var(--n50)'"
+              onmouseout="this.style.borderColor='var(--n200)';this.style.background='transparent'"
+            >
+              <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--n400);margin-bottom:.5rem;">{clusterLabels[post.data.cluster]}</p>
+              <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--n900);line-height:1.3;margin-bottom:.5rem;">{post.data.title}</p>
+              <p style="font-size:.8125rem;color:var(--n500);line-height:1.55;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;">{post.data.description}</p>
+            </a>
+          );
+        })}
+      </div>
+    </aside>
+  )}
+</Article>
+
+<style>
+@media (max-width: 480px) { .related-grid { grid-template-columns: 1fr !important; } }
+</style>

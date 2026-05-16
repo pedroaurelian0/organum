@@ -3,6 +3,7 @@ import Base from './Base.astro';
 import Header from '@components/layout/Header.astro';
 import Footer from '@components/layout/Footer.astro';
 import Breadcrumb from '@components/seo/Breadcrumb.astro';
+import { clusterLabels } from '@content/config';
 
 interface Props {
   title: string;
@@ -13,6 +14,7 @@ interface Props {
   updatedAt?: string;
   author?: string;
   wordCount?: number;
+  cluster?: string;
   breadcrumbItems: Array<{ name: string; url: string }>;
   schemaExtra?: Record<string, unknown>[];
 }
@@ -26,19 +28,20 @@ const {
   updatedAt,
   author = 'Pedro Aureliano',
   wordCount,
+  cluster,
   breadcrumbItems,
   schemaExtra = [],
 } = Astro.props;
 
 const readingTime = wordCount ? Math.ceil(wordCount / 200) : null;
-
 const pubDate = new Date(publishedAt);
 const modDate = updatedAt ? new Date(updatedAt) : null;
 
 const formatDate = (d: Date) =>
   d.toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
 
-// Article Schema montado a partir das props
+const clusterLabel = cluster ? clusterLabels[cluster as keyof typeof clusterLabels] : null;
+
 const articleSchema = {
   '@type': 'Article',
   '@id': `${Astro.url.href}#article`,
@@ -56,15 +59,10 @@ const articleSchema = {
     '@type': 'Organization',
     '@id': 'https://organum.com.br/#organization',
   },
-  image: ogImage
-    ? { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 }
-    : undefined,
-  mainEntityOfPage: {
-    '@type': 'WebPage',
-    '@id': Astro.url.href,
-  },
+  image: ogImage ? { '@type': 'ImageObject', url: ogImage, width: 1200, height: 630 } : undefined,
+  mainEntityOfPage: { '@type': 'WebPage', '@id': Astro.url.href },
   inLanguage: 'pt-BR',
-  wordCount: wordCount,
+  wordCount,
 };
 
 const allSchemas = [articleSchema, ...schemaExtra];
@@ -83,56 +81,250 @@ const allSchemas = [articleSchema, ...schemaExtra];
 >
   <Header />
   <main>
-    <div class="container-page">
-      <Breadcrumb items={breadcrumbItems} />
-    </div>
 
-    <article class="container-prose py-10">
-      <!-- Cabeçalho do artigo -->
-      <header class="mb-10">
-        <h1 class="mb-5">{title}</h1>
-        <p class="text-xl text-ink-500 leading-relaxed mb-6">{description}</p>
+    <!-- Hero do artigo — fundo escuro, Playfair, estilo editorial -->
+    <section style="background:var(--n950);padding:clamp(3rem,8vh,5rem) clamp(1rem,4vw,3rem) 0;">
+      <div style="max-width:800px;margin-inline:auto;">
 
-        <div class="flex flex-wrap items-center gap-4 text-sm text-ink-400 pt-5 border-t border-ink-100">
-          <div class="flex items-center gap-2">
-            <div class="w-7 h-7 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 text-xs font-bold">
-              PA
-            </div>
-            <span class="font-medium text-ink-600">{author}</span>
+        <!-- Breadcrumb -->
+        <div style="margin-bottom:2rem;">
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
+
+        <!-- Cluster tag -->
+        {clusterLabel && (
+          <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(76,175,100,.1);border:1px solid rgba(76,175,100,.2);padding:.3rem .875rem;border-radius:999px;margin-bottom:1.25rem;">
+            <span style="width:5px;height:5px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;"></span>
+            <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g400);">{clusterLabel}</span>
           </div>
-          <time datetime={pubDate.toISOString()}>
+        )}
+
+        <!-- Título -->
+        <h1 style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.75rem);font-weight:900;line-height:1.02;letter-spacing:-.03em;color:#fff;margin-bottom:1.25rem;">{title}</h1>
+
+        <!-- Descrição -->
+        <p style="font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:56ch;margin-bottom:2rem;">{description}</p>
+
+        <!-- Meta: autor, data, leitura -->
+        <div style="display:flex;flex-wrap:wrap;align-items:center;gap:1.5rem;padding:1.25rem 0;border-top:1px solid rgba(255,255,255,.08);">
+          <div style="display:flex;align-items:center;gap:.625rem;">
+            <div style="width:32px;height:32px;background:rgba(76,175,100,.15);border:1px solid rgba(76,175,100,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:.75rem;font-weight:700;color:var(--g400);">PA</div>
+            <span style="font-size:.875rem;font-weight:500;color:rgba(255,255,255,.6);">{author}</span>
+          </div>
+          <time datetime={pubDate.toISOString()} style="font-size:.8125rem;color:rgba(255,255,255,.35);">
             {formatDate(pubDate)}
           </time>
           {modDate && modDate.toDateString() !== pubDate.toDateString() && (
-            <span>Atualizado em <time datetime={modDate.toISOString()}>{formatDate(modDate)}</time></span>
+            <span style="font-size:.8125rem;color:rgba(255,255,255,.25);">
+              Atualizado em <time datetime={modDate.toISOString()}>{formatDate(modDate)}</time>
+            </span>
           )}
           {readingTime && (
-            <span>{readingTime} min de leitura</span>
+            <span style="font-size:.8125rem;color:rgba(255,255,255,.35);">{readingTime} min de leitura</span>
           )}
           {wordCount && (
-            <span>{wordCount.toLocaleString('pt-BR')} palavras</span>
+            <span style="font-size:.8125rem;color:rgba(255,255,255,.25);">{wordCount.toLocaleString('pt-BR')} palavras</span>
           )}
         </div>
-      </header>
-
-      <!-- Conteúdo MDX -->
-      <div class="prose-organum">
-        <slot />
       </div>
 
-      <!-- CTA ao final -->
-      <div class="mt-16 p-8 bg-brand-50 border border-brand-100 rounded-xl text-center">
-        <p class="text-lg font-semibold text-ink-900 mb-2">
-          Quer aplicar isso no seu site?
-        </p>
-        <p class="text-ink-600 mb-5">
-          Solicite uma auditoria gratuita e receba o diagnóstico completo em até 48 horas.
-        </p>
-        <a href="/auditoria-gratuita" class="btn-primary">
-          Solicitar auditoria gratuita
-        </a>
+      <!-- Barra decorativa de separação hero → conteúdo -->
+      <div style="max-width:800px;margin-inline:auto;height:1px;background:linear-gradient(90deg,rgba(76,175,100,.4),rgba(76,175,100,.0));margin-top:0;"></div>
+    </section>
+
+    <!-- Conteúdo do artigo -->
+    <article style="padding:clamp(2.5rem,6vw,4rem) clamp(1rem,4vw,3rem);">
+      <div style="max-width:800px;margin-inline:auto;">
+        <div class="article-body">
+          <slot />
+        </div>
+
+        <!-- CTA inline ao final -->
+        <div style="margin-top:4rem;background:var(--n950);border:1px solid rgba(76,175,100,.2);padding:2.5rem;text-align:center;">
+          <p style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;margin-bottom:.75rem;line-height:1.2;">
+            Quer aplicar isso no seu site?
+          </p>
+          <p style="font-size:.9375rem;color:rgba(255,255,255,.5);margin-bottom:1.75rem;line-height:1.65;max-width:44ch;margin-inline:auto;">
+            Solicite uma auditoria gratuita e receba o diagnóstico técnico completo em até 48 horas.
+          </p>
+          <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--g700)'" onmouseout="this.style.background='var(--g600)'">
+            Solicitar auditoria gratuita
+          </a>
+        </div>
       </div>
     </article>
+
   </main>
   <Footer />
 </Base>
+
+<style>
+/* ── Prose do artigo ── */
+.article-body {
+  color: var(--n700);
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.article-body h2 {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  color: var(--n950);
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--n100);
+}
+
+.article-body h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.article-body h3 {
+  font-family: var(--serif);
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--n900);
+  line-height: 1.2;
+  margin-top: 2.5rem;
+  margin-bottom: .75rem;
+}
+
+.article-body h4 {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--n800);
+  margin-top: 2rem;
+  margin-bottom: .5rem;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  font-size: .8125rem;
+}
+
+.article-body p {
+  margin-bottom: 1.375rem;
+  color: var(--n600);
+  line-height: 1.8;
+}
+
+.article-body strong {
+  font-weight: 700;
+  color: var(--n900);
+}
+
+.article-body em {
+  font-style: italic;
+  color: var(--n700);
+}
+
+.article-body ul,
+.article-body ol {
+  margin: 1.25rem 0 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .625rem;
+}
+
+.article-body ul { list-style: none; padding-left: 0; }
+.article-body ul li { padding-left: 1.5rem; position: relative; color: var(--n600); line-height: 1.7; }
+.article-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--g500); font-weight: 700; }
+
+.article-body ol { list-style: decimal; }
+.article-body ol li { color: var(--n600); line-height: 1.7; padding-left: .25rem; }
+
+.article-body a {
+  color: var(--g600);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(29,122,53,.3);
+  transition: border-color .15s, color .15s;
+}
+.article-body a:hover {
+  color: var(--g700);
+  border-bottom-color: var(--g600);
+}
+
+.article-body blockquote {
+  border-left: 3px solid var(--g400);
+  padding: 1rem 1.5rem;
+  margin: 2rem 0;
+  background: var(--n50);
+  font-style: italic;
+  color: var(--n500);
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+}
+
+.article-body code {
+  background: var(--n100);
+  color: var(--n800);
+  font-size: .875em;
+  padding: .15em .4em;
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.article-body pre {
+  background: var(--n950);
+  color: rgba(255,255,255,.8);
+  padding: 1.5rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+  font-size: .875rem;
+  line-height: 1.7;
+}
+
+.article-body pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+}
+
+/* Tabelas */
+.article-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  font-size: .9rem;
+}
+.article-body th {
+  background: var(--n950);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .875rem 1rem;
+  text-align: left;
+  border: 1px solid rgba(255,255,255,.08);
+}
+.article-body td {
+  padding: .875rem 1rem;
+  border: 1px solid var(--n200);
+  color: var(--n600);
+  vertical-align: top;
+  line-height: 1.6;
+}
+.article-body tr:nth-child(even) td { background: var(--n50); }
+.article-body tr td:first-child { font-weight: 600; color: var(--n800); }
+
+/* Separador horizontal */
+.article-body hr {
+  border: none;
+  border-top: 1px solid var(--n200);
+  margin: 3rem 0;
+}
+
+@media (max-width: 640px) {
+  .article-body table { display: block; overflow-x: auto; }
+}
+</style>
