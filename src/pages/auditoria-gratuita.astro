@@ -1,225 +1,182 @@
 ---
-import LP from '@layouts/LP.astro';
+import Base from '@layouts/Base.astro';
+import SchemaOrg from '@components/seo/SchemaOrg.astro';
 
-const serviceSchema = {
+const schemaService = {
   '@type': 'Service',
   name: 'Auditoria de SEO Gratuita',
-  description: 'Análise técnica gratuita de SEO: Core Web Vitals, arquitetura de silos, Schema Markup e potencial de citação por IA. Resposta em até 48 horas.',
+  description: 'Análise técnica gratuita de SEO: Core Web Vitals, arquitetura, Schema Markup e potencial de citação por IA. Resposta em até 48 horas.',
   provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
   areaServed: { '@type': 'Country', name: 'Brasil' },
-  isRelatedTo: { '@type': 'Service', name: 'SEO Orgânico B2B' },
 };
-
-const coverageItems = [
-  'Core Web Vitals e performance técnica (LCP, CLS, INP)',
-  'Arquitetura de silos, crawl budget e indexação',
-  'Schema Markup e dados estruturados (presença e erros)',
-  'Potencial de citação por IAs — GEO/AEO readiness',
-  'Diagnóstico de conteúdo: clusters, E-E-A-T e gaps',
-  'Análise de backlinks e Domain Authority atual',
-];
-
-const miniCases = [
-  { client: 'HunterHunter', tag: 'B2B · Headhunting', result: 'Citada por ChatGPT e Perplexity. Leads orgânicos sem anúncios.' },
-  { client: '7+ Vacations', tag: 'Internacional · Flórida', result: 'SEO bilíngue PT/EN. Autoridade em dois mercados.' },
-];
-
-const faqItems = [
-  {
-    q: 'O que está incluído na auditoria?',
-    a: 'A auditoria cobre 6 áreas: performance técnica (Core Web Vitals), arquitetura do site (silos, crawl budget), Schema Markup e dados estruturados, potencial de GEO/AEO (citação por IAs), diagnóstico de conteúdo e análise de backlinks. Você recebe um relatório técnico detalhado com prioridades.',
-  },
-  {
-    q: 'Para quem é esta auditoria?',
-    a: 'Para empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce com faturamento acima de R$500k/ano que querem entender por que o site não está gerando leads orgânicos.',
-  },
-  {
-    q: 'O que acontece após enviar o formulário?',
-    a: 'Em até 48 horas úteis você recebe o relatório por e-mail. Se fizer sentido avançar, agendamos uma reunião de 30 minutos para apresentar as prioridades. Sem compromisso de contratação.',
-  },
-];
 ---
 
-<LP
+<Base
   title="Auditoria de SEO gratuita para B2B | Resposta em 48 horas — Organum"
-  description="Receba uma análise técnica gratuita do seu site: Core Web Vitals, arquitetura, Schema Markup e potencial de citação por IA. Sem compromisso."
+  description="Análise técnica gratuita do seu site: Core Web Vitals, Schema Markup, entidade digital e potencial de citação por IA. Pedro Aureliano responde em 48 horas."
   canonical="https://organum.com.br/auditoria-gratuita/"
-  schemaExtra={[serviceSchema]}
+  schemaExtra={[schemaService]}
 >
-  <!-- Header mínimo -->
-  <header class="border-b border-ink-100 py-4">
-    <div class="container-page flex items-center justify-between">
-      <a href="/" class="text-xl font-bold text-ink-950 no-underline">Organum</a>
-      <span class="text-sm text-ink-400 hidden sm:block">Auditoria gratuita — sem compromisso</span>
+<SchemaOrg schema={schemaService} />
+
+<header style="background:var(--n950);border-bottom:1px solid rgba(255,255,255,.06);padding:.875rem clamp(1rem,4vw,3rem);position:sticky;top:0;z-index:100;">
+  <div style="max-width:1280px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;">
+    <a href="/" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#fff;text-decoration:none;letter-spacing:-.02em;">Organum</a>
+    <div style="display:flex;align-items:center;gap:.5rem;">
+      <span style="width:7px;height:7px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;"></span>
+      <span style="font-size:.75rem;font-weight:600;color:rgba(255,255,255,.5);">Auditoria gratuita — sem compromisso</span>
     </div>
-  </header>
+  </div>
+</header>
 
-  <!-- Hero + Formulário -->
-  <section class="py-16 lg:py-24">
-    <div class="container-page">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem) clamp(3rem,7vh,5rem);overflow:hidden;position:relative;">
+  <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);background-size:60px 60px;pointer-events:none;"></div>
+  <div style="position:absolute;top:-20%;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse at center,rgba(46,145,71,.12) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="max-width:960px;margin-inline:auto;position:relative;z-index:1;text-align:center;">
+    <div style="display:inline-flex;align-items:center;gap:.625rem;background:rgba(46,145,71,.12);border:1px solid rgba(76,175,100,.3);padding:.4rem 1.25rem;border-radius:999px;margin-bottom:2rem;">
+      <span style="width:6px;height:6px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;"></span>
+      <span style="font-size:.7rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--g400);">Diagn&#xF3;stico t&#xE9;cnico completo &#x2014; 100% gratuito</span>
+    </div>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6.5vw,5.5rem);font-weight:900;line-height:.93;letter-spacing:-.035em;color:#fff;margin-bottom:1.75rem;">
+      Enquanto voc&#xEA; l&#xEA; isso,<br/>
+      <em style="color:var(--g400);font-style:italic;">seu concorrente est&#xE1; sendo citado pelo ChatGPT.</em>
+    </h1>
+    <p style="font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.55);line-height:1.7;max-width:54ch;margin-inline:auto;margin-bottom:2.5rem;">
+      Em 48 horas voc&#xEA; recebe o diagn&#xF3;stico t&#xE9;cnico completo do seu site &#x2014; de gra&#xE7;a, sem pitch de vendas. Pedro Aureliano analisa pessoalmente e entrega as prioridades.
+    </p>
+    <a href="#formulario" style="display:inline-flex;align-items:center;gap:.625rem;background:var(--g600);color:#fff;font-family:var(--sans);font-size:.9375rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1.125rem 2.5rem;border-radius:2px;text-decoration:none;transition:background .2s,transform .2s;box-shadow:0 0 40px rgba(46,145,71,.3);" onmouseover="this.style.background='var(--g700)';this.style.transform='translateY(-2px)'" onmouseout="this.style.background='var(--g600)';this.style.transform='translateY(0)'">
+      Quero minha auditoria gratuita <span style="font-size:.875rem;">&#x2193;</span>
+    </a>
+    <p style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.25);">Sem spam. Sem vendedor. Pedro responde pessoalmente.</p>
+    <div style="display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.07);">
+      <div style="text-align:center;"><span style="font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--g400);display:block;line-height:1;">60+</span><span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem;">Projetos</span></div>
+      <div style="text-align:center;"><span style="font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--g400);display:block;line-height:1;">6</span><span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem;">Pa&#xED;ses</span></div>
+      <div style="text-align:center;"><span style="font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--g400);display:block;line-height:1;">90d</span><span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem;">Para IA</span></div>
+      <div style="text-align:center;"><span style="font-family:var(--serif);font-size:1.75rem;font-weight:700;color:var(--g400);display:block;line-height:1;">48h</span><span style="font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.25rem;">Diagn&#xF3;stico</span></div>
+    </div>
+  </div>
+</section>
 
-        <!-- Coluna esquerda: benefícios -->
-        <div>
-          <div class="badge badge-brand mb-5">Resposta em até 48 horas</div>
-          <h1 class="text-4xl lg:text-5xl font-bold leading-tight mb-6">
-            Descubra por que seu site não está gerando leads B2B orgânicos
-          </h1>
-          <p class="text-xl text-ink-500 mb-8 leading-relaxed">
-            Análise técnica completa sem custo. Você recebe o diagnóstico — e decide se quer avançar.
-          </p>
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);text-align:center;margin-bottom:1rem;">Reconhece alguma dessas situa&#xE7;&#xF5;es?</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;text-align:center;margin-bottom:3rem;">Se sim, a auditoria vai revelar o porqu&#xEA; &#x2014; e como corrigir.</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="pains-grid">
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;transition:border-color .2s,transform .15s;" onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)'"><span style="font-size:1.5rem;display:block;margin-bottom:.875rem;">&#x1F4B8;</span><p style="font-size:.9375rem;font-style:italic;color:var(--n500);line-height:1.6;margin-bottom:.875rem;border-left:2px solid var(--n200);padding-left:.875rem;">"Invisto em ads todo m&#xEA;s mas o pipeline seca quando paro de pagar."</p><p style="font-size:.875rem;color:var(--g700);font-weight:500;line-height:1.65;display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2192;</span>A auditoria mostra o potencial de pipeline org&#xE2;nico &#x2014; o que voc&#xEA; poderia ter sem pagar por clique.</p></div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;transition:border-color .2s,transform .15s;" onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)'"><span style="font-size:1.5rem;display:block;margin-bottom:.875rem;">&#x1F916;</span><p style="font-size:.9375rem;font-style:italic;color:var(--n500);line-height:1.6;margin-bottom:.875rem;border-left:2px solid var(--n200);padding-left:.875rem;">"Meu concorrente aparece no ChatGPT. Eu n&#xE3;o existo para as IAs."</p><p style="font-size:.875rem;color:var(--g700);font-weight:500;line-height:1.65;display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2192;</span>Diagnosticamos sua entidade digital e GEO readiness &#x2014; o que falta para ser citado pelas IAs.</p></div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;transition:border-color .2s,transform .15s;" onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)'"><span style="font-size:1.5rem;display:block;margin-bottom:.875rem;">&#x1F4CA;</span><p style="font-size:.9375rem;font-style:italic;color:var(--n500);line-height:1.6;margin-bottom:.875rem;border-left:2px solid var(--n200);padding-left:.875rem;">"SEO funcionou antes mas o tr&#xE1;fego parou de crescer h&#xE1; meses."</p><p style="font-size:.875rem;color:var(--g700);font-weight:500;line-height:1.65;display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2192;</span>Identificamos o bloqueio t&#xE9;cnico exato: Core Web Vitals, crawl budget, silos ou gaps de conte&#xFA;do.</p></div>
+      <div style="background:var(--n0);border:1px solid var(--n200);padding:2rem;transition:border-color .2s,transform .15s;" onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-3px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)'"><span style="font-size:1.5rem;display:block;margin-bottom:.875rem;">&#x1F3D7;&#xFE0F;</span><p style="font-size:.9375rem;font-style:italic;color:var(--n500);line-height:1.6;margin-bottom:.875rem;border-left:2px solid var(--n200);padding-left:.875rem;">"J&#xE1; contratei ag&#xEA;ncia de SEO mas nunca vi resultado em pipeline."</p><p style="font-size:.875rem;color:var(--g700);font-weight:500;line-height:1.65;display:flex;gap:.5rem;align-items:flex-start;"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2192;</span>A auditoria mostra o que as ag&#xEA;ncias anteriores ignoraram: funda&#xE7;&#xE3;o t&#xE9;cnica e entidade digital.</p></div>
+    </div>
+  </div>
+</section>
 
-          <div class="space-y-3 mb-10">
-            {coverageItems.map((item) => (
-              <div class="flex items-start gap-3">
-                <span class="text-brand-500 mt-0.5 flex-shrink-0">✓</span>
-                <span class="text-ink-700">{item}</span>
-              </div>
-            ))}
-          </div>
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.05;text-align:center;color:#fff;margin-bottom:.75rem;">O diagn&#xF3;stico que ag&#xEA;ncias cobram R$3.000.<br/><em style="color:var(--g400);font-style:italic;">Aqui &#xE9; gratuito.</em></h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.4);text-align:center;max-width:44ch;margin-inline:auto;line-height:1.7;margin-bottom:3rem;">N&#xE3;o &#xE9; um relat&#xF3;rio gen&#xE9;rico de ferramenta. Pedro analisa o seu site pessoalmente.</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.07);" class="coverage-grid">
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">01</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Core Web Vitals</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">LCP, CLS e INP medidos em mobile e desktop. O que est&#xE1; reprovado e como corrigir.</p></div>
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">02</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Arquitetura t&#xE9;cnica</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">Silos, crawl budget, redirecionamentos e erros de indexa&#xE7;&#xE3;o.</p></div>
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">03</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Schema Markup</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">Organization, Person, FAQPage &#x2014; presen&#xE7;a e qualidade dos dados estruturados.</p></div>
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">04</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Identidade de entidade</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">Knowledge Graph, Wikidata, sameAs. Sua empresa existe para o Google e as IAs?</p></div>
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">05</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">GEO readiness</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">Potencial de cita&#xE7;&#xE3;o por ChatGPT, Gemini e Perplexity. O que falta para aparecer nas IAs.</p></div>
+      <div style="background:var(--n950);padding:2rem;"><span style="font-family:var(--serif);font-size:2rem;font-weight:700;color:rgba(255,255,255,.1);display:block;line-height:1;margin-bottom:.75rem;">06</span><p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Gaps de conte&#xFA;do</p><p style="font-size:.8125rem;color:rgba(255,255,255,.4);line-height:1.65;">Clusters ausentes, keywords do ICP sem cobertura, gaps de E-E-A-T.</p></div>
+    </div>
+  </div>
+</section>
 
-          <div class="border border-ink-100 rounded-xl p-5 bg-ink-50">
-            <p class="text-sm text-ink-500 mb-2">Empresas que já passaram pela auditoria:</p>
-            <p class="font-semibold text-ink-800">HunterHunter · 7+ Vacations · Global Electronics e outros</p>
-          </div>
-        </div>
-
-        <!-- Coluna direita: formulário -->
-        <div class="bg-white border border-ink-200 rounded-2xl p-8 shadow-sm">
-          <h2 class="text-2xl font-bold text-ink-900 mb-1">Solicite sua auditoria gratuita</h2>
-          <p class="text-ink-500 text-sm mb-7">Preencha abaixo — resposta em até 48 horas úteis.</p>
-
-          <form
-            action="https://link.gohighlevel.com/widget/form/PLACEHOLDER"
-            method="POST"
-            class="space-y-5"
-          >
-            <div>
-              <label for="name" class="block text-sm font-medium text-ink-700 mb-1.5">
-                Nome completo <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                required
-                placeholder="Pedro Aureliano"
-                class="w-full"
-              />
-            </div>
-
-            <div>
-              <label for="email" class="block text-sm font-medium text-ink-700 mb-1.5">
-                E-mail corporativo <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                placeholder="pedro@suaempresa.com.br"
-                class="w-full"
-              />
-            </div>
-
-            <div>
-              <label for="site" class="block text-sm font-medium text-ink-700 mb-1.5">
-                Site da empresa <span class="text-red-500">*</span>
-              </label>
-              <input
-                type="url"
-                id="site"
-                name="site"
-                required
-                placeholder="https://suaempresa.com.br"
-                class="w-full"
-              />
-            </div>
-
-            <div>
-              <label for="revenue" class="block text-sm font-medium text-ink-700 mb-1.5">
-                Faturamento mensal aproximado
-              </label>
-              <select id="revenue" name="revenue" class="w-full">
-                <option value="">Selecione…</option>
-                <option value="ate-250k">Até R$250k</option>
-                <option value="250k-1m">R$250k – R$1M</option>
-                <option value="1m-10m">R$1M – R$10M</option>
-                <option value="acima-10m">Acima de R$10M</option>
-              </select>
-            </div>
-
-            <div>
-              <label for="challenge" class="block text-sm font-medium text-ink-700 mb-1.5">
-                Maior desafio atual com SEO
-              </label>
-              <textarea
-                id="challenge"
-                name="challenge"
-                rows={3}
-                placeholder="Ex: não aparecemos no Google para as palavras-chave certas, tráfego orgânico parado há meses…"
-                class="w-full resize-none"
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn-primary w-full justify-center text-base py-3.5">
-              Solicitar auditoria gratuita
-            </button>
-
-            <p class="text-xs text-ink-400 text-center">
-              Sem spam. Sem vendedor. Apenas o diagnóstico técnico do seu site.
-            </p>
-          </form>
-        </div>
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;" class="who-grid">
+    <div>
+      <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-bottom:1.25rem;">Pedro Aureliano analisa pessoalmente. N&#xE3;o um estagi&#xE1;rio. N&#xE3;o uma ferramenta autom&#xE1;tica.</h2>
+      <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">60+ projetos em 6 pa&#xED;ses. MBA Internacional em Marketing. Criador do M&#xE9;todo ORGANUM &#x2014; a &#xFA;nica abordagem brasileira que entrega GEO sistematicamente.</p>
+      <div style="display:flex;flex-direction:column;gap:.75rem;">
+        <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:var(--n600);"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2713;</span>An&#xE1;lise manual &#x2014; n&#xE3;o &#xE9; relat&#xF3;rio de ferramenta</div>
+        <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:var(--n600);"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2713;</span>Resposta em at&#xE9; 48 horas &#xFA;teis</div>
+        <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:var(--n600);"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2713;</span>Sem obriga&#xE7;&#xE3;o de contrata&#xE7;&#xE3;o</div>
+        <div style="display:flex;align-items:center;gap:.75rem;font-size:.875rem;color:var(--n600);"><span style="color:var(--g500);font-weight:700;flex-shrink:0;">&#x2713;</span>Pedro responde d&#xFA;vidas por e-mail</div>
       </div>
     </div>
-  </section>
-
-  <!-- Mini cases -->
-  <section class="bg-ink-50 py-16">
-    <div class="container-page max-w-3xl">
-      <p class="text-sm font-medium text-ink-400 text-center uppercase tracking-wider mb-8">
-        Resultados de clientes que começaram com uma auditoria
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        {miniCases.map((c) => (
-          <div class="card">
-            <div class="badge-ink mb-3">{c.tag}</div>
-            <p class="font-bold text-ink-900 mb-1">{c.client}</p>
-            <p class="text-sm text-ink-600">{c.result}</p>
-          </div>
-        ))}
-      </div>
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
+      <div style="background:var(--n950);border:1px solid rgba(76,175,100,.2);padding:2rem;position:relative;"><span style="font-family:var(--serif);font-size:3.5rem;color:rgba(76,175,100,.15);position:absolute;top:.75rem;left:1.5rem;line-height:1;">"</span><p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:#fff;line-height:1.4;margin-bottom:1rem;position:relative;z-index:1;font-style:italic;">Chegaram leads excelentes esse m&#xEA;s, os melhores com certeza. Me falaram que pesquisaram no ChatGPT.</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:36px;height:36px;background:rgba(76,175,100,.15);border:1px solid rgba(76,175,100,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--g400);">PC</div><div><p style="font-size:.875rem;font-weight:700;color:#fff;">Pedro Capizane</p><p style="font-size:.75rem;color:rgba(255,255,255,.4);">CEO &#x2014; HunterHunter</p></div></div></div>
+      <div style="background:var(--n950);border:1px solid rgba(255,255,255,.08);padding:2rem;position:relative;"><span style="font-family:var(--serif);font-size:3.5rem;color:rgba(255,255,255,.06);position:absolute;top:.75rem;left:1.5rem;line-height:1;">"</span><p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:#fff;line-height:1.4;margin-bottom:1rem;position:relative;z-index:1;font-style:italic;">Toda empresa que tenho eu conto com o Pedro para desenvolver a estrutura digital. Sempre muito eficiente.</p><div style="display:flex;align-items:center;gap:.75rem;"><div style="width:36px;height:36px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.5);">EO</div><div><p style="font-size:.875rem;font-weight:700;color:#fff;">Elton Oliveira</p><p style="font-size:.75rem;color:rgba(255,255,255,.4);">Fundador &#x2014; 7+ Vacations</p></div></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQ -->
-  <section class="py-16">
-    <div class="container-page max-w-2xl">
-      <h2 class="text-2xl font-bold text-ink-900 mb-8">Dúvidas frequentes</h2>
-      <div class="space-y-3">
-        {faqItems.map((item) => (
-          <details class="card cursor-pointer group">
-            <summary class="flex items-center justify-between font-semibold text-ink-900 list-none cursor-pointer">
-              {item.q}
-              <span class="text-ink-400 text-xl group-open:rotate-45 transition-transform flex-shrink-0 ml-4">+</span>
-            </summary>
-            <p class="mt-4 text-ink-600 leading-relaxed text-sm">{item.a}</p>
-          </details>
-        ))}
+<section id="formulario" style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="display:inline-flex;align-items:center;gap:.625rem;background:rgba(220,100,50,.1);border:1px solid rgba(220,100,50,.2);padding:.4rem 1.25rem;border-radius:999px;margin-bottom:1.5rem;">
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(220,130,80,.9);">&#x23F1; An&#xE1;lise manual &#x2014; vagas limitadas por semana</span>
       </div>
+      <h2 style="font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;margin-bottom:1rem;">Solicite agora.<br/><em style="color:var(--g400);font-style:italic;">Resposta em at&#xE9; 48 horas.</em></h2>
+      <p style="font-size:1rem;color:rgba(255,255,255,.45);max-width:44ch;margin-inline:auto;line-height:1.7;">Preencha abaixo. Pedro analisa pessoalmente e envia o diagn&#xF3;stico. Sem spam, sem CRM autom&#xE1;tico, sem vendedor.</p>
     </div>
-  </section>
+    <div style="background:#0e0c0a;border:1px solid rgba(76,175,100,.2);overflow:hidden;box-shadow:0 0 80px rgba(46,145,71,.1);">
+      <iframe
+        src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
+        style="width:100%;height:660px;border:none;display:block;"
+        id="inline-auditoria"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Auditoria Gratuita — Organum"
+        data-height="624"
+        data-layout-iframe-id="inline-auditoria"
+        data-form-id="Gpue5KmcF2LTfDXD1Jcf"
+        title="Formul&#xE1;rio de auditoria gratuita &#x2014; Organum"
+        loading="lazy"
+      ></iframe>
+    </div>
+    <p style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.2);text-align:center;">Seus dados s&#xE3;o protegidos conforme a LGPD. <a href="/privacidade" style="color:rgba(255,255,255,.3);text-decoration:none;">Ver pol&#xED;tica de privacidade</a></p>
+  </div>
+</section>
 
-  <!-- Footer mínimo -->
-  <footer class="border-t border-ink-100 py-6">
-    <div class="container-page flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-ink-400">
-      <p>© {new Date().getFullYear()} Organum. Todos os direitos reservados.</p>
-      <div class="flex gap-4">
-        <a href="/privacidade" class="hover:text-ink-600 no-underline">Privacidade</a>
-        <a href="/termos" class="hover:text-ink-600 no-underline">Termos</a>
-        <a href="/" class="hover:text-ink-600 no-underline">← Voltar ao site</a>
-      </div>
+<section style="padding:clamp(4rem,8vw,5rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">D&#xFA;vidas frequentes</h2>
+    <details style="border-bottom:1px solid var(--n200);"><summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">A auditoria &#xE9; realmente gratuita?<span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span></summary><p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">Sim. Sem custo, sem obriga&#xE7;&#xE3;o de contrata&#xE7;&#xE3;o e sem pitch de vendas. Pedro analisa o site e entrega o diagn&#xF3;stico por e-mail. Se fizer sentido avan&#xE7;ar, voc&#xEA; decide.</p></details>
+    <details style="border-bottom:1px solid var(--n200);"><summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">O que est&#xE1; inclu&#xED;do?<span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span></summary><p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">6 &#xE1;reas: Core Web Vitals, arquitetura t&#xE9;cnica, Schema Markup, identidade de entidade digital, GEO readiness e gaps de conte&#xFA;do. Voc&#xEA; recebe um relat&#xF3;rio com as prioridades ordenadas por impacto.</p></details>
+    <details style="border-bottom:1px solid var(--n200);"><summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">Para quem &#xE9; esta auditoria?<span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span></summary><p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">Empresas B2B (consultoria, SaaS, ind&#xFA;stria, distribuidora) e e-commerce com faturamento acima de R$500k/ano que querem crescer sem depender de tr&#xE1;fego pago.</p></details>
+    <details style="border-bottom:1px solid var(--n200);"><summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--n900);gap:1rem;">O que acontece depois?<span style="width:26px;height:26px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.875rem;color:var(--n500);">+</span></summary><p style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n600);line-height:1.75;max-width:58ch;">Em at&#xE9; 48 horas &#xFA;teis voc&#xEA; recebe o diagn&#xF3;stico por e-mail. Se quiser discutir os resultados, agendamos 30 minutos. Sem press&#xE3;o, sem pacote de entrada obrigat&#xF3;rio.</p></details>
+  </div>
+</section>
+
+<section style="background:var(--g800);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;color:#fff;line-height:1.05;letter-spacing:-.025em;margin-bottom:1rem;">Ainda aqui?<br/>Seu concorrente j&#xE1; pediu a auditoria.</h2>
+    <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:2rem;">48 horas. Diagn&#xF3;stico completo. Gratuito.</p>
+    <a href="#formulario" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--g800);font-family:var(--sans);font-size:.9375rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1.125rem 2.5rem;border-radius:2px;text-decoration:none;">Solicitar auditoria gratuita &#x2191;</a>
+  </div>
+</section>
+
+<footer style="background:var(--n950);border-top:1px solid rgba(255,255,255,.06);padding:1.5rem clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;">
+    <p style="font-size:.75rem;color:rgba(255,255,255,.25);">&#xA9; 2025 Organum. Todos os direitos reservados.</p>
+    <div style="display:flex;gap:1.5rem;">
+      <a href="/privacidade" style="font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none;">Privacidade</a>
+      <a href="/termos" style="font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none;">Termos</a>
+      <a href="/" style="font-size:.75rem;color:rgba(255,255,255,.25);text-decoration:none;">&#x2190; Voltar ao site</a>
     </div>
-  </footer>
-</LP>
+  </div>
+</footer>
+
+<script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
+
+<style>
+@media (max-width: 768px) {
+  .pains-grid { grid-template-columns: 1fr !important; }
+  .coverage-grid { grid-template-columns: 1fr 1fr !important; }
+  .who-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 480px) {
+  .coverage-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+</Base>
