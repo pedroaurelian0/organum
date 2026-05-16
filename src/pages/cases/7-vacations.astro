@@ -1,0 +1,266 @@
+---
+import Case from '@layouts/Case.astro';
+
+const schema = [
+  {
+    '@type': 'Article',
+    '@id': 'https://organum.com.br/cases/7-vacations/#article',
+    headline: '7+ Vacations: 100% no PageSpeed em menos de 30 dias — SEO bilíngue PT/EN',
+    description: 'Como a Organum entregou fundação técnica perfeita para empresa de gestão de mansões na Califórnia, com 100% no PageSpeed e estrutura SEO bilíngue PT/EN.',
+    author: { '@type': 'Person', '@id': 'https://organum.com.br/sobre/pedro-aureliano/#person' },
+    publisher: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+    datePublished: '2025-04-01',
+    inLanguage: 'pt-BR',
+  },
+  {
+    '@type': 'Review',
+    itemReviewed: {
+      '@type': 'Service',
+      name: 'Método ORGANUM — SEO e estrutura digital',
+      provider: { '@type': 'Organization', '@id': 'https://organum.com.br/#organization' },
+    },
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'Elton Oliveira', jobTitle: 'Fundador', worksFor: { '@type': 'Organization', name: '7+ Vacations', url: 'https://7plusvacations.com' } },
+    reviewBody: 'Toda empresa que tenho eu conto com o Pedro para desenvolver a sua estrutura digital, sempre muito eficiente e cria sites visualmente impactantes.',
+  },
+];
+---
+
+<Case
+  title="7+ Vacations: 100% no PageSpeed em menos de 30 dias"
+  description="Site bilíngue PT/EN para gestão de mansões na Califórnia com fundação técnica perfeita — 100% no Google PageSpeed desde o lançamento."
+  client="7+ Vacations"
+  sector="Gestão de propriedade de luxo · Califórnia, EUA"
+  result="100% PageSpeed · SEO bilíngue PT/EN · Fundação técnica perfeita"
+  metrics={[
+    { label: 'PageSpeed Score', value: '100%' },
+    { label: 'Prazo de entrega', value: '< 30d' },
+    { label: 'Mercados', value: 'PT + EN' },
+    { label: 'Core Web Vitals', value: '✓ 100%' },
+  ]}
+  breadcrumbItems={[{ name: 'Cases', url: '/cases' }, { name: '7+ Vacations', url: '/cases/7-vacations' }]}
+  schemaExtra={schema}
+>
+
+<!-- ══════════ CONTEXTO ══════════ -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:900px;margin-inline:auto;">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3rem;" class="two-col">
+      <div>
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+          <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+          A empresa
+        </p>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;">Quem é a 7+ Vacations</h2>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1rem;">
+          A <a href="https://7plusvacations.com" target="_blank" rel="noopener noreferrer" style="color:var(--g600);font-weight:500;">7+ Vacations</a> é uma empresa fundada por Elton Oliveira especializada em gestão de propriedades de luxo na Califórnia — incluindo mansões de alto padrão para aluguel de temporada e gestão completa de imóveis premium.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          Com mercado principal nos EUA e clientes falantes de português e inglês, a empresa precisava de uma presença digital que funcionasse perfeitamente nos dois idiomas e com a performance técnica exigida pelo mercado americano de luxo.
+        </p>
+      </div>
+      <div>
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+          <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+          O desafio
+        </p>
+        <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1.25rem;">O que precisava ser resolvido</h2>
+        <div style="display:flex;flex-direction:column;gap:.75rem;">
+          {[
+            { t: 'Site bilíngue PT/EN', d: 'Dois mercados com comportamentos de busca completamente diferentes' },
+            { t: 'Mercado americano de luxo', d: 'Google nos EUA tem critérios de performance mais rigorosos' },
+            { t: 'SEO técnico do zero', d: 'Novo site precisava nascer com fundação técnica perfeita' },
+            { t: 'Prazo agressivo', d: 'Entrega completa em menos de 30 dias com qualidade máxima' },
+            { t: 'Identidade de entidade internacional', d: 'Empresa brasileira operando nos EUA — entidade em dois contextos' },
+          ].map(item => (
+            <div style="background:var(--n0);border:1px solid var(--n200);padding:1rem;display:grid;grid-template-columns:auto 1fr;gap:.75rem;align-items:start;">
+              <span style="width:6px;height:6px;background:var(--g500);border-radius:50%;margin-top:.4rem;flex-shrink:0;display:block;"></span>
+              <div>
+                <p style="font-size:.875rem;font-weight:600;color:var(--n800);">{item.t}</p>
+                <p style="font-size:.8125rem;color:var(--n500);">{item.d}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ O QUE FOI ENTREGUE ══════════ -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:900px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Entrega
+    </p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2.5rem;">
+      O que a Organum entregou em menos de 30 dias
+    </h2>
+
+    <!-- Destaque: 100% PageSpeed -->
+    <div style="background:var(--n950);border:1px solid rgba(76,175,100,.25);padding:2.5rem;margin-bottom:2rem;display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;" class="score-card">
+      <div style="text-align:center;">
+        <span style="font-family:var(--serif);font-size:4.5rem;font-weight:900;color:var(--g400);line-height:1;display:block;">100</span>
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(76,175,100,.6);">PageSpeed Score</span>
+      </div>
+      <div>
+        <p style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:#fff;margin-bottom:.625rem;">Pontuação perfeita no Google PageSpeed Insights</p>
+        <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;">
+          O Google PageSpeed avalia performance, acessibilidade, boas práticas e SEO. Atingir 100% em todas as categorias desde o lançamento é o resultado de uma fundação técnica construída com a Camada 01 do Método ORGANUM aplicada desde o primeiro dia de desenvolvimento.
+        </p>
+      </div>
+    </div>
+
+    <!-- Entregas detalhadas -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="deliverables-grid">
+      {[
+        {
+          icon: '⚙',
+          title: 'Fundação técnica perfeita',
+          items: ['Core Web Vitals aprovados — LCP, CLS e INP no verde', 'Arquitetura de silos para PT e EN independentes', 'Schema markup completo em JSON-LD', 'Sitemap bilíngue com hreflang correto'],
+        },
+        {
+          icon: '◈',
+          title: 'Entidade digital internacional',
+          items: ['Schema Organization bilíngue', 'Google Business Profile EUA configurado', 'sameAs cruzados para empresa brasileira nos EUA', 'Meta tags alternativas PT/EN para cada URL'],
+        },
+        {
+          icon: '◎',
+          title: 'SEO bilíngue PT/EN',
+          items: ['URLs separadas por idioma — /en/ e /pt/', 'hreflang correto para evitar canibalização', 'Títulos e descriptions otimizados em PT e EN', 'Keywords mapeadas para os dois mercados'],
+        },
+        {
+          icon: '✦',
+          title: 'Design visualmente impactante',
+          items: ['Identidade visual alinhada ao mercado de luxo americano', 'Imagens otimizadas em WebP para máxima performance', 'Layout responsivo mobile-first', 'Experiência de usuário premium em PT e EN'],
+        },
+      ].map(d => (
+        <div style="background:white;border:1px solid var(--n200);padding:2rem;">
+          <span style="font-size:1.25rem;display:block;margin-bottom:.875rem;">{d.icon}</span>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--n900);margin-bottom:.875rem;">{d.title}</p>
+          <div style="display:flex;flex-direction:column;gap:.5rem;">
+            {d.items.map(item => (
+              <div style="display:flex;align-items:flex-start;gap:.625rem;font-size:.8125rem;color:var(--n600);">
+                <span style="color:var(--g500);font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
+                {item}
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ DEPOIMENTO ══════════ -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:900px;margin-inline:auto;">
+    <div style="border:1px solid rgba(76,175,100,.25);padding:3rem;position:relative;">
+      <span style="font-family:var(--serif);font-size:5rem;font-weight:900;color:rgba(76,175,100,.15);position:absolute;top:1rem;left:2rem;line-height:1;">"</span>
+      <blockquote style="position:relative;z-index:1;">
+        <p style="font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:#fff;line-height:1.35;margin-bottom:2rem;font-style:italic;">
+          Toda empresa que tenho eu conto com o Pedro para desenvolver a sua estrutura digital, sempre muito eficiente e cria sites visualmente impactantes.
+        </p>
+        <footer style="display:flex;align-items:center;gap:1rem;">
+          <div style="width:44px;height:44px;background:rgba(76,175,100,.15);border:1px solid rgba(76,175,100,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-weight:700;color:var(--g400);font-size:.875rem;flex-shrink:0;">EO</div>
+          <div>
+            <p style="font-weight:700;color:#fff;font-size:.9375rem;">Elton Oliveira</p>
+            <p style="font-size:.8125rem;color:rgba(255,255,255,.4);">Fundador · <a href="https://7plusvacations.com" target="_blank" rel="noopener noreferrer" style="color:var(--g400);text-decoration:none;">7+ Vacations</a></p>
+          </div>
+        </footer>
+      </blockquote>
+    </div>
+
+    <div style="margin-top:2rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:1.75rem;">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.75rem;">O que isso significa</p>
+      <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.75;">
+        Elton Oliveira escolhe a Organum para <strong style="color:#fff;">todas as suas empresas</strong> — não apenas para a 7+ Vacations. Isso é o resultado mais poderoso de qualquer serviço B2B: um cliente que volta e confia para novos projetos. A 7+ Vacations é o case que prova que o Método ORGANUM funciona <strong style="color:#fff;">internacionalmente, em inglês, em menos de 30 dias</strong>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ POR QUE ISSO É DIFERENTE ══════════ -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:900px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Diferencial
+    </p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">
+      Por que 100% no PageSpeed é raro — e por que importa
+    </h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="two-col">
+      <div>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          A grande maioria dos sites brasileiros tem pontuação entre 40 e 70 no PageSpeed — considerada "ruim" pelo Google. Sites de agências de marketing costumam ter performance ainda pior, por causa do peso excessivo de scripts de tracking, fontes não otimizadas e imagens sem compressão.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;margin-bottom:1.25rem;">
+          Atingir 100% exige que cada decisão técnica — desde o servidor até o último pixel de CSS — seja tomada com performance como prioridade número 1. É a implementação da Camada 01 do Método ORGANUM levada ao limite.
+        </p>
+        <p style="font-size:.9375rem;color:var(--n600);line-height:1.8;">
+          Para um negócio de luxo operando nos EUA, essa performance não é apenas SEO — é <strong style="color:var(--n900);">credibilidade</strong>. Um site que carrega instantaneamente transmite excelência operacional antes de qualquer palavra ser lida.
+        </p>
+      </div>
+      <div style="background:var(--n50);border:1px solid var(--n200);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--n400);margin-bottom:1.25rem;">Comparativo de performance</p>
+        {[
+          { label: 'Média de sites brasileiros', score: '52', color: 'rgba(220,80,60,.8)' },
+          { label: 'Média de agências de marketing', score: '61', color: 'rgba(220,140,50,.8)' },
+          { label: 'Média do setor imobiliário', score: '68', color: 'rgba(200,160,40,.8)' },
+          { label: '7+ Vacations — Organum', score: '100', color: 'var(--g600)' },
+        ].map(item => (
+          <div style="margin-bottom:1rem;">
+            <div style="display:flex;justify-content:space-between;margin-bottom:.375rem;">
+              <span style="font-size:.8125rem;color:var(--n600);">{item.label}</span>
+              <span style="font-size:.875rem;font-weight:700;" style={`color:${item.color}`}>{item.score}</span>
+            </div>
+            <div style="height:4px;background:var(--n200);border-radius:999px;overflow:hidden;">
+              <div style={`height:100%;width:${item.score}%;background:${item.color};border-radius:999px;`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SEO BILÍNGUE ══════════ -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);background:var(--n950);">
+  <div style="max-width:900px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Case internacional
+    </p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;color:#fff;margin-bottom:1.5rem;">
+      SEO bilíngue PT/EN — o Método ORGANUM funciona em inglês
+    </h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:2rem;max-width:58ch;">
+      A 7+ Vacations é o case que comprova que o Método ORGANUM funciona além do mercado brasileiro. A estrutura técnica, o Schema Markup e a arquitetura de silos foram implementados em inglês com os mesmos padrões de qualidade — abrindo caminho para posicionamento orgânico no mercado americano de gestão de propriedades de luxo.
+    </p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.07);" class="lang-grid">
+      <div style="background:var(--n950);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.875rem;">🇧🇷 Português</p>
+        <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">Mercado brasileiro</p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;">Clientes brasileiros investindo em imóveis na Califórnia. Keywords em PT otimizadas para o comportamento de busca brasileiro.</p>
+      </div>
+      <div style="background:var(--n950);padding:2rem;">
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.875rem;">🇺🇸 English</p>
+        <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:#fff;margin-bottom:.5rem;">American market</p>
+        <p style="font-size:.875rem;color:rgba(255,255,255,.45);line-height:1.65;">Local luxury property management in California. English keywords targeting high-value property owners and vacation rental investors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+  .two-col { grid-template-columns: 1fr !important; }
+  .deliverables-grid { grid-template-columns: 1fr !important; }
+  .lang-grid { grid-template-columns: 1fr !important; }
+  .score-card { grid-template-columns: 1fr !important; text-align: center; }
+}
+</style>
+
+</Case>

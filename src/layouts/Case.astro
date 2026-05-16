@@ -18,16 +18,9 @@ interface Props {
 }
 
 const {
-  title,
-  description,
-  canonical,
-  ogImage,
-  client,
-  sector,
-  result,
-  metrics,
-  breadcrumbItems,
-  schemaExtra = [],
+  title, description, canonical, ogImage,
+  client, sector, result, metrics,
+  breadcrumbItems, schemaExtra = [],
 } = Astro.props;
 ---
 
@@ -41,60 +34,72 @@ const {
 >
   <Header />
   <main>
-    <div class="container-page">
-      <Breadcrumb items={breadcrumbItems} />
-    </div>
 
-    <!-- Hero do case -->
-    <section class="bg-ink-950 text-white py-16">
-      <div class="container-page max-w-4xl">
-        <div class="badge badge-brand mb-4">{sector}</div>
-        <h1 class="text-white mb-4">{title}</h1>
-        <p class="text-xl text-ink-300 mb-6">{description}</p>
-        <div class="inline-flex items-center gap-2 bg-brand-600/20 border border-brand-500/30 rounded-lg px-4 py-2">
-          <span class="text-brand-400 font-medium text-sm">Resultado:</span>
-          <span class="text-white font-semibold">{result}</span>
+    <!-- Hero do case — fundo escuro -->
+    <section style="background:var(--n950);padding:clamp(4rem,10vh,6rem) clamp(1rem,4vw,3rem) 0;">
+      <div style="max-width:960px;margin-inline:auto;">
+
+        <!-- Breadcrumb -->
+        <div style="margin-bottom:2rem;">
+          <Breadcrumb items={breadcrumbItems} />
+        </div>
+
+        <!-- Setor -->
+        <div style="display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.3rem .875rem;border-radius:999px;margin-bottom:1.5rem;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.5);">{sector}</span>
+        </div>
+
+        <!-- Título -->
+        <h1 style="font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;margin-bottom:1.25rem;">{title}</h1>
+
+        <!-- Descrição -->
+        <p style="font-size:1.0625rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:54ch;margin-bottom:2rem;">{description}</p>
+
+        <!-- Resultado em destaque -->
+        <div style="display:inline-flex;align-items:center;gap:.875rem;background:rgba(29,122,53,.15);border:1px solid rgba(76,175,100,.3);padding:.875rem 1.5rem;margin-bottom:0;">
+          <span style="width:6px;height:6px;background:var(--g400);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;flex-shrink:0;"></span>
+          <span style="font-size:.8125rem;font-weight:600;color:var(--g400);">{result}</span>
         </div>
       </div>
+
+      <!-- Barra decorativa -->
+      <div style="max-width:960px;margin-inline:auto;height:1px;background:linear-gradient(90deg,rgba(76,175,100,.4),transparent);margin-top:2.5rem;"></div>
     </section>
 
-    <!-- Métricas -->
+    <!-- Métricas em strip escuro -->
     {metrics && metrics.length > 0 && (
-      <section class="border-b border-ink-100 py-10">
-        <div class="container-page max-w-4xl">
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-            {metrics.map((metric) => (
-              <div class="text-center">
-                <div class="text-3xl font-bold text-brand-600">{metric.value}</div>
-                <div class="text-sm text-ink-500 mt-1">{metric.label}</div>
-              </div>
-            ))}
-          </div>
+      <div style="background:var(--n950);border-bottom:1px solid rgba(255,255,255,.06);">
+        <div style="max-width:960px;margin-inline:auto;display:grid;" style={`grid-template-columns:repeat(${metrics.length},1fr);`}>
+          {metrics.map((m, i) => (
+            <div style={`padding:2rem 1.5rem;text-align:center;${i < metrics.length-1 ? 'border-right:1px solid rgba(255,255,255,.07);' : ''}`}>
+              <span style="font-family:var(--serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;color:var(--g400);line-height:1;display:block;">{m.value}</span>
+              <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);display:block;margin-top:.5rem;">{m.label}</span>
+            </div>
+          ))}
         </div>
-      </section>
+      </div>
     )}
 
-    <!-- Conteúdo MDX -->
-    <article class="container-prose py-12">
-      <div class="prose-organum">
-        <slot />
-      </div>
-    </article>
+    <!-- Conteúdo do case -->
+    <div>
+      <slot />
+    </div>
 
-    <!-- CTA -->
-    <div class="container-page max-w-3xl pb-16">
-      <div class="bg-brand-50 border border-brand-100 rounded-xl p-8 text-center">
-        <p class="text-xl font-semibold text-ink-900 mb-2">
+    <!-- CTA final -->
+    <section style="background:var(--g800);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+      <div style="max-width:640px;margin-inline:auto;">
+        <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;margin-bottom:1rem;">
           Seu negócio pode ter resultados como {client}
+        </h2>
+        <p style="font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;margin-bottom:2rem;">
+          Solicite uma auditoria gratuita e descubra o potencial orgânico do seu site em 48 horas.
         </p>
-        <p class="text-ink-600 mb-6">
-          Solicite uma auditoria gratuita e descubra o potencial orgânico do seu site.
-        </p>
-        <a href="/auditoria-gratuita" class="btn-primary">
+        <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:#fff;color:var(--g800);font-family:var(--sans);font-size:.875rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:1rem 2.5rem;border-radius:2px;text-decoration:none;">
           Quero uma auditoria gratuita
         </a>
       </div>
-    </div>
+    </section>
+
   </main>
   <Footer />
 </Base>

@@ -1,0 +1,107 @@
+---
+import Page from '@layouts/Page.astro';
+
+const cases = [
+  {
+    slug: 'hunterhunter',
+    client: 'HunterHunter',
+    sector: 'Headhunting B2B',
+    result: 'Citada pelo ChatGPT e Perplexity',
+    desc: 'Leads qualificados de empresas americanas e chinesas sem nenhum centavo em anúncios. O caso âncora do Método ORGANUM para B2B.',
+    metrics: ['47+ posições', '340% tráfego', '90 dias para IA'],
+    tag: 'GEO + SEO B2B',
+    highlight: true,
+  },
+  {
+    slug: '7-vacations',
+    client: '7+ Vacations',
+    sector: 'Gestão de propriedade · Califórnia',
+    result: '100% PageSpeed · SEO bilíngue PT/EN',
+    desc: 'Fundação técnica perfeita para empresa de gestão de mansões na Califórnia. 100% no PageSpeed entregue em menos de 30 dias.',
+    metrics: ['100% PageSpeed', 'PT + EN', '< 30 dias'],
+    tag: 'SEO Internacional',
+    highlight: false,
+  },
+];
+---
+
+<Page
+  title="Cases de SEO orgânico B2B | Resultados reais — Organum"
+  description="Cases reais do Método ORGANUM: HunterHunter citada pelo ChatGPT e 7+ Vacations com 100% no PageSpeed. Pipeline orgânico B2B sem tráfego pago."
+  canonical="https://organum.com.br/cases/"
+  breadcrumbItems={[{ name: 'Cases', url: '/cases' }]}
+>
+
+<!-- Hero -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);display:flex;align-items:center;gap:.625rem;margin-bottom:1rem;">
+      <span style="width:2px;height:18px;background:var(--g500);display:inline-block;"></span>
+      Resultados reais
+    </p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.93;letter-spacing:-.03em;color:#fff;max-width:20ch;">
+      Cases que comprovam o <em style="color:var(--g400);font-style:italic;">Método ORGANUM</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:48ch;line-height:1.75;">
+      Não falamos de posições e tráfego. Falamos de leads qualificados, citações por IA e pipeline comercial gerado sem depender de tráfego pago.
+    </p>
+  </div>
+</section>
+
+<!-- Grid de cases -->
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:2rem;" class="cases-index-grid">
+    {cases.map(c => (
+      <a
+        href={`/cases/${c.slug}`}
+        style={`border:1px solid ${c.highlight ? 'rgba(76,175,100,.25)' : 'var(--n200)'};padding:3rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:all .2s;`}
+        onmouseover={`this.style.borderColor='var(--g400)';this.style.transform='translateY(-4px)';this.style.background='var(--n50)'`}
+        onmouseout={`this.style.borderColor='${c.highlight ? 'rgba(76,175,100,.25)' : 'var(--n200)'}';this.style.transform='translateY(0)';this.style.background='transparent'`}
+      >
+        <!-- Sector + tag -->
+        <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--n400);">{c.sector}</span>
+          <span style={`font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:.25rem .625rem;border-radius:999px;${c.highlight ? 'background:rgba(76,175,100,.1);color:var(--g600);border:1px solid rgba(76,175,100,.2);' : 'background:var(--n100);color:var(--n600);'}`}>{c.tag}</span>
+        </div>
+
+        <!-- Cliente -->
+        <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.75rem);font-weight:700;color:var(--n950);line-height:1.05;letter-spacing:-.02em;">{c.client}</h2>
+
+        <!-- Resultado -->
+        <div style="display:flex;align-items:center;gap:.625rem;font-size:.875rem;font-weight:600;color:var(--g600);">
+          <span style="width:6px;height:6px;background:var(--g500);border-radius:50%;animation:pulse-dot 2s ease-in-out infinite;display:inline-block;flex-shrink:0;"></span>
+          {c.result}
+        </div>
+
+        <!-- Descrição -->
+        <p style="font-size:.9375rem;color:var(--n500);line-height:1.7;flex:1;">{c.desc}</p>
+
+        <!-- Métricas -->
+        <div style="display:flex;flex-wrap:wrap;gap:.5rem;padding-top:1rem;border-top:1px solid var(--n100);">
+          {c.metrics.map(m => (
+            <span style="font-size:.75rem;font-weight:600;background:var(--n50);border:1px solid var(--n200);color:var(--n700);padding:.375rem .75rem;border-radius:2px;">{m}</span>
+          ))}
+        </div>
+
+        <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">Ver case completo →</span>
+      </a>
+    ))}
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="background:var(--n50);padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);text-align:center;">
+  <div style="max-width:640px;margin-inline:auto;">
+    <h2 style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,2.5rem);font-weight:700;letter-spacing:-.02em;margin-bottom:1rem;">Sua empresa pode ser o próximo case</h2>
+    <p style="font-size:1rem;color:var(--n600);line-height:1.7;margin-bottom:2rem;">Solicite uma auditoria gratuita. Em 48 horas você recebe o diagnóstico técnico completo do seu site.</p>
+    <a href="/auditoria-gratuita" style="display:inline-flex;align-items:center;gap:.5rem;background:var(--n950);color:#fff;font-family:var(--sans);font-size:.8125rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:.875rem 2rem;border-radius:2px;text-decoration:none;transition:background .2s;" onmouseover="this.style.background='var(--g700)'" onmouseout="this.style.background='var(--n950)'">
+      Solicitar auditoria gratuita
+    </a>
+  </div>
+</section>
+
+<style>
+@media (max-width: 640px) { .cases-index-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+</Page>
