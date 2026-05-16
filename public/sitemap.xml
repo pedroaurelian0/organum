@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://organum.com.br/</loc><lastmod>2025-05-16</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://organum.com.br/auditoria-gratuita/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://organum.com.br/metodo/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://organum.com.br/metodo/fundacao/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://organum.com.br/metodo/entidade/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
@@ -18,13 +19,25 @@
   <url><loc>https://organum.com.br/cases/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://organum.com.br/cases/hunterhunter/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://organum.com.br/cases/7-vacations/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://organum.com.br/sobre/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/sobre/pedro-aureliano/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://organum.com.br/contato/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://organum.com.br/privacidade/</loc><lastmod>2025-05-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://organum.com.br/termos/</loc><lastmod>2025-05-16</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://organum.com.br/blog/</loc><lastmod>2025-05-16</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://organum.com.br/blog/geo-aeo/o-que-e-geo/</loc><lastmod>2025-05-15</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://organum.com.br/blog/geo-aeo/como-ser-citado-chatgpt/</loc><lastmod>2025-05-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://organum.com.br/blog/geo-aeo/geo-vs-seo/</loc><lastmod>2025-05-08</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://organum.com.br/blog/geo-aeo/aeo-featured-snippets/</loc><lastmod>2025-05-10</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://organum.com.br/blog/geo-aeo/geo-para-b2b/</loc><lastmod>2025-05-12</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://organum.com.br/sobre/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://organum.com.br/sobre/pedro-aureliano/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://organum.com.br/auditoria-gratuita/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://organum.com.br/blog/seo-b2b/o-que-e-seo-b2b/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://organum.com.br/blog/seo-b2b/seo-b2b-vs-seo-tradicional/</loc><lastmod>2025-05-03</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/seo-b2b/pipeline-organico-b2b/</loc><lastmod>2025-05-05</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/seo-b2b/seo-para-saas/</loc><lastmod>2025-05-07</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/seo-b2b/custo-por-lead-organico/</loc><lastmod>2025-05-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/entidade/o-que-e-entidade-digital/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://organum.com.br/blog/entidade/google-knowledge-graph/</loc><lastmod>2025-05-13</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/entidade/schema-organization/</loc><lastmod>2025-05-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/entidade/wikidata-para-empresas/</loc><lastmod>2025-05-15</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://organum.com.br/blog/entidade/entidade-digital-chatgpt/</loc><lastmod>2025-05-16</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
 </urlset>
