@@ -1,11 +1,6 @@
----
-// src/pages/sitemap.xml.ts
-// Endpoint que gera sitemap.xml como arquivo estático
-
-import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
 
-export const GET: APIRoute = async () => {
+export async function GET() {
   const BASE = 'https://organum.com.br';
   const today = new Date().toISOString().split('T')[0];
 
@@ -34,8 +29,8 @@ export const GET: APIRoute = async () => {
     { url: '/auditoria-gratuita/',            priority: '0.9', changefreq: 'monthly' },
   ];
 
-  const posts = await getCollection('blog', ({ data }: { data: { draft?: boolean } }) => !data.draft);
-  const blogRoutes = posts.map((post: { slug: string; data: { cluster: string; publishedAt: Date; updatedAt?: Date } }) => {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const blogRoutes = posts.map((post) => {
     const slug = post.slug.split('/').pop();
     const lastmod = (post.data.updatedAt || post.data.publishedAt).toISOString().split('T')[0];
     return { url: `/blog/${post.data.cluster}/${slug}/`, priority: '0.7', changefreq: 'monthly', lastmod };
@@ -59,4 +54,4 @@ ${allRoutes.map(r => `  <url>
       'Cache-Control': 'public, max-age=3600',
     },
   });
-};
+}
