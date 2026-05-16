@@ -222,3 +222,18 @@ input,textarea,select,button{font-family:var(--sans)}
     opacity: 1 !important;
     transform: none !important;
   }
+/* Fix definitivo: iframe GHL nunca é afetado por classes de animação */
+iframe[data-form-id] {
+  opacity: 1 !important;
+  transform: none !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+iframe[data-form-id] ~ * ,
+div:has(> iframe[data-form-id]) {
+  min-height: 660px !important;
+  height: auto !important;
+  overflow: visible !important;
+}
