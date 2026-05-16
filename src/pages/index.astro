@@ -488,92 +488,37 @@ const faqs = [
   </div>
 </section>
 
-<!-- ══════════ TYPEFORM INLINE ══════════ -->
+<!-- ══════════ FORMULÁRIO GHL INLINE ══════════ -->
 <section class="typeform-section" id="typeform-section">
   <div class="tf-wrap">
     <p class="sec-eye reveal" style="color:rgba(255,255,255,.3);margin-bottom:.5rem;">Próximo passo</p>
-    <h2 class="reveal reveal-d1" style="font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:2rem;">
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem;">
       Descubra o potencial orgânico do seu site em 48 horas — gratuitamente.
     </h2>
-    <div class="tf-box reveal reveal-d2">
-      <div class="tf-progress"><div class="tf-progress-fill" id="tf-bar" style="width:14%"></div></div>
-
-      <div class="tf-step active" id="tf-1">
-        <p class="tf-num">Pergunta 1 de 7</p>
-        <p class="tf-q">Qual é o maior desafio de marketing digital da sua empresa hoje?</p>
-        <p class="tf-hint">Selecione a opção que mais se aproxima.</p>
-        <div class="tf-options">
-          {['Não aparecemos no Google para as palavras-chave certas','Tráfego orgânico parado ou caindo','Dependência total de anúncios pagos','Não somos citados pelas IAs (ChatGPT, Gemini...)','Leads chegam mas sem qualidade','Outro desafio'].map(opt => (
-            <button class="tf-opt" type="button" data-step="1">{opt}</button>
-          ))}
-        </div>
-        <div class="tf-nav"><span class="tf-counter">1 / 7</span><button class="tf-next" id="tf-next-1" disabled type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-2">
-        <p class="tf-num">Pergunta 2 de 7</p>
-        <p class="tf-q">Qual é o perfil da sua empresa?</p>
-        <div class="tf-options">
-          {['B2B — consultoria ou serviços profissionais','B2B — SaaS ou tecnologia','B2B — distribuidora ou indústria','E-commerce','Outro perfil'].map(opt => (
-            <button class="tf-opt" type="button" data-step="2">{opt}</button>
-          ))}
-        </div>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="1">← Anterior</button><span class="tf-counter">2 / 7</span><button class="tf-next" id="tf-next-2" disabled type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-3">
-        <p class="tf-num">Pergunta 3 de 7</p>
-        <p class="tf-q">Qual é o faturamento mensal aproximado da empresa?</p>
-        <p class="tf-hint">Informação confidencial — usada apenas para calibrar o diagnóstico.</p>
-        <div class="tf-options">
-          {['Até R$250 mil/mês','R$250k – R$500k/mês','R$500k – R$2M/mês','Acima de R$2M/mês','Prefiro não informar'].map(opt => (
-            <button class="tf-opt" type="button" data-step="3">{opt}</button>
-          ))}
-        </div>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="2">← Anterior</button><span class="tf-counter">3 / 7</span><button class="tf-next" id="tf-next-3" disabled type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-4">
-        <p class="tf-num">Pergunta 4 de 7</p>
-        <p class="tf-q">Sua empresa já investiu em SEO antes?</p>
-        <div class="tf-options">
-          {['Sim, mas não tivemos resultado','Sim, tivemos algum resultado','Não, é a primeira vez','Temos SEO interno (in-house)'].map(opt => (
-            <button class="tf-opt" type="button" data-step="4">{opt}</button>
-          ))}
-        </div>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="3">← Anterior</button><span class="tf-counter">4 / 7</span><button class="tf-next" id="tf-next-4" disabled type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-5">
-        <p class="tf-num">Pergunta 5 de 7</p>
-        <p class="tf-q">Qual é o endereço do site da sua empresa?</p>
-        <p class="tf-hint">Vamos analisar tecnicamente antes de responder.</p>
-        <input type="url" class="tf-input" id="tf-site" placeholder="https://suaempresa.com.br" autocomplete="url"/>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="4">← Anterior</button><span class="tf-counter">5 / 7</span><button class="tf-next" id="tf-next-5" type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-6">
-        <p class="tf-num">Pergunta 6 de 7</p>
-        <p class="tf-q">Qual é o seu nome?</p>
-        <input type="text" class="tf-input" id="tf-name" placeholder="Seu nome completo" autocomplete="name"/>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="5">← Anterior</button><span class="tf-counter">6 / 7</span><button class="tf-next" id="tf-next-6" type="button">Próximo →</button></div>
-      </div>
-
-      <div class="tf-step" id="tf-7">
-        <p class="tf-num">Pergunta 7 de 7</p>
-        <p class="tf-q">Qual é o seu melhor e-mail?</p>
-        <p class="tf-hint">O diagnóstico completo será enviado em até 48 horas.</p>
-        <input type="email" class="tf-input" id="tf-email" placeholder="pedro@suaempresa.com.br" autocomplete="email"/>
-        <div class="tf-nav"><button class="tf-back" type="button" data-goto="6">← Anterior</button><span class="tf-counter">7 / 7</span><button class="tf-next" id="tf-next-7" type="button">Enviar e receber diagnóstico →</button></div>
-      </div>
-
-      <div class="tf-success" id="tf-success">
-        <div class="tf-check">✓</div>
-        <h3 style="font-family:var(--serif);font-size:1.625rem;font-weight:700;color:#fff;margin-bottom:.75rem;">Diagnóstico solicitado!</h3>
-        <p style="font-size:.9375rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:40ch;margin-inline:auto;">Analisaremos seu site e enviaremos o diagnóstico completo em até 48 horas úteis.</p>
-        <p style="margin-top:1.5rem;font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">Sem spam. Sem vendedor. Apenas o diagnóstico.</p>
-      </div>
+    <p class="reveal reveal-d2" style="font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:2rem;max-width:48ch;">
+      Preencha o formulário. Pedro analisa seu site e envia o diagnóstico técnico completo em até 48 horas — sem spam, sem vendedor.
+    </p>
+    <div class="reveal reveal-d2" style="background:#111009;border:1px solid rgba(255,255,255,.08);overflow:hidden;">
+      <iframe
+        src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
+        style="width:100%;height:640px;border:none;display:block;"
+        id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Auditoria Gratuita — Organum"
+        data-height="624"
+        data-layout-iframe-id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-form-id="Gpue5KmcF2LTfDXD1Jcf"
+        title="Formulário de auditoria gratuita — Organum"
+        loading="lazy"
+      ></iframe>
     </div>
+    <p class="reveal" style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.25);text-align:center;">Sem spam. Sem vendedor. Apenas o diagnóstico.</p>
   </div>
 </section>
 
@@ -865,5 +810,7 @@ html, body { max-width: 100vw; overflow-x: hidden; }
 /* Layer body grid responsive */
 @media (max-width: 768px) { .layer-body.open { grid-template-columns: 1fr !important; } }
 </style>
+
+<script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
 
 </Page>
