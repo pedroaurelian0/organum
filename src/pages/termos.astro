@@ -1,0 +1,103 @@
+---
+import Page from '@layouts/Page.astro';
+const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<Page
+  title="Termos de Uso | Organum"
+  description="Termos de uso do site organum.com.br e dos serviços da Organum — agência de SEO orgânico B2B."
+  canonical="https://organum.com.br/termos/"
+  breadcrumbItems={[{ name: 'Termos de Uso', url: '/termos' }]}
+>
+
+<section style="background:var(--n950);padding:clamp(3rem,8vh,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);margin-bottom:1rem;">Legal</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">Termos de Uso</h1>
+    <p style="margin-top:1rem;font-size:.875rem;color:rgba(255,255,255,.35);">Última atualização: {today}</p>
+  </div>
+</section>
+
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;" class="legal-body">
+
+    <p>Ao acessar e usar o site <strong>organum.com.br</strong> ou contratar os serviços da <strong>Organum</strong>, você concorda com os seguintes Termos de Uso. Leia atentamente antes de continuar.</p>
+
+    <h2>1. Sobre a Organum</h2>
+    <p>A Organum é uma agência de SEO orgânico B2B sediada em Recife, Pernambuco, Brasil. Oferecemos serviços de SEO técnico, GEO (Generative Engine Optimization), construção de identidade de entidade digital, conteúdo de autoridade e Digital PR para empresas B2B.</p>
+
+    <h2>2. Uso do site</h2>
+    <p>Você pode usar este site para:</p>
+    <ul>
+      <li>Obter informações sobre nossos serviços</li>
+      <li>Solicitar uma auditoria gratuita</li>
+      <li>Ler conteúdo educacional sobre SEO e GEO</li>
+      <li>Entrar em contato conosco</li>
+    </ul>
+    <p>É proibido usar este site para:</p>
+    <ul>
+      <li>Fins ilegais ou que violem direitos de terceiros</li>
+      <li>Reproduzir, distribuir ou modificar conteúdo sem autorização prévia</li>
+      <li>Tentar acessar áreas restritas ou comprometer a segurança do site</li>
+      <li>Enviar conteúdo falso, enganoso ou malicioso via formulários</li>
+    </ul>
+
+    <h2>3. Propriedade intelectual</h2>
+    <p>Todo o conteúdo deste site — incluindo textos, metodologias, gráficos, logotipos e o Método ORGANUM — é de propriedade exclusiva da Organum ou licenciado para uso pela Organum.</p>
+    <p>Você pode compartilhar links para o conteúdo e citá-lo com atribuição adequada. É proibida a reprodução integral sem autorização prévia por escrito.</p>
+
+    <h2>4. Auditoria gratuita</h2>
+    <p>A auditoria gratuita é um diagnóstico técnico inicial do site do solicitante, sem custo e sem obrigação de contratação. A Organum reserva o direito de recusar solicitações que não se enquadrem no perfil de clientes atendidos.</p>
+    <p>O diagnóstico entregue é uma análise baseada em dados públicos e acessíveis. Não constitui garantia de resultados específicos.</p>
+
+    <h2>5. Serviços contratados</h2>
+    <p>Os serviços contratados pela Organum são regidos por contrato específico firmado entre as partes. Em caso de conflito entre estes Termos de Uso e o contrato firmado, prevalece o contrato.</p>
+    <p><strong>Resultados:</strong> resultados de SEO dependem de múltiplos fatores fora do controle da Organum, incluindo atualizações de algoritmo do Google, ações de concorrentes e qualidade do produto/serviço do cliente. A Organum se compromete com a excelência da execução, não com resultados específicos de ranking ou tráfego.</p>
+
+    <h2>6. Limitação de responsabilidade</h2>
+    <p>A Organum não se responsabiliza por:</p>
+    <ul>
+      <li>Perdas ou danos indiretos decorrentes do uso do site</li>
+      <li>Indisponibilidade temporária do site</li>
+      <li>Conteúdo de sites externos linkados a partir deste site</li>
+      <li>Decisões de negócio tomadas com base no conteúdo educacional do site</li>
+    </ul>
+
+    <h2>7. Links externos</h2>
+    <p>Este site pode conter links para sites de terceiros. Esses links são fornecidos por conveniência — a Organum não controla e não se responsabiliza pelo conteúdo ou práticas de privacidade desses sites.</p>
+
+    <h2>8. Alterações nos termos</h2>
+    <p>Podemos atualizar estes Termos de Uso periodicamente. A data de última atualização está sempre indicada no início do documento. O uso continuado do site após alterações constitui aceitação dos novos termos.</p>
+
+    <h2>9. Lei aplicável e foro</h2>
+    <p>Estes termos são regidos pelas leis brasileiras. Qualquer disputa será resolvida no foro da Comarca de Recife, Pernambuco, com renúncia a qualquer outro foro, por mais privilegiado que seja.</p>
+
+    <h2>10. Contato</h2>
+    <p>Dúvidas sobre estes termos:<br/>
+    <strong>E-mail:</strong> contato@organum.com.br<br/>
+    <strong>Formulário:</strong> <a href="/contato">organum.com.br/contato</a></p>
+
+  </div>
+</section>
+
+<style>
+.legal-body h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--n900);
+  margin-top: 2.5rem;
+  margin-bottom: .875rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--n100);
+}
+.legal-body h2:first-of-type { border-top: none; padding-top: 0; margin-top: 2rem; }
+.legal-body p { font-size: .9375rem; color: var(--n600); line-height: 1.8; margin-bottom: 1rem; }
+.legal-body ul { margin: .75rem 0 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .375rem; }
+.legal-body ul li { font-size: .9375rem; color: var(--n600); line-height: 1.7; padding-left: 1rem; position: relative; list-style: none; }
+.legal-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--g500); font-weight: 700; }
+.legal-body a { color: var(--g600); text-decoration: none; border-bottom: 1px solid rgba(29,122,53,.3); }
+.legal-body strong { font-weight: 600; color: var(--n800); }
+</style>
+
+</Page>

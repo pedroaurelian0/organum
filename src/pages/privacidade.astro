@@ -1,0 +1,124 @@
+---
+import Page from '@layouts/Page.astro';
+const today = new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: 'long', year: 'numeric' });
+---
+
+<Page
+  title="Política de Privacidade | Organum"
+  description="Como a Organum coleta, usa e protege seus dados pessoais. Política de privacidade em conformidade com a LGPD — Lei Geral de Proteção de Dados."
+  canonical="https://organum.com.br/privacidade/"
+  breadcrumbItems={[{ name: 'Privacidade', url: '/privacidade' }]}
+>
+
+<section style="background:var(--n950);padding:clamp(3rem,8vh,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);margin-bottom:1rem;">Legal</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">Política de Privacidade</h1>
+    <p style="margin-top:1rem;font-size:.875rem;color:rgba(255,255,255,.35);">Última atualização: {today}</p>
+  </div>
+</section>
+
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:780px;margin-inline:auto;" class="legal-body">
+
+    <p>A <strong>Organum</strong> ("nós", "nosso" ou "Organum") está comprometida com a proteção dos seus dados pessoais. Esta Política de Privacidade descreve como coletamos, usamos, armazenamos e protegemos suas informações quando você acessa nosso site <strong>organum.com.br</strong> ou entra em contato conosco.</p>
+
+    <p>Esta política está em conformidade com a <strong>Lei Geral de Proteção de Dados (LGPD) — Lei nº 13.709/2018</strong>.</p>
+
+    <h2>1. Quem somos</h2>
+    <p><strong>Razão social:</strong> Organum<br/>
+    <strong>Responsável:</strong> Pedro Aureliano<br/>
+    <strong>Site:</strong> organum.com.br<br/>
+    <strong>Contato:</strong> contato@organum.com.br</p>
+
+    <h2>2. Quais dados coletamos</h2>
+    <p>Coletamos os seguintes dados pessoais quando você preenche nosso formulário de contato ou auditoria gratuita:</p>
+    <ul>
+      <li>Nome completo</li>
+      <li>Endereço de e-mail</li>
+      <li>Número de telefone / WhatsApp (opcional)</li>
+      <li>URL do site da empresa</li>
+      <li>Informações sobre o negócio (faturamento, desafios)</li>
+    </ul>
+    <p>Também podemos coletar automaticamente dados de navegação como endereço IP, tipo de navegador, páginas visitadas e tempo de permanência, por meio de ferramentas de análise.</p>
+
+    <h2>3. Para que usamos seus dados</h2>
+    <p>Usamos seus dados para:</p>
+    <ul>
+      <li>Responder à sua solicitação de auditoria ou contato</li>
+      <li>Enviar o diagnóstico técnico solicitado</li>
+      <li>Entrar em contato para apresentar propostas comerciais</li>
+      <li>Melhorar nosso site e serviços com base em dados agregados de navegação</li>
+      <li>Cumprir obrigações legais</li>
+    </ul>
+    <p>Não usamos seus dados para envio de spam ou para finalidades incompatíveis com as descritas acima.</p>
+
+    <h2>4. Base legal para o tratamento</h2>
+    <p>O tratamento dos seus dados é baseado em:</p>
+    <ul>
+      <li><strong>Consentimento</strong>: ao preencher o formulário, você consente com o tratamento dos dados para as finalidades descritas</li>
+      <li><strong>Legítimo interesse</strong>: para análise de navegação e melhoria do site</li>
+      <li><strong>Execução de contrato</strong>: quando há relação comercial estabelecida</li>
+    </ul>
+
+    <h2>5. Compartilhamento de dados</h2>
+    <p>Não vendemos seus dados pessoais. Podemos compartilhá-los apenas com:</p>
+    <ul>
+      <li><strong>GoHighLevel (GHL)</strong>: plataforma de CRM usada para gerenciar contatos e comunicações. Os dados são processados nos servidores da GHL conforme a política de privacidade deles.</li>
+      <li><strong>Ferramentas de análise</strong>: Google Analytics ou similar, com dados anonimizados quando possível.</li>
+      <li><strong>Autoridades legais</strong>: quando exigido por lei ou ordem judicial.</li>
+    </ul>
+
+    <h2>6. Por quanto tempo guardamos seus dados</h2>
+    <p>Mantemos seus dados pelo tempo necessário para cumprir as finalidades descritas nesta política ou conforme exigido por lei. Dados de contatos que não resultaram em relação comercial são excluídos em até 24 meses.</p>
+
+    <h2>7. Seus direitos como titular dos dados</h2>
+    <p>Conforme a LGPD, você tem direito a:</p>
+    <ul>
+      <li>Confirmar se tratamos seus dados</li>
+      <li>Acessar os dados que temos sobre você</li>
+      <li>Corrigir dados incompletos ou incorretos</li>
+      <li>Solicitar a anonimização, bloqueio ou eliminação de dados desnecessários</li>
+      <li>Revogar o consentimento a qualquer momento</li>
+      <li>Solicitar a portabilidade dos seus dados</li>
+    </ul>
+    <p>Para exercer esses direitos, envie um e-mail para <strong>contato@organum.com.br</strong> com o assunto "LGPD — [seu direito]".</p>
+
+    <h2>8. Cookies</h2>
+    <p>Nosso site pode usar cookies para melhorar a experiência de navegação e coletar dados de análise. Você pode configurar seu navegador para recusar cookies, mas isso pode afetar a funcionalidade do site.</p>
+
+    <h2>9. Segurança</h2>
+    <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou destruição. Nosso site usa HTTPS e os dados são armazenados em plataformas com padrões de segurança reconhecidos.</p>
+
+    <h2>10. Alterações nesta política</h2>
+    <p>Podemos atualizar esta política periodicamente. A data de última atualização está sempre indicada no início do documento. O uso continuado do site após alterações constitui aceitação da nova versão.</p>
+
+    <h2>11. Contato</h2>
+    <p>Dúvidas sobre esta política ou sobre o tratamento dos seus dados:<br/>
+    <strong>E-mail:</strong> contato@organum.com.br<br/>
+    <strong>Formulário:</strong> <a href="/contato">organum.com.br/contato</a></p>
+
+  </div>
+</section>
+
+<style>
+.legal-body h2 {
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--n900);
+  margin-top: 2.5rem;
+  margin-bottom: .875rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--n100);
+}
+.legal-body h2:first-of-type { border-top: none; padding-top: 0; margin-top: 2rem; }
+.legal-body p { font-size: .9375rem; color: var(--n600); line-height: 1.8; margin-bottom: 1rem; }
+.legal-body ul { margin: .75rem 0 1.25rem 1.25rem; display: flex; flex-direction: column; gap: .375rem; }
+.legal-body ul li { font-size: .9375rem; color: var(--n600); line-height: 1.7; padding-left: 1rem; position: relative; list-style: none; }
+.legal-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--g500); font-weight: 700; }
+.legal-body a { color: var(--g600); text-decoration: none; border-bottom: 1px solid rgba(29,122,53,.3); }
+.legal-body strong { font-weight: 600; color: var(--n800); }
+</style>
+
+</Page>

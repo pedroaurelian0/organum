@@ -1,0 +1,113 @@
+---
+import Page from '@layouts/Page.astro';
+---
+
+<Page
+  title="Contato | Organum — Agência de SEO orgânico B2B"
+  description="Entre em contato com a Organum. Solicite uma auditoria gratuita, tire dúvidas sobre o Método ORGANUM ou fale diretamente com Pedro Aureliano."
+  canonical="https://organum.com.br/contato/"
+  breadcrumbItems={[{ name: 'Contato', url: '/contato' }]}
+>
+
+<!-- Hero -->
+<section style="background:var(--n950);padding:clamp(4rem,10vh,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;" class="contact-hero-grid">
+    <div>
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);margin-bottom:1rem;">Fale com a Organum</p>
+      <h1 style="font-family:var(--serif);font-size:clamp(2.25rem,5vw,4.5rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;">
+        Vamos conversar<br/><em style="color:var(--g400);font-style:italic;">sobre o seu pipeline</em>
+      </h1>
+      <p style="margin-top:1.5rem;font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:42ch;">
+        Preencha o formulário ao lado ou use um dos canais abaixo. Pedro responde em até 24 horas úteis.
+      </p>
+
+      <!-- Canais de contato -->
+      <div style="margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem;">
+
+        <a href="mailto:contato@organum.com.br" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none;transition:border-color .2s,background .2s;" onmouseover="this.style.borderColor='rgba(76,175,100,.3)';this.style.background='rgba(76,175,100,.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.background='rgba(255,255,255,.04)'">
+          <span style="width:40px;height:40px;background:rgba(76,175,100,.12);border:1px solid rgba(76,175,100,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">✉</span>
+          <div>
+            <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;">E-mail</p>
+            <p style="font-size:.9375rem;font-weight:500;color:#fff;">contato@organum.com.br</p>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/pedro-aureliano-7a416a226/" target="_blank" rel="noopener noreferrer" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);text-decoration:none;transition:border-color .2s,background .2s;" onmouseover="this.style.borderColor='rgba(76,175,100,.3)';this.style.background='rgba(76,175,100,.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,.08)';this.style.background='rgba(255,255,255,.04)'">
+          <span style="width:40px;height:40px;background:rgba(76,175,100,.12);border:1px solid rgba(76,175,100,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">in</span>
+          <div>
+            <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;">LinkedIn</p>
+            <p style="font-size:.9375rem;font-weight:500;color:#fff;">Pedro Aureliano</p>
+          </div>
+        </a>
+
+        <div style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);">
+          <span style="width:40px;height:40px;background:rgba(76,175,100,.12);border:1px solid rgba(76,175,100,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">📍</span>
+          <div>
+            <p style="font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;">Localização</p>
+            <p style="font-size:.9375rem;font-weight:500;color:#fff;">Recife, Pernambuco — Brasil</p>
+            <p style="font-size:.8125rem;color:rgba(255,255,255,.35);">Atendimento nacional e internacional</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Formulário GHL -->
+    <div>
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:1rem;">Formulário de contato</p>
+      <div style="background:#111009;border:1px solid rgba(255,255,255,.08);overflow:hidden;">
+        <iframe
+          src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
+          style="width:100%;height:640px;border:none;display:block;"
+          id="inline-contact-form"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Auditoria Gratuita — Organum"
+          data-height="624"
+          data-layout-iframe-id="inline-contact-form"
+          data-form-id="Gpue5KmcF2LTfDXD1Jcf"
+          title="Formulário de contato — Organum"
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p style="margin-top:.75rem;font-size:.75rem;color:rgba(255,255,255,.2);text-align:center;">Respondemos em até 24 horas úteis. Sem spam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Perguntas antes de entrar em contato -->
+<section style="padding:clamp(3rem,7vw,5rem) clamp(1rem,4vw,3rem);background:var(--n50);">
+  <div style="max-width:960px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);margin-bottom:1rem;">Antes de entrar em contato</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.25rem);font-weight:700;letter-spacing:-.02em;margin-bottom:2rem;">Perguntas frequentes</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;" class="faq-grid">
+      {[
+        { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente. Temos cases bilíngues PT/EN para operações nos EUA.' },
+        { q: 'A auditoria é realmente gratuita?', a: 'Sim, sem custo e sem obrigação de contratação. Em 48 horas você recebe o diagnóstico técnico completo.' },
+        { q: 'Qual o perfil de empresa que vocês atendem?', a: 'Empresas B2B (consultoria, SaaS, indústria, distribuidora) e e-commerce com faturamento acima de R$500k/ano.' },
+        { q: 'Quanto tempo leva para ver resultados?', a: 'Resultados técnicos em 2-4 semanas. Tráfego orgânico consistente em 3-6 meses. Citações por IAs em 4-8 semanas.' },
+      ].map(item => (
+        <div style="background:var(--n0);border:1px solid var(--n200);padding:1.75rem;">
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--n900);margin-bottom:.625rem;">{item.q}</p>
+          <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">{item.a}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
+
+<style>
+@media (max-width: 768px) {
+  .contact-hero-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; }
+  .faq-grid { grid-template-columns: 1fr !important; }
+}
+</style>
+
+</Page>
