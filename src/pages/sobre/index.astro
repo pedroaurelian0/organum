@@ -1,0 +1,65 @@
+---
+import Page from '@layouts/Page.astro';
+---
+<Page
+  title="Sobre a Organum | Pedro Aureliano e o Método ORGANUM"
+  description="Conheça Pedro Aureliano, fundador da Organum e criador do Método ORGANUM — as 5 camadas do SEO orgânico B2B."
+  canonical="https://organum.com.br/sobre/"
+  breadcrumbItems={[{ name: 'Sobre', url: '/sobre' }]}
+>
+
+<section style="background:var(--n950);padding:clamp(4rem,10vh,7rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;">
+    <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(76,175,100,.7);margin-bottom:1rem;">A Organum</p>
+    <h1 style="font-family:var(--serif);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;line-height:.93;letter-spacing:-.03em;color:#fff;max-width:20ch;">
+      Quem está por trás do <em style="color:var(--g400);font-style:italic;">Método ORGANUM</em>
+    </h1>
+    <p style="margin-top:1.75rem;font-size:1.0625rem;color:rgba(255,255,255,.5);max-width:48ch;line-height:1.75;">
+      A Organum é a agência de SEO orgânico B2B fundada por Pedro Aureliano em Recife — com atendimento nacional e internacional.
+    </p>
+  </div>
+</section>
+
+<section style="padding:clamp(4rem,8vw,6rem) clamp(1rem,4vw,3rem);">
+  <div style="max-width:1280px;margin-inline:auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;" class="about-grid">
+
+    <!-- Pedro Aureliano -->
+    <a href="/sobre/pedro-aureliano" style="border:1px solid var(--n200);padding:2.5rem;text-decoration:none;display:flex;flex-direction:column;gap:1.25rem;transition:border-color .2s,transform .2s;" onmouseover="this.style.borderColor='var(--g400)';this.style.transform='translateY(-4px)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)'">
+      <div style="width:56px;height:56px;background:var(--g50);border:1px solid var(--g200);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g700);">PA</div>
+      <div>
+        <p style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--n950);margin-bottom:.375rem;">Pedro Aureliano</p>
+        <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--g600);">Fundador · CEO</p>
+      </div>
+      <p style="font-size:.9375rem;color:var(--n500);line-height:1.7;flex:1;">Especialista em SEO orgânico B2B, GEO e construção de entidade digital. 60+ projetos em 6 países. Criador do Método ORGANUM.</p>
+      <span style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">Ver perfil completo →</span>
+    </a>
+
+    <!-- Manifesto / Sobre a empresa -->
+    <div style="border:1px solid var(--n200);padding:2.5rem;display:flex;flex-direction:column;gap:1.25rem;">
+      <div style="width:56px;height:56px;background:var(--n950);display:flex;align-items:center;justify-content:center;font-size:1.5rem;">🌱</div>
+      <div>
+        <p style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--n950);margin-bottom:.375rem;">Nossa missão</p>
+        <p style="font-size:.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--n400);">Por que existimos</p>
+      </div>
+      <p style="font-size:.9375rem;color:var(--n500);line-height:1.7;flex:1;">
+        Nenhuma agência brasileira entregava GEO sistematicamente. Criamos o Método ORGANUM para mudar isso — e provar que pipeline orgânico B2B previsível é possível sem depender de tráfego pago.
+      </p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;">
+        {['Recife, PE — atendimento nacional e internacional',
+          '7+ Vacations — case bilíngue PT/EN na Flórida',
+          'HunterHunter — citada pelo ChatGPT em 90 dias'].map(item => (
+          <div style="display:flex;align-items:flex-start;gap:.625rem;font-size:.875rem;color:var(--n500);">
+            <span style="color:var(--g500);font-weight:700;flex-shrink:0;margin-top:1px;">✓</span>
+            {item}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@media (max-width: 640px) { .about-grid { grid-template-columns: 1fr !important; } }
+</style>
+
+</Page>
