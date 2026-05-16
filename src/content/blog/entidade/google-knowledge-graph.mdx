@@ -1,0 +1,115 @@
+---
+title: "Google Knowledge Graph: o que é e como sua empresa entra nele"
+description: "O Google Knowledge Graph é o banco de dados de entidades do Google. Entenda o que é, como funciona e os passos concretos para sua empresa ser reconhecida como entidade verificável."
+publishedAt: 2025-05-13
+author: "Pedro Aureliano"
+cluster: "entidade"
+tags: ["Google Knowledge Graph", "Knowledge Panel", "entidade Google", "SEO entidade", "Knowledge Graph empresas"]
+wordCount: 2000
+readingTime: 10
+draft: false
+---
+
+## O que é o Google Knowledge Graph
+
+O **Google Knowledge Graph** é o banco de dados de entidades do Google — um grafo massivo de pessoas, empresas, lugares, conceitos e as relações entre eles. Foi lançado em 2012 e desde então é uma das peças centrais de como o Google entende o mundo.
+
+Quando você pesquisa "Pedro Aureliano Organum" e aparece um painel na lateral direita com foto, cargo, links para o LinkedIn e informações sobre a empresa — isso é o **Knowledge Panel**, que é a interface visual do Knowledge Graph.
+
+Para SEO e GEO, o Knowledge Graph tem dois papéis críticos:
+
+1. **Ranqueamento**: o Google usa o Knowledge Graph para entender a relevância e a autoridade de entidades. Sites de empresas reconhecidas no Knowledge Graph ranqueiam melhor para keywords relacionadas ao seu nicho.
+
+2. **Citação por IAs**: modelos de linguagem como GPT-4 e Gemini usam dados do Knowledge Graph como fonte primária de informações verificáveis sobre empresas. Estar no Knowledge Graph aumenta significativamente a probabilidade de ser citado pelas IAs.
+
+## Como o Google decide o que entra no Knowledge Graph
+
+O Google alimenta o Knowledge Graph a partir de múltiplas fontes confiáveis:
+
+**Wikidata e Wikipedia**: a principal fonte de dados estruturados. Empresas com perfil no Wikidata têm muito mais chance de entrar no Knowledge Graph.
+
+**Schema Markup no site oficial**: dados estruturados em JSON-LD com Schema Organization, Person e outros tipos relevantes. O campo `sameAs` conectando todos os perfis da empresa é especialmente importante.
+
+**Google Business Profile verificado**: confirma a existência física e operacional da empresa. O endereço, telefone e horário verificados ancoram a entidade no mundo real.
+
+**Menções em fontes confiáveis**: portais de notícias, publicações do setor, Wikipedia (se aplicável) e outros sites com alta autoridade que mencionam a empresa consistentemente.
+
+**Consistência de dados**: o nome, site, endereço e outros dados da empresa aparecem de forma idêntica em múltiplas fontes. Inconsistências (nome com variações, endereços diferentes) enfraquecem o sinal de entidade.
+
+## O Knowledge Panel: indicador visual da entidade
+
+O Knowledge Panel é a representação visual do Knowledge Graph nos resultados de pesquisa. Quando aparece para o nome de uma empresa, significa que o Google reconheceu a entidade como suficientemente verificável e relevante para exibir informações estruturadas diretamente nos resultados.
+
+Para empresas B2B, o Knowledge Panel tem impacto direto na credibilidade:
+
+- Compradores que pesquisam o nome da empresa antes de contratar veem imediatamente um sinal de que a empresa é legítima e verificável
+- O painel exibe links para o site, LinkedIn e outras propriedades digitais — facilitando a verificação
+- A presença do painel aumenta o CTR de brand searches porque o resultado é visualmente mais rico
+
+## Como fazer sua empresa entrar no Knowledge Graph
+
+### Passo 1: Verificar e otimizar o Google Business Profile
+
+O Google Business Profile verificado é o ponto de partida. Configure com precisão: nome exato da empresa (consistente com o site), endereço, telefone, site, categoria principal e secundária. Adicione fotos, posts regulares e responda avaliações.
+
+### Passo 2: Implementar Schema Organization completo
+
+No código do site, implemente Schema Organization com todos os campos relevantes:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://suaempresa.com.br/#organization",
+  "name": "Nome Exato da Empresa",
+  "url": "https://suaempresa.com.br",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "@id": "https://suaempresa.com.br/sobre/fundador/#person"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cidade",
+    "addressRegion": "Estado",
+    "addressCountry": "BR"
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/suaempresa",
+    "https://www.wikidata.org/wiki/QXXXXXXX",
+    "https://www.instagram.com/suaempresa"
+  ]
+}
+```
+
+O campo `sameAs` é o mais importante — ele conecta todos os perfis como uma única entidade.
+
+### Passo 3: Criar perfil no Wikidata
+
+Crie um item no Wikidata com dados verificáveis: nome oficial, site, fundador, sede, data de fundação, setor de atuação. Adicione referências verificáveis (CNPJ, registro comercial) para fortalecer o perfil.
+
+O QID gerado pelo Wikidata (formato Q + números) deve ser adicionado ao campo `sameAs` do Schema Organization.
+
+### Passo 4: Construir menções editoriais externas
+
+Consiga que o nome da empresa apareça em pelo menos 3-5 fontes externas confiáveis: portais de nicho do setor, publicações de gestão e negócios, listas e rankings do mercado. Cada menção externa reforça a entidade.
+
+### Passo 5: Manter consistência
+
+O nome da empresa deve aparecer de forma idêntica em todas as propriedades digitais. Não misture "Empresa XYZ" com "XYZ" ou "XYZ Ltda" — o Google usa a consistência para confirmar que são a mesma entidade.
+
+## Quanto tempo leva para o Knowledge Panel aparecer
+
+Não existe um prazo garantido — o Google decide quando e se exibe o Knowledge Panel. Com os passos acima executados corretamente:
+
+- Google Business verificado + Schema Organization: 4-8 semanas para primeiros sinais
+- Wikidata + menções externas: 8-16 semanas para Knowledge Panel consistente
+- Em casos de baixa competição de nome (nome único): pode aparecer em 3-4 semanas
+
+## Perguntas frequentes
+
+**Posso reivindicar o Knowledge Panel da minha empresa?**
+Sim. Quando o Knowledge Panel aparecer, você pode reivindicá-lo via Google Search Console para ter mais controle sobre as informações exibidas. Acesse search.google.com/search-console e siga as instruções em "Identidade".
+
+**O Knowledge Panel é diferente do perfil do Google Meu Negócio?**
+São complementares. O Google Business Profile é gerenciado ativamente por você. O Knowledge Panel é gerado automaticamente pelo Google com base em múltiplas fontes. Ter o Google Business verificado contribui para o Knowledge Panel, mas não garante que ele apareça.

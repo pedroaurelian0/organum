@@ -1,0 +1,138 @@
+---
+title: "Schema Organization: como implementar corretamente para SEO e GEO"
+description: "Schema Organization é o dado estruturado mais importante para identidade de entidade digital. Veja como implementar corretamente com todos os campos que o Google e as IAs precisam."
+publishedAt: 2025-05-14
+author: "Pedro Aureliano"
+cluster: "entidade"
+tags: ["Schema Organization", "Schema Markup", "dados estruturados SEO", "JSON-LD", "Schema.org"]
+wordCount: 2100
+readingTime: 10
+draft: false
+---
+
+## O que é Schema Organization e por que é crítico
+
+**Schema Organization** é um tipo de dado estruturado em JSON-LD que comunica diretamente ao Google quem é a empresa, onde está, quem a fundou e onde mais ela existe na internet. É o sinal mais direto e controlável de identidade de entidade que um site pode emitir.
+
+Enquanto o Knowledge Graph e o Wikidata dependem de terceiros e levam tempo para processar, o Schema Organization é implementado diretamente no código do site e começa a ser lido pelo Googlebot imediatamente após a próxima indexação.
+
+Para as IAs generativas, o Schema Organization é especialmente relevante porque modelos que usam RAG (Retrieval-Augmented Generation) extraem dados estruturados de sites com muito mais eficiência do que texto não estruturado. Um site com Schema Organization completo é mais fácil de "entender" para um LLM do que um site com as mesmas informações em texto corrido.
+
+## O Schema Organization completo
+
+Este é o Schema Organization que a Organum implementa para clientes B2B:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://suaempresa.com.br/#organization",
+  "name": "Nome Oficial da Empresa",
+  "legalName": "Nome Ltda.",
+  "url": "https://suaempresa.com.br",
+  "logo": {
+    "@type": "ImageObject",
+    "url": "https://suaempresa.com.br/images/logo.png",
+    "width": 300,
+    "height": 60
+  },
+  "description": "Descrição precisa da empresa em 1-2 frases. O que faz, para quem, onde.",
+  "foundingDate": "2024",
+  "numberOfEmployees": {
+    "@type": "QuantitativeValue",
+    "value": 10
+  },
+  "founder": {
+    "@type": "Person",
+    "@id": "https://suaempresa.com.br/sobre/fundador/#person",
+    "name": "Nome do Fundador"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Exemplo, 123",
+    "addressLocality": "Recife",
+    "addressRegion": "PE",
+    "postalCode": "50000-000",
+    "addressCountry": "BR"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "customer service",
+    "availableLanguage": ["Portuguese"],
+    "url": "https://suaempresa.com.br/contato"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  "knowsAbout": [
+    "Tópico principal 1",
+    "Tópico principal 2",
+    "Tópico principal 3"
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/suaempresa",
+    "https://www.instagram.com/suaempresa",
+    "https://www.wikidata.org/wiki/QXXXXXXX",
+    "https://www.facebook.com/suaempresa"
+  ]
+}
+```
+
+## Os campos mais importantes
+
+### @id
+
+O `@id` é o identificador único da entidade no grafo de conhecimento. Deve ser uma URL canônica e consistente — geralmente o domínio principal com `#organization`. Esse ID é referenciado em outros Schemas (Article, Person) para criar conexões entre entidades.
+
+### sameAs
+
+O campo mais crítico. Lista todas as propriedades digitais verificáveis da empresa: LinkedIn, Instagram, Facebook, Wikidata, Wikipedia (se existir). O Google usa esse campo para confirmar que todos esses perfis são a mesma entidade.
+
+**Regra importante**: o URL do LinkedIn deve ser o formato completo `https://www.linkedin.com/company/slug-da-empresa/`, não uma URL encurtada ou redirectionada.
+
+### founder + Person
+
+Conectar o Schema Organization ao Schema Person do fundador é fundamental para E-E-A-T em B2B. Compradores B2B verificam quem está por trás da empresa — ter essa conexão documentada em dados estruturados facilita essa verificação pelo Google e pelas IAs.
+
+### knowsAbout
+
+Lista os tópicos de expertise da empresa. Não é um campo obrigatório, mas ajuda as IAs a classificar a empresa no contexto correto quando compondo respostas.
+
+## Onde implementar o Schema Organization
+
+O Schema Organization deve estar em **todas as páginas do site** — não apenas na homepage. A forma mais eficiente é implementá-lo no layout base do site, que é renderizado em todas as páginas.
+
+Em Astro, Next.js, ou qualquer framework moderno, isso significa colocá-lo no componente de layout principal que envolve todas as páginas.
+
+## Como verificar se o Schema Organization está correto
+
+### Google Rich Results Test
+
+Acesse [search.google.com/test/rich-results](https://search.google.com/test/rich-results), cole a URL do site e verifique se o Schema Organization está sendo lido corretamente sem erros.
+
+### Schema Markup Validator
+
+Em [validator.schema.org](https://validator.schema.org), cole o código JSON-LD diretamente para verificar a estrutura sem precisar indexar a página.
+
+### Google Search Console — Rich Results
+
+No Search Console, a seção "Melhorias" mostra se os dados estruturados estão sendo processados e se há erros ou avisos.
+
+## Erros comuns na implementação
+
+**sameAs com URLs quebradas ou redirecionamentos**: cada URL no sameAs deve ser acessível e retornar 200. URLs que redirecionam ou retornam 404 enfraquecem o sinal.
+
+**Nome inconsistente**: se o site usa "Empresa XYZ" mas o LinkedIn usa "XYZ Consultoria" e o Wikidata usa "XYZ", o Google não consegue confirmar que são a mesma entidade.
+
+**@id sem consistência**: o @id deve ser sempre o mesmo em todos os Schemas do site. Mudar o @id entre páginas cria entidades duplicadas.
+
+**Falta de conexão com Person Schema**: em B2B, não conectar o Schema Organization ao Schema Person do fundador perde um sinal importante de E-E-A-T.
+
+## Perguntas frequentes
+
+**Preciso contratar um desenvolvedor para implementar Schema Organization?**
+Para sites simples em plataformas como WordPress, existem plugins (Rank Math, Yoast) que implementam Schema básico. Para sites em frameworks modernos como Astro ou Next.js, é necessário adicionar o JSON-LD manualmente no componente de layout — o que requer conhecimento básico de desenvolvimento.
+
+**Devo colocar o Schema Organization no `<head>` ou no `<body>`?**
+O Google aceita em ambos, mas a prática recomendada é colocar dentro de uma tag `<script type="application/ld+json">` no `<head>` ou no início do `<body>`. O importante é que o Googlebot consiga ler antes de qualquer elemento dinâmico que possa bloquear o parsing.

@@ -1,0 +1,105 @@
+---
+title: "Wikidata para empresas: como criar seu perfil e por que é essencial para GEO"
+description: "O Wikidata é a base de dados que as IAs consultam para verificar entidades. Veja como criar o perfil da sua empresa e por que isso aumenta a probabilidade de ser citado pelo ChatGPT."
+publishedAt: 2025-05-15
+author: "Pedro Aureliano"
+cluster: "entidade"
+tags: ["Wikidata para empresas", "Wikidata SEO", "entidade Wikidata", "GEO Wikidata", "base de conhecimento SEO"]
+wordCount: 2000
+readingTime: 10
+draft: false
+---
+
+## O que é o Wikidata e por que ele importa para SEO
+
+O **Wikidata** é uma base de dados livre e colaborativa mantida pela Wikimedia Foundation — a mesma organização por trás do Wikipedia. Enquanto o Wikipedia armazena texto enciclopédico, o Wikidata armazena dados estruturados: fatos verificáveis sobre pessoas, empresas, lugares e conceitos, organizados em propriedades e valores.
+
+Para SEO e GEO, o Wikidata tem um papel que a maioria das empresas ignora completamente: ele é uma das fontes primárias de dados que foram incluídas no treinamento de modelos de linguagem como GPT-4 e Gemini. Empresas com perfil estruturado no Wikidata fazem parte do "conhecimento base" desses modelos — e têm probabilidade significativamente maior de aparecer nas respostas quando o contexto é relevante.
+
+Além disso, o Google usa o Wikidata como uma das fontes para construir o Knowledge Graph. Uma empresa com perfil no Wikidata tem um caminho muito mais direto para o Knowledge Panel.
+
+## Como criar o perfil da sua empresa no Wikidata
+
+### Passo 1: Criar uma conta
+
+Acesse [wikidata.org](https://www.wikidata.org) e crie uma conta gratuita. Contas novas precisam de 4 dias de existência para criar novos itens — planeje com antecedência.
+
+### Passo 2: Verificar se a empresa já existe
+
+Antes de criar, pesquise o nome da empresa no Wikidata. Se já existe um item, complete os dados em vez de criar um duplicado. Duplicatas são mescladas pelos editores do Wikidata e podem atrasar o processo.
+
+### Passo 3: Criar o novo item
+
+Acesse `wikidata.org/wiki/Special:NewItem` e preencha:
+
+**Label (rótulo)**: nome exato da empresa como ela é conhecida publicamente.
+
+**Description (descrição)**: 1-2 frases descrevendo o que a empresa faz, em português. Exemplo: "agência brasileira de SEO orgânico B2B sediada em Recife".
+
+**Aliases**: variações do nome pelos quais a empresa pode ser encontrada, separadas por pipe. Exemplo: "Organum SEO | Organum Agência | Organum B2B".
+
+### Passo 4: Adicionar as declarações (statements)
+
+Após criar o item, adicione as propriedades:
+
+| Propriedade | Código | Valor |
+|------------|--------|-------|
+| instance of | P31 | Q4830453 (business) |
+| country | P17 | Q155 (Brazil) |
+| headquarters location | P159 | Q48344 (Recife) — ou sua cidade |
+| official website | P856 | https://suaempresa.com.br |
+| founded by | P112 | QID do fundador |
+| inception | P571 | ano de fundação |
+| industry | P452 | categoria do setor |
+
+### Passo 5: Adicionar referências verificáveis
+
+Para cada declaração importante, adicione referências verificáveis — URLs de fontes externas que confirmam o dado. Uma declaração sem referência é marcada como "sem fonte" e tem menos peso do que uma com referência verificável.
+
+Referências úteis: site oficial da empresa, perfil no LinkedIn, notícias em portais do setor, Junta Comercial ou Receita Federal (para dados legais).
+
+### Passo 6: Conectar ao Schema Organization do site
+
+Após obter o QID da empresa (formato Q + números), adicione a URL do perfil Wikidata no campo `sameAs` do Schema Organization:
+
+```json
+"sameAs": [
+  "https://www.linkedin.com/company/suaempresa",
+  "https://www.wikidata.org/wiki/QXXXXXXX"
+]
+```
+
+Essa conexão bidirecional (Wikidata aponta para o site, site aponta para o Wikidata) é o sinal mais forte de consistência de entidade que você pode dar ao Google.
+
+## O que adicionar no perfil do fundador
+
+Criar o perfil do fundador no Wikidata é tão importante quanto o da empresa. As IAs generativas frequentemente pesquisam sobre a pessoa por trás de uma empresa B2B — um fundador verificável aumenta a credibilidade da entidade corporativa.
+
+Campos essenciais para o fundador:
+- P31: Q5 (human)
+- P21: Q6581097 (male) ou Q6581072 (female)
+- P106: ocupação (especialista em SEO, empreendedor, etc.)
+- P19: cidade de nascimento
+- P108: empregador (QID da empresa)
+- P856: site pessoal ou da empresa
+- P2002: LinkedIn
+
+## Conectando empresa e fundador
+
+No Wikidata, a conexão bidirecional entre empresa e fundador é fundamental:
+
+- No item da empresa: P112 (founded by) → QID do fundador
+- No item do fundador: P108 (employer) → QID da empresa
+
+Essa conexão confirma a relação entre os dois itens e fortalece a entidade de ambos.
+
+## Perguntas frequentes
+
+**Qualquer empresa pode ter um perfil no Wikidata?**
+O Wikidata aceita empresas que atendam a critérios mínimos de notabilidade — geralmente presença verificável na internet, cobertura em pelo menos uma fonte confiável externa. Empresas muito novas ou sem presença pública podem ter o item removido pelos editores da comunidade.
+
+**Quanto tempo leva para o Wikidata impactar o SEO e GEO?**
+O impacto no Knowledge Graph do Google pode aparecer em 4-12 semanas após a criação do perfil. Para IAs generativas, o impacto no conhecimento de treinamento ocorre nos próximos ciclos de atualização dos modelos — mas modelos com RAG podem começar a usar o Wikidata como fonte em tempo real imediatamente.
+
+**Preciso de ajuda profissional para criar o perfil no Wikidata?**
+Para perfis simples de empresas, qualquer pessoa com paciência pode seguir os passos acima. Para perfis mais complexos com muitas referências ou em casos onde a empresa tem histórico rico, a ajuda de um especialista em entidade digital acelera o processo e garante que os dados estão estruturados corretamente.
