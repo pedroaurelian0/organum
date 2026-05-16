@@ -211,3 +211,14 @@ input,textarea,select,button{font-family:var(--sans)}
 @media(max-width:768px){.hero-content{grid-template-columns:1fr;gap:2.5rem;padding-top:7rem}.metrics-grid{grid-template-columns:repeat(2,1fr)}.prob-grid{grid-template-columns:1fr}.icp-grid{grid-template-columns:1fr}.faq-layout{grid-template-columns:1fr;gap:2rem}.footer-grid{grid-template-columns:1fr 1fr}.layer-body.open{grid-template-columns:1fr}.dores-layout{grid-template-columns:1fr;gap:2rem}}
 @media(max-width:640px){.cases-grid{grid-template-columns:1fr}.diff-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.metric-item{padding:1.5rem 1rem}}
 @media(max-width:768px){#desktop-nav{display:none !important}#burger{display:block !important}}
+/* Fix iframe GHL — garantir visibilidade */
+#typeform-section iframe {
+    opacity: 1 !important;
+    transform: none !important;
+    position: relative !important;
+    left: auto !important;
+  }
+  #typeform-section > div > div:last-of-type {
+    opacity: 1 !important;
+    transform: none !important;
+  }
