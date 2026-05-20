@@ -34,7 +34,7 @@ const path = Astro.url.pathname;
     </nav>
 
     <div style="display:flex;align-items:center;gap:.75rem;flex-shrink:0;">
-      <a href="/auditoria-gratuita" class="btn btn-dark" style="padding:.6rem 1.125rem;font-size:.75rem;white-space:nowrap;">
+      <a href="/auditoria-gratuita" class="btn btn-dark header-cta" style="padding:.6rem 1.125rem;font-size:.75rem;white-space:nowrap;">
         Auditoria gratuita
       </a>
       <button id="burger" aria-label="Menu" style="display:none;background:none;border:none;cursor:pointer;padding:.35rem;color:var(--color-n-700);">
@@ -66,6 +66,7 @@ const path = Astro.url.pathname;
 @media (max-width: 768px) {
   #desktop-nav { display: none !important; }
   #burger { display: block !important; }
+  .header-cta { display: none !important; }
 }
 </style>
 
