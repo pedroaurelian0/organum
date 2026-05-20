@@ -103,6 +103,25 @@ img { max-width: 100%; height: auto; display: block; }
   border-bottom: 1px solid var(--n-100);
 }
 
+/* ── Seções com fundo escuro ── */
+.entidade-section,
+.layers-section,
+.geo-section,
+.proof-section,
+.dores-section,
+.typeform-section {
+  background: var(--n950);
+  color: #fff;
+  padding-block: 5rem;
+}
+
+/* ── Seções com fundo claro ── */
+.diff-section,
+.faq-section {
+  background: var(--n0);
+  padding-block: 5rem;
+}
+
 /* ── Hero ── */
 .hero {
   background: var(--n-950);
