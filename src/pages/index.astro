@@ -446,13 +446,13 @@ const faqs = [
         { icon: '◉', title: 'B2B: consultoria, SaaS, indústria', range: 'R$250k – R$2M/mês', pitch: 'Pipeline que não seca quando os ads param. Leads qualificados chegando sem custo incremental.', desc: 'Ciclos de venda longos com múltiplos decisores — SEO B2B especializado.' },
         { icon: '◎', title: 'Operação internacional', range: 'Qualquer porte', pitch: 'Autoridade em PT e EN sem dobrar o budget de ads. Crescimento orgânico em dois mercados.', desc: 'SEO bilíngue PT/EN com entidade digital em múltiplas regiões.' },
       ].map((icp, i) => (
-        <div class={`icp-card reveal reveal-d${i+1}`}>
-          <div class="icp-icon">{icp.icon}</div>
-          <p class="icp-title">{icp.title}</p>
-          <p class="icp-range">{icp.range}</p>
-          <p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--g700);line-height:1.4;">{icp.pitch}</p>
-          <p class="icp-desc">{icp.desc}</p>
-          <a href="#typeform-section" class="icp-link">Solicitar diagnóstico gratuito →</a>
+        <div class={`icp-card reveal reveal-d${i+1}`} style="background:#fff;border:1px solid var(--n200);padding:2rem;display:flex;flex-direction:column;gap:.875rem;transition:all .2s;" onmouseover="this.style.borderColor='var(--g300)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+          <div class="icp-icon" style="width:48px;height:48px;background:var(--g50);border:2px solid var(--g200);border-radius:50%;display:grid;place-items:center;font-size:1.5rem;color:var(--g600);margin-bottom:.5rem;">{icp.icon}</div>
+          <p class="icp-title" style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:var(--n900);line-height:1.2;">{icp.title}</p>
+          <p class="icp-range" style="font-size:.8125rem;font-weight:600;color:var(--g600);letter-spacing:.02em;">{icp.range}</p>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--g700);line-height:1.4;margin-top:.5rem;">{icp.pitch}</p>
+          <p class="icp-desc" style="font-size:.875rem;color:var(--n600);line-height:1.65;margin-bottom:.5rem;">{icp.desc}</p>
+          <a href="#typeform-section" class="icp-link" style="display:inline-flex;align-items:center;gap:.375rem;font-size:.8125rem;font-weight:600;color:var(--g600);text-decoration:none;margin-top:auto;transition:gap .2s;" onmouseover="this.style.gap='0.625rem'" onmouseout="this.style.gap='0.375rem'">Solicitar diagnóstico gratuito →</a>
         </div>
       ))}
     </div>
@@ -470,29 +470,29 @@ const faqs = [
       <a href="/cases" class="reveal reveal-d2" style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g600);">Ver todos →</a>
     </div>
     <div class="cases-grid reveal">
-      <a href="/cases/hunterhunter" class="case-card">
-        <p class="case-tag">Headhunting B2B · Recife</p>
-        <p class="case-name">HunterHunter</p>
-        <p class="case-result">Citada pelo ChatGPT e Perplexity</p>
-        <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">Leads orgânicos qualificados sem nenhum real em anúncios. O caso âncora do Método ORGANUM para B2B.</p>
-        <div class="case-metrics">
-          <div class="cm"><span class="cm-num">47+</span><span class="cm-lbl">Posições conquistadas</span></div>
-          <div class="cm"><span class="cm-num">340%</span><span class="cm-lbl">Tráfego orgânico</span></div>
-          <div class="cm"><span class="cm-num">90d</span><span class="cm-lbl">Para citação por IA</span></div>
+      <a href="/cases/hunterhunter" class="case-card" style="background:#fff;border:1px solid var(--n200);padding:2rem;display:flex;flex-direction:column;gap:.875rem;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='var(--g300)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <p class="case-tag" style="font-size:.75rem;font-weight:600;color:var(--g600);letter-spacing:.05em;margin-bottom:.25rem;">Headhunting B2B · Recife</p>
+        <p class="case-name" style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--n900);line-height:1.2;margin-bottom:.25rem;">HunterHunter</p>
+        <p class="case-result" style="font-size:.9375rem;font-weight:600;color:var(--g700);margin-bottom:.5rem;">Citada pelo ChatGPT e Perplexity</p>
+        <p style="font-size:.875rem;color:var(--n600);line-height:1.65;margin-bottom:1rem;">Leads orgânicos qualificados sem nenhum real em anúncios. O caso âncora do Método ORGANUM para B2B.</p>
+        <div class="case-metrics" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;padding-top:1rem;border-top:1px solid var(--n150);margin-top:auto;">
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">47+</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Posições conquistadas</span></div>
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">340%</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Tráfego orgânico</span></div>
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">90d</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Para citação por IA</span></div>
         </div>
-        <p class="case-cta">Ver case completo →</p>
+        <p class="case-cta" style="display:inline-flex;align-items:center;gap:.375rem;font-size:.8125rem;font-weight:600;color:var(--g600);margin-top:.5rem;transition:gap .2s;" onmouseover="this.style.gap='0.625rem'" onmouseout="this.style.gap='0.375rem'">Ver case completo →</p>
       </a>
-      <a href="/cases/7-vacations" class="case-card">
-        <p class="case-tag">Gestão de propriedade · Flórida</p>
-        <p class="case-name">7+ Vacations</p>
-        <p class="case-result">SEO bilíngue PT/EN · 2 mercados</p>
-        <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">Case internacional que prova o Método ORGANUM funcionando em inglês para operação nos EUA.</p>
-        <div class="case-metrics">
-          <div class="cm"><span class="cm-num">PT/EN</span><span class="cm-lbl">Bilíngue</span></div>
-          <div class="cm"><span class="cm-num">2</span><span class="cm-lbl">Mercados</span></div>
-          <div class="cm"><span class="cm-num">Intl</span><span class="cm-lbl">Case âncora</span></div>
+      <a href="/cases/7-vacations" class="case-card" style="background:#fff;border:1px solid var(--n200);padding:2rem;display:flex;flex-direction:column;gap:.875rem;text-decoration:none;transition:all .2s;" onmouseover="this.style.borderColor='var(--g300)';this.style.transform='translateY(-4px)';this.style.boxShadow='0 8px 24px rgba(0,0,0,.08)'" onmouseout="this.style.borderColor='var(--n200)';this.style.transform='translateY(0)';this.style.boxShadow='none'">
+        <p class="case-tag" style="font-size:.75rem;font-weight:600;color:var(--g600);letter-spacing:.05em;margin-bottom:.25rem;">Gestão de propriedade · Flórida</p>
+        <p class="case-name" style="font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--n900);line-height:1.2;margin-bottom:.25rem;">7+ Vacations</p>
+        <p class="case-result" style="font-size:.9375rem;font-weight:600;color:var(--g700);margin-bottom:.5rem;">SEO bilíngue PT/EN · 2 mercados</p>
+        <p style="font-size:.875rem;color:var(--n600);line-height:1.65;margin-bottom:1rem;">Case internacional que prova o Método ORGANUM funcionando em inglês para operação nos EUA.</p>
+        <div class="case-metrics" style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;padding-top:1rem;border-top:1px solid var(--n150);margin-top:auto;">
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">PT/EN</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Bilíngue</span></div>
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">2</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Mercados</span></div>
+          <div class="cm" style="display:flex;flex-direction:column;gap:.25rem;"><span class="cm-num" style="font-family:var(--serif);font-size:1.25rem;font-weight:700;color:var(--g600);">Intl</span><span class="cm-lbl" style="font-size:.7rem;color:var(--n500);line-height:1.3;">Case âncora</span></div>
         </div>
-        <p class="case-cta">Ver case completo →</p>
+        <p class="case-cta" style="display:inline-flex;align-items:center;gap:.375rem;font-size:.8125rem;font-weight:600;color:var(--g600);margin-top:.5rem;transition:gap .2s;" onmouseover="this.style.gap='0.625rem'" onmouseout="this.style.gap='0.375rem'">Ver case completo →</p>
       </a>
     </div>
   </div>
