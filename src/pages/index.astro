@@ -22,18 +22,36 @@ const websiteSchema = {
   inLanguage: 'pt-BR',
 };
 
-const companies = [
-  { n: 'HunterHunter', u: 'hunterhunter.com.br' },
-  { n: '7+ Vacations', u: '7plusvacations.com' },
-  { n: 'Grupo Polis', u: 'grupopolis.com.br' },
-  { n: 'Netiz', u: 'netiz.com.br' },
-  { n: 'Simbiose Ventures', u: 'simbioseventures.com' },
-  { n: 'Auaha', u: 'auaha.com.br' },
-  { n: 'Colina AI', u: 'colina.ai' },
-  { n: 'Haze Shift', u: 'hazeshift.com' },
+const dores = [
+  { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
+  { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
+  { q: '"Meu concorrente aparece no ChatGPT. Eu não."', a: 'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
+  { q: '"Já investi em SEO antes e nunca funcionou."', a: 'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
+  { q: '"Minha empresa não é citada pelas IAs."', a: 'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
+  { q: '"Quero crescer sem depender de tráfego pago."', a: 'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
 ];
 
-const ias = ['ChatGPT', 'Gemini', 'Perplexity', 'Copilot', 'Grok', 'Claude'];
+const layers = [
+  { num: '01', name: 'Fundação técnica', sub: 'Core Web Vitals, silos, Schema Markup', tag: 'ltag-base', tagLabel: 'Base obrigatória',
+    text: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.', animId: 'anim-01' },
+  { num: '02', name: 'Identidade de entidade', sub: 'Knowledge Graph, Wikidata, sameAs cruzados', tag: 'ltag-diff', tagLabel: 'Diferencial Organum',
+    text: 'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.', animId: 'anim-02' },
+  { num: '03', name: 'Conteúdo de autoridade', sub: 'Clusters semânticos por ICP, E-E-A-T profundo', tag: 'ltag-base', tagLabel: 'Fonte para IA',
+    text: 'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.', animId: 'anim-03' },
+  { num: '04', name: 'GEO + AEO', sub: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'ltag-geo', tagLabel: 'Ninguém entrega isso',
+    text: '<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.', animId: 'anim-04' },
+  { num: '05', name: 'Digital PR', sub: 'Link building editorial, assessoria de imprensa digital', tag: 'ltag-base', tagLabel: 'Autoridade externa',
+    text: 'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.', animId: 'anim-05' },
+];
+
+const faqs = [
+  { q: 'O que é o Método ORGANUM?', a: 'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
+  { q: 'Quanto tempo leva para ver resultado?', a: 'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
+  { q: 'Para quem é a Organum?', a: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
+  { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
+  { q: 'O que é GEO — Generative Engine Optimization?', a: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
+  { q: 'Qual a diferença entre SEO B2B e SEO tradicional?', a: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
+];
 ---
 
 <Page
@@ -45,539 +63,791 @@ const ias = ['ChatGPT', 'Gemini', 'Perplexity', 'Copilot', 'Grok', 'Claude'];
 
 <!-- ══════════ HERO ══════════ -->
 <section class="hero">
-  <div class="hero-grid" aria-hidden="true"></div>
-  
-  <div class="wrap" style="position:relative;z-index:2;padding-block:clamp(5rem,12vh,9rem) clamp(3rem,8vh,6rem);">
-    <div style="max-width:min(90%,1280px);margin-inline:auto;display:grid;grid-template-columns:1fr;gap:clamp(3rem,6vw,5rem);align-items:center;">
-      
-      <div>
-        <p class="hero-eye anim-fade-up d1">Método ORGANUM — 5 camadas comprovadas</p>
-        <h1 class="hero-title anim-fade-up d2">
-          SEO orgânico que gera pipeline B2B — <em>não apenas cliques</em>
-        </h1>
-        <p class="hero-sub anim-fade-up d3">Do zero técnico à citação por IA. Sem anúncios. Sem dependência de algoritmo de mídia social.</p>
-        <div class="hero-actions anim-fade-up d4">
-          <a href="#typeform-section" class="btn btn-green">Solicitar auditoria gratuita</a>
-          <a href="/metodo" class="btn btn-outline">Ver o método →</a>
-        </div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div>
+      <p class="hero-eye anim-fade-up d1">Método ORGANUM — 5 camadas comprovadas</p>
+      <h1 class="hero-title anim-fade-up d2">
+        SEO orgânico<br/>
+        que gera<br/>
+        pipeline B2B
+        <em>não apenas cliques</em>
+      </h1>
+      <p class="hero-sub anim-fade-up d3">Do zero técnico à citação por IA. Sem anúncios. Sem dependência de algoritmo de mídia social.</p>
+      <div class="hero-actions anim-fade-up d4">
+        <a href="/auditoria-gratuita" class="btn btn-green" style="padding:.875rem 2rem;font-size:.875rem;">Solicitar auditoria gratuita</a>
+        <a href="/metodo" class="btn btn-ghost">Ver o método →</a>
       </div>
+    </div>
 
-      <div class="anim-fade-in d5" style="display:grid;place-items:center;">
-        <svg viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;" aria-label="Gráfico: pipeline orgânico cresce 127% enquanto tráfego pago cessa ao longo de 12 meses">
-          <line x1="48" y1="30" x2="460" y2="30" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-          <line x1="48" y1="85" x2="460" y2="85" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-          <line x1="48" y1="140" x2="460" y2="140" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-          <line x1="48" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-          <line x1="48" y1="250" x2="460" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-          <line x1="48" y1="30" x2="48" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-          <text x="48" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 0</text>
-          <text x="152" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 3</text>
-          <text x="256" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 6</text>
-          <text x="360" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 9</text>
-          <text x="460" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 12</text>
-          <polyline points="48,250 152,242 256,220 360,180 460,123" stroke="var(--g400)" stroke-width="2.5" fill="none" stroke-dasharray="1000" stroke-dashoffset="1000" style="animation:drawLine 2.5s ease forwards;animation-delay:.8s;"/>
-          <circle cx="460" cy="123" r="4" fill="var(--g400)" opacity="0" style="animation:popIn .4s ease forwards;animation-delay:3.3s;"/>
-          <polyline points="48,195 152,190 256,185 360,250 460,250" stroke="rgba(255,100,100,.6)" stroke-width="2" fill="none" stroke-dasharray="2,4"/>
-          <text x="470" y="128" fill="var(--g400)" font-size="11" font-weight="600" font-family="DM Sans,sans-serif" opacity="0" style="animation:fadeIn .4s ease forwards;animation-delay:3.4s;">+127%</text>
-          <text x="470" y="254" fill="rgba(255,100,100,.6)" font-size="10" font-family="DM Sans,sans-serif">Paid ads</text>
-          <text x="76" y="128" fill="var(--g400)" font-size="10" font-family="DM Sans,sans-serif">Orgânico</text>
-        </svg>
-      </div>
-
+    <div class="anim-fade-in d5">
+      <svg id="hero-chart" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;" aria-label="Gráfico: pipeline orgânico cresce 127% enquanto tráfego pago cessa ao longo de 12 meses">
+        <line x1="48" y1="30" x2="460" y2="30" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        <line x1="48" y1="85" x2="460" y2="85" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        <line x1="48" y1="140" x2="460" y2="140" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        <line x1="48" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+        <line x1="48" y1="250" x2="460" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <line x1="48" y1="30" x2="48" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+        <text x="48" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 0</text>
+        <text x="152" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 3</text>
+        <text x="256" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 6</text>
+        <text x="360" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 9</text>
+        <text x="460" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 12</text>
+        <text x="40" y="254" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">0</text>
+        <text x="40" y="144" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">50</text>
+        <text x="40" y="34" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">100</text>
+        <text x="48" y="18" fill="rgba(255,255,255,.25)" font-size="8" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">PIPELINE ORGÂNICO vs. TRÁFEGO PAGO — 12 MESES</text>
+        <path id="chart-paid-area" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250 Z" fill="rgba(220,80,60,.07)" opacity="0"/>
+        <path id="chart-paid-line" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250" fill="none" stroke="rgba(200,90,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>
+        <path id="chart-org-area" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52 L460,250 Z" fill="rgba(46,145,71,.12)" opacity="0"/>
+        <path id="chart-org-line" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
+        <circle id="chart-dot" cx="460" cy="52" r="5" fill="#4caf64" opacity="0"/>
+        <circle id="chart-ring" cx="460" cy="52" r="10" fill="none" stroke="rgba(76,175,100,.35)" stroke-width="1.5" opacity="0"/>
+        <g id="chart-label-org" opacity="0">
+          <rect x="340" y="34" width="116" height="20" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.35)" stroke-width="1"/>
+          <text x="348" y="48" fill="#4caf64" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">SEO orgânico ↑ 127%</text>
+        </g>
+        <g id="chart-label-paid" opacity="0">
+          <rect x="120" y="141" width="108" height="20" rx="2" fill="rgba(220,80,60,.1)" stroke="rgba(200,80,60,.25)" stroke-width="1"/>
+          <text x="128" y="155" fill="rgba(210,120,100,1)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">Tráfego pago — cessa</text>
+        </g>
+      </svg>
     </div>
   </div>
-
-  <!-- Ticker carrossel "Confiam no método" -->
-  <div style="background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06);overflow:hidden;position:relative;padding-block:.875rem;">
-    <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center;margin-bottom:.625rem;">Confiam no método</p>
-    <div class="ticker-track">
-      {[...companies, ...companies].map(c => (
-        <div class="ticker-item">
-          <span class="ticker-name">{c.n}</span>
-          <span class="ticker-url">{c.u}</span>
+  <div class="hero-ticker">
+    <div style="display:flex;align-items:center;gap:1.5rem;">
+      <span class="ticker-lbl">Confiam no método</span>
+      <div style="width:1px;height:16px;background:rgba(255,255,255,.12);flex-shrink:0;"></div>
+      <div style="overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);">
+        <div style="display:flex;gap:3rem;width:max-content;animation:ticker-scroll 22s linear infinite;">
+          {['HunterHunter','7+ Vacations','Global Electronics','Sax Trading','Prime Vacations',
+            'HunterHunter','7+ Vacations','Global Electronics','Sax Trading','Prime Vacations'].map(n => (
+            <span style="font-size:.875rem;font-weight:500;color:rgba(255,255,255,.45);white-space:nowrap;letter-spacing:.01em;">{n}</span>
+          ))}
         </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ STATEMENT ══════════ -->
-<section style="background:var(--n950);color:#fff;padding-block:clamp(3rem,8vw,6rem);">
-  <div class="wrap">
-    <div style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:center;max-width:min(90%,820px);margin-inline:auto;">
-      <div style="width:1px;height:clamp(60px,8vw,96px);background:linear-gradient(to bottom,transparent,var(--g500),transparent);"></div>
-      <div>
-        <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.75rem;">Por que a Organum</p>
-        <h2 style="font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.25rem);font-weight:700;line-height:1.2;letter-spacing:-.02em;color:#fff;">
-          Nenhuma agência brasileira entrega <em style="font-style:italic;color:var(--g400);">GEO sistematicamente.</em> Nós entregamos com dados.
-        </h2>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ TICKER "CITADA PELAS IAs" ══════════ -->
-<section style="background:var(--n950);border-top:1px solid rgba(255,255,255,.05);padding-block:1.25rem;overflow:hidden;">
-  <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.3);text-align:center;margin-bottom:.875rem;">Citada pelas IAs</p>
-  <div class="ticker-track-slow">
-    {[...ias, ...ias, ...ias].map(ia => (
-      <div style="display:inline-flex;align-items:center;gap:.625rem;padding:.5rem 1.25rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:2rem;white-space:nowrap;margin-right:.75rem;">
-        <div style="width:6px;height:6px;background:var(--g400);border-radius:50%;"></div>
-        <span style="font-size:.8125rem;color:rgba(255,255,255,.7);font-weight:500;">{ia}</span>
+<!-- ══════════ MÉTRICAS ══════════ -->
+<div class="metrics-strip">
+  <div class="metrics-grid wrap">
+    {[
+      { num: 5,   suffix: '',  label: 'Camadas do método' },
+      { num: 90,  suffix: 'd', label: 'Para citação por IA' },
+      { num: 340, suffix: '%', label: 'Crescimento orgânico' },
+      { num: 48,  suffix: 'h', label: 'Para o diagnóstico' },
+    ].map((m, i) => (
+      <div class={`metric-item reveal reveal-d${i+1}`}>
+        <span class="metric-num" data-target={m.num} data-suffix={m.suffix}>{m.num}{m.suffix}</span>
+        <span class="metric-label">{m.label}</span>
       </div>
     ))}
   </div>
+</div>
+
+<!-- ══════════ STATEMENT — FIX 1: apenas 1 traço verde ══════════ -->
+<section class="section">
+  <div class="wrap-md">
+    <div class="statement-grid reveal">
+      <div style="display:flex;align-items:center;gap:.875rem;">
+        <div style="width:2px;height:48px;background:var(--g500);flex-shrink:0;"></div>
+        <p style="font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--n400);">Por que a Organum</p>
+      </div>
+      <p class="statement">Nenhuma agência brasileira entrega <em>GEO sistematicamente.</em> Nós entregamos — e provamos com dados.</p>
+    </div>
+  </div>
 </section>
 
-<!-- ══════════ SEÇÃO 3 — O PROBLEMA ══════════ -->
-<section style="background:var(--n50);padding-block:clamp(4rem,10vw,8rem);">
+<!-- ══════════ DORES DO LEAD ══════════ -->
+<section class="section section-alt">
   <div class="wrap">
     <p class="sec-eye reveal">O problema que você tem</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--n950);max-width:24ch;margin-bottom:3rem;">
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,3.5vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;max-width:28ch;">
       Você investe em anúncios e para de crescer quando para de pagar.
     </h2>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:clamp(1.5rem,3vw,2rem);">
+    <div class="prob-grid reveal reveal-d2">
       {[
-        { t: 'Tráfego pago não escala sem orçamento', p: 'Cada real novo exige mais investimento. O custo por lead sobe. A margem comprime. Você está num ciclo que nunca para.', s: '+340% no CAC em 3 anos', c: 'var(--g600)' },
-        { t: 'Seu site não existe para as IAs generativas', p: 'ChatGPT, Gemini e Perplexity respondem às perguntas do seu ICP todos os dias. Se sua empresa não é citada, seus concorrentes são.', s: '73% das pesquisas B2B usam IA', c: 'var(--g600)' },
-        { t: 'SEO genérico não funciona para B2B', p: 'Agências entregam posts e backlinks. O Google pode até ranquear. Mas nenhum lead qualificado chega. SEO B2B é sobre pipeline, não tráfego.', s: '89% dos leads B2B pesquisam antes', c: 'var(--g600)' },
-        { t: 'Sua empresa não é uma entidade reconhecida', p: 'Google, IAs e compradores verificam a existência da sua empresa antes de confiar. Sem Knowledge Graph, sem Wikidata — você é invisível para as IAs.', s: 'Entidade = credibilidade automática', c: 'var(--g600)' },
-      ].map((prob, i) => (
-        <div class="prob-card reveal" style={`transition-delay:${i * 0.1}s`}>
-          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
-            <div style={`width:clamp(32px,5vw,40px);height:clamp(32px,5vw,40px);background:${prob.c};border-radius:50%;display:grid;place-items:center;flex-shrink:0;`}>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M10 6v8M6 10h8"/></svg>
-            </div>
-            <h3 style="font-size:clamp(.95rem,2vw,1.125rem);font-weight:700;color:var(--n900);line-height:1.3;">{prob.t}</h3>
-          </div>
-          <p style="font-size:.9375rem;color:var(--n700);line-height:1.65;margin-bottom:1.25rem;">{prob.p}</p>
-          <div style="display:inline-block;padding:.375rem .875rem;background:rgba(29,122,53,.08);border:1px solid rgba(29,122,53,.2);border-radius:.25rem;">
-            <p style="font-size:.75rem;font-weight:700;color:var(--g600);letter-spacing:.02em;">{prob.s}</p>
-          </div>
+        { t: 'Tráfego pago não escala sem orçamento', p: 'Cada real novo exige mais investimento. O custo por lead sobe. A margem comprime. Você está num ciclo que nunca para.', s: '+340% no CAC em 3 anos' },
+        { t: 'Seu site não existe para as IAs generativas', p: 'ChatGPT, Gemini e Perplexity respondem às perguntas do seu ICP todos os dias. Se sua empresa não é citada, seus concorrentes são.', s: '73% das pesquisas B2B usam IA' },
+        { t: 'SEO genérico não funciona para B2B', p: 'Agências entregam posts e backlinks. O Google pode até ranquear. Mas nenhum lead qualificado chega. SEO B2B é sobre pipeline, não tráfego.', s: '89% dos leads B2B pesquisam antes' },
+        { t: 'Sua empresa não é uma entidade reconhecida', p: 'Google, IAs e compradores verificam a existência da sua empresa antes de confiar. Sem Knowledge Graph, sem Wikidata — você é invisível para as IAs.', s: 'Entidade = credibilidade automática' },
+        { t: 'Concorrentes aparecem primeiro nas buscas estratégicas', p: 'Suas keywords de decisão — as que o comprador pesquisa antes de contratar — estão sendo capturadas pela concorrência enquanto você não tem conteúdo para essas queries.', s: '78% das decisões B2B começam no Google' },
+        { t: 'Seu pipeline depende de indicações e rede de contatos', p: 'Indicações são imprevisíveis. SEO B2B é o único canal que gera pipeline qualificado de forma previsível e escalável, sem custo incremental por lead.', s: 'CAC orgânico cai 70% em 12 meses' },
+      ].map((c, i) => (
+        <div class="prob-card">
+          <p class="prob-title">{c.t}</p>
+          <p class="prob-text">{c.p}</p>
+          <p class="prob-stat">{c.s}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ══════════ SEÇÃO 4 — IDENTIDADE DE ENTIDADE ══════════ -->
+<!-- ══════════ IDENTIDADE DE ENTIDADE — FIX 2: diagrama expandido ══════════ -->
 <section class="entidade-section">
   <div class="wrap">
     <p class="sec-eye reveal" style="color:rgba(255,255,255,.35);">O conceito que separa os líderes</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#fff;max-width:24ch;">
-      Identidade de entidade: o que as IAs precisam para te recomendar
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#fff;max-width:24ch;">
+      Identidade de entidade:<br/><span style="color:var(--g400);font-style:italic;">o que as IAs precisam para te recomendar</span>
     </h2>
-    <p class="reveal reveal-d2" style="font-size:clamp(1rem,2vw,1.125rem);color:rgba(255,255,255,.6);line-height:1.7;max-width:65ch;margin-top:1.5rem;">
+    <p class="reveal reveal-d2" style="margin-top:1.25rem;font-size:1rem;color:rgba(255,255,255,.45);max-width:52ch;line-height:1.75;">
       Uma entidade digital é a representação verificável da sua empresa no grafo de conhecimento da internet. Google e IAs a usam para decidir quem é confiável — e quem ignorar.
     </p>
 
-    <!-- Diagrama comparativo -->
-    <div class="reveal reveal-d3" style="margin-top:3rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:2rem;">
-      
-      <!-- Sem entidade -->
-      <div style="background:rgba(255,100,100,.03);border:1px solid rgba(255,100,100,.15);padding:clamp(1.5rem,4vw,2.5rem);border-radius:.5rem;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="rgba(255,100,100,.7)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
-          <h3 style="font-size:1.125rem;font-weight:700;color:rgba(255,100,100,.9);">Empresa sem entidade</h3>
-        </div>
-        <p style="font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;line-height:1.6;">Como as IAs veem sua empresa hoje</p>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.875rem;">
-          {['Não aparece no Knowledge Graph — não existe como entidade verificada', 'Sem perfil no Wikidata — IAs não conseguem confirmar sua existência', 'LinkedIn sem Schema markup — sinais de autoridade desperdiçados', 'Sem menções cruzadas — desconhecida para o grafo de conhecimento', 'Resultado: ChatGPT ignora sua marca mesmo com bom conteúdo'].map(item => (
-            <li style="display:flex;align-items:start;gap:.625rem;">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(255,100,100,.6)" stroke-width="2" style="flex-shrink:0;margin-top:.25rem;"><line x1="4" y1="8" x2="12" y2="8"/></svg>
-              <span style="font-size:.875rem;color:rgba(255,255,255,.7);line-height:1.5;">{item}</span>
-            </li>
-          ))}
-        </ul>
+    <div class="entidade-grid">
+      <div class="entidade-card reveal">
+        <span class="entidade-pill pill-invisivel">✕ Empresa sem entidade</span>
+        <p class="entidade-card-title">Como as IAs veem sua empresa hoje</p>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Não aparece no Knowledge Graph — não existe como entidade verificada</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Sem perfil no Wikidata — IAs não conseguem confirmar sua existência</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">LinkedIn sem Schema markup — sinais de autoridade desperdiçados</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Sem menções cruzadas — desconhecida para o grafo de conhecimento</span></div>
+        <div class="entidade-row"><span class="e-icon-no">✕</span><span class="e-text-no">Resultado: ChatGPT ignora sua marca mesmo com bom conteúdo</span></div>
+      </div>
+      <div class="entidade-card reveal reveal-d2" style="border-color:rgba(76,175,100,.25);">
+        <span class="entidade-pill pill-verificavel">✓ Empresa com entidade — Organum</span>
+        <p class="entidade-card-title">Como as IAs veem após o Método ORGANUM</p>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Knowledge Graph ativo</strong> — Google confirma sua empresa como entidade real</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Wikidata estruturado</strong> — IAs verificam e reconhecem sua marca automaticamente</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Schema Organization + Person</strong> — autoridade do fundador ligada à empresa</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>sameAs cruzados</strong> — LinkedIn, site, Wikidata e portais confirmam a mesma entidade</span></div>
+        <div class="entidade-row"><span class="e-icon-yes">✓</span><span class="e-text-yes"><strong>Resultado: HunterHunter citada pelo ChatGPT</strong> em 90 dias</span></div>
+      </div>
+    </div>
+
+    <!-- FIX 2: Diagrama expandido e legível em desktop e mobile -->
+    <div class="reveal reveal-d3" style="margin-top:3rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);padding:clamp(1.5rem,4vw,2.5rem);">
+      <p style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);text-align:center;margin-bottom:2rem;">COMO A ORGANUM CONSTRÓI SUA IDENTIDADE DE ENTIDADE</p>
+
+      <!-- Nós externos — grid 4 colunas -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;max-width:820px;margin-inline:auto;" id="ent-nodes-grid">
+        {[
+          { icon: '🔷', name: 'Knowledge Graph', desc: 'Google confirma sua empresa como entidade real e confiável' },
+          { icon: '📖', name: 'Wikidata', desc: 'Base de dados verificável que as IAs consultam para confirmar existência' },
+          { icon: '💼', name: 'LinkedIn + Schema', desc: 'Perfil estruturado com markup que conecta empresa e fundador' },
+          { icon: '🔗', name: 'Menções cruzadas', desc: 'Portais de nicho, assessoria digital e co-citações editoriais' },
+        ].map(n => (
+          <div id="ent-node" style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:1.25rem;text-align:center;transition:border-color .2s,background .2s;cursor:default;" onmouseover="this.style.borderColor='rgba(76,175,100,.4)';this.style.background='rgba(76,175,100,.06)'" onmouseout="this.style.borderColor='rgba(255,255,255,.1)';this.style.background='rgba(255,255,255,.04)'">
+            <span style="font-size:1.5rem;display:block;margin-bottom:.625rem;">{n.icon}</span>
+            <span style="font-family:var(--serif);font-size:.9375rem;font-weight:700;color:#fff;display:block;margin-bottom:.375rem;">{n.name}</span>
+            <span style="font-size:.75rem;color:rgba(255,255,255,.4);line-height:1.5;display:block;">{n.desc}</span>
+          </div>
+        ))}
       </div>
 
-      <!-- Com entidade -->
-      <div style="background:rgba(76,175,100,.04);border:1px solid rgba(76,175,100,.25);padding:clamp(1.5rem,4vw,2.5rem);border-radius:.5rem;">
-        <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.5rem;">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--g400)" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
-          <h3 style="font-size:1.125rem;font-weight:700;color:var(--g400);">Empresa com entidade — Organum</h3>
+      <!-- Setas convergindo -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:.5rem;padding:1.25rem 0;max-width:820px;margin-inline:auto;">
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;right:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↘</div>
         </div>
-        <p style="font-size:.875rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;line-height:1.6;">Como as IAs veem após o Método ORGANUM</p>
-        <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:.875rem;">
-          {['Knowledge Graph ativo — Google confirma sua empresa como entidade real', 'Wikidata estruturado — IAs verificam e reconhecem sua marca automaticamente', 'Schema Organization + Person — autoridade do fundador ligada à empresa', 'sameAs cruzados — LinkedIn, site, Wikidata e portais confirmam a mesma entidade', 'Resultado: HunterHunter citada pelo ChatGPT em 90 dias'].map(item => (
-            <li style="display:flex;align-items:start;gap:.625rem;">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--g400)" stroke-width="2" style="flex-shrink:0;margin-top:.25rem;"><polyline points="3 8 6 11 13 4"/></svg>
-              <span style="font-size:.875rem;color:rgba(255,255,255,.8);line-height:1.5;">{item}</span>
-            </li>
-          ))}
-        </ul>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;right:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↙</div>
+        </div>
+        <div style="width:12px;height:12px;background:rgba(76,175,100,.3);border:1px solid rgba(76,175,100,.5);border-radius:50%;flex-shrink:0;"></div>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;left:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↘</div>
+        </div>
+        <div style="flex:1;height:1px;background:rgba(76,175,100,.2);position:relative;">
+          <div style="position:absolute;left:0;top:-4px;color:rgba(76,175,100,.4);font-size:.75rem;">↙</div>
+        </div>
       </div>
 
+      <!-- Centro: empresa como entidade -->
+      <div style="max-width:820px;margin-inline:auto;background:rgba(29,122,53,.15);border:1.5px solid rgba(76,175,100,.4);padding:1.5rem 2rem;text-align:center;margin-bottom:1.25rem;">
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(76,175,100,.6);display:block;margin-bottom:.5rem;">Resultado</span>
+        <span style="font-family:var(--serif);font-size:1.375rem;font-weight:700;color:#fff;display:block;margin-bottom:.375rem;">Sua empresa — Entidade verificada</span>
+        <span style="font-size:.875rem;color:rgba(76,175,100,.7);display:block;">Reconhecida pelo Google, pelas IAs e pelos seus compradores</span>
+      </div>
+
+      <!-- Seta final para IAs -->
+      <div style="max-width:820px;margin-inline:auto;display:flex;justify-content:center;padding:.5rem 0;">
+        <div style="font-size:.875rem;color:rgba(76,175,100,.4);display:flex;flex-direction:column;align-items:center;gap:.375rem;">
+          <span>↓</span>
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.2);">alimenta</span>
+        </div>
+      </div>
+
+      <!-- IAs que citam — carrossel -->
+      <div style="max-width:820px;margin-inline:auto;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1.5rem;overflow:hidden;">
+        <span style="font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.25);white-space:nowrap;flex-shrink:0;">Citada pelas IAs</span>
+        <div style="overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);-webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);">
+          <div style="display:flex;gap:2.5rem;width:max-content;animation:ticker-scroll 12s linear infinite;">
+            {['ChatGPT','Gemini','Perplexity','Copilot','Grok','ChatGPT','Gemini','Perplexity','Copilot','Grok'].map(ia => (
+              <span style="font-size:.9375rem;font-weight:600;color:rgba(255,255,255,.5);white-space:nowrap;">{ia}</span>
+            ))}
+          </div>
+        </div>
+        <span style="font-size:.8125rem;font-weight:600;color:var(--g400);white-space:nowrap;flex-shrink:0;">HunterHunter em 90 dias →</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ══════════ ELEMENTO: COMO A ORGANUM CONSTRÓI ══════════ -->
-<section style="background:var(--n950);border-top:1px solid rgba(255,255,255,.05);padding-block:clamp(4rem,10vw,7rem);">
+<!-- ══════════ MÉTODO 5 CAMADAS — FIX 3: animação 01 corrigida ══════════ -->
+<section class="layers-section">
   <div class="wrap">
-    <h2 class="reveal" style="font-family:var(--serif);font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;line-height:1.15;letter-spacing:-.025em;color:#fff;text-align:center;margin-bottom:3rem;">
-      Como a Organum constrói sua identidade de entidade
-    </h2>
-
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1.5rem;margin-bottom:3rem;">
-      {[
-        { i: '🔷', t: 'Knowledge Graph', p: 'Google confirma sua empresa como entidade real e confiável' },
-        { i: '📖', t: 'Wikidata', p: 'Base de dados verificável que as IAs consultam para confirmar existência' },
-        { i: '💼', t: 'LinkedIn + Schema', p: 'Perfil estruturado com markup que conecta empresa e fundador' },
-        { i: '🔗', t: 'Menções cruzadas', p: 'Portais de nicho, assessoria digital e co-citações editoriais' },
-      ].map((blk, i) => (
-        <div class="reveal" style={`background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);padding:1.5rem;transition-delay:${i * 0.1}s`}>
-          <div style="font-size:2rem;margin-bottom:.75rem;">{blk.i}</div>
-          <h3 style="font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.5rem;">{blk.t}</h3>
-          <p style="font-size:.875rem;color:rgba(255,255,255,.6);line-height:1.6;">{blk.p}</p>
-        </div>
+    <div class="layers-intro">
+      <div class="reveal">
+        <p class="sec-eye">O método</p>
+        <h2 style="font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-.02em;color:var(--n900);">5 camadas.<br/><em style="color:var(--g600);">A ordem importa.</em></h2>
+      </div>
+      <p class="reveal reveal-d2" style="font-size:.9375rem;color:var(--n600);line-height:1.75;align-self:end;">
+        A única abordagem sistemática de SEO B2B que vai do zero técnico à citação por IA. Cada camada é pré-requisito da próxima. Pular uma quebra o sistema inteiro.
+      </p>
+    </div>
+    <div class="layer-accordion reveal">
+      {layers.map((l) => (
+        <>
+          <button class="layer-header" data-layer={l.animId} type="button">
+            <span class="layer-num">{l.num}</span>
+            <div>
+              <span class="layer-name">{l.name}</span>
+              <span class="layer-sub">{l.sub}</span>
+            </div>
+            <span class={`layer-tag ${l.tag}`}>{l.tagLabel}</span>
+          </button>
+          <div class="layer-body" id={`body-${l.animId}`}>
+            <div class="layer-body-text">
+              <p set:html={l.text}></p>
+              <a href={`/metodo/${l.num === '01' ? 'fundacao' : l.num === '02' ? 'entidade' : l.num === '03' ? 'conteudo' : l.num === '04' ? 'geo-aeo' : 'digital-pr'}`}
+                 style="display:inline-flex;align-items:center;gap:.375rem;margin-top:1.25rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">
+                Ver camada completa →
+              </a>
+            </div>
+            <div class="layer-anim-wrap" id={l.animId}></div>
+          </div>
+        </>
       ))}
     </div>
+  </div>
+</section>
 
-    <div class="reveal reveal-d4" style="max-width:820px;margin-inline:auto;background:rgba(29,122,53,.15);border:1.5px solid rgba(76,175,100,.4);padding:2rem;text-align:center;">
-      <p style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:.625rem;">Resultado</p>
-      <p style="font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:#fff;margin-bottom:1rem;">Sua empresa — Entidade verificada</p>
-      <p style="font-size:.9375rem;color:rgba(255,255,255,.7);line-height:1.6;margin-bottom:1.5rem;">Reconhecida pelo Google, pelas IAs e pelos seus compradores</p>
-      <div style="display:inline-block;padding:.5rem 1rem;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:.25rem;">
-        <p style="font-size:.8125rem;color:rgba(255,255,255,.8);"><strong style="color:var(--g400);">↓ alimenta</strong> → Citada pelas IAs</p>
+<!-- ══════════ COMPARATIVO ══════════ -->
+<section class="diff-section">
+  <div class="wrap">
+    <p class="sec-eye reveal" style="color:rgba(255,255,255,.3);">O que nos diferencia</p>
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#fff;max-width:28ch;margin-bottom:0;">
+      O que nenhuma outra agência entrega —<br/><em style="color:var(--g400);">e nós entregamos.</em>
+    </h2>
+    <div class="diff-grid reveal reveal-d2">
+      <div class="diff-col">
+        <p class="diff-col-title" style="color:rgba(255,255,255,.3);">Agência de SEO genérica</p>
+        {['Entrega posts e backlinks. Mede tráfego. Não mede pipeline.',
+          'Nunca ouviu falar de GEO ou AEO. Não otimiza para IAs.',
+          'Não constrói entidade digital. Sua marca não existe no Knowledge Graph.',
+          'Relatório mensal com gráficos bonitos. Zero lead B2B qualificado.',
+          'Ciclo de venda longo? Múltiplos decisores? Fora do escopo.',
+        ].map(t => (
+          <div class="diff-row"><span class="d-no">✕</span><p class="d-text">{t}</p></div>
+        ))}
       </div>
-    </div>
-
-    <div class="reveal reveal-d5" style="max-width:820px;margin-inline:auto;margin-top:2rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);padding:1.5rem;display:flex;align-items:center;gap:1.5rem;overflow:hidden;">
-      <div class="ticker-track-ias">
-        {[...ias, ...ias, ...ias].map(ia => (
-          <span style="display:inline-block;padding:.375rem .875rem;background:rgba(76,175,100,.08);border:1px solid rgba(76,175,100,.2);border-radius:.25rem;font-size:.8125rem;font-weight:600;color:var(--g400);white-space:nowrap;margin-right:.625rem;">{ia}</span>
+      <div class="diff-col diff-col-right">
+        <p class="diff-col-title" style="color:rgba(76,175,100,.5);">Organum — Método ORGANUM</p>
+        {[['Pipeline B2B mensurável.','Leads qualificados, não apenas cliques.'],
+          ['GEO sistematizado.','Você é citado pelo ChatGPT, Gemini e Perplexity.'],
+          ['Entidade verificável.','Knowledge Graph, Wikidata, sameAs cruzados.'],
+          ['5 camadas integradas.','Cada entrega acelera todas as outras.'],
+          ['Especialista em B2B.','Ciclo longo, múltiplos decisores, ticket alto.'],
+        ].map(([bold, rest]) => (
+          <div class="diff-row"><span class="d-yes">✓</span><p class="d-text"><strong>{bold}</strong> {rest}</p></div>
         ))}
       </div>
     </div>
-
-    <p class="reveal reveal-d6" style="text-align:center;margin-top:1.5rem;font-size:.875rem;color:rgba(255,255,255,.5);">
-      <a href="/cases/hunterhunter" style="color:var(--g400);text-decoration:underline;font-weight:600;">HunterHunter em 90 dias →</a>
-    </p>
   </div>
 </section>
 
-<!-- ══════════ SEÇÃO 5 — 5 CAMADAS ══════════ -->
-<section class="layers-section">
-  <div class="wrap">
-    <p class="sec-eye reveal" style="color:rgba(255,255,255,.35);">O método</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3.25rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;color:#fff;max-width:20ch;">
-      5 camadas. A ordem importa.
-    </h2>
-    <p class="reveal reveal-d2" style="font-size:clamp(1rem,2vw,1.125rem);color:rgba(255,255,255,.6);line-height:1.7;max-width:65ch;margin-top:1.5rem;">
-      A única abordagem sistemática de SEO B2B que vai do zero técnico à citação por IA. Cada camada é pré-requisito da próxima. Pular uma quebra o sistema inteiro.
-    </p>
-
-    <div style="margin-top:4rem;display:flex;flex-direction:column;gap:2rem;">
-      {[
-        { n: '01', t: 'Fundação técnica', s: 'Core Web Vitals, silos, Schema Markup', tag: 'Base obrigatória', txt: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. Sem fundação técnica, as outras 4 camadas não funcionam. É o pré-requisito que a maioria das agências ignora.', link: '/metodo/fundacao', anim: 'LCP CLS INP FCP' },
-        { n: '02', t: 'Identidade de entidade', s: 'Knowledge Graph, Wikidata, sameAs cruzados', tag: 'Diferencial Organum', txt: 'Construímos sua empresa como entidade verificável pelo Google e pelas IAs: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.', link: '/metodo/entidade', anim: 'KG Wiki LI sameAs' },
-        { n: '03', t: 'Conteúdo de autoridade', s: 'Clusters semânticos por ICP, E-E-A-T profundo', tag: 'Fonte para IA', txt: 'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. E-E-A-T profundo documentado. Conteúdo que serve como fonte primária para IAs generativas.', link: '/metodo/conteudo', anim: 'Pilar → Art01 Art02 Art03 FAQ Case' },
-        { n: '04', t: 'GEO + AEO', s: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'Ninguém entrega isso', txt: 'Generative Engine Optimization: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.', link: '/metodo/geo-aeo', anim: 'ChatGPT Gemini Perplexity Copilot' },
-        { n: '05', t: 'Digital PR', s: 'Link building editorial, assessoria de imprensa digital', tag: 'Autoridade externa', txt: 'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. Domain Authority crescente mês a mês. Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.', link: '/metodo/digital-pr', anim: 'Mês 0 → Mês 12' },
-      ].map((layer, i) => (
-        <div class="layer-card reveal" style={`transition-delay:${i * 0.15}s`}>
-          <div style="display:grid;grid-template-columns:auto 1fr;gap:2rem;align-items:start;">
-            <div style="width:clamp(60px,8vw,80px);height:clamp(60px,8vw,80px);background:rgba(76,175,100,.08);border:2px solid rgba(76,175,100,.3);border-radius:50%;display:grid;place-items:center;flex-shrink:0;">
-              <span style="font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:var(--g400);">{layer.n}</span>
-            </div>
-            <div>
-              <div style="display:inline-block;padding:.25rem .75rem;background:rgba(76,175,100,.1);border:1px solid rgba(76,175,100,.25);border-radius:.25rem;margin-bottom:.875rem;">
-                <p style="font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">{layer.tag}</p>
-              </div>
-              <h3 style="font-family:var(--serif);font-size:clamp(1.25rem,3vw,1.75rem);font-weight:700;color:#fff;margin-bottom:.5rem;">{layer.t}</h3>
-              <p style="font-size:.9375rem;color:rgba(255,255,255,.5);margin-bottom:1.25rem;">{layer.s}</p>
-              <p style="font-size:.9375rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1.5rem;" set:html={layer.txt}></p>
-              <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
-                <a href={layer.link} style="display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:600;color:var(--g400);text-decoration:none;transition:gap .2s;" onmouseover="this.style.gap='0.75rem'" onmouseout="this.style.gap='0.5rem'">
-                  Ver camada completa →
-                </a>
-                <div style="font-family:monospace;font-size:.75rem;color:rgba(255,255,255,.4);letter-spacing:.05em;">{layer.anim}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SEÇÃO 6 — DIFERENCIAL ══════════ -->
-<section class="diff-section">
-  <div class="wrap">
-    <p class="sec-eye reveal">O que nos diferencia</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--n950);max-width:26ch;margin-bottom:3rem;">
-      O que nenhuma outra agência entrega — e nós entregamos.
-    </h2>
-
-    <div class="reveal reveal-d2" style="border:1px solid var(--n200);overflow:hidden;">
-      <div style="display:grid;grid-template-columns:1fr 1fr;background:var(--n100);">
-        <div style="padding:1rem 1.5rem;border-right:1px solid var(--n200);">
-          <p style="font-size:.875rem;font-weight:700;color:var(--n600);">Agência de SEO genérica</p>
-        </div>
-        <div style="padding:1rem 1.5rem;">
-          <p style="font-size:.875rem;font-weight:700;color:var(--g700);">Organum — Método ORGANUM</p>
-        </div>
-      </div>
-
-      {[
-        { gen: 'Entrega posts e backlinks. Mede tráfego. Não mede pipeline.', org: 'Pipeline B2B mensurável. Leads qualificados, não apenas cliques.' },
-        { gen: 'Nunca ouviu falar de GEO ou AEO. Não otimiza para IAs.', org: 'GEO sistematizado. Você é citado pelo ChatGPT, Gemini e Perplexity.' },
-        { gen: 'Não constrói entidade digital. Sua marca não existe no Knowledge Graph.', org: 'Entidade verificável. Knowledge Graph, Wikidata, sameAs cruzados.' },
-        { gen: 'Relatório mensal com gráficos bonitos. Zero lead B2B qualificado.', org: '5 camadas integradas. Cada entrega acelera todas as outras.' },
-        { gen: 'Ciclo de venda longo? Múltiplos decisores? Fora do escopo.', org: 'Especialista em B2B. Ciclo longo, múltiplos decisores, ticket alto.' },
-      ].map((row, i) => (
-        <div style={`display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--n200);align-items:center;background:${i % 2 === 0 ? 'var(--n0)' : 'var(--n50)'}`}>
-          <div style="padding:1rem 1.5rem;border-right:1px solid var(--n200);display:flex;align-items:start;gap:.75rem;">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="var(--n400)" stroke-width="2" style="flex-shrink:0;margin-top:.125rem;"><line x1="4" y1="9" x2="14" y2="9"/></svg>
-            <p style="font-size:.875rem;color:var(--n700);line-height:1.6;">{row.gen}</p>
-          </div>
-          <div style="padding:1rem 1.5rem;display:flex;align-items:start;gap:.75rem;">
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="var(--g600)" stroke-width="2.5" style="flex-shrink:0;margin-top:.125rem;"><polyline points="4 9 7 12 14 5"/></svg>
-            <p style="font-size:.875rem;color:var(--n900);line-height:1.6;font-weight:500;">{row.org}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ SEÇÃO 7 — DORES ══════════ -->
+<!-- ══════════ DORES INTERATIVAS — FIX 4: mobile inline ══════════ -->
 <section class="dores-section">
   <div class="wrap">
-    <p class="sec-eye reveal" style="color:rgba(255,255,255,.35);">Reconhece alguma dessas situações?</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:#fff;max-width:22ch;margin-bottom:3rem;">
+    <p class="sec-eye reveal">Reconhece alguma dessas situações?</p>
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;max-width:28ch;">
       Se sim, o Método ORGANUM foi feito para você.
     </h2>
+    <div class="dores-layout">
+      <!-- Botões + respostas inline (mobile) -->
+      <div id="dor-buttons">
+        {dores.map((d, i) => (
+          <>
+            <button class={`dor-btn${i === 0 ? ' active' : ''}`} data-index={i} type="button">
+              {d.q}
+            </button>
+            <!-- Resposta inline para mobile — FIX 4 -->
+            <div class={`dor-inline-answer${i === 0 ? ' open' : ''}`} data-inline={i} set:html={`<p style="margin-bottom:.75rem;font-style:italic;font-size:.875rem;color:rgba(255,255,255,.7);">${d.q}</p>${d.a}<p style="margin-top:1rem;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g400);">→ Quero resolver isso</p>`}></div>
+          </>
+        ))}
+      </div>
+      <!-- Caixa de resposta — desktop -->
+      <div class="dor-answer" id="dor-answer-box">
+        <p class="dor-answer-q" id="dor-q">{dores[0].q}</p>
+        <p class="dor-answer-a" id="dor-a" set:html={dores[0].a}></p>
+        <p class="dor-answer-cta">→ <a href="#typeform-section" style="color:var(--g400);">Quero resolver isso agora</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div style="display:flex;flex-direction:column;gap:1rem;">
+<!-- ══════════ PARA QUEM É — FIX 5: sem valores diretos, custo por lead ══════════ -->
+<section class="section section-alt">
+  <div class="wrap">
+    <p class="sec-eye reveal">Para quem é</p>
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem;max-width:24ch;">
+      Empresas B2B que querem crescer de forma previsível
+    </h2>
+    <p class="reveal reveal-d2" style="font-size:.9375rem;color:var(--n600);max-width:52ch;line-height:1.7;margin-bottom:2.5rem;">
+      Enquanto você paga por cada clique, o custo por lead em ads sobe todo mês. No SEO orgânico, o custo por lead cai — e continua caindo.
+    </p>
+
+    <!-- Animação comparativa de custo por lead -->
+    <div class="reveal reveal-d2" style="border:1px solid var(--n200);overflow:hidden;margin-bottom:3rem;">
+      <!-- Header -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;background:var(--n950);">
+        <div style="padding:1.25rem 1.5rem;border-right:1px solid rgba(255,255,255,.08);text-align:center;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(220,100,80,.7);display:block;margin-bottom:.25rem;">Tráfego pago (Ads)</span>
+          <span style="font-size:.75rem;color:rgba(255,255,255,.3);display:block;">Custo por lead ao longo do tempo</span>
+        </div>
+        <div style="padding:1.25rem 1.5rem;text-align:center;">
+          <span style="font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g400);display:block;margin-bottom:.25rem;">SEO Orgânico (Organum)</span>
+          <span style="font-size:.75rem;color:rgba(255,255,255,.3);display:block;">Custo por lead ao longo do tempo</span>
+        </div>
+      </div>
+      <!-- Linhas de comparação -->
       {[
-        { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
-        { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
-        { q: '"Meu concorrente aparece no ChatGPT. Eu não."', a: 'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
-        { q: '"Já investi em SEO antes e nunca funcionou."', a: 'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
-        { q: '"Minha empresa não é citada pelas IAs."', a: 'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
-        { q: '"Quero crescer sem depender de tráfego pago."', a: 'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
-      ].map((dor, i) => (
-        <details class="dor-item reveal" style={`transition-delay:${i * 0.08}s`}>
-          <summary style="list-style:none;padding:1.25rem 1.5rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:1rem;transition:background .2s,border-color .2s;" onmouseover="this.style.background='rgba(255,255,255,.05)';this.style.borderColor='rgba(76,175,100,.3)'" onmouseout="this.style.background='rgba(255,255,255,.03)';this.style.borderColor='rgba(255,255,255,.1)'">
-            <span style="font-size:clamp(.95rem,2vw,1.05rem);color:#fff;font-weight:500;">{dor.q}</span>
-            <div class="dor-icon" style="width:28px;height:28px;flex-shrink:0;border:1px solid rgba(255,255,255,.2);border-radius:50%;display:grid;place-items:center;font-size:1.125rem;color:rgba(255,255,255,.6);transition:all .2s;">+</div>
-          </summary>
-          <div style="padding:1rem 1.5rem 1.5rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.08);border-top:0;">
-            <p style="font-size:.9375rem;color:rgba(255,255,255,.7);line-height:1.7;margin-bottom:1rem;" set:html={dor.a}></p>
-            <a href="#typeform-section" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.8125rem;font-weight:600;color:var(--g400);text-decoration:none;">
-              → Quero resolver isso agora
-            </a>
+        { label: 'Mês 1',  ads: 'R$ 180 / lead', org: 'Investimento inicial', adsUp: true },
+        { label: 'Mês 3',  ads: 'R$ 220 / lead', org: 'R$ 90 / lead', adsUp: true },
+        { label: 'Mês 6',  ads: 'R$ 290 / lead', org: 'R$ 55 / lead', adsUp: true },
+        { label: 'Mês 12', ads: 'R$ 380 / lead', org: 'R$ 28 / lead', adsUp: true },
+      ].map((row, i) => (
+        <div style={`display:grid;grid-template-columns:80px 1fr 1fr;border-top:1px solid var(--n200);align-items:center;background:${i % 2 === 0 ? 'var(--n0)' : 'var(--n50)'}`}>
+          <div style="padding:.875rem 1.25rem;font-size:.75rem;font-weight:600;color:var(--n500);border-right:1px solid var(--n200);">{row.label}</div>
+          <div style="padding:.875rem 1.5rem;text-align:center;border-right:1px solid var(--n200);">
+            <span style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:rgba(200,70,50,1);display:block;">{row.ads}</span>
+            <span style="font-size:.7rem;color:rgba(200,70,50,.7);">↑ subindo</span>
           </div>
-        </details>
+          <div style="padding:.875rem 1.5rem;text-align:center;">
+            <span style="font-family:var(--serif);font-size:1.0625rem;font-weight:700;color:var(--g600);display:block;">{row.org}</span>
+            <span style="font-size:.7rem;color:var(--g500);">{i === 0 ? 'estruturação' : '↓ caindo'}</span>
+          </div>
+        </div>
+      ))}
+      <!-- Nota -->
+      <div style="padding:1rem 1.5rem;background:var(--g50);border-top:1px solid var(--g200);font-size:.8125rem;color:var(--g800);display:flex;align-items:center;gap:.625rem;flex-wrap:wrap;">
+        <span style="font-weight:700;">✓</span>
+        <span>No SEO orgânico, você não precisa de saldo de ads para crescer. Cada mês que passa, o custo por lead cai — e o pipeline cresce.</span>
+      </div>
+    </div>
+
+    <!-- Cards por ICP — sem valores diretos -->
+    <div class="icp-grid">
+      {[
+        { icon: '◈', title: 'E-commerce', range: 'R$500k – R$30M/ano', pitch: 'Pare de pagar por cada clique. Construa tráfego que cresce todo mês — sem aumentar o budget.', desc: 'Categoria, produto e blog otimizados para capturar demanda orgânica nos momentos de compra.' },
+        { icon: '◉', title: 'B2B: consultoria, SaaS, indústria', range: 'R$250k – R$2M/mês', pitch: 'Pipeline que não seca quando os ads param. Leads qualificados chegando sem custo incremental.', desc: 'Ciclos de venda longos com múltiplos decisores — SEO B2B especializado.' },
+        { icon: '◎', title: 'Operação internacional', range: 'Qualquer porte', pitch: 'Autoridade em PT e EN sem dobrar o budget de ads. Crescimento orgânico em dois mercados.', desc: 'SEO bilíngue PT/EN com entidade digital em múltiplas regiões.' },
+      ].map((icp, i) => (
+        <div class={`icp-card reveal reveal-d${i+1}`}>
+          <div class="icp-icon">{icp.icon}</div>
+          <p class="icp-title">{icp.title}</p>
+          <p class="icp-range">{icp.range}</p>
+          <p style="font-family:var(--serif);font-size:1rem;font-weight:600;color:var(--g700);line-height:1.4;">{icp.pitch}</p>
+          <p class="icp-desc">{icp.desc}</p>
+          <a href="#typeform-section" class="icp-link">Solicitar diagnóstico gratuito →</a>
+        </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ══════════ CTA TYPEFORM GHL ══════════ -->
-<section class="typeform-section" id="typeform-section">
+<!-- ══════════ CASES ══════════ -->
+<section class="section">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:3rem;">
-      <p class="sec-eye reveal" style="color:rgba(255,255,255,.35);">Próximo passo</p>
-      <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:#fff;margin-inline:auto;max-width:28ch;margin-bottom:1rem;">
-        Descubra o potencial orgânico do seu site em 48 horas — gratuitamente.
-      </h2>
-      <p class="reveal reveal-d2" style="font-size:clamp(1rem,2vw,1.125rem);color:rgba(255,255,255,.6);line-height:1.7;max-width:55ch;margin-inline:auto;">
-        Preencha o formulário. Pedro analisa seu site e envia o diagnóstico técnico completo em até 48 horas — sem spam, sem vendedor.
-      </p>
+    <div style="display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-bottom:2.5rem;">
+      <div class="reveal">
+        <p class="sec-eye">Resultados reais</p>
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;">Cases que comprovam o método</h2>
+      </div>
+      <a href="/cases" class="reveal reveal-d2" style="font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g600);">Ver todos →</a>
     </div>
+    <div class="cases-grid reveal">
+      <a href="/cases/hunterhunter" class="case-card">
+        <p class="case-tag">Headhunting B2B · Recife</p>
+        <p class="case-name">HunterHunter</p>
+        <p class="case-result">Citada pelo ChatGPT e Perplexity</p>
+        <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">Leads orgânicos qualificados sem nenhum real em anúncios. O caso âncora do Método ORGANUM para B2B.</p>
+        <div class="case-metrics">
+          <div class="cm"><span class="cm-num">47+</span><span class="cm-lbl">Posições conquistadas</span></div>
+          <div class="cm"><span class="cm-num">340%</span><span class="cm-lbl">Tráfego orgânico</span></div>
+          <div class="cm"><span class="cm-num">90d</span><span class="cm-lbl">Para citação por IA</span></div>
+        </div>
+        <p class="case-cta">Ver case completo →</p>
+      </a>
+      <a href="/cases/7-vacations" class="case-card">
+        <p class="case-tag">Gestão de propriedade · Flórida</p>
+        <p class="case-name">7+ Vacations</p>
+        <p class="case-result">SEO bilíngue PT/EN · 2 mercados</p>
+        <p style="font-size:.875rem;color:var(--n500);line-height:1.65;">Case internacional que prova o Método ORGANUM funcionando em inglês para operação nos EUA.</p>
+        <div class="case-metrics">
+          <div class="cm"><span class="cm-num">PT/EN</span><span class="cm-lbl">Bilíngue</span></div>
+          <div class="cm"><span class="cm-num">2</span><span class="cm-lbl">Mercados</span></div>
+          <div class="cm"><span class="cm-num">Intl</span><span class="cm-lbl">Case âncora</span></div>
+        </div>
+        <p class="case-cta">Ver case completo →</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-    <div class="reveal reveal-d3" style="background:rgba(12,10,8,1);border:1px solid rgba(255,255,255,.08);overflow:hidden;max-width:740px;margin-inline:auto;">
+<!-- ══════════ FORMULÁRIO GHL INLINE ══════════ -->
+<section class="typeform-section" id="typeform-section">
+  <div class="tf-wrap">
+    <p class="sec-eye reveal" style="color:rgba(255,255,255,.3);margin-bottom:.5rem;">Próximo passo</p>
+    <h2 class="reveal reveal-d1" style="font-size:clamp(1.5rem,3.5vw,2.5rem);font-weight:700;color:#fff;line-height:1.1;letter-spacing:-.02em;margin-bottom:.75rem;">
+      Descubra o potencial orgânico do seu site em 48 horas — gratuitamente.
+    </h2>
+    <p style="font-size:.9375rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:2rem;max-width:48ch;">
+      Preencha o formulário. Pedro analisa seu site e envia o diagnóstico técnico completo em até 48 horas — sem spam, sem vendedor.
+    </p>
+    <div style="background:#111009;border:1px solid rgba(76,175,100,.15);overflow:hidden;min-height:660px;">
       <iframe
         src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
-        style="width:100%;height:637px;border:none;"
+        style="width:100%;height:660px;border:none;display:block;"
         id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Auditoria Gratuita — Organum"
+        data-height="630"
+        data-layout-iframe-id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-form-id="Gpue5KmcF2LTfDXD1Jcf"
         title="Auditoria Gratuita — Organum"
-        loading="lazy"
       ></iframe>
     </div>
-
-    <p class="reveal reveal-d4" style="text-align:center;margin-top:1.5rem;font-size:.875rem;color:rgba(255,255,255,.5);">
-      Sem spam. Sem vendedor. Apenas o diagnóstico.
-    </p>
+    <p style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.25);text-align:center;">Sem spam. Sem vendedor. Apenas o diagnóstico.</p>
   </div>
 </section>
 
 <!-- ══════════ FAQ ══════════ -->
 <section class="faq-section">
   <div class="wrap">
-    <p class="sec-eye reveal">Perguntas frequentes</p>
-    <h2 class="reveal reveal-d1" style="font-family:var(--serif);font-size:clamp(1.75rem,4vw,3rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;color:var(--n950);max-width:24ch;margin-bottom:3rem;">
-      Tudo o que você precisa saber sobre o Método ORGANUM
-    </h2>
-
-    <div style="max-width:820px;">
-      {[
-        { q: 'O que é o Método ORGANUM?', a: 'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
-        { q: 'Quanto tempo leva para ver resultado?', a: 'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
-        { q: 'Para quem é a Organum?', a: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
-        { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
-        { q: 'O que é GEO — Generative Engine Optimization?', a: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
-        { q: 'Qual a diferença entre SEO B2B e SEO tradicional?', a: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
-      ].map((faq, i) => (
-        <details class="faq-item reveal" style={`transition-delay:${i * 0.08}s`}>
-          <summary style="list-style:none;padding:1.5rem 0;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-family:var(--serif);font-size:1.05rem;font-weight:600;color:var(--n900);gap:1rem;">
-            <span>{faq.q}</span>
-            <div class="faq-icon" style="width:28px;height:28px;flex-shrink:0;border:1px solid var(--n300);border-radius:50%;display:grid;place-items:center;font-size:1rem;color:var(--n500);transition:all .2s;">+</div>
-          </summary>
-          <div style="padding-bottom:1.5rem;font-size:.9375rem;color:var(--n700);line-height:1.7;max-width:60ch;">
-            {faq.a}
-          </div>
-        </details>
-      ))}
+    <div class="faq-layout">
+      <div class="reveal">
+        <p class="sec-eye">Dúvidas</p>
+        <h2 style="font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;">Perguntas frequentes</h2>
+        <a href="/contato" style="display:inline-block;margin-top:1.25rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--g600);">Fale conosco →</a>
+      </div>
+      <div class="reveal reveal-d2">
+        {faqs.map(item => (
+          <details class="faq-item">
+            <summary>{item.q}<span class="faq-icon">+</span></summary>
+            <p class="faq-body">{item.a}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </div>
 </section>
 
 </Page>
 
-<style>
-/* Ticker carrossel */
-.ticker-track, .ticker-track-slow, .ticker-track-ias {
-  display:flex;
-  animation:scroll 30s linear infinite;
-  will-change:transform;
-}
-.ticker-track-slow { animation-duration:40s; }
-.ticker-track-ias { animation-duration:25s; }
-@keyframes scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
-
-.ticker-item {
-  display:inline-flex;
-  flex-direction:column;
-  padding:.625rem 1.25rem;
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.08);
-  margin-right:1rem;
-  white-space:nowrap;
-  min-width:200px;
-}
-.ticker-name {
-  font-size:.875rem;
-  font-weight:600;
-  color:rgba(255,255,255,.85);
-}
-.ticker-url {
-  font-size:.75rem;
-  color:rgba(255,255,255,.45);
-  font-family:monospace;
-}
-
-/* Hero grid */
-.hero-grid {
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size:80px 80px;
-  mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-  -webkit-mask-image:radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-}
-
-/* Hero typography */
-.hero-eye {
-  font-size:.7rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:rgba(255,255,255,.45);
-  margin-bottom:1.25rem;
-}
-.hero-title {
-  font-family:var(--serif);
-  font-size:clamp(2rem,5.5vw,4rem);
-  font-weight:700;
-  line-height:1.05;
-  letter-spacing:-.03em;
-  color:#fff;
-  margin-bottom:1.5rem;
-}
-.hero-title em {
-  font-style:italic;
-  color:var(--g400);
-}
-.hero-sub {
-  font-size:clamp(1rem,2vw,1.125rem);
-  color:rgba(255,255,255,.55);
-  line-height:1.65;
-  max-width:42ch;
-  margin-bottom:2rem;
-}
-.hero-actions {
-  display:flex;
-  flex-wrap:wrap;
-  gap:.875rem;
-}
-
-/* Cards */
-.prob-card, .layer-card {
-  background:#fff;
-  border:1px solid var(--n100);
-  padding:clamp(1.5rem,4vw,2rem);
-  transition:transform .2s, box-shadow .2s;
-}
-.prob-card:hover {
-  transform:translateY(-4px);
-  box-shadow:0 8px 24px rgba(0,0,0,.08);
-}
-.layer-card {
-  background:rgba(255,255,255,.02);
-  border:1px solid rgba(255,255,255,.08);
-}
-.layer-card:hover {
-  background:rgba(255,255,255,.04);
-  border-color:rgba(76,175,100,.3);
-}
-
-/* Details/Summary */
-.dor-item[open] .dor-icon,
-.faq-item[open] .faq-icon {
-  background:var(--g600);
-  color:#fff;
-  border-color:var(--g600);
-  transform:rotate(45deg);
-}
-
-/* Seções */
-.sec-eye {
-  font-size:.7rem;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--n500);
-  margin-bottom:1rem;
-}
-
-/* Responsivo mobile */
-@media (max-width:768px) {
-  .hero-title { font-size:clamp(1.75rem,8vw,2.5rem); }
-  .ticker-item { min-width:160px; padding:.5rem 1rem; }
-  .prob-card { padding:1.25rem; }
-  .layer-card { grid-template-columns:1fr !important; gap:1rem !important; }
-}
-</style>
-
 <script>
-// Script GHL
-const s = document.createElement('script');
-s.src = 'https://api.ilevex.com.br/js/form_embed.js';
-s.async = true;
-document.body.appendChild(s);
-
-// Intersection Observer para .reveal
-document.documentElement.classList.add('js-loaded');
+// ── Scroll reveals ──
 const obs = new IntersectionObserver(
-  (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
-  { threshold: 0.08 }
+  es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } }),
+  { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
 );
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Contagem animada ──
+const countObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const el = e.target as HTMLElement;
+    const target = parseInt(el.dataset.target || '0');
+    const suffix = el.dataset.suffix || '';
+    const t0 = performance.now();
+    const tick = (now: number) => {
+      const p = Math.min((now - t0) / 1400, 1);
+      const ease = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(ease * target) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    countObs.unobserve(el);
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.metric-num[data-target]').forEach(el => countObs.observe(el));
+
+// ── Gráfico hero animado ──
+const chartObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    const set = (id: string, delay: number, prop: string, val: string, trans: string) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      setTimeout(() => { (el.style as any)[prop] = val; el.style.transition = trans; }, delay);
+    };
+    const paid = document.getElementById('chart-paid-line') as SVGPathElement | null;
+    if (paid) setTimeout(() => { paid.style.transition = 'stroke-dashoffset 1.4s 200ms cubic-bezier(.16,1,.3,1)'; paid.style.strokeDashoffset = '0'; }, 200);
+    setTimeout(() => { const el = document.getElementById('chart-paid-area'); if(el){el.style.transition='opacity .6s ease';el.style.opacity='1';} }, 500);
+    const org = document.getElementById('chart-org-line') as SVGPathElement | null;
+    if (org) setTimeout(() => { org.style.transition = 'stroke-dashoffset 2s 0ms cubic-bezier(.16,1,.3,1)'; org.style.strokeDashoffset = '0'; }, 700);
+    setTimeout(() => {
+      ['chart-org-area','chart-dot','chart-ring','chart-label-org','chart-label-paid'].forEach(id => {
+        const el = document.getElementById(id); if(el){el.style.transition='opacity .4s ease';el.style.opacity='1';}
+      });
+    }, 2500);
+    chartObs.unobserve(e.target);
+  });
+}, { threshold: 0.3 });
+const hc = document.getElementById('hero-chart');
+if (hc) chartObs.observe(hc);
+
+// ── Animações das camadas — FIX 3: camada 01 corrigida ──
+const layerAnims: Record<string, string> = {
+  'anim-01': `<svg viewBox="0 0 220 160" fill="none" style="width:100%;max-width:220px" aria-label="Core Web Vitals: barras de performance animadas">
+    <g opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.3s" fill="freeze"/>
+      <text x="8" y="14" fill="rgba(255,255,255,.3)" font-size="7" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">CORE WEB VITALS</text>
+      <circle cx="172" cy="10" r="10" fill="none" stroke="rgba(76,175,100,.4)" stroke-width="1.5" stroke-dasharray="63" stroke-dashoffset="63"><animate attributeName="stroke-dashoffset" from="63" to="0" begin="1.2s" dur="0.6s" fill="freeze"/></circle>
+      <text x="172" y="14" fill="#4caf64" font-size="8" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.8s" dur="0.2s" fill="freeze"/>✓</text>
+    </g>
+    <line x1="8" y1="140" x2="212" y2="140" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    <rect x="18" y="140" width="38" height="0" rx="1" fill="#4caf64"><animate attributeName="height" from="0" to="90" begin="0.3s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="50" begin="0.3s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="66" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".8"><animate attributeName="height" from="0" to="70" begin="0.5s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="70" begin="0.5s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="114" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".9"><animate attributeName="height" from="0" to="100" begin="0.7s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="40" begin="0.7s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <rect x="162" y="140" width="38" height="0" rx="1" fill="#4caf64" opacity=".75"><animate attributeName="height" from="0" to="80" begin="0.9s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/><animate attributeName="y" from="140" to="60" begin="0.9s" dur="0.9s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></rect>
+    <text x="37" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">LCP</text>
+    <text x="85" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">CLS</text>
+    <text x="133" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">INP</text>
+    <text x="181" y="155" fill="rgba(255,255,255,.4)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">FCP</text>
+  </svg>`,
+  'anim-02': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Diagrama de identidade de entidade">
+    <circle cx="100" cy="70" r="28" fill="rgba(29,122,53,.2)" stroke="rgba(76,175,100,.5)" stroke-width="1.5"><animate attributeName="r" from="0" to="28" begin="0s" dur="0.6s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></circle>
+    <text x="100" y="67" fill="#4caf64" font-size="9" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif">ENTIDADE</text>
+    <text x="100" y="79" fill="rgba(76,175,100,.7)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">verificada</text>
+    <circle cx="30" cy="25" r="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.4s" fill="freeze"/></circle>
+    <text x="30" y="29" fill="rgba(255,255,255,.5)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">KG</text>
+    <circle cx="170" cy="25" r="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/></circle>
+    <text x="170" y="29" fill="rgba(255,255,255,.5)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Wiki</text>
+    <circle cx="30" cy="115" r="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.4s" fill="freeze"/></circle>
+    <text x="30" y="119" fill="rgba(255,255,255,.5)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">LI</text>
+    <circle cx="170" cy="115" r="14" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.15)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/></circle>
+    <text x="170" y="119" fill="rgba(255,255,255,.5)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">sameAs</text>
+    <line x1="44" y1="33" x2="75" y2="52" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.3s" fill="freeze"/></line>
+    <line x1="156" y1="33" x2="125" y2="52" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.9s" dur="0.3s" fill="freeze"/></line>
+    <line x1="44" y1="107" x2="75" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1s" dur="0.3s" fill="freeze"/></line>
+    <line x1="156" y1="107" x2="125" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.1s" dur="0.3s" fill="freeze"/></line>
+  </svg>`,
+  'anim-03': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Clusters de conteúdo semântico">
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CLUSTER SEMÂNTICO</text>
+    <rect x="65" y="26" width="70" height="28" rx="2" fill="rgba(29,122,53,.2)" stroke="rgba(76,175,100,.4)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="44" fill="#4caf64" font-size="9" font-weight="600" text-anchor="middle" font-family="DM Sans,sans-serif">Página pilar</text>
+    <rect x="10" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.3s" dur="0.4s" fill="freeze"/></rect>
+    <text x="38" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 01</text>
+    <rect x="72" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.4s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 02</text>
+    <rect x="134" y="78" width="56" height="24" rx="2" fill="rgba(255,255,255,.04)" stroke="rgba(255,255,255,.12)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/></rect>
+    <text x="162" y="94" fill="rgba(255,255,255,.5)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">Artigo 03</text>
+    <line x1="100" y1="54" x2="38" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <line x1="100" y1="54" x2="100" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <line x1="100" y1="54" x2="162" y2="78" stroke="rgba(76,175,100,.25)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></line>
+    <rect x="30" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/></rect>
+    <text x="48" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">FAQ</text>
+    <rect x="82" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.75s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Case</text>
+    <rect x="134" y="114" width="36" height="18" rx="2" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.08)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.4s" fill="freeze"/></rect>
+    <text x="152" y="127" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">Guia</text>
+  </svg>`,
+  'anim-04': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Citações por IAs generativas">
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">CITAÇÕES POR IA</text>
+    <rect x="65" y="52" width="70" height="36" rx="2" fill="rgba(29,122,53,.15)" stroke="rgba(76,175,100,.35)" stroke-width="1" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.1s" dur="0.4s" fill="freeze"/></rect>
+    <text x="100" y="70" fill="#4caf64" font-size="9" font-weight="700" text-anchor="middle" font-family="DM Sans,sans-serif">Sua empresa</text>
+    <text x="100" y="82" fill="rgba(76,175,100,.6)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif">fonte primária</text>
+    <text x="18" y="28" fill="rgba(255,255,255,.5)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.5s" dur="0.4s" fill="freeze"/>ChatGPT</text>
+    <text x="148" y="28" fill="rgba(255,255,255,.5)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.4s" fill="freeze"/>Gemini</text>
+    <text x="8" y="120" fill="rgba(255,255,255,.5)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.7s" dur="0.4s" fill="freeze"/>Perplexity</text>
+    <text x="144" y="120" fill="rgba(255,255,255,.5)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.4s" fill="freeze"/>Copilot</text>
+    <line x1="62" y1="26" x2="75" y2="56" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.9s" dur="0.3s" fill="freeze"/></line>
+    <line x1="160" y1="30" x2="128" y2="56" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.95s" dur="0.3s" fill="freeze"/></line>
+    <line x1="60" y1="114" x2="75" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1s" dur="0.3s" fill="freeze"/></line>
+    <line x1="152" y1="112" x2="130" y2="88" stroke="rgba(76,175,100,.3)" stroke-width="1" stroke-dasharray="3 2" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.05s" dur="0.3s" fill="freeze"/></line>
+    <circle cx="100" cy="70" r="40" fill="none" stroke="rgba(76,175,100,.1)" stroke-width="1" stroke-dasharray="6 4" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.4s" fill="freeze"/></circle>
+  </svg>`,
+  'anim-05': `<svg viewBox="0 0 200 140" fill="none" style="width:100%;max-width:200px" aria-label="Crescimento de Domain Authority ao longo do tempo">
+    <text x="100" y="14" fill="rgba(255,255,255,.3)" font-size="7" text-anchor="middle" font-family="DM Sans,sans-serif" letter-spacing="1">DOMAIN AUTHORITY</text>
+    <path d="M20,110 C50,105 70,90 95,75 C115,62 130,50 160,35 C175,28 185,22 190,18" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="400" stroke-dashoffset="400"><animate attributeName="stroke-dashoffset" from="400" to="0" begin="0.2s" dur="1.4s" fill="freeze" calcMode="spline" keySplines="0.16 1 0.3 1"/></path>
+    <path d="M20,110 C50,105 70,90 95,75 C115,62 130,50 160,35 C175,28 185,22 190,18 L190,120 Z" fill="rgba(29,122,53,.1)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.8s" dur="0.8s" fill="freeze"/></path>
+    <line x1="20" y1="118" x2="190" y2="118" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+    <text x="20" y="130" fill="rgba(255,255,255,.25)" font-size="7" font-family="DM Sans,sans-serif">Mês 0</text>
+    <text x="185" y="130" fill="rgba(255,255,255,.25)" font-size="7" text-anchor="end" font-family="DM Sans,sans-serif">Mês 12</text>
+    <circle cx="190" cy="18" r="4" fill="#4caf64" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.5s" dur="0.3s" fill="freeze"/></circle>
+    <text x="182" y="12" fill="#4caf64" font-size="8" font-weight="700" text-anchor="end" font-family="DM Sans,sans-serif" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.6s" dur="0.3s" fill="freeze"/>DA ↑</text>
+    <circle cx="55" cy="95" r="3" fill="rgba(76,175,100,.6)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="0.3s" fill="freeze"/></circle>
+    <circle cx="105" cy="68" r="3" fill="rgba(76,175,100,.6)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="0.9s" dur="0.3s" fill="freeze"/></circle>
+    <circle cx="155" cy="38" r="3" fill="rgba(76,175,100,.6)" opacity="0"><animate attributeName="opacity" from="0" to="1" begin="1.2s" dur="0.3s" fill="freeze"/></circle>
+  </svg>`
+};
+
+Object.entries(layerAnims).forEach(([id, svg]) => {
+  const el = document.getElementById(id);
+  if (el) el.innerHTML = svg;
+});
+
+// ── Acordeão de camadas ──
+document.querySelectorAll<HTMLElement>('.layer-header').forEach(header => {
+  header.addEventListener('click', () => {
+    const animId = header.dataset.layer || '';
+    const body = document.getElementById(`body-${animId}`);
+    const isOpen = body?.classList.contains('open');
+    document.querySelectorAll('.layer-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.layer-header').forEach(h => h.classList.remove('active'));
+    if (!isOpen && body) {
+      body.classList.add('open');
+      header.classList.add('active');
+      const wrap = document.getElementById(animId);
+      if (wrap) { const html = wrap.innerHTML; wrap.innerHTML = ''; setTimeout(() => { wrap.innerHTML = html; }, 50); }
+    }
+  });
+});
+
+// ── Dores interativas — FIX 4: mobile inline + desktop lateral ──
+const dorData = [
+  { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
+  { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
+  { q: '"Meu concorrente aparece no ChatGPT. Eu não."', a: 'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
+  { q: '"Já investi em SEO antes e nunca funcionou."', a: 'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
+  { q: '"Minha empresa não é citada pelas IAs."', a: 'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
+  { q: '"Quero crescer sem depender de tráfego pago."', a: 'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
+];
+
+document.querySelectorAll<HTMLElement>('.dor-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const idx = parseInt(btn.dataset.index || '0');
+    document.querySelectorAll('.dor-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Desktop: atualizar caixa lateral com fade
+    const box = document.getElementById('dor-answer-box');
+    const qEl = document.getElementById('dor-q');
+    const aEl = document.getElementById('dor-a');
+    if (box) box.style.opacity = '0';
+    setTimeout(() => {
+      if (qEl) qEl.textContent = dorData[idx].q;
+      if (aEl) aEl.innerHTML = dorData[idx].a;
+      if (box) { box.style.transition = 'opacity .3s'; box.style.opacity = '1'; }
+    }, 200);
+
+    // Mobile: toggle inline
+    document.querySelectorAll<HTMLElement>('.dor-inline-answer').forEach(el => el.classList.remove('open'));
+    const inline = document.querySelector<HTMLElement>(`.dor-inline-answer[data-inline="${idx}"]`);
+    if (inline) inline.classList.add('open');
+  });
+});
+
+// ── Typeform ──
+const answers: Record<number, string> = {};
+function goTo(step: number) {
+  document.querySelectorAll('.tf-step').forEach(s => s.classList.remove('active'));
+  const next = document.getElementById(`tf-${step}`);
+  if (next) next.classList.add('active');
+  const bar = document.getElementById('tf-bar');
+  if (bar) bar.style.width = Math.round(((step - 1) / 7) * 100) + '%';
+}
+function showSuccess() {
+  document.querySelectorAll('.tf-step').forEach(s => s.classList.remove('active'));
+  const bar = document.getElementById('tf-bar');
+  if (bar) bar.style.width = '100%';
+  const success = document.getElementById('tf-success');
+  if (success) success.classList.add('show');
+}
+document.querySelectorAll<HTMLElement>('.tf-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const step = parseInt(opt.dataset.step || '0');
+    document.querySelectorAll<HTMLElement>(`.tf-opt[data-step="${step}"]`).forEach(o => o.classList.remove('selected'));
+    opt.classList.add('selected');
+    answers[step] = opt.textContent || '';
+    const nextBtn = document.getElementById(`tf-next-${step}`) as HTMLButtonElement | null;
+    if (nextBtn) nextBtn.disabled = false;
+  });
+});
+for (let i = 1; i <= 5; i++) {
+  const btn = document.getElementById(`tf-next-${i}`) as HTMLButtonElement | null;
+  btn?.addEventListener('click', () => { if (!btn.disabled) goTo(i + 1); });
+}
+document.getElementById('tf-next-6')?.addEventListener('click', () => goTo(7));
+document.getElementById('tf-next-7')?.addEventListener('click', () => {
+  const email = (document.getElementById('tf-email') as HTMLInputElement)?.value;
+  if (email && email.includes('@')) showSuccess();
+  else { const el = document.getElementById('tf-email') as HTMLInputElement; if(el) el.style.borderColor='rgba(220,80,60,.6)'; }
+});
+document.querySelectorAll<HTMLElement>('.tf-back').forEach(btn => {
+  btn.addEventListener('click', () => goTo(parseInt(btn.dataset.goto || '1')));
+});
 </script>
+
+<!-- FIX 6: CSS inline para garantir overflow hidden no header e mobile -->
+<style>
+html, body { max-width: 100vw; overflow-x: hidden; }
+.site-header { max-width: 100vw; overflow: hidden; }
+/* Fix ticker overflow */
+.hero-ticker { overflow: hidden; max-width: 100vw; }
+.hero-grid-bg { max-width: 100%; }
+
+/* FIX 4: dores mobile */
+@media (max-width: 768px) {
+  .dores-layout { grid-template-columns: 1fr !important; }
+  #dor-answer-box { display: none !important; }
+  .dor-inline-answer { display: none; background: var(--n950); padding: 1.25rem 1.25rem 1.5rem; margin-top: -.5rem; margin-bottom: .5rem; border-left: 3px solid var(--g500); font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.7; }
+  .dor-inline-answer.open { display: block; }
+  .dor-inline-answer strong { color: var(--g400); font-weight: 600; }
+  /* FIX 6: header mobile */
+  .site-header > div, .site-header .wrap { padding-inline: 1rem !important; }
+  #desktop-nav { display: none !important; }
+  #burger { display: block !important; flex-shrink: 0; }
+}
+
+/* Statement grid — FIX 1: sem segundo traço */
+.statement-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: start; }
+@media (max-width: 768px) { .statement-grid { grid-template-columns: 1fr; gap: 1.5rem; } }
+
+/* Entidade nodes grid responsive */
+#ent-nodes-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1rem; }
+@media (max-width: 768px) { #ent-nodes-grid { grid-template-columns: repeat(2,1fr); gap: .75rem; } }
+@media (max-width: 480px) { #ent-nodes-grid { grid-template-columns: 1fr 1fr; gap: .5rem; } }
+@media (max-width: 480px) { #ent-nodes-grid > div { padding: .875rem !important; } }
+@media (max-width: 480px) { #ent-nodes-grid > div > span:first-child { font-size: 1.125rem !important; } }
+
+/* Layer body grid responsive */
+@media (max-width: 768px) { .layer-body.open { grid-template-columns: 1fr !important; } }
+
+/* Botão ghost — visível em fundo escuro */
+.btn-ghost {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--font-sans); font-size:.875rem; font-weight:600;
+  padding:.875rem 2rem; border-radius:2px; cursor:pointer;
+  letter-spacing:.02em; text-transform:uppercase; text-decoration:none;
+  background:transparent; color:rgba(255,255,255,.7);
+  border:1px solid rgba(255,255,255,.25);
+  transition:all .2s;
+}
+.btn-ghost:hover { color:#fff; border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); }
+
+/* Prob-grid 2x3 */
+.prob-grid { grid-template-columns: repeat(3, 1fr) !important; }
+@media (max-width: 1024px) { .prob-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 600px)  { .prob-grid { grid-template-columns: 1fr !important; } }
+
+/* Garantir fundo escuro nas seções */
+.diff-section { background: var(--n950) !important; }
+.dores-section { background: var(--n950) !important; }
+.entidade-section { background: var(--n950) !important; }
+.typeform-section { background: var(--n950) !important; }
+</style>
+
+<script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
+
+</Page>
