@@ -31,79 +31,75 @@ const websiteSchema = {
   schemaExtra={[websiteSchema, faqSchema]}
 >
 
-<!-- ═══════════════════════════════════════════════
-     PRÉ-LOADER
-     ═══════════════════════════════════════════════ -->
-<div id="preloader" aria-hidden="true">
-  <span id="preloader-logo">Organum</span>
+<!-- ════════════════════════════════════════════
+     PRÉ-LOADER — puro CSS/JS vanilla, sem GSAP
+     ════════════════════════════════════════════ -->
+<div id="pl" aria-hidden="true">
+  <span id="pl-logo">Organum</span>
 </div>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 1 — HERO
-     ═══════════════════════════════════════════════ -->
-<section class="hero-cine" id="hero">
+     ════════════════════════════════════════════ -->
+<section class="hero" id="hero">
   <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-glow"    aria-hidden="true"></div>
 
   <div class="wrap hero-inner">
-    <!-- Coluna de copy -->
+    <!-- copy -->
     <div class="hero-copy">
       <p class="hero-eye" id="h-eye">MÉTODO ORGANUM — 5 CAMADAS COMPROVADAS</p>
+
       <h1 class="hero-title">
-        <span class="h1-line" id="h1-l1">SEO orgânico</span>
-        <span class="h1-line" id="h1-l2">que gera</span>
-        <span class="h1-line" id="h1-l3">pipeline B2B</span>
-        <em class="h1-em" id="h1-em">não apenas cliques</em>
+        <span class="hl" id="hl1">SEO orgânico</span>
+        <span class="hl" id="hl2">que gera</span>
+        <span class="hl" id="hl3">pipeline B2B</span>
+        <em   class="hl hem" id="hl4">não apenas cliques</em>
       </h1>
+
       <p class="hero-sub" id="h-sub">
         Do zero técnico à citação por IA.<br>
         Sem anúncios. Sem dependência de algoritmo.
       </p>
+
       <div class="hero-actions" id="h-ctas">
-        <a href="/auditoria-gratuita" class="btn-primary" id="cta-auditoria">
+        <a href="/auditoria-gratuita" class="btn-primary" id="cta-audit">
           Solicitar auditoria gratuita &rarr;
         </a>
-        <a href="/metodo" class="btn-ghost-cine" id="cta-metodo">Ver o método</a>
+        <a href="/metodo" class="btn-ghost">Ver o método</a>
       </div>
     </div>
 
-    <!-- Coluna do gráfico SVG -->
+    <!-- gráfico SVG -->
     <div class="hero-chart-wrap" id="hero-chart-wrap">
-      <svg id="hero-chart" viewBox="0 0 480 320" fill="none" xmlns="http://www.w3.org/2000/svg"
+      <svg id="hero-chart" viewBox="0 0 480 320" fill="none"
            aria-label="Gráfico: pipeline orgânico cresce 127% enquanto tráfego pago cessa ao longo de 12 meses">
-        <!-- Grid lines -->
         <line x1="48" y1="30"  x2="460" y2="30"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="85"  x2="460" y2="85"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="140" x2="460" y2="140" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
         <line x1="48" y1="250" x2="460" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
         <line x1="48" y1="30"  x2="48"  y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-        <!-- X axis labels -->
         <text x="48"  y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 0</text>
         <text x="152" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 3</text>
         <text x="256" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 6</text>
         <text x="360" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 9</text>
         <text x="460" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 12</text>
-        <!-- Y axis labels -->
-        <text x="40" y="254" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">0</text>
-        <text x="40" y="144" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">50</text>
-        <text x="40" y="34"  fill="rgba(255,255,255,.2)" font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">100</text>
-        <text x="48" y="18"  fill="rgba(255,255,255,.25)" font-size="8" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">PIPELINE ORGÂNICO vs. TRÁFEGO PAGO — 12 MESES</text>
-        <!-- Paid area + line -->
-        <path id="chart-paid-area" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250 Z" fill="rgba(220,80,60,.07)" opacity="0"/>
-        <path id="chart-paid-line" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250" fill="none" stroke="rgba(200,90,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>
-        <!-- Organic area + line -->
-        <path id="chart-org-area" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52 L460,250 Z" fill="rgba(46,145,71,.12)" opacity="0"/>
-        <path id="chart-org-line" d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
-        <!-- Endpoint markers -->
-        <circle id="chart-dot"  cx="460" cy="52" r="5"  fill="#4caf64" opacity="0"/>
-        <circle id="chart-ring" cx="460" cy="52" r="10" fill="none" stroke="rgba(76,175,100,.35)" stroke-width="1.5" opacity="0"/>
-        <!-- Labels -->
-        <g id="chart-label-org" opacity="0">
+        <text x="40"  y="254" fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">0</text>
+        <text x="40"  y="144" fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">50</text>
+        <text x="40"  y="34"  fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">100</text>
+        <text x="48"  y="18"  fill="rgba(255,255,255,.25)" font-size="8" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">PIPELINE ORGÂNICO vs. TRÁFEGO PAGO — 12 MESES</text>
+        <path id="c-paid-area" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250 Z" fill="rgba(220,80,60,.07)" opacity="0"/>
+        <path id="c-paid-line" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250"   fill="none" stroke="rgba(200,90,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>
+        <path id="c-org-area"  d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52 L460,250 Z"         fill="rgba(46,145,71,.12)" opacity="0"/>
+        <path id="c-org-line"  d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52"                      fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
+        <circle id="c-dot"  cx="460" cy="52" r="5"  fill="#4caf64" opacity="0"/>
+        <circle id="c-ring" cx="460" cy="52" r="10" fill="none" stroke="rgba(76,175,100,.35)" stroke-width="1.5" opacity="0"/>
+        <g id="c-lbl-org" opacity="0">
           <rect x="340" y="34" width="116" height="20" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.35)" stroke-width="1"/>
           <text x="348" y="48" fill="#4caf64" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">SEO orgânico ↑ 127%</text>
         </g>
-        <g id="chart-label-paid" opacity="0">
+        <g id="c-lbl-paid" opacity="0">
           <rect x="120" y="141" width="108" height="20" rx="2" fill="rgba(220,80,60,.1)" stroke="rgba(200,80,60,.25)" stroke-width="1"/>
           <text x="128" y="155" fill="rgba(210,120,100,1)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">Tráfego pago — cessa</text>
         </g>
@@ -111,11 +107,10 @@ const websiteSchema = {
     </div>
   </div>
 
-  <!-- Separador animado -->
   <div class="hero-divider" id="hero-divider" aria-hidden="true"></div>
 
-  <!-- Ticker strip -->
-  <div class="hero-ticker" aria-label="Clientes que confiam no método">
+  <!-- Ticker -->
+  <div class="hero-ticker" aria-label="Empresas que confiam no método">
     <div class="ticker-inner">
       <span class="ticker-lbl">Confiam no método</span>
       <div class="ticker-sep" aria-hidden="true"></div>
@@ -131,123 +126,119 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 2 — STATEMENT
-     ═══════════════════════════════════════════════ -->
-<section class="statement-section cinema-reveal" id="statement">
+     ════════════════════════════════════════════ -->
+<section class="statement-section" id="statement">
   <div class="wrap statement-grid">
-    <div class="statement-accent" aria-hidden="true"></div>
-    <div class="statement-body">
-      <p class="section-eyebrow">POR QUE A ORGANUM</p>
-      <h2 class="statement-headline clip-reveal" id="statement-h2">
+    <div class="statement-bar" aria-hidden="true"></div>
+    <div>
+      <p class="eyebrow">POR QUE A ORGANUM</p>
+      <h2 class="statement-h2" id="stmt-h2">
         Nenhuma agência brasileira entrega<br>
         GEO sistematicamente.<br>
-        <span class="text-green-cine">Nós entregamos — e provamos com dados.</span>
+        <span class="green-text">Nós entregamos — e provamos com dados.</span>
       </h2>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 3 — MÉTRICAS
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="metrics-section" id="metrics">
   <div class="wrap metrics-grid">
     {[
-      { num: 5,   suffix: '',  label: 'Camadas do método' },
-      { num: 90,  suffix: 'd', label: 'Para citação por IA' },
-      { num: 340, suffix: '%', label: 'Crescimento orgânico' },
-      { num: 48,  suffix: 'h', label: 'Para o diagnóstico' },
+      { val: 5,   sfx: '',  lbl: 'Camadas do método',    id: 'm0' },
+      { val: 90,  sfx: 'd', lbl: 'Para citação por IA',  id: 'm1' },
+      { val: 340, sfx: '%', lbl: 'Crescimento orgânico', id: 'm2' },
+      { val: 48,  sfx: 'h', lbl: 'Para o diagnóstico',  id: 'm3' },
     ].map((m, i) => (
-      <div class="metric-item" data-target={m.num} data-suffix={m.suffix} data-delay={i * 0.15}>
-        <span class="metric-num" data-val={m.num} data-sfx={m.suffix}>0{m.suffix}</span>
-        <span class="metric-label">{m.label}</span>
+      <div class="metric-item" id={m.id} data-val={m.val} data-sfx={m.sfx} data-di={i}>
+        <span class="metric-num">{m.val}{m.sfx}</span>
+        <span class="metric-lbl">{m.lbl}</span>
       </div>
     ))}
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 4 — PROBLEMA
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="prob-section" id="problema">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow dark">O PROBLEMA QUE VOCÊ TEM</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow dark">O PROBLEMA QUE VOCÊ TEM</p>
       <h2 class="section-h2">Você investe em anúncios e para de crescer<br>quando para de pagar.</h2>
     </div>
-
-    <div class="prob-grid" id="prob-cards">
+    <div class="prob-grid" id="prob-grid">
       {[
-        { title: 'Tráfego pago não escala sem orçamento', stat: '+340% no CAC em 3 anos', icon: '📈' },
-        { title: 'Seu site não existe para as IAs generativas', stat: '73% das pesquisas B2B usam IA', icon: '🤖' },
-        { title: 'SEO genérico não funciona para B2B', stat: '89% dos leads B2B pesquisam antes', icon: '🔍' },
-        { title: 'Sua empresa não é uma entidade reconhecida', stat: 'Entidade = credibilidade automática', icon: '🏛️' },
-        { title: 'Concorrentes aparecem primeiro nas buscas estratégicas', stat: '78% das decisões B2B começam no Google', icon: '⚡' },
-        { title: 'Seu pipeline depende de indicações e rede', stat: 'CAC orgânico cai 70% em 12 meses', icon: '🌱' },
-      ].map((card) => (
-        <div class="prob-card cinema-stagger">
-          <span class="prob-icon" aria-hidden="true">{card.icon}</span>
-          <h3 class="prob-title">{card.title}</h3>
-          <p class="prob-stat">{card.stat}</p>
+        { icon:'📈', title:'Tráfego pago não escala sem orçamento',               stat:'+340% no CAC em 3 anos' },
+        { icon:'🤖', title:'Seu site não existe para as IAs generativas',           stat:'73% das pesquisas B2B usam IA' },
+        { icon:'🔍', title:'SEO genérico não funciona para B2B',                    stat:'89% dos leads B2B pesquisam antes' },
+        { icon:'🏛️', title:'Sua empresa não é uma entidade reconhecida',            stat:'Entidade = credibilidade automática' },
+        { icon:'⚡', title:'Concorrentes aparecem primeiro nas buscas estratégicas', stat:'78% das decisões B2B começam no Google' },
+        { icon:'🌱', title:'Seu pipeline depende de indicações e rede de contatos', stat:'CAC orgânico cai 70% em 12 meses' },
+      ].map(c => (
+        <div class="prob-card stagger-child">
+          <span class="prob-icon" aria-hidden="true">{c.icon}</span>
+          <h3 class="prob-title">{c.title}</h3>
+          <p  class="prob-stat">{c.stat}</p>
         </div>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     SEÇÃO 5 — IDENTIDADE DE ENTIDADE (PIN)
-     ═══════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════
+     SEÇÃO 5 — IDENTIDADE DE ENTIDADE
+     ════════════════════════════════════════════ -->
 <section class="entidade-section" id="entidade">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow">IDENTIDADE DE ENTIDADE</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow">IDENTIDADE DE ENTIDADE</p>
       <h2 class="section-h2 white">O que as IAs precisam para te recomendar</h2>
     </div>
 
     <div class="entidade-grid">
-      <!-- Sem entidade -->
-      <div class="entidade-card entidade-card-no" id="entidade-no">
-        <div class="entidade-card-header">
-          <span class="entidade-icon-x" aria-hidden="true">✕</span>
-          <span class="entidade-card-label red">Empresa sem entidade</span>
+      <div class="ent-card ent-no" id="ent-no">
+        <div class="ent-head">
+          <span class="ent-icon red" aria-hidden="true">✕</span>
+          <span class="ent-label red">Empresa sem entidade</span>
         </div>
-        <ul class="entidade-list">
-          <li><span class="ent-x" aria-hidden="true">✕</span> Sem página na Wikipedia</li>
-          <li><span class="ent-x" aria-hidden="true">✕</span> Sem item no Wikidata</li>
-          <li><span class="ent-x" aria-hidden="true">✕</span> Sem Knowledge Panel no Google</li>
-          <li><span class="ent-x" aria-hidden="true">✕</span> Sem sameAs cruzados</li>
-          <li><span class="ent-x" aria-hidden="true">✕</span> Invisível para ChatGPT e Gemini</li>
-          <li><span class="ent-x" aria-hidden="true">✕</span> Dependente de anúncios para existir</li>
+        <ul class="ent-list">
+          <li><span class="x-icon" aria-hidden="true">✕</span> Sem página na Wikipedia</li>
+          <li><span class="x-icon" aria-hidden="true">✕</span> Sem item no Wikidata</li>
+          <li><span class="x-icon" aria-hidden="true">✕</span> Sem Knowledge Panel no Google</li>
+          <li><span class="x-icon" aria-hidden="true">✕</span> Sem sameAs cruzados</li>
+          <li><span class="x-icon" aria-hidden="true">✕</span> Invisível para ChatGPT e Gemini</li>
+          <li><span class="x-icon" aria-hidden="true">✕</span> Dependente de anúncios para existir</li>
         </ul>
       </div>
 
-      <!-- Com entidade (Organum) -->
-      <div class="entidade-card entidade-card-yes" id="entidade-yes">
-        <div class="entidade-card-header">
-          <span class="entidade-icon-check" aria-hidden="true">✓</span>
-          <span class="entidade-card-label green">Com Organum — entidade estruturada</span>
+      <div class="ent-card ent-yes" id="ent-yes">
+        <div class="ent-head">
+          <span class="ent-icon green" aria-hidden="true">✓</span>
+          <span class="ent-label green">Com Organum — entidade estruturada</span>
         </div>
-        <ul class="entidade-list">
-          <li><span class="ent-check" aria-hidden="true">✓</span> Presença verificável no Wikidata</li>
-          <li><span class="ent-check" aria-hidden="true">✓</span> Knowledge Graph ativo</li>
-          <li><span class="ent-check" aria-hidden="true">✓</span> sameAs cruzados LinkedIn, G.Business</li>
-          <li><span class="ent-check" aria-hidden="true">✓</span> Menções editoriais qualificadas</li>
-          <li><span class="ent-check" aria-hidden="true">✓</span> Citada por ChatGPT, Gemini, Perplexity</li>
-          <li><span class="ent-check" aria-hidden="true">✓</span> Pipeline orgânico crescente sem anúncios</li>
+        <ul class="ent-list">
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Presença verificável no Wikidata</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Knowledge Graph ativo</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> sameAs cruzados LinkedIn, G.Business</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Menções editoriais qualificadas</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Citada por ChatGPT, Gemini, Perplexity</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Pipeline orgânico crescente sem anúncios</li>
         </ul>
       </div>
     </div>
 
-    <!-- Ticker IAs -->
     <div class="ia-ticker-wrap">
-      <span class="ia-ticker-label">Citada pelas IAs</span>
-      <div class="ia-ticker-track-wrap">
-        <div class="ia-ticker-track">
+      <span class="ia-lbl">Citada pelas IAs</span>
+      <div class="ia-track-wrap">
+        <div class="ia-track">
           {['ChatGPT','Gemini','Perplexity','Copilot','Grok',
             'ChatGPT','Gemini','Perplexity','Copilot','Grok'].map(ia => (
-            <span class="ia-ticker-item">{ia}</span>
+            <span class="ia-item">{ia}</span>
           ))}
         </div>
       </div>
@@ -255,41 +246,41 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 6 — MÉTODO 5 CAMADAS
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="metodo-section" id="metodo">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow dark">O MÉTODO</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow dark">O MÉTODO</p>
       <h2 class="section-h2">5 camadas. A ordem importa.</h2>
     </div>
 
-    <div class="layers-accordion" id="layers-accordion">
+    <div class="accordion" id="accordion">
       {[
-        { num: '01', name: 'Fundação técnica', sub: 'Core Web Vitals, silos, Schema Markup', tag: 'Base obrigatória', tagClass: 'tag-base',
-          text: 'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.' },
-        { num: '02', name: 'Identidade de entidade', sub: 'Knowledge Graph, Wikidata, sameAs cruzados', tag: 'Diferencial Organum', tagClass: 'tag-diff',
-          text: 'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.' },
-        { num: '03', name: 'Conteúdo de autoridade', sub: 'Clusters semânticos por ICP, E-E-A-T profundo', tag: 'Fonte para IA', tagClass: 'tag-geo',
-          text: 'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.' },
-        { num: '04', name: 'GEO + AEO', sub: 'ChatGPT, Gemini, Perplexity, featured snippets', tag: 'Ninguém entrega isso', tagClass: 'tag-geo',
-          text: '<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.' },
-        { num: '05', name: 'Digital PR', sub: 'Link building editorial, assessoria de imprensa digital', tag: 'Autoridade externa', tagClass: 'tag-base',
-          text: 'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.' },
-      ].map((layer, i) => (
-        <div class="layer-item cinema-stagger" data-layer={i}>
-          <button class="layer-header" id={`layer-header-${i}`} aria-expanded="false" aria-controls={`layer-body-${i}`}>
-            <span class="layer-num">{layer.num}</span>
-            <span class="layer-info">
-              <span class="layer-name">{layer.name}</span>
-              <span class="layer-sub">{layer.sub}</span>
+        { num:'01', name:'Fundação técnica',       sub:'Core Web Vitals, silos, Schema Markup',            tag:'Base obrigatória',      tc:'tag-base',
+          txt:'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.' },
+        { num:'02', name:'Identidade de entidade', sub:'Knowledge Graph, Wikidata, sameAs cruzados',       tag:'Diferencial Organum',   tc:'tag-diff',
+          txt:'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.' },
+        { num:'03', name:'Conteúdo de autoridade', sub:'Clusters semânticos por ICP, E-E-A-T profundo',   tag:'Fonte para IA',         tc:'tag-geo',
+          txt:'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.' },
+        { num:'04', name:'GEO + AEO',              sub:'ChatGPT, Gemini, Perplexity, featured snippets',  tag:'Ninguém entrega isso',  tc:'tag-geo',
+          txt:'<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.' },
+        { num:'05', name:'Digital PR',             sub:'Link building editorial, assessoria de imprensa digital', tag:'Autoridade externa', tc:'tag-base',
+          txt:'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.' },
+      ].map((l, i) => (
+        <div class="acc-item stagger-child" id={`acc-${i}`}>
+          <button class="acc-hd" data-idx={i} aria-expanded="false" aria-controls={`acc-body-${i}`}>
+            <span class="acc-num">{l.num}</span>
+            <span class="acc-info">
+              <span class="acc-name">{l.name}</span>
+              <span class="acc-sub">{l.sub}</span>
             </span>
-            <span class={`layer-tag ${layer.tagClass}`}>{layer.tag}</span>
-            <span class="layer-arrow" aria-hidden="true">+</span>
+            <span class={`acc-tag ${l.tc}`}>{l.tag}</span>
+            <span class="acc-arr" aria-hidden="true">+</span>
           </button>
-          <div class="layer-body" id={`layer-body-${i}`} role="region" aria-labelledby={`layer-header-${i}`}>
-            <div class="layer-body-inner" set:html={layer.text} />
+          <div class="acc-body" id={`acc-body-${i}`} style="height:0;overflow:hidden;">
+            <div class="acc-inner" set:html={l.txt} />
           </div>
         </div>
       ))}
@@ -297,118 +288,124 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 7 — DIFERENCIAL
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="diff-section" id="diferencial">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow">COMPARATIVO</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow">COMPARATIVO</p>
       <h2 class="section-h2 white">O que nenhuma outra agência entrega<br>— e nós entregamos.</h2>
     </div>
 
     <div class="diff-grid">
-      <div class="diff-col diff-col-no" id="diff-no">
-        <div class="diff-col-head">
-          <span class="diff-icon-x" aria-hidden="true">✕</span>
+      <div class="diff-col diff-no" id="diff-no">
+        <div class="diff-col-hd">
+          <span aria-hidden="true" style="color:rgba(220,80,60,.6)">✕</span>
           <span class="diff-col-title">Agência genérica</span>
         </div>
         <ul class="diff-list">
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> SEO técnico básico sem estratégia</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Conteúdo genérico sem ICP definido</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Relatórios de pageviews, não de pipeline</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Ignora GEO e citação por IA</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Não constrói identidade de entidade</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Sem Digital PR editorial</li>
-          <li class="diff-item diff-item-no"><span aria-hidden="true">✕</span> Resultados param quando você para de pagar</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> SEO técnico básico sem estratégia</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Conteúdo genérico sem ICP definido</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Relatórios de pageviews, não de pipeline</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Ignora GEO e citação por IA</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Não constrói identidade de entidade</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Sem Digital PR editorial</li>
+          <li class="di-no"><span aria-hidden="true">✕</span> Resultados param quando você para de pagar</li>
         </ul>
       </div>
 
-      <div class="diff-col diff-col-yes" id="diff-yes">
-        <div class="diff-col-head">
-          <span class="diff-icon-check" aria-hidden="true">✓</span>
-          <span class="diff-col-title green-text">Organum</span>
+      <div class="diff-col diff-yes" id="diff-yes">
+        <div class="diff-col-hd">
+          <span aria-hidden="true" style="color:var(--g400)">✓</span>
+          <span class="diff-col-title" style="color:var(--g400)">Organum</span>
         </div>
         <ul class="diff-list">
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> <strong>5 camadas integradas</strong> com foco em pipeline</li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> Conteúdo calibrado para o <strong>ICP exato</strong></li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> Relatórios de <strong>leads e oportunidades</strong></li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> <strong>GEO sistematizado</strong> — único no Brasil</li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> <strong>Entidade digital</strong> verificável e citável</li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> Link building <strong>editorial de alta qualidade</strong></li>
-          <li class="diff-item diff-item-yes"><span aria-hidden="true">✓</span> Ativo orgânico que <strong>cresce mês a mês</strong></li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>5 camadas integradas</strong> com foco em pipeline</li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> Conteúdo calibrado para o <strong>ICP exato</strong></li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> Relatórios de <strong>leads e oportunidades</strong></li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>GEO sistematizado</strong> — único no Brasil</li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>Entidade digital</strong> verificável e citável</li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> Link building <strong>editorial de alta qualidade</strong></li>
+          <li class="di-yes"><span aria-hidden="true">✓</span> Ativo orgânico que <strong>cresce mês a mês</strong></li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 8 — DORES INTERATIVAS
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="dores-section" id="dores">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow">RECONHECE?</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow">RECONHECE?</p>
       <h2 class="section-h2 white">Reconhece alguma dessas situações?</h2>
     </div>
 
     <div class="dores-layout">
-      <div class="dores-buttons" id="dores-buttons">
+      <div class="dores-btns" id="dores-btns">
         {[
-          { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
-          { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
-          { q: '"Meu concorrente aparece no ChatGPT. Eu não."', a: 'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
-          { q: '"Já investi em SEO antes e nunca funcionou."', a: 'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
-          { q: '"Minha empresa não é citada pelas IAs."', a: 'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
-          { q: '"Quero crescer sem depender de tráfego pago."', a: 'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
-        ].map((dor, idx) => (
-          <div class="dor-item">
-            <button class={`dor-btn${idx === 0 ? ' active' : ''}`} data-index={idx} id={`dor-btn-${idx}`}
-                    aria-expanded={idx === 0 ? 'true' : 'false'} aria-controls={`dor-inline-${idx}`}>
-              {dor.q}
-              <span class="dor-arrow" aria-hidden="true">→</span>
+          { q:'"Meu site aparece no Google mas não gera leads qualificados."',
+            a:'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
+          { q:'"Quando paro os anúncios, o pipeline seca."',
+            a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
+          { q:'"Meu concorrente aparece no ChatGPT. Eu não."',
+            a:'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
+          { q:'"Já investi em SEO antes e nunca funcionou."',
+            a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
+          { q:'"Minha empresa não é citada pelas IAs."',
+            a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
+          { q:'"Quero crescer sem depender de tráfego pago."',
+            a:'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
+        ].map((d, i) => (
+          <div class="dor-wrap">
+            <button class={`dor-btn${i===0?' active':''}`} data-i={i}
+                    aria-expanded={i===0?'true':'false'} aria-controls={`dor-inline-${i}`}>
+              {d.q}<span class="dor-arr" aria-hidden="true">→</span>
             </button>
-            <div class="dor-inline-answer" id={`dor-inline-${idx}`} aria-hidden={idx === 0 ? 'false' : 'true'}
-                 style={idx === 0 ? 'display:block' : 'display:none'} set:html={dor.a} />
+            <div class="dor-inline" id={`dor-inline-${i}`}
+                 aria-hidden={i===0?'false':'true'}
+                 style={i===0?'':'display:none'} set:html={d.a}/>
           </div>
         ))}
       </div>
 
-      <div class="dor-answer-box" id="dor-answer-box" aria-live="polite">
-        <p class="dor-answer-q" id="dor-q">"Meu site aparece no Google mas não gera leads qualificados."</p>
-        <p class="dor-answer-a" id="dor-a">Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.</p>
-        <a href="/auditoria-gratuita" class="dor-cta">Solicitar diagnóstico gratuito &rarr;</a>
+      <div class="dor-box" id="dor-box" aria-live="polite">
+        <p class="dor-box-q" id="dor-q">"Meu site aparece no Google mas não gera leads qualificados."</p>
+        <p class="dor-box-a" id="dor-a">Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.</p>
+        <a href="/auditoria-gratuita" class="dor-link">Solicitar diagnóstico gratuito &rarr;</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 9 — PARA QUEM É
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="icp-section" id="para-quem">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow dark">PERFIL IDEAL</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow dark">PERFIL IDEAL</p>
       <h2 class="section-h2">Para quem é o Método ORGANUM?</h2>
     </div>
 
     <div class="icp-grid">
-      <div class="icp-copy cinema-reveal">
+      <div class="scroll-reveal">
         <p class="icp-desc">Atendemos empresas B2B com ciclo de venda longo, ticket alto e múltiplos decisores — onde a credibilidade orgânica converte mais que qualquer anúncio.</p>
         <ul class="icp-list">
-          <li><span class="icp-check" aria-hidden="true">✓</span> Consultoras e escritórios B2B</li>
-          <li><span class="icp-check" aria-hidden="true">✓</span> SaaS com ciclo enterprise</li>
-          <li><span class="icp-check" aria-hidden="true">✓</span> Distribuidoras e indústrias</li>
-          <li><span class="icp-check" aria-hidden="true">✓</span> E-commerce acima de R$500k/ano</li>
-          <li><span class="icp-check" aria-hidden="true">✓</span> Negócios que querem reduzir dependência de anúncios</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Consultoras e escritórios B2B</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> SaaS com ciclo enterprise</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Distribuidoras e indústrias</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> E-commerce acima de R$500k/ano</li>
+          <li><span class="ok-icon" aria-hidden="true">✓</span> Negócios que querem reduzir dependência de anúncios</li>
         </ul>
         <a href="/auditoria-gratuita" class="btn-primary" style="margin-top:2rem;display:inline-flex;">Quero ser avaliado &rarr;</a>
       </div>
 
-      <div class="icp-table-wrap cinema-reveal">
-        <p class="icp-table-title">Custo por lead ao longo de 12 meses</p>
+      <div class="scroll-reveal">
+        <p class="table-title">Custo por lead ao longo de 12 meses</p>
         <table class="icp-table" aria-label="Comparativo custo por lead: tráfego pago vs. orgânico">
           <thead>
             <tr>
@@ -418,62 +415,62 @@ const websiteSchema = {
             </tr>
           </thead>
           <tbody>
-            <tr><td>Mês 1–3</td><td>R$ 380/lead</td><td class="td-green">Em construção</td></tr>
-            <tr><td>Mês 4–6</td><td>R$ 420/lead</td><td class="td-green">R$ 290/lead</td></tr>
-            <tr><td>Mês 7–9</td><td>R$ 490/lead</td><td class="td-green">R$ 180/lead</td></tr>
+            <tr><td>Mês 1–3</td>  <td>R$ 380/lead</td><td class="td-green">Em construção</td></tr>
+            <tr><td>Mês 4–6</td>  <td>R$ 420/lead</td><td class="td-green">R$ 290/lead</td></tr>
+            <tr><td>Mês 7–9</td>  <td>R$ 490/lead</td><td class="td-green">R$ 180/lead</td></tr>
             <tr><td>Mês 10–12</td><td>R$ 560/lead</td><td class="td-green">R$ 95/lead</td></tr>
             <tr class="tr-total"><td>CAC médio anual</td><td>R$ 463/lead</td><td class="td-green">R$ 188/lead</td></tr>
           </tbody>
         </table>
-        <p class="icp-table-note">* Baseado em clientes reais. O orgânico não para quando você para de pagar.</p>
+        <p class="table-note">* Baseado em clientes reais. O orgânico não para quando você para de pagar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 10 — CASES
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="cases-section" id="cases">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow dark">RESULTADOS REAIS</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow dark">RESULTADOS REAIS</p>
       <h2 class="section-h2">Cases que provam o método</h2>
     </div>
 
     <div class="cases-grid">
-      <article class="case-card cinema-stagger" aria-label="Case HunterHunter">
-        <div class="case-card-header">
+      <article class="case-card stagger-child" aria-label="Case HunterHunter">
+        <div class="case-hd">
           <span class="case-tag">Headhunting B2B</span>
           <h3 class="case-name">HunterHunter</h3>
           <p class="case-url">hunterhunter.com.br</p>
         </div>
-        <ul class="case-metrics">
+        <ul class="case-stats">
           <li><strong class="case-num">47+</strong><span>posições no top 3 do Google</span></li>
           <li><strong class="case-num">340%</strong><span>crescimento de tráfego orgânico</span></li>
           <li><strong class="case-num">90d</strong><span>para citação pelo ChatGPT</span></li>
         </ul>
         <blockquote class="case-quote">
           "Chegaram leads excelentes esse mês, os melhores com certeza. Me falaram que pesquisaram no ChatGPT."
-          <cite class="case-cite">— Pedro Capizane, CEO da HunterHunter</cite>
+          <cite>— Pedro Capizane, CEO da HunterHunter</cite>
         </blockquote>
         <a href="/cases/hunterhunter" class="case-link">Ver case completo &rarr;</a>
       </article>
 
-      <article class="case-card cinema-stagger" aria-label="Case 7+ Vacations">
-        <div class="case-card-header">
+      <article class="case-card stagger-child" aria-label="Case 7+ Vacations">
+        <div class="case-hd">
           <span class="case-tag">Gestão de mansões · EUA</span>
           <h3 class="case-name">7+ Vacations</h3>
           <p class="case-url">7plusvacations.com</p>
         </div>
-        <ul class="case-metrics">
-          <li><strong class="case-num">100</strong><span>PageSpeed em mobile e desktop</span></li>
-          <li><strong class="case-num">2</strong><span>mercados atendidos — PT + EN</span></li>
+        <ul class="case-stats">
+          <li><strong class="case-num">100</strong><span>PageSpeed mobile e desktop</span></li>
+          <li><strong class="case-num">2</strong><span>mercados — PT + EN</span></li>
           <li><strong class="case-num">Bilíngue</strong><span>SEO PT/EN sistematizado</span></li>
         </ul>
         <blockquote class="case-quote">
           Presença orgânica estruturada em dois mercados sem duplicação de conteúdo — fundação técnica e entidade desde o dia 1.
-          <cite class="case-cite">— Método ORGANUM aplicado</cite>
+          <cite>— Método ORGANUM aplicado</cite>
         </blockquote>
         <a href="/cases" class="case-link">Ver todos os cases &rarr;</a>
       </article>
@@ -481,17 +478,16 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 11 — FORMULÁRIO GHL
-     ═══════════════════════════════════════════════ -->
-<section class="form-section typeform-section" id="typeform-section">
+     ════════════════════════════════════════════ -->
+<section class="form-section" id="typeform-section">
   <div class="wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow">DIAGNÓSTICO GRATUITO</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow">DIAGNÓSTICO GRATUITO</p>
       <h2 class="section-h2 white">Descubra o potencial orgânico do seu<br>site em 48 horas — gratuitamente.</h2>
       <p class="form-sub">Sem compromisso. Sem pitch de vendas. Um diagnóstico real com dados reais.</p>
     </div>
-
     <div class="form-wrap">
       <div style="background:#111009;border:1px solid rgba(76,175,100,.15);overflow:hidden;min-height:660px;border-radius:4px;">
         <iframe
@@ -517,478 +513,432 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
+<!-- ════════════════════════════════════════════
      SEÇÃO 12 — FAQ
-     ═══════════════════════════════════════════════ -->
+     ════════════════════════════════════════════ -->
 <section class="faq-section" id="faq">
   <div class="wrap faq-wrap">
-    <div class="section-header cinema-reveal">
-      <p class="section-eyebrow dark">PERGUNTAS FREQUENTES</p>
+    <div class="section-hd scroll-reveal">
+      <p class="eyebrow dark">PERGUNTAS FREQUENTES</p>
       <h2 class="section-h2">Dúvidas comuns</h2>
     </div>
 
     <div class="faq-list" id="faq-list">
       {[
-        { q: 'O que é o Método ORGANUM?', a: 'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
-        { q: 'Quanto tempo leva para ver resultado?', a: 'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
-        { q: 'Para quem é a Organum?', a: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
-        { q: 'Vocês atendem fora de Recife?', a: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
-        { q: 'O que é GEO — Generative Engine Optimization?', a: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
-        { q: 'Qual a diferença entre SEO B2B e SEO tradicional?', a: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
-      ].map((faq, i) => (
-        <details class="faq-item cinema-stagger" id={`faq-${i}`}>
-          <summary class="faq-q">{faq.q}<span class="faq-arrow" aria-hidden="true">+</span></summary>
-          <p class="faq-a">{faq.a}</p>
+        { q:'O que é o Método ORGANUM?',
+          a:'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
+        { q:'Quanto tempo leva para ver resultado?',
+          a:'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
+        { q:'Para quem é a Organum?',
+          a:'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
+        { q:'Vocês atendem fora de Recife?',
+          a:'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
+        { q:'O que é GEO — Generative Engine Optimization?',
+          a:'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
+        { q:'Qual a diferença entre SEO B2B e SEO tradicional?',
+          a:'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
+      ].map((f, i) => (
+        <details class="faq-item" id={`faq-${i}`}>
+          <summary class="faq-q">{f.q}<span class="faq-arr" aria-hidden="true">+</span></summary>
+          <p class="faq-a">{f.a}</p>
         </details>
       ))}
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════
-     FONTS — NON-BLOCKING
-     ═══════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════
+     FONTES — non-blocking
+     ════════════════════════════════════════════ -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-  rel="preload" as="style"
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap"
-/>
-<link
-  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap"
-  rel="stylesheet" media="print" onload="this.media='all'"
-/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
 
-<!-- ═══════════════════════════════════════════════
-     LIBRARIES — DEFERRED
-     ═══════════════════════════════════════════════ -->
-<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js" is:inline defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" is:inline defer></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" is:inline defer></script>
-<script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
+<!-- ════════════════════════════════════════════
+     LIBS CDN — síncronas, ordem garantida
+     ════════════════════════════════════════════ -->
+<script is:inline src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<!-- ═══════════════════════════════════════════════
-     CINEMATOGRAPHIC SCRIPT
-     ═══════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════════════
+     SCRIPT PRINCIPAL
+     ════════════════════════════════════════════ -->
 <script is:inline>
-(function() {
-  'use strict';
+(function(){
+'use strict';
 
-  // ── Esperar libs carregarem ──────────────────────────────────
-  function waitForGSAP(cb) {
-    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined' && typeof Lenis !== 'undefined') {
-      cb();
-    } else {
-      setTimeout(function() { waitForGSAP(cb); }, 50);
-    }
+/* ─── PRÉ-LOADER (puro CSS/JS, sem GSAP) ─────────────────────────────── */
+var PL  = document.getElementById('pl');
+var PLO = document.getElementById('pl-logo');
+
+function hidePL(cb){
+  if(!PL) { cb(); return; }
+  document.body.style.overflow = 'hidden';
+
+  // 200ms silêncio → logo emerge
+  setTimeout(function(){
+    PLO.style.opacity       = '1';
+    PLO.style.letterSpacing = '-0.02em';
+
+    // 1000ms logo visível → sobe e some
+    setTimeout(function(){
+      PLO.style.opacity   = '0';
+      PLO.style.transform = 'translateY(-80px)';
+
+      setTimeout(function(){
+        PL.style.opacity        = '0';
+        PL.style.pointerEvents  = 'none';
+        document.body.style.overflow = '';
+
+        setTimeout(function(){
+          PL.style.display = 'none';
+          cb();
+        }, 350);
+      }, 500);
+    }, 1000);
+  }, 200);
+}
+
+/* ─── Helpers ─────────────────────────────────────────────────────────── */
+function q(sel){ return document.querySelector(sel); }
+function qa(sel){ return Array.from(document.querySelectorAll(sel)); }
+
+/* ─── GSAP + Lenis init ──────────────────────────────────────────────── */
+function initCine(){
+  // Verificar dependências
+  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){
+    console.warn('ORGANUM: GSAP não carregou — conteúdo permanece visível');
+    return;
   }
 
-  // ── PRÉ-LOADER ───────────────────────────────────────────────
-  var preloader = document.getElementById('preloader');
-  var preloaderLogo = document.getElementById('preloader-logo');
+  gsap.registerPlugin(ScrollTrigger);
 
-  if (preloader && preloaderLogo) {
-    document.body.style.overflow = 'hidden';
+  /* ── Lenis ──────────────────────────────────────────────────────────── */
+  var lenisOk = false;
+  var lenis;
 
-    // Silêncio de 200ms, depois logo emerge
-    setTimeout(function() {
-      preloaderLogo.style.willChange = 'opacity, letter-spacing';
-      preloaderLogo.style.transition = 'opacity 600ms cubic-bezier(.16,1,.3,1), letter-spacing 600ms cubic-bezier(.16,1,.3,1)';
-      preloaderLogo.style.opacity = '1';
-      preloaderLogo.style.letterSpacing = '-0.02em';
+  try {
+    var LenisClass = window.Lenis || (typeof Lenis !== 'undefined' ? Lenis : null);
+    if(LenisClass){
+      lenis = new LenisClass({
+        duration: 1.4,
+        easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
+        orientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 0.8,
+        smoothTouch: false,
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      lenisOk = true;
+    }
+  } catch(e){ console.warn('Lenis error:', e); }
 
-      // Após 600ms visível + 400ms pausa → sobe e some
-      setTimeout(function() {
-        preloaderLogo.style.transition = 'opacity 400ms ease, transform 500ms cubic-bezier(.4,0,.2,1)';
-        preloaderLogo.style.opacity = '0';
-        preloaderLogo.style.transform = 'translateY(-60px)';
+  /* ── HERO ENTRANCE ──────────────────────────────────────────────────── */
+  var els = {
+    eye:  q('#h-eye'),
+    hl1:  q('#hl1'),
+    hl2:  q('#hl2'),
+    hl3:  q('#hl3'),
+    hl4:  q('#hl4'),
+    sub:  q('#h-sub'),
+    ctas: q('#h-ctas'),
+    div:  q('#hero-divider'),
+    chart:q('#hero-chart-wrap'),
+  };
 
-        setTimeout(function() {
-          preloader.style.transition = 'opacity 300ms ease';
-          preloader.style.opacity = '0';
-          preloader.style.pointerEvents = 'none';
-          document.body.style.overflow = '';
+  // Setar estado inicial ANTES de animar (não via CSS — assim sempre visível sem JS)
+  gsap.set([els.eye,els.hl1,els.hl2,els.hl3,els.hl4,els.sub,els.ctas], { opacity:0, y:40 });
+  gsap.set(els.div,  { scaleX:0, transformOrigin:'left center' });
+  gsap.set(els.chart,{ opacity:0, x:50 });
 
-          setTimeout(function() {
-            preloader.style.display = 'none';
-            waitForGSAP(initCinema);
-          }, 300);
-        }, 450);
-      }, 1000);
-    }, 200);
-  } else {
-    waitForGSAP(initCinema);
+  var heroTl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+  heroTl
+    .to(els.eye,  { opacity:1, y:0, duration:0.8 }, 0.1)
+    .to(els.hl1,  { opacity:1, y:0, duration:1.0 }, 0.2)
+    .to(els.hl2,  { opacity:1, y:0, duration:1.0 }, 0.35)
+    .to(els.hl3,  { opacity:1, y:0, duration:1.0 }, 0.5)
+    .to(els.hl4,  { opacity:1, y:0, duration:0.9 }, 0.5)
+    .to(els.sub,  { opacity:1, y:0, duration:0.8 }, 0.7)
+    .to(els.ctas, { opacity:1, y:0, duration:0.7 }, 0.9)
+    .to(els.div,  { scaleX:1, duration:1.4, ease:'power2.inOut' }, 1.0)
+    .to(els.chart,{ opacity:1, x:0, duration:1.2 }, 0.4)
+    .add(animChart, '-=0.4');
+
+  /* ── SVG CHART ──────────────────────────────────────────────────────── */
+  function animChart(){
+    var orgLine  = q('#c-org-line');
+    var paidLine = q('#c-paid-line');
+    var orgArea  = q('#c-org-area');
+    var paidArea = q('#c-paid-area');
+    var dot      = q('#c-dot');
+    var ring     = q('#c-ring');
+    var lblOrg   = q('#c-lbl-org');
+    var lblPaid  = q('#c-lbl-paid');
+    if(!orgLine) return;
+
+    gsap.timeline({ delay:0.1 })
+      .to(orgLine,  { strokeDashoffset:0, duration:1.8, ease:'power2.inOut' })
+      .to(paidLine, { strokeDashoffset:0, duration:1.4, ease:'power2.inOut' }, '-=1.4')
+      .to([orgArea,paidArea], { opacity:1, duration:0.6 }, '-=0.8')
+      .to([dot,ring,lblOrg,lblPaid], { opacity:1, duration:0.5, stagger:0.12 });
   }
 
-  // ── MAIN INIT ────────────────────────────────────────────────
-  function initCinema() {
-    gsap.registerPlugin(ScrollTrigger);
-
-    // ── Lenis smooth scroll ───────────────────────────────────
-    var lenis = new Lenis({
-      duration: 1.4,
-      easing: function(t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); },
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 0.8,
-      smoothTouch: false,
+  /* ── STATEMENT CLIP REVEAL ──────────────────────────────────────────── */
+  var stH2 = q('#stmt-h2');
+  if(stH2){
+    gsap.set(stH2, { clipPath:'inset(0 100% 0 0)' });
+    gsap.to(stH2, {
+      clipPath:'inset(0 0% 0 0)', duration:1.4, ease:'power3.inOut',
+      scrollTrigger:{ trigger:stH2, start:'top 82%', toggleActions:'play none none none' }
     });
+  }
 
-    lenis.on('scroll', ScrollTrigger.update);
+  /* ── METRICS COUNTER ────────────────────────────────────────────────── */
+  qa('.metric-item').forEach(function(item){
+    var numEl  = item.querySelector('.metric-num');
+    var target = parseInt(item.dataset.val||'0',10);
+    var suffix = item.dataset.sfx||'';
+    var delay  = parseInt(item.dataset.di||'0',10) * 0.15;
 
-    gsap.ticker.add(function(time) {
-      lenis.raf(time * 1000);
+    gsap.set(item, { opacity:0, y:50 });
+    gsap.to(item, {
+      opacity:1, y:0, duration:0.9, ease:'power3.out', delay:delay,
+      scrollTrigger:{
+        trigger:item, start:'top 85%', toggleActions:'play none none none',
+        onEnter:function(){
+          if(!numEl) return;
+          var start=null, dur=1800;
+          function step(ts){
+            if(!start) start=ts;
+            var p = Math.min((ts-start)/dur,1);
+            var e = 1-Math.pow(1-p,3);
+            numEl.textContent = Math.round(e*target)+suffix;
+            if(p<1) requestAnimationFrame(step);
+          }
+          setTimeout(function(){ requestAnimationFrame(step); }, delay*1000+200);
+        }
+      }
     });
-    gsap.ticker.lagSmoothing(0);
+  });
 
-    ScrollTrigger.defaults({
-      ease: 'power3.out',
+  /* ── SCROLL REVEAL GENÉRICO ─────────────────────────────────────────── */
+  qa('.scroll-reveal').forEach(function(el){
+    gsap.set(el,{ opacity:0, y:50 });
+    gsap.to(el,{
+      opacity:1, y:0, duration:1.0, ease:'power3.out',
+      scrollTrigger:{ trigger:el, start:'top 82%', toggleActions:'play none none none' }
     });
+  });
 
-    // ── HERO ENTRANCE ─────────────────────────────────────────
-    var heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+  /* ── STAGGER GRUPOS ─────────────────────────────────────────────────── */
+  // Agrupar .stagger-child por pai
+  var groups = {};
+  qa('.stagger-child').forEach(function(el){
+    var key = el.parentElement ? (el.parentElement.id||el.parentElement.className) : 'r';
+    if(!groups[key]) groups[key]=[];
+    groups[key].push(el);
+  });
+  Object.keys(groups).forEach(function(k){
+    var group = groups[k];
+    gsap.set(group,{ opacity:0, y:40 });
+    gsap.to(group,{
+      opacity:1, y:0, duration:0.8, ease:'power3.out', stagger:0.1,
+      scrollTrigger:{ trigger:group[0], start:'top 82%', toggleActions:'play none none none' }
+    });
+  });
 
-    var eye  = document.getElementById('h-eye');
-    var l1   = document.getElementById('h1-l1');
-    var l2   = document.getElementById('h1-l2');
-    var l3   = document.getElementById('h1-l3');
-    var em   = document.getElementById('h1-em');
-    var sub  = document.getElementById('h-sub');
-    var ctas = document.getElementById('h-ctas');
-    var div  = document.getElementById('hero-divider');
-    var chart = document.getElementById('hero-chart-wrap');
+  /* ── ENTIDADE CARDS ─────────────────────────────────────────────────── */
+  var entNo  = q('#ent-no');
+  var entYes = q('#ent-yes');
+  if(entNo && entYes){
+    gsap.set(entNo,  { opacity:0, x:-60 });
+    gsap.set(entYes, { opacity:0, x:60 });
+    var entST = { trigger:'.entidade-section', start:'top 75%', toggleActions:'play none none none' };
+    gsap.to(entNo,  { opacity:1, x:0, duration:0.9, ease:'power3.out', scrollTrigger:entST });
+    gsap.to(entYes, { opacity:1, x:0, duration:0.9, ease:'power3.out', delay:0.15, scrollTrigger:entST });
+  }
 
-    if (eye)  { eye.style.willChange = 'transform, opacity'; }
-    if (l1)   { l1.style.willChange = 'transform, opacity'; }
-    if (l2)   { l2.style.willChange = 'transform, opacity'; }
-    if (l3)   { l3.style.willChange = 'transform, opacity'; }
-    if (em)   { em.style.willChange = 'transform, opacity'; }
-    if (sub)  { sub.style.willChange = 'transform, opacity'; }
-    if (ctas) { ctas.style.willChange = 'transform, opacity'; }
+  /* ── DIFERENCIAL COLUNAS ────────────────────────────────────────────── */
+  var dNo  = q('#diff-no');
+  var dYes = q('#diff-yes');
+  if(dNo && dYes){
+    gsap.set(dNo,  { opacity:0, x:-60 });
+    gsap.set(dYes, { opacity:0, x:60 });
+    var dST = { trigger:'.diff-section', start:'top 75%', toggleActions:'play none none none' };
+    gsap.to(dNo,  { opacity:1, x:0, duration:1.0, ease:'power3.out', scrollTrigger:dST });
+    gsap.to(dYes, { opacity:1, x:0, duration:1.0, ease:'power3.out', delay:0.2, scrollTrigger:dST });
+  }
 
-    heroTl
-      .fromTo(eye,  { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.1)
-      .fromTo(l1,   { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0 }, 0.2)
-      .fromTo(l2,   { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0 }, 0.35)
-      .fromTo(l3,   { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 1.0 }, 0.5)
-      .fromTo(em,   { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 }, 0.5)
-      .fromTo(sub,  { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, 0.7)
-      .fromTo(ctas, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, 0.9)
-      .fromTo(div,  { scaleX: 0, transformOrigin: 'left center' }, { scaleX: 1, duration: 1.4, ease: 'power2.inOut' }, 1.0)
-      .fromTo(chart,{ x: 40, opacity: 0 }, { x: 0, opacity: 1, duration: 1.2 }, 0.4)
-      .add(function() {
-        // Limpar will-change após entrada
-        [eye,l1,l2,l3,em,sub,ctas].forEach(function(el) { if (el) el.style.willChange = 'auto'; });
+  /* ── FAQ STAGGER ────────────────────────────────────────────────────── */
+  var faqItems = qa('.faq-item');
+  gsap.set(faqItems, { opacity:0, y:20 });
+  gsap.to(faqItems, {
+    opacity:1, y:0, duration:0.6, ease:'power3.out', stagger:0.08,
+    scrollTrigger:{ trigger:'#faq-list', start:'top 85%', toggleActions:'play none none none' }
+  });
+
+} // end initCine
+
+/* ─── ACCORDION ───────────────────────────────────────────────────────── */
+function initAccordion(){
+  qa('.acc-hd').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item   = btn.closest('.acc-item');
+      var body   = item ? item.querySelector('.acc-body') : null;
+      var inner  = body ? body.querySelector('.acc-inner') : null;
+      var arr    = btn.querySelector('.acc-arr');
+      var isOpen = item && item.classList.contains('open');
+
+      // Fechar tudo
+      qa('.acc-item').forEach(function(it){
+        var b = it.querySelector('.acc-body');
+        var a = it.querySelector('.acc-arr');
+        var h = it.querySelector('.acc-hd');
+        it.classList.remove('open');
+        if(h) h.setAttribute('aria-expanded','false');
+        if(a) a.textContent = '+';
+        if(b) b.style.height='0';
       });
 
-    // ── SVG CHART ANIMATION ───────────────────────────────────
-    heroTl.add(function() {
-      var orgLine   = document.getElementById('chart-org-line');
-      var orgArea   = document.getElementById('chart-org-area');
-      var paidLine  = document.getElementById('chart-paid-line');
-      var paidArea  = document.getElementById('chart-paid-area');
-      var dot       = document.getElementById('chart-dot');
-      var ring      = document.getElementById('chart-ring');
-      var labelOrg  = document.getElementById('chart-label-org');
-      var labelPaid = document.getElementById('chart-label-paid');
+      // Abrir se estava fechado
+      if(!isOpen && item && body && inner){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded','true');
+        if(arr) arr.textContent = '−';
 
-      if (!orgLine) return;
-
-      var chartTl = gsap.timeline({ delay: 0.2 });
-      chartTl
-        .to(orgLine,   { strokeDashoffset: 0, duration: 1.8, ease: 'power2.inOut' })
-        .to(paidLine,  { strokeDashoffset: 0, duration: 1.4, ease: 'power2.inOut' }, '-=1.4')
-        .to([orgArea, paidArea], { opacity: 1, duration: 0.6 }, '-=0.8')
-        .to([dot, ring, labelOrg, labelPaid], { opacity: 1, duration: 0.5, stagger: 0.1 });
-    }, '-=0.6');
-
-    // ── STATEMENT — CLIP REVEAL ───────────────────────────────
-    var stH2 = document.getElementById('statement-h2');
-    if (stH2) {
-      stH2.style.willChange = 'clip-path';
-      gsap.fromTo(stH2,
-        { clipPath: 'inset(0 100% 0 0)' },
-        {
-          clipPath: 'inset(0 0% 0 0)',
-          duration: 1.2,
-          ease: 'power3.inOut',
-          scrollTrigger: {
-            trigger: stH2,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
-            onComplete: function() { stH2.style.willChange = 'auto'; }
-          }
+        if(typeof gsap !== 'undefined'){
+          body.style.height='0';
+          gsap.to(body,{ height:inner.scrollHeight, duration:0.45, ease:'power2.out',
+            onComplete:function(){ body.style.height='auto'; } });
+        } else {
+          body.style.height = inner.scrollHeight+'px';
         }
-      );
-    }
-
-    // ── METRICS COUNTER ───────────────────────────────────────
-    var metricItems = document.querySelectorAll('.metric-item');
-    metricItems.forEach(function(item, i) {
-      var numEl  = item.querySelector('.metric-num');
-      var target = parseInt(item.dataset.target || '0', 10);
-      var suffix = item.dataset.suffix || '';
-      var delay  = parseFloat(item.dataset.delay || '0');
-
-      item.style.willChange = 'transform, opacity';
-
-      gsap.fromTo(item,
-        { y: 50, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.9,
-          ease: 'power3.out',
-          delay: delay,
-          scrollTrigger: {
-            trigger: item,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-            onEnter: function() {
-              if (!numEl) return;
-              var start = 0;
-              var duration = 1800;
-              var startTime = null;
-              function step(ts) {
-                if (!startTime) startTime = ts;
-                var progress = Math.min((ts - startTime) / duration, 1);
-                var ease = 1 - Math.pow(1 - progress, 3);
-                var val = Math.round(ease * target);
-                numEl.textContent = val + suffix;
-                if (progress < 1) requestAnimationFrame(step);
-              }
-              setTimeout(function() { requestAnimationFrame(step); }, delay * 1000);
-              item.style.willChange = 'auto';
-            }
-          }
-        }
-      );
+      }
     });
+  });
+}
 
-    // ── GENERIC CINEMA REVEAL ─────────────────────────────────
-    gsap.utils.toArray('.cinema-reveal').forEach(function(el) {
-      el.style.willChange = 'transform, opacity';
-      gsap.fromTo(el,
-        { y: 50, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 1.0, ease: 'power3.out',
-          scrollTrigger: {
-            trigger: el,
-            start: 'top 82%',
-            toggleActions: 'play none none none',
-            onComplete: function() { el.style.willChange = 'auto'; }
-          }
-        }
-      );
-    });
+/* ─── DORES ───────────────────────────────────────────────────────────── */
+function initDores(){
+  var dorData = [
+    { q:'"Meu site aparece no Google mas não gera leads qualificados."',
+      a:'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
+    { q:'"Quando paro os anúncios, o pipeline seca."',
+      a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
+    { q:'"Meu concorrente aparece no ChatGPT. Eu não."',
+      a:'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
+    { q:'"Já investi em SEO antes e nunca funcionou."',
+      a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
+    { q:'"Minha empresa não é citada pelas IAs."',
+      a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
+    { q:'"Quero crescer sem depender de tráfego pago."',
+      a:'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
+  ];
 
-    // ── STAGGER CARDS ─────────────────────────────────────────
-    var staggerGroups = {};
-    document.querySelectorAll('.cinema-stagger').forEach(function(el) {
-      var parent = el.parentElement;
-      var key = parent ? parent.id || parent.className : 'root';
-      if (!staggerGroups[key]) staggerGroups[key] = [];
-      staggerGroups[key].push(el);
-    });
+  qa('.dor-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var idx = parseInt(btn.dataset.i||'0',10);
 
-    Object.values(staggerGroups).forEach(function(group) {
-      group.forEach(function(el) { el.style.willChange = 'transform, opacity'; });
-      gsap.fromTo(group,
-        { y: 40, opacity: 0 },
-        {
-          y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: group[0],
-            start: 'top 82%',
-            toggleActions: 'play none none none',
-            onComplete: function() { group.forEach(function(el) { el.style.willChange = 'auto'; }); }
-          }
-        }
-      );
-    });
-
-    // ── ENTIDADE PIN + REVEAL ─────────────────────────────────
-    var entNo  = document.getElementById('entidade-no');
-    var entYes = document.getElementById('entidade-yes');
-
-    if (entNo && entYes) {
-      entNo.style.willChange  = 'transform, opacity';
-      entYes.style.willChange = 'transform, opacity';
-
-      var entTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.entidade-section',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-          onComplete: function() {
-            entNo.style.willChange  = 'auto';
-            entYes.style.willChange = 'auto';
-          }
-        }
+      qa('.dor-btn').forEach(function(b){
+        b.classList.remove('active');
+        b.setAttribute('aria-expanded','false');
       });
-      entTl
-        .fromTo(entNo,  { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out' })
-        .fromTo(entYes, { x:  60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: 'power3.out' }, '-=0.6');
-    }
+      btn.classList.add('active');
+      btn.setAttribute('aria-expanded','true');
 
-    // ── DIFF COLUMNS ─────────────────────────────────────────
-    var diffNo  = document.getElementById('diff-no');
-    var diffYes = document.getElementById('diff-yes');
+      // Desktop
+      var box = q('#dor-box');
+      var qEl = q('#dor-q');
+      var aEl = q('#dor-a');
+      if(box){
+        box.style.opacity='0';
+        setTimeout(function(){
+          if(qEl) qEl.textContent = dorData[idx].q;
+          if(aEl) aEl.innerHTML  = dorData[idx].a;
+          box.style.transition='opacity .25s';
+          box.style.opacity='1';
+        }, 180);
+      }
 
-    if (diffNo && diffYes) {
-      diffNo.style.willChange  = 'transform, opacity';
-      diffYes.style.willChange = 'transform, opacity';
-
-      var diffTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: '.diff-section',
-          start: 'top 75%',
-          toggleActions: 'play none none none',
-          onComplete: function() {
-            diffNo.style.willChange  = 'auto';
-            diffYes.style.willChange = 'auto';
-          }
-        }
+      // Mobile inline
+      qa('.dor-inline').forEach(function(el){
+        el.style.display='none';
+        el.setAttribute('aria-hidden','true');
       });
-      diffTl
-        .fromTo(diffNo,  { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' })
-        .fromTo(diffYes, { x:  60, opacity: 0 }, { x: 0, opacity: 1, duration: 1.0, ease: 'power3.out' }, '-=0.7');
-    }
-
-    // ── LAYERS ACCORDION (GSAP height) ───────────────────────
-    document.querySelectorAll('.layer-header').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var layerItem  = btn.closest('.layer-item');
-        var body       = layerItem ? layerItem.querySelector('.layer-body') : null;
-        var inner      = body ? body.querySelector('.layer-body-inner') : null;
-        var arrow      = btn.querySelector('.layer-arrow');
-        var isOpen     = layerItem && layerItem.classList.contains('open');
-        var expanded   = btn.getAttribute('aria-expanded') === 'true';
-
-        // Fechar todos
-        document.querySelectorAll('.layer-item').forEach(function(item) {
-          var b = item.querySelector('.layer-body');
-          var a = item.querySelector('.layer-arrow');
-          var h = item.querySelector('.layer-header');
-          item.classList.remove('open');
-          if (h) h.setAttribute('aria-expanded', 'false');
-          if (a) a.textContent = '+';
-          if (b) {
-            gsap.to(b, { height: 0, duration: 0.4, ease: 'power2.inOut',
-              onComplete: function() { b.style.overflow = 'hidden'; } });
-          }
-        });
-
-        // Abrir o clicado se estava fechado
-        if (!expanded && layerItem && body && inner) {
-          layerItem.classList.add('open');
-          btn.setAttribute('aria-expanded', 'true');
-          if (arrow) arrow.textContent = '−';
-
-          var targetH = inner.scrollHeight;
-          body.style.overflow = 'hidden';
-          gsap.fromTo(body,
-            { height: 0 },
-            { height: targetH, duration: 0.5, ease: 'power2.out',
-              onComplete: function() { body.style.height = 'auto'; body.style.overflow = 'visible'; } }
-          );
-        }
-      });
+      var inline = document.getElementById('dor-inline-'+idx);
+      if(inline){
+        inline.style.display='block';
+        inline.setAttribute('aria-hidden','false');
+      }
     });
+  });
+}
 
-    // ── DORES INTERATIVAS ─────────────────────────────────────
-    var dorData = [
-      { q: '"Meu site aparece no Google mas não gera leads qualificados."', a: 'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
-      { q: '"Quando paro os anúncios, o pipeline seca."', a: 'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
-      { q: '"Meu concorrente aparece no ChatGPT. Eu não."', a: 'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
-      { q: '"Já investi em SEO antes e nunca funcionou."', a: 'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
-      { q: '"Minha empresa não é citada pelas IAs."', a: 'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
-      { q: '"Quero crescer sem depender de tráfego pago."', a: 'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
-    ];
-
-    document.querySelectorAll('.dor-btn').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var idx = parseInt(btn.dataset.index || '0', 10);
-
-        document.querySelectorAll('.dor-btn').forEach(function(b) {
-          b.classList.remove('active');
-          b.setAttribute('aria-expanded', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-expanded', 'true');
-
-        // Desktop
-        var box  = document.getElementById('dor-answer-box');
-        var qEl  = document.getElementById('dor-q');
-        var aEl  = document.getElementById('dor-a');
-        if (box) {
-          gsap.to(box, { opacity: 0, duration: 0.15, onComplete: function() {
-            if (qEl) qEl.textContent = dorData[idx].q;
-            if (aEl) aEl.innerHTML  = dorData[idx].a;
-            gsap.to(box, { opacity: 1, duration: 0.25 });
-          }});
-        }
-
-        // Mobile inline
-        document.querySelectorAll('.dor-inline-answer').forEach(function(el) {
-          el.style.display = 'none';
-          el.setAttribute('aria-hidden', 'true');
-        });
-        var inline = document.getElementById('dor-inline-' + idx);
-        if (inline) {
-          inline.style.display = 'block';
-          inline.setAttribute('aria-hidden', 'false');
-        }
-      });
+/* ─── FAQ ARROW ───────────────────────────────────────────────────────── */
+function initFAQ(){
+  qa('.faq-item').forEach(function(d){
+    var arr = d.querySelector('.faq-arr');
+    d.addEventListener('toggle', function(){
+      if(arr) arr.textContent = d.open ? '−' : '+';
     });
+  });
+}
 
-    // ── FAQ ARROW UPDATE ──────────────────────────────────────
-    document.querySelectorAll('.faq-item').forEach(function(details) {
-      var arrow = details.querySelector('.faq-arrow');
-      details.addEventListener('toggle', function() {
-        if (arrow) arrow.textContent = details.open ? '−' : '+';
-      });
-    });
-
-  } // end initCinema
+/* ─── BOOT ────────────────────────────────────────────────────────────── */
+hidePL(function(){
+  initAccordion();
+  initDores();
+  initFAQ();
+  initCine();
+});
 
 })();
 </script>
 
-<!-- ═══════════════════════════════════════════════
-     STYLES — HOMEPAGE ONLY
-     ═══════════════════════════════════════════════ -->
+<script is:inline src="https://api.ilevex.com.br/js/form_embed.js"></script>
+
+<!-- ════════════════════════════════════════════
+     ESTILOS
+     ════════════════════════════════════════════ -->
 <style>
-/* ── PRÉ-LOADER ──────────────────────────────────────────────────────────── */
-#preloader {
+/* ── PRÉ-LOADER ─────────────────────────────────────────────────────────── */
+#pl {
   position: fixed;
   inset: 0;
-  background: var(--n950);
   z-index: 9999;
+  background: var(--n950, #0c0a08);
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: opacity .35s ease;
 }
-#preloader-logo {
-  font-family: var(--font-serif);
+#pl-logo {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
   font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 900;
   color: #fff;
   letter-spacing: 0.3em;
   opacity: 0;
-  will-change: opacity, letter-spacing;
+  transform: translateY(0);
+  transition:
+    opacity .6s cubic-bezier(.16,1,.3,1),
+    letter-spacing .6s cubic-bezier(.16,1,.3,1),
+    transform .5s cubic-bezier(.4,0,.2,1);
 }
 
 /* ── HERO ────────────────────────────────────────────────────────────────── */
-.hero-cine {
+.hero {
   position: relative;
   min-height: 100svh;
-  background: var(--n950);
+  background: var(--n950, #0c0a08);
   display: flex;
   flex-direction: column;
   overflow: hidden;
 }
-
 .hero-grid-bg {
   position: absolute;
   inset: 0;
@@ -998,7 +948,6 @@ const websiteSchema = {
   background-size: 60px 60px;
   pointer-events: none;
 }
-
 .hero-glow {
   position: absolute;
   top: -200px;
@@ -1009,31 +958,27 @@ const websiteSchema = {
   background: radial-gradient(circle, rgba(46,145,71,.08) 0%, transparent 70%);
   pointer-events: none;
 }
-
 .hero-inner {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: center;
   flex: 1;
-  padding-block: clamp(5rem, 12vw, 8rem) clamp(3rem, 6vw, 5rem);
+  padding-top: clamp(5rem, 12vw, 8rem);
+  padding-bottom: clamp(3rem, 6vw, 5rem);
 }
-
 .hero-copy { color: #fff; }
-
 .hero-eye {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
   font-size: .65rem;
   font-weight: 700;
   letter-spacing: .18em;
   text-transform: uppercase;
-  color: var(--n400);
+  color: var(--n400, #a09c92);
   margin-bottom: 1.5rem;
-  opacity: 0;
 }
-
 .hero-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
   font-size: clamp(3.5rem, 6vw, 6rem);
   font-weight: 900;
   line-height: .93;
@@ -1042,41 +987,30 @@ const websiteSchema = {
   margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
-  gap: .1em;
+  gap: .08em;
 }
-
-.h1-line { display: block; opacity: 0; }
-.h1-em {
-  font-style: italic;
-  color: var(--g400);
-  font-size: .65em;
-  letter-spacing: -.01em;
-  opacity: 0;
-}
+.hl { display: block; }
+.hem { font-style: italic; color: var(--g400, #4caf64); font-size: .65em; letter-spacing: -.01em; }
 
 .hero-sub {
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
   font-size: 1.0625rem;
   line-height: 1.7;
   color: rgba(255,255,255,.5);
   max-width: 44ch;
   margin-bottom: 2.5rem;
-  opacity: 0;
 }
-
 .hero-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  opacity: 0;
 }
-
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
   font-size: .875rem;
   font-weight: 600;
   padding: .875rem 2rem;
@@ -1085,18 +1019,17 @@ const websiteSchema = {
   letter-spacing: .02em;
   text-transform: uppercase;
   text-decoration: none;
-  background: var(--g500);
+  background: var(--g500, #2e9147);
   color: #fff;
   border: none;
-  transition: background .2s, transform .2s;
+  transition: background .2s, transform .15s;
 }
-.btn-primary:hover { background: var(--g600); transform: translateY(-1px); }
-
-.btn-ghost-cine {
+.btn-primary:hover { background: var(--g600, #1d7a35); transform: translateY(-1px); }
+.btn-ghost {
   display: inline-flex;
   align-items: center;
   gap: .5rem;
-  font-family: var(--font-sans);
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
   font-size: .875rem;
   font-weight: 600;
   padding: .875rem 2rem;
@@ -1110,22 +1043,15 @@ const websiteSchema = {
   border: 1px solid rgba(255,255,255,.25);
   transition: all .2s;
 }
-.btn-ghost-cine:hover { color: #fff; border-color: rgba(255,255,255,.6); background: rgba(255,255,255,.05); }
+.btn-ghost:hover { color:#fff; border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); }
 
-.hero-chart-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  opacity: 0;
-}
-#hero-chart { width: 100%; max-width: 520px; }
+.hero-chart-wrap { display:flex; align-items:center; justify-content:flex-end; }
+#hero-chart { width:100%; max-width:520px; }
 
 .hero-divider {
   height: 1px;
   background: rgba(255,255,255,.07);
   margin-inline: clamp(1rem, 4vw, 3rem);
-  transform-origin: left center;
-  transform: scaleX(0);
 }
 
 /* Ticker */
@@ -1134,776 +1060,308 @@ const websiteSchema = {
   border-top: 1px solid rgba(255,255,255,.06);
   padding: 1.25rem clamp(1rem, 4vw, 3rem);
 }
-.ticker-inner {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  max-width: 100%;
-  overflow: hidden;
-}
+.ticker-inner { display:flex; align-items:center; gap:1.5rem; overflow:hidden; }
 .ticker-lbl {
-  font-family: var(--font-sans);
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  white-space: nowrap;
-  flex-shrink: 0;
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
+  font-size: .7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+  color: rgba(255,255,255,.3); white-space:nowrap; flex-shrink:0;
 }
-.ticker-sep {
-  width: 1px;
-  height: 16px;
-  background: rgba(255,255,255,.12);
-  flex-shrink: 0;
-}
+.ticker-sep { width:1px; height:16px; background:rgba(255,255,255,.12); flex-shrink:0; }
 .ticker-track-wrap {
-  overflow: hidden;
-  flex: 1;
-  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
+  overflow:hidden; flex:1;
+  mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
+  -webkit-mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
 }
 .ticker-track {
-  display: flex;
-  gap: 3rem;
-  width: max-content;
+  display:flex; gap:3rem; width:max-content;
   animation: ticker-scroll 22s linear infinite;
 }
-.ticker-item {
-  font-size: .875rem;
-  font-weight: 500;
-  color: rgba(255,255,255,.4);
-  white-space: nowrap;
-  letter-spacing: .01em;
-}
+.ticker-item { font-size:.875rem; font-weight:500; color:rgba(255,255,255,.4); white-space:nowrap; }
 
 /* ── STATEMENT ──────────────────────────────────────────────────────────── */
 .statement-section {
-  background: var(--n50);
+  background: var(--n50, #f7f6f4);
   padding-block: clamp(5rem, 10vw, 8rem);
 }
-.statement-grid {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.statement-accent {
-  width: 2px;
-  height: 48px;
-  background: var(--g500);
-  margin-top: 1.6rem;
-  flex-shrink: 0;
-}
-.statement-body { flex: 1; }
-.statement-headline {
-  font-family: var(--font-serif);
+.statement-grid { display:grid; grid-template-columns:auto 1fr; gap:3rem; align-items:start; }
+.statement-bar { width:2px; height:52px; background:var(--g500,#2e9147); margin-top:1.75rem; flex-shrink:0; }
+.statement-h2 {
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
   font-size: clamp(2rem, 4vw, 3.5rem);
   font-weight: 900;
   line-height: 1.1;
-  color: var(--n800);
-  clip-path: inset(0 100% 0 0);
+  letter-spacing: -.02em;
+  color: var(--n800, #272420);
 }
-.text-green-cine { color: var(--g500); }
+.green-text { color: var(--g500, #2e9147); }
 
 /* ── MÉTRICAS ────────────────────────────────────────────────────────────── */
 .metrics-section {
-  background: var(--n950);
+  background: var(--n950, #0c0a08);
   padding-block: clamp(4rem, 8vw, 6rem);
   border-top: 1px solid rgba(255,255,255,.05);
   border-bottom: 1px solid rgba(255,255,255,.05);
 }
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-}
-.metric-item {
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-  opacity: 0;
-}
+.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
+.metric-item { display:flex; flex-direction:column; gap:.75rem; }
 .metric-num {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
   font-size: clamp(3rem, 5vw, 4.5rem);
   font-weight: 900;
-  color: var(--g400);
+  color: var(--g400, #4caf64);
   line-height: 1;
   letter-spacing: -.03em;
 }
-.metric-label {
-  font-family: var(--font-sans);
-  font-size: .8125rem;
-  font-weight: 500;
+.metric-lbl {
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
+  font-size: .8125rem; font-weight:500;
   color: rgba(255,255,255,.4);
-  letter-spacing: .05em;
-  text-transform: uppercase;
+  letter-spacing: .05em; text-transform:uppercase;
 }
 
-/* ── SECTION UTILITIES ──────────────────────────────────────────────────── */
-.section-eyebrow {
-  font-family: var(--font-sans);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--g400);
-  margin-bottom: 1rem;
+/* ── UTILITÁRIOS ─────────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
+  font-size: .65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color: var(--g400, #4caf64); margin-bottom:1rem;
 }
-.section-eyebrow.dark { color: var(--n400); }
-.section-header { margin-bottom: 3.5rem; }
+.eyebrow.dark { color: var(--n400, #a09c92); }
+.section-hd { margin-bottom:3.5rem; }
 .section-h2 {
-  font-family: var(--font-serif);
+  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
   font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 900;
-  line-height: 1.1;
-  color: var(--n800);
-  letter-spacing: -.02em;
+  font-weight: 900; line-height:1.1;
+  color: var(--n800, #272420); letter-spacing:-.02em;
 }
-.section-h2.white { color: #fff; }
+.section-h2.white { color:#fff; }
 
 /* ── PROBLEMA ────────────────────────────────────────────────────────────── */
-.prob-section {
-  background: var(--n50);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.prob-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
+.prob-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
+.prob-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
 .prob-card {
-  background: #fff;
-  border: 1px solid var(--n200, #e5e1db);
-  border-radius: 4px;
-  padding: 2rem;
+  background:#fff; border:1px solid var(--n200,#e5e1db); border-radius:4px; padding:2rem;
   transition: border-color .3s, transform .3s, box-shadow .3s;
-  opacity: 0;
 }
-.prob-card:hover {
-  border-color: var(--g400);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(46,145,71,.08);
-}
-.prob-icon {
-  font-size: 1.75rem;
-  display: block;
-  margin-bottom: 1rem;
-}
-.prob-title {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--n800);
-  line-height: 1.3;
-  margin-bottom: .75rem;
-}
-.prob-stat {
-  font-size: .8125rem;
-  color: var(--g500);
-  font-weight: 600;
-  letter-spacing: .02em;
-}
+.prob-card:hover { border-color:var(--g400,#4caf64); transform:translateY(-4px); box-shadow:0 12px 32px rgba(46,145,71,.08); }
+.prob-icon { font-size:1.75rem; display:block; margin-bottom:1rem; }
+.prob-title { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.0625rem; font-weight:700; color:var(--n800,#272420); line-height:1.3; margin-bottom:.75rem; }
+.prob-stat { font-size:.8125rem; color:var(--g500,#2e9147); font-weight:600; letter-spacing:.02em; }
 
 /* ── ENTIDADE ────────────────────────────────────────────────────────────── */
-.entidade-section {
-  background: var(--n950);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.entidade-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-bottom: 3rem;
-}
-.entidade-card {
-  border-radius: 4px;
-  padding: 2.5rem;
-  opacity: 0;
-}
-.entidade-card-no  { background: rgba(220,80,60,.04); border: 1px solid rgba(220,80,60,.15); }
-.entidade-card-yes { background: rgba(76,175,100,.06); border: 1px solid rgba(76,175,100,.2); }
-
-.entidade-card-header {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  margin-bottom: 1.75rem;
-}
-.entidade-icon-x    { font-size: 1.25rem; color: rgba(220,80,60,.7); }
-.entidade-icon-check { font-size: 1.25rem; color: var(--g400); }
-.entidade-card-label {
-  font-family: var(--font-sans);
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-.entidade-card-label.red   { color: rgba(220,80,60,.7); }
-.entidade-card-label.green { color: var(--g400); }
-
-.entidade-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .875rem;
-}
-.entidade-list li {
-  font-family: var(--font-sans);
-  font-size: .9375rem;
-  color: rgba(255,255,255,.6);
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  line-height: 1.4;
-}
-.ent-x     { color: rgba(220,80,60,.6); font-size: .875rem; flex-shrink: 0; }
-.ent-check { color: var(--g400); font-size: .875rem; flex-shrink: 0; }
+.entidade-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+.entidade-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
+.ent-card { border-radius:4px; padding:2.5rem; }
+.ent-no  { background:rgba(220,80,60,.04);  border:1px solid rgba(220,80,60,.15); }
+.ent-yes { background:rgba(76,175,100,.06); border:1px solid rgba(76,175,100,.2); }
+.ent-head { display:flex; align-items:center; gap:.75rem; margin-bottom:1.75rem; }
+.ent-icon { font-size:1.25rem; }
+.ent-icon.red   { color:rgba(220,80,60,.7); }
+.ent-icon.green { color:var(--g400,#4caf64); }
+.ent-label { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.ent-label.red   { color:rgba(220,80,60,.7); }
+.ent-label.green { color:var(--g400,#4caf64); }
+.ent-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
+.ent-list li { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:.75rem; }
+.x-icon  { color:rgba(220,80,60,.6); font-size:.875rem; flex-shrink:0; }
+.ok-icon { color:var(--g400,#4caf64); font-size:.875rem; flex-shrink:0; }
 
 /* IA Ticker */
-.ia-ticker-wrap {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.25rem 0;
-  border-top: 1px solid rgba(255,255,255,.06);
-  overflow: hidden;
+.ia-ticker-wrap { display:flex; align-items:center; gap:1.5rem; padding:1.25rem 0; border-top:1px solid rgba(255,255,255,.06); overflow:hidden; }
+.ia-lbl { font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.3); white-space:nowrap; flex-shrink:0; }
+.ia-track-wrap {
+  overflow:hidden; flex:1;
+  mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
 }
-.ia-ticker-label {
-  font-size: .7rem;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.3);
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.ia-ticker-track-wrap {
-  overflow: hidden;
-  flex: 1;
-  mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(90deg, transparent, black 5%, black 95%, transparent);
-}
-.ia-ticker-track {
-  display: flex;
-  gap: 3rem;
-  width: max-content;
-  animation: ticker-scroll 18s linear infinite;
-}
-.ia-ticker-item {
-  font-size: .875rem;
-  font-weight: 600;
-  color: rgba(255,255,255,.4);
-  white-space: nowrap;
-  letter-spacing: .05em;
-}
+.ia-track { display:flex; gap:3rem; width:max-content; animation:ticker-scroll 18s linear infinite; }
+.ia-item  { font-size:.875rem; font-weight:600; color:rgba(255,255,255,.4); white-space:nowrap; letter-spacing:.05em; }
 
 /* ── MÉTODO ──────────────────────────────────────────────────────────────── */
-.metodo-section {
-  background: var(--n50);
-  padding-block: clamp(4rem, 9vw, 7rem);
+.metodo-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
+.accordion { border-top:1px solid var(--n200,#e5e1db); }
+.acc-item  { border-bottom:1px solid var(--n200,#e5e1db); }
+.acc-hd {
+  width:100%; display:flex; align-items:center; gap:1.5rem;
+  padding:1.75rem 0; background:none; border:none; cursor:pointer; text-align:left;
+  transition:background .15s;
 }
-.layers-accordion {
-  border-top: 1px solid var(--n200, #e5e1db);
+.acc-hd:hover { background:rgba(0,0,0,.02); }
+.acc-num {
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:1.5rem; font-weight:900; color:var(--n400,#a09c92); min-width:2.5rem; flex-shrink:0;
+  transition:color .3s;
 }
-.layer-item {
-  border-bottom: 1px solid var(--n200, #e5e1db);
-  opacity: 0;
+.acc-item.open .acc-num { color:var(--g500,#2e9147); }
+.acc-info { flex:1; display:flex; flex-direction:column; gap:.25rem; }
+.acc-name { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.125rem; font-weight:700; color:var(--n800,#272420); }
+.acc-sub  { font-size:.8125rem; color:var(--n400,#a09c92); }
+.acc-tag  { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.35rem .75rem; border-radius:2px; white-space:nowrap; flex-shrink:0; }
+.tag-base { background:rgba(46,145,71,.1);  color:var(--g600,#1d7a35); }
+.tag-diff { background:rgba(46,145,71,.2);  color:var(--g500,#2e9147); }
+.tag-geo  { background:rgba(46,145,71,.08); color:var(--g600,#1d7a35); border:1px solid rgba(46,145,71,.25); }
+.acc-arr  { font-size:1.5rem; font-weight:300; color:var(--n400,#a09c92); flex-shrink:0; width:1.5rem; text-align:center; transition:color .3s; }
+.acc-item.open .acc-arr { color:var(--g500,#2e9147); }
+.acc-body { overflow:hidden; height:0; }
+.acc-inner {
+  padding:0 0 2rem 4rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.9375rem; line-height:1.8; color:var(--n600,#5a5650);
 }
-.layer-header {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-  padding: 1.75rem 0;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-align: left;
-  transition: background .15s;
-}
-.layer-header:hover { background: rgba(0,0,0,.02); }
-.layer-num {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--n400);
-  min-width: 2.5rem;
-  flex-shrink: 0;
-  transition: color .3s;
-}
-.layer-item.open .layer-num { color: var(--g500); }
-.layer-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: .25rem;
-}
-.layer-name {
-  font-family: var(--font-serif);
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--n800);
-}
-.layer-sub {
-  font-size: .8125rem;
-  color: var(--n400);
-  font-weight: 400;
-}
-.layer-tag {
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  padding: .35rem .75rem;
-  border-radius: 2px;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
-.tag-base { background: rgba(46,145,71,.1);  color: var(--g600); }
-.tag-diff { background: rgba(46,145,71,.2);  color: var(--g500); }
-.tag-geo  { background: rgba(46,145,71,.08); color: var(--g600); border: 1px solid rgba(46,145,71,.25); }
-
-.layer-arrow {
-  font-size: 1.5rem;
-  font-weight: 300;
-  color: var(--n400);
-  flex-shrink: 0;
-  transition: color .3s, transform .3s;
-  width: 1.5rem;
-  text-align: center;
-}
-.layer-item.open .layer-arrow { color: var(--g500); }
-
-.layer-body {
-  height: 0;
-  overflow: hidden;
-}
-.layer-body-inner {
-  padding: 0 0 2rem 4rem;
-  font-family: var(--font-sans);
-  font-size: .9375rem;
-  line-height: 1.8;
-  color: var(--n600, #5a5650);
-}
-.layer-body-inner strong { color: var(--n800); font-weight: 600; }
+.acc-inner strong { color:var(--n800,#272420); font-weight:600; }
 
 /* ── DIFERENCIAL ─────────────────────────────────────────────────────────── */
-.diff-section {
-  background: var(--n950);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.diff-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-.diff-col {
-  border-radius: 4px;
-  padding: 2.5rem;
-  opacity: 0;
-}
-.diff-col-no  { background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.06); }
-.diff-col-yes { background: rgba(76,175,100,.06);  border: 1px solid rgba(76,175,100,.2); }
-
-.diff-col-head {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  margin-bottom: 1.75rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-.diff-icon-x     { font-size: 1.125rem; color: rgba(220,80,60,.6); }
-.diff-icon-check { font-size: 1.125rem; color: var(--g400); }
-.diff-col-title {
-  font-family: var(--font-sans);
-  font-size: .8125rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.4);
-}
-.green-text { color: var(--g400) !important; }
-
-.diff-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .875rem;
-}
-.diff-item {
-  font-family: var(--font-sans);
-  font-size: .9375rem;
-  line-height: 1.5;
-  display: flex;
-  align-items: flex-start;
-  gap: .75rem;
-}
-.diff-item-no  { color: rgba(255,255,255,.35); }
-.diff-item-yes { color: rgba(255,255,255,.75); }
-.diff-item-yes span { color: var(--g400); flex-shrink: 0; }
-.diff-item-no  span { color: rgba(220,80,60,.5); flex-shrink: 0; }
-.diff-item-yes strong { color: var(--g400); font-weight: 600; }
+.diff-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+.diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
+.diff-col { border-radius:4px; padding:2.5rem; }
+.diff-no  { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); }
+.diff-yes { background:rgba(76,175,100,.06);  border:1px solid rgba(76,175,100,.2); }
+.diff-col-hd { display:flex; align-items:center; gap:.75rem; margin-bottom:1.75rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,.08); font-size:1.125rem; }
+.diff-col-title { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.diff-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
+.di-no  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.35); display:flex; align-items:flex-start; gap:.75rem; }
+.di-yes { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.75); display:flex; align-items:flex-start; gap:.75rem; }
+.di-no  span { color:rgba(220,80,60,.5); flex-shrink:0; }
+.di-yes span { color:var(--g400,#4caf64); flex-shrink:0; }
+.di-yes strong { color:var(--g400,#4caf64); font-weight:600; }
 
 /* ── DORES ───────────────────────────────────────────────────────────────── */
-.dores-section {
-  background: var(--n950);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.dores-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-.dores-buttons { display: flex; flex-direction: column; gap: .5rem; }
-.dor-item { display: flex; flex-direction: column; }
+.dores-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+.dores-layout  { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+.dores-btns    { display:flex; flex-direction:column; gap:.5rem; }
+.dor-wrap      { display:flex; flex-direction:column; }
 .dor-btn {
-  width: 100%;
-  text-align: left;
-  background: rgba(255,255,255,.03);
-  border: 1px solid rgba(255,255,255,.06);
-  color: rgba(255,255,255,.5);
-  padding: 1.125rem 1.5rem;
-  font-family: var(--font-sans);
-  font-size: .9rem;
-  font-style: italic;
-  cursor: pointer;
-  transition: all .2s;
-  border-radius: 2px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  width:100%; text-align:left;
+  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
+  color:rgba(255,255,255,.5); padding:1.125rem 1.5rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.875rem; font-style:italic; cursor:pointer;
+  transition:all .2s; border-radius:2px;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
 }
-.dor-btn:hover { background: rgba(255,255,255,.05); color: rgba(255,255,255,.75); border-color: rgba(255,255,255,.15); }
-.dor-btn.active { background: rgba(76,175,100,.06); border-color: rgba(76,175,100,.3); color: rgba(255,255,255,.85); }
-.dor-arrow { font-style: normal; color: var(--g400); opacity: 0; transition: opacity .2s; }
-.dor-btn.active .dor-arrow,
-.dor-btn:hover  .dor-arrow { opacity: 1; }
+.dor-btn:hover { background:rgba(255,255,255,.05); color:rgba(255,255,255,.75); border-color:rgba(255,255,255,.15); }
+.dor-btn.active { background:rgba(76,175,100,.06); border-color:rgba(76,175,100,.3); color:rgba(255,255,255,.85); }
+.dor-arr { font-style:normal; color:var(--g400,#4caf64); opacity:0; transition:opacity .2s; flex-shrink:0; }
+.dor-btn.active .dor-arr,
+.dor-btn:hover  .dor-arr { opacity:1; }
+.dor-inline {
+  background:rgba(76,175,100,.04); border-left:3px solid var(--g500,#2e9147);
+  padding:1.25rem 1.5rem 1.5rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.7;
+}
+.dor-inline strong { color:var(--g400,#4caf64); font-weight:600; }
 
-.dor-inline-answer {
-  background: rgba(76,175,100,.04);
-  border-left: 3px solid var(--g500);
-  padding: 1.25rem 1.5rem 1.5rem;
-  font-size: .875rem;
-  color: rgba(255,255,255,.55);
-  line-height: 1.7;
-  display: none;
+.dor-box {
+  position:sticky; top:6rem;
+  background:rgba(76,175,100,.06); border:1px solid rgba(76,175,100,.2);
+  border-radius:4px; padding:2.5rem;
 }
-.dor-inline-answer strong { color: var(--g400); font-weight: 600; }
-
-.dor-answer-box {
-  position: sticky;
-  top: 6rem;
-  background: rgba(76,175,100,.06);
-  border: 1px solid rgba(76,175,100,.2);
-  border-radius: 4px;
-  padding: 2.5rem;
-  transition: opacity .2s;
+.dor-box-q {
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:1.0625rem; font-style:italic; color:rgba(255,255,255,.6);
+  margin-bottom:1.25rem; line-height:1.5;
 }
-.dor-answer-q {
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-style: italic;
-  color: rgba(255,255,255,.6);
-  margin-bottom: 1.25rem;
-  line-height: 1.5;
+.dor-box-a {
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.9375rem; color:rgba(255,255,255,.6); line-height:1.8; margin-bottom:2rem;
 }
-.dor-answer-a {
-  font-family: var(--font-sans);
-  font-size: .9375rem;
-  color: rgba(255,255,255,.6);
-  line-height: 1.8;
-  margin-bottom: 2rem;
+.dor-box-a strong { color:var(--g400,#4caf64); font-weight:600; }
+.dor-link {
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em;
+  color:var(--g400,#4caf64); text-decoration:none; transition:color .2s;
 }
-.dor-answer-a strong { color: var(--g400); font-weight: 600; }
-.dor-cta {
-  display: inline-flex;
-  font-family: var(--font-sans);
-  font-size: .8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--g400);
-  text-decoration: none;
-  transition: color .2s;
-}
-.dor-cta:hover { color: var(--g500); }
+.dor-link:hover { color:var(--g500,#2e9147); }
 
 /* ── ICP ─────────────────────────────────────────────────────────────────── */
-.icp-section {
-  background: var(--n50);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.icp-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
-}
-.icp-desc {
-  font-size: 1.0625rem;
-  color: var(--n600, #5a5650);
-  line-height: 1.75;
-  margin-bottom: 2rem;
-}
-.icp-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-  gap: .875rem;
-}
-.icp-list li {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  font-size: .9375rem;
-  color: var(--n800);
-}
-.icp-check { color: var(--g500); font-size: .875rem; flex-shrink: 0; }
-
-.icp-table-title {
-  font-size: .75rem;
-  font-weight: 700;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--n400);
-  margin-bottom: 1rem;
-}
-.icp-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--font-sans);
-  font-size: .875rem;
-}
-.icp-table th {
-  text-align: left;
-  padding: .75rem 1rem;
-  background: var(--n950);
-  color: rgba(255,255,255,.6);
-  font-weight: 600;
-  font-size: .75rem;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-.th-green { color: var(--g400) !important; }
-.icp-table td {
-  padding: .875rem 1rem;
-  border-bottom: 1px solid var(--n200, #e5e1db);
-  color: var(--n600, #5a5650);
-}
-.td-green { color: var(--g500); font-weight: 600; }
-.tr-total td {
-  font-weight: 700;
-  color: var(--n800);
-  background: rgba(46,145,71,.04);
-}
-.tr-total .td-green { color: var(--g500); }
-.icp-table-note {
-  font-size: .75rem;
-  color: var(--n400);
-  margin-top: .75rem;
-  font-style: italic;
-}
+.icp-section  { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
+.icp-grid     { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.icp-desc     { font-size:1.0625rem; color:var(--n600,#5a5650); line-height:1.75; margin-bottom:2rem; }
+.icp-list     { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
+.icp-list li  { display:flex; align-items:center; gap:.75rem; font-size:.9375rem; color:var(--n800,#272420); }
+.table-title  { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--n400,#a09c92); margin-bottom:1rem; }
+.icp-table    { width:100%; border-collapse:collapse; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.875rem; }
+.icp-table th { text-align:left; padding:.75rem 1rem; background:var(--n950,#0c0a08); color:rgba(255,255,255,.6); font-weight:600; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; }
+.th-green     { color:var(--g400,#4caf64) !important; }
+.icp-table td { padding:.875rem 1rem; border-bottom:1px solid var(--n200,#e5e1db); color:var(--n600,#5a5650); }
+.td-green     { color:var(--g500,#2e9147); font-weight:600; }
+.tr-total td  { font-weight:700; color:var(--n800,#272420); background:rgba(46,145,71,.04); }
+.tr-total .td-green { color:var(--g500,#2e9147); }
+.table-note   { font-size:.75rem; color:var(--n400,#a09c92); margin-top:.75rem; font-style:italic; }
 
 /* ── CASES ───────────────────────────────────────────────────────────────── */
-.cases-section {
-  background: var(--n0, #fff);
-  padding-block: clamp(4rem, 9vw, 7rem);
-  border-top: 1px solid var(--n200, #e5e1db);
-}
-.cases-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
+.cases-section { background:var(--n0,#fff); padding-block:clamp(4rem,9vw,7rem); border-top:1px solid var(--n200,#e5e1db); }
+.cases-grid    { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
 .case-card {
-  background: var(--n50);
-  border: 1px solid var(--n200, #e5e1db);
-  border-radius: 4px;
-  padding: 2.5rem;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
-  opacity: 0;
+  background:var(--n50,#f7f6f4); border:1px solid var(--n200,#e5e1db); border-radius:4px; padding:2.5rem;
+  transition:border-color .3s, transform .3s, box-shadow .3s;
 }
-.case-card:hover {
-  border-color: var(--g400);
-  transform: scale(1.02);
-  box-shadow: 0 16px 48px rgba(46,145,71,.08);
-}
-.case-card-header { margin-bottom: 2rem; }
-.case-tag {
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--g500);
-  display: block;
-  margin-bottom: .75rem;
-}
-.case-name {
-  font-family: var(--font-serif);
-  font-size: 1.75rem;
-  font-weight: 900;
-  color: var(--n800);
-  margin-bottom: .25rem;
-}
-.case-url {
-  font-size: .8125rem;
-  color: var(--n400);
-}
-.case-metrics {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: .75rem;
-}
-.case-metrics li {
-  display: flex;
-  align-items: baseline;
-  gap: .75rem;
-  font-size: .875rem;
-  color: var(--n600, #5a5650);
-}
-.case-num {
-  font-family: var(--font-serif);
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--g500);
-}
-.case-quote {
-  font-family: var(--font-serif);
-  font-size: .9375rem;
-  font-style: italic;
-  color: var(--n600, #5a5650);
-  line-height: 1.6;
-  border-left: 2px solid var(--g500);
-  padding-left: 1rem;
-  margin: 0 0 1.5rem;
-}
-.case-cite {
-  display: block;
-  font-style: normal;
-  font-size: .75rem;
-  font-weight: 600;
-  color: var(--n400);
-  margin-top: .75rem;
-  font-family: var(--font-sans);
-}
-.case-link {
-  font-family: var(--font-sans);
-  font-size: .8125rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: .06em;
-  color: var(--g500);
-  text-decoration: none;
-  transition: color .2s;
-}
-.case-link:hover { color: var(--g600); }
+.case-card:hover { border-color:var(--g400,#4caf64); transform:scale(1.02); box-shadow:0 16px 48px rgba(46,145,71,.08); }
+.case-hd    { margin-bottom:2rem; }
+.case-tag   { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--g500,#2e9147); display:block; margin-bottom:.75rem; }
+.case-name  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.75rem; font-weight:900; color:var(--n800,#272420); margin-bottom:.25rem; }
+.case-url   { font-size:.8125rem; color:var(--n400,#a09c92); }
+.case-stats { list-style:none; padding:0; margin:0 0 2rem; display:flex; flex-direction:column; gap:.75rem; }
+.case-stats li  { display:flex; align-items:baseline; gap:.75rem; font-size:.875rem; color:var(--n600,#5a5650); }
+.case-num   { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.5rem; font-weight:900; color:var(--g500,#2e9147); }
+.case-quote { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:.9375rem; font-style:italic; color:var(--n600,#5a5650); line-height:1.6; border-left:2px solid var(--g500,#2e9147); padding-left:1rem; margin:0 0 1.5rem; }
+.case-quote cite { display:block; font-style:normal; font-size:.75rem; font-weight:600; color:var(--n400,#a09c92); margin-top:.75rem; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); }
+.case-link  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--g500,#2e9147); text-decoration:none; transition:color .2s; }
+.case-link:hover { color:var(--g600,#1d7a35); }
 
 /* ── FORM ────────────────────────────────────────────────────────────────── */
-.form-section {
-  background: var(--n950);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.form-sub {
-  font-family: var(--font-sans);
-  font-size: 1rem;
-  color: rgba(255,255,255,.4);
-  max-width: 50ch;
-  margin-top: 1rem;
-  line-height: 1.7;
-}
-.form-wrap { max-width: 800px; margin-inline: auto; }
+.form-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+.form-sub     { font-size:1rem; color:rgba(255,255,255,.4); max-width:50ch; margin-top:1rem; line-height:1.7; }
+.form-wrap    { max-width:800px; margin-inline:auto; }
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────── */
-.faq-section {
-  background: var(--n50);
-  padding-block: clamp(4rem, 9vw, 7rem);
-}
-.faq-wrap { max-width: 780px; margin-inline: auto; }
-.faq-list { display: flex; flex-direction: column; border-top: 1px solid var(--n200, #e5e1db); }
-.faq-item {
-  border-bottom: 1px solid var(--n200, #e5e1db);
-  opacity: 0;
-}
+.faq-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
+.faq-wrap    { max-width:780px; margin-inline:auto; }
+.faq-list    { border-top:1px solid var(--n200,#e5e1db); }
+.faq-item    { border-bottom:1px solid var(--n200,#e5e1db); }
 .faq-q {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1.5rem 0;
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  color: var(--n800);
-  cursor: pointer;
-  list-style: none;
-  transition: color .2s;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  padding:1.5rem 0; cursor:pointer; list-style:none;
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:1.0625rem; font-weight:700; color:var(--n800,#272420);
+  transition:color .2s;
 }
-.faq-q::-webkit-details-marker { display: none; }
-.faq-q:hover { color: var(--g600); }
-.faq-arrow {
-  font-size: 1.25rem;
-  font-weight: 300;
-  color: var(--g500);
-  flex-shrink: 0;
-  width: 1.5rem;
-  text-align: center;
-  transition: color .2s;
-}
-.faq-a {
-  font-family: var(--font-sans);
-  font-size: .9375rem;
-  color: var(--n600, #5a5650);
-  line-height: 1.8;
-  padding-bottom: 1.5rem;
-  max-width: 68ch;
-}
+.faq-q::-webkit-details-marker { display:none; }
+.faq-q:hover { color:var(--g600,#1d7a35); }
+.faq-arr { font-size:1.25rem; font-weight:300; color:var(--g500,#2e9147); flex-shrink:0; transition:color .2s; }
+.faq-a   { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:var(--n600,#5a5650); line-height:1.8; padding-bottom:1.5rem; max-width:68ch; }
 
-/* ── TICKER KEYFRAME ─────────────────────────────────────────────────────── */
+/* ── KEYFRAMES ───────────────────────────────────────────────────────────── */
 @keyframes ticker-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform:translateX(0); }
+  to   { transform:translateX(-50%); }
 }
 
 /* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
-@media (max-width: 1024px) {
-  .hero-inner    { grid-template-columns: 1fr; gap: 3rem; }
-  .hero-chart-wrap { justify-content: center; }
-  .icp-grid      { grid-template-columns: 1fr; gap: 2.5rem; }
-  .metrics-grid  { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+@media (max-width:1024px) {
+  .hero-inner   { grid-template-columns:1fr; gap:3rem; padding-top:clamp(4rem,10vw,6rem); }
+  .hero-chart-wrap { justify-content:center; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
+  .icp-grid     { grid-template-columns:1fr; gap:2.5rem; }
+}
+@media (max-width:768px) {
+  .statement-grid { grid-template-columns:1fr; gap:1rem; }
+  .statement-bar  { display:none; }
+  .entidade-grid  { grid-template-columns:1fr; }
+  .diff-grid      { grid-template-columns:1fr; }
+  .dores-layout   { grid-template-columns:1fr; }
+  .dor-box        { display:none !important; }
+  .cases-grid     { grid-template-columns:1fr; }
+  .prob-grid      { grid-template-columns:repeat(2,1fr); }
+}
+@media (max-width:600px) {
+  .prob-grid    { grid-template-columns:1fr; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); }
 }
 
-@media (max-width: 768px) {
-  .statement-grid   { grid-template-columns: 1fr; gap: 1rem; }
-  .statement-accent { display: none; }
-  .entidade-grid    { grid-template-columns: 1fr; }
-  .diff-grid        { grid-template-columns: 1fr; }
-  .dores-layout     { grid-template-columns: 1fr; }
-  .dor-answer-box   { display: none !important; }
-  .cases-grid       { grid-template-columns: 1fr; }
-  .prob-grid        { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
-  .prob-grid        { grid-template-columns: 1fr; }
-  .metrics-grid     { grid-template-columns: repeat(2, 1fr); }
-}
-
-/* ── GLOBAL OVERFLOW GUARD ───────────────────────────────────────────────── */
-html, body { max-width: 100vw; overflow-x: hidden; }
+/* ── OVERFLOW GUARD ──────────────────────────────────────────────────────── */
+html,body { max-width:100vw; overflow-x:hidden; }
+.hero { max-width:100vw; }
 </style>
 
 </Page>
