@@ -1,5 +1,7 @@
 ---
 import Page from '@layouts/Page.astro';
+import { Image } from 'astro:assets';
+import heroBgSrc from '../assets/images/hero-bg.jpg';
 
 const faqSchema = {
   '@type': 'FAQPage',
@@ -53,7 +55,7 @@ const websiteSchema = {
 <section class="hero" id="hero">
   <!-- Fundo -->
   <div class="hero-bg" aria-hidden="true">
-    <img src="/images/hero-bg.jpg" alt="" class="hero-bg-img" aria-hidden="true" loading="eager" decoding="async" fetchpriority="high"/>
+    <Image src={heroBgSrc} alt="" class="hero-bg-img" widths={[480,900,1920]} sizes="(max-width:480px) 480px,(max-width:1024px) 900px,1920px" format="webp" quality={65} loading="eager" fetchpriority="high" decoding="async" aria-hidden="true"/>
     <div class="hero-bg-overlay" aria-hidden="true"></div>
     <div class="hero-noise" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
@@ -610,17 +612,14 @@ const websiteSchema = {
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 
-<!-- ══════════════════════════════════════════════════════════
-     PRELOAD hero image (LCP)
-     ══════════════════════════════════════════════════════════ -->
-<link rel="preload" as="image" href="/images/hero-bg.jpg" fetchpriority="high"/>
+
 
 <!-- ══════════════════════════════════════════════════════════
      LIBS CDN — síncronas, ordem garantida
      ══════════════════════════════════════════════════════════ -->
-<script is:inline src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
-<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
 <!-- ══════════════════════════════════════════════════════════
      SCRIPT PRINCIPAL
@@ -629,302 +628,82 @@ const websiteSchema = {
 (function(){
 'use strict';
 
-/* ─── CURSOR ──────────────────────────────────────────────────────────── */
+/* ─── CURSOR (imediato — não depende de libs) ─────────────────────────── */
 var curDot  = document.getElementById('cur-dot');
 var curRing = document.getElementById('cur-ring');
 var mouseX=0, mouseY=0, ringX=0, ringY=0;
 
 document.addEventListener('mousemove', function(e){
   mouseX = e.clientX; mouseY = e.clientY;
-  if(curDot){ curDot.style.transform = 'translate('+(mouseX-3)+'px,'+(mouseY-3)+'px)'; }
+  if(curDot){ curDot.style.transform='translate('+(mouseX-3)+'px,'+(mouseY-3)+'px)'; }
 });
-
 function lerpCursor(){
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  if(curRing) curRing.style.transform = 'translate('+(ringX-16)+'px,'+(ringY-16)+'px)';
+  ringX += (mouseX-ringX)*0.12; ringY += (mouseY-ringY)*0.12;
+  if(curRing) curRing.style.transform='translate('+(ringX-16)+'px,'+(ringY-16)+'px)';
   requestAnimationFrame(lerpCursor);
 }
-lerpCursor();
-
+if(curRing) lerpCursor();
 document.querySelectorAll('a,button').forEach(function(el){
-  el.addEventListener('mouseenter', function(){ if(curRing) curRing.classList.add('expand'); });
-  el.addEventListener('mouseleave', function(){ if(curRing) curRing.classList.remove('expand'); });
+  el.addEventListener('mouseenter',function(){ if(curRing) curRing.classList.add('expand'); });
+  el.addEventListener('mouseleave',function(){ if(curRing) curRing.classList.remove('expand'); });
 });
-
-/* ─── PRÉ-LOADER ──────────────────────────────────────────────────────── */
-var PL  = document.getElementById('preloader');
-var PLO = document.getElementById('pl-logo');
-var PLB = document.getElementById('pl-bar');
-
-function hidePL(cb){
-  if(!PL){ cb(); return; }
-  document.body.style.overflow = 'hidden';
-
-  // Barra de progresso
-  if(PLB){
-    PLB.style.transition = 'width 1.0s cubic-bezier(.16,1,.3,1)';
-    setTimeout(function(){ PLB.style.width='100%'; }, 100);
-  }
-
-  // Logo emerge após 200ms
-  setTimeout(function(){
-    if(PLO){
-      PLO.style.opacity = '1';
-      PLO.style.letterSpacing = '-0.02em';
-    }
-    // Logo sobe e some após 1.2s total
-    setTimeout(function(){
-      if(PLO){
-        PLO.style.opacity = '0';
-        PLO.style.transform = 'translateY(-100px) scale(.9)';
-      }
-      setTimeout(function(){
-        if(PL){
-          PL.style.opacity = '0';
-          PL.style.pointerEvents = 'none';
-        }
-        document.body.style.overflow = '';
-        setTimeout(function(){
-          if(PL) PL.style.display = 'none';
-          cb();
-        }, 400);
-      }, 500);
-    }, 1000);
-  }, 200);
-}
 
 /* ─── HELPERS ─────────────────────────────────────────────────────────── */
 function q(s){ return document.querySelector(s); }
 function qa(s){ return Array.from(document.querySelectorAll(s)); }
 
-/* ─── MAIN ─────────────────────────────────────────────────────────────── */
-function initCine(){
-  if(typeof gsap === 'undefined'){ return; }
-  gsap.registerPlugin(ScrollTrigger);
+/* ─── AGUARDA DOMContentLoaded (libs deferred já estarão prontas) ──────── */
+document.addEventListener('DOMContentLoaded', function(){
 
-  /* ── Lenis ──────────────────────────────────────────────────────────── */
-  try{
-    var LC = window.Lenis || (typeof Lenis!=='undefined'?Lenis:null);
-    if(LC){
-      var lenis = new LC({ duration:1.4, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, wheelMultiplier:0.85, smoothTouch:false });
-      lenis.on('scroll', ScrollTrigger.update);
-      function rf(t){ lenis.raf(t); requestAnimationFrame(rf); }
-      requestAnimationFrame(rf);
-    }
-  }catch(e){}
+var isMobile = window.innerWidth < 768;
 
-  /* ── HERO ENTRANCE ──────────────────────────────────────────────────── */
-  var els = {
-    badge: q('#h-badge'), hl1:q('#hl1'), hl2:q('#hl2'), hl3:q('#hl3'), hl4:q('#hl4'),
-    sub:q('#h-sub'), ctas:q('#h-ctas'), proof:q('#h-proof'),
-    dashboard:q('#hero-dashboard'), floatBadge:q('#float-badge'),
-  };
+/* ─── PRÉ-LOADER ──────────────────────────────────────────────────────── */
+var PL=document.getElementById('preloader');
+var PLO=document.getElementById('pl-logo');
+var PLB=document.getElementById('pl-bar');
 
-  gsap.set([els.badge,els.hl1,els.hl2,els.hl3,els.hl4,els.sub,els.ctas,els.proof], {opacity:0,y:40});
-  gsap.set(els.dashboard, {opacity:0,x:60,rotateY:8});
-  gsap.set(els.floatBadge, {opacity:0,y:20,scale:.9});
-
-  var htl = gsap.timeline({defaults:{ease:'power3.out'}});
-  htl
-    .to(els.badge,     {opacity:1,y:0,duration:.7}, 0.1)
-    .to(els.hl1,       {opacity:1,y:0,duration:1.0}, 0.2)
-    .to(els.hl2,       {opacity:1,y:0,duration:1.0}, 0.32)
-    .to(els.hl3,       {opacity:1,y:0,duration:1.0}, 0.44)
-    .to(els.hl4,       {opacity:1,y:0,duration:.9},  0.44)
-    .to(els.sub,       {opacity:1,y:0,duration:.8},  0.62)
-    .to(els.ctas,      {opacity:1,y:0,duration:.7},  0.78)
-    .to(els.proof,     {opacity:1,y:0,duration:.6},  0.90)
-    .to(els.dashboard, {opacity:1,x:0,rotateY:0,duration:1.2,ease:'power2.out'}, 0.3)
-    .to(els.floatBadge,{opacity:1,y:0,scale:1,duration:.6,ease:'back.out(1.7)'}, 1.1)
-    .add(function(){ animChart(); animDashStats(); });
-
-  /* ── SVG CHART ──────────────────────────────────────────────────────── */
-  function animChart(){
-    var ol=q('#c-org-line'), pl=q('#c-paid-line'), oa=q('#c-org-area'), pa=q('#c-paid-area');
-    var dot=q('#c-dot'), ring=q('#c-ring'), lbl=q('#c-lbl'), lbl2=q('#c-lbl2');
-    if(!ol) return;
-    gsap.timeline({delay:.2})
-      .to(ol,  {strokeDashoffset:0, duration:1.8, ease:'power2.inOut'})
-      .to(pl,  {strokeDashoffset:0, duration:1.4, ease:'power2.inOut'}, '-=1.4')
-      .to([oa,pa], {opacity:1, duration:.6}, '-=.8')
-      .to([dot,ring,lbl,lbl2], {opacity:1, duration:.4, stagger:.1});
-  }
-
-  /* ── DASHBOARD STATS COUNTER ────────────────────────────────────────── */
-  function animDashStats(){
-    var stats=[{el:q('#ds1'),from:0,to:340,sfx:'%'},{el:q('#ds2'),from:0,to:90,sfx:'d'},{el:q('#ds3'),from:0,to:47,sfx:'+'}];
-    stats.forEach(function(s,i){
+function hidePL(cb){
+  if(!PL){ cb(); return; }
+  // Mobile: sem pré-loader — reduz FCP/LCP em ~1.3s
+  if(isMobile){ if(PL) PL.style.display='none'; cb(); return; }
+  document.body.style.overflow='hidden';
+  if(PLB){ setTimeout(function(){ PLB.style.transition='width .65s ease'; PLB.style.width='100%'; },50); }
+  setTimeout(function(){
+    if(PLO){ PLO.style.opacity='1'; PLO.style.letterSpacing='-0.02em'; }
+    setTimeout(function(){
+      if(PLO){ PLO.style.opacity='0'; PLO.style.transform='translateY(-80px) scale(.9)'; }
       setTimeout(function(){
-        if(!s.el) return;
-        var start=null, dur=1500;
-        function step(ts){
-          if(!start) start=ts;
-          var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
-          s.el.textContent=Math.round(e*s.to)+s.sfx;
-          if(p<1) requestAnimationFrame(step);
-        }
-        requestAnimationFrame(step);
-      }, i*200+600);
-    });
-  }
-
-  /* ── STATEMENT PIN + WORD REVEAL ────────────────────────────────────── */
-  var words = qa('#stmt-h2 .w');
-  gsap.set(words, {opacity:.15, color:'rgba(255,255,255,.15)'});
-
-  gsap.timeline({
-    scrollTrigger:{
-      trigger:'#statement', start:'top top', end:'+=700', pin:true, scrub:1,
-      pinSpacing:true,
-    }
-  }).to(words, {opacity:1, color:'rgba(255,255,255,1)', duration:.5, stagger:.12, ease:'none'});
-
-  /* ── MÉTRICAS COUNTER ───────────────────────────────────────────────── */
-  qa('.metric-card').forEach(function(card){
-    var numEl = card.querySelector('.mc-num');
-    var target = parseInt(card.dataset.val||'0',10);
-    var suffix = card.dataset.sfx||'';
-    var delay  = parseInt(card.dataset.di||'0',10)*0.15;
-
-    gsap.set(card, {opacity:0, y:50, scale:.96});
-    gsap.to(card, {
-      opacity:1, y:0, scale:1, duration:.9, ease:'power3.out', delay:delay,
-      scrollTrigger:{trigger:card, start:'top 85%', toggleActions:'play none none none',
-        onEnter:function(){
-          setTimeout(function(){
-            if(!numEl) return;
-            var start=null, dur=1800;
-            function step(ts){
-              if(!start) start=ts;
-              var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
-              numEl.textContent=Math.round(e*target)+suffix;
-              if(p<1) requestAnimationFrame(step);
-            }
-            requestAnimationFrame(step);
-          }, delay*1000+200);
-        }
-      }
-    });
-  });
-
-  /* ── PROB CARDS HORIZONTAL PIN ──────────────────────────────────────── */
-  var probTrack = q('#prob-track');
-  var probFill  = q('#prob-fill');
-  var probCards = qa('.prob-card');
-
-  if(probTrack && probCards.length){
-    var cardW   = 340 + 24; // width + gap
-    var maxX    = (probCards.length - 2) * cardW;
-
-    ScrollTrigger.create({
-      trigger: '#prob-pin',
-      start: 'top top',
-      end: '+=' + (maxX + 400),
-      pin: true,
-      pinSpacing: true,
-      scrub: 1,
-      onUpdate: function(self){
-        var x = -self.progress * maxX;
-        gsap.set(probTrack, {x:x});
-        if(probFill) probFill.style.width = (self.progress*100)+'%';
-
-        // Card ativo
-        var activeIdx = Math.round(-x / cardW);
-        probCards.forEach(function(c,i){
-          c.classList.toggle('active', i===activeIdx);
-        });
-      }
-    });
-  }
-
-  /* ── REVEAL GENÉRICO ────────────────────────────────────────────────── */
-  qa('.reveal-item').forEach(function(el){
-    gsap.set(el, {opacity:0, y:50});
-    gsap.to(el, {
-      opacity:1, y:0, duration:1.0, ease:'power3.out',
-      scrollTrigger:{trigger:el, start:'top 84%', toggleActions:'play none none none'}
-    });
-  });
-
-  /* ── ENTIDADE CARDS ─────────────────────────────────────────────────── */
-  var entNo=q('#ent-no'), entYes=q('#ent-yes');
-  if(entNo && entYes){
-    gsap.set(entNo,  {opacity:0, x:-80});
-    gsap.set(entYes, {opacity:0, x:80});
-    var est={trigger:'.entidade-section', start:'top 78%', toggleActions:'play none none none'};
-    gsap.to(entNo,  {opacity:1,x:0,duration:1.0,ease:'power3.out',scrollTrigger:est});
-    gsap.to(entYes, {opacity:1,x:0,duration:1.0,ease:'power3.out',delay:.15,scrollTrigger:est});
-  }
-
-  /* ── DIFF COLS ──────────────────────────────────────────────────────── */
-  var dNo=q('#diff-no'), dYes=q('#diff-yes');
-  if(dNo && dYes){
-    gsap.set(dNo,  {opacity:0, x:-80});
-    gsap.set(dYes, {opacity:0, x:80});
-    var dst={trigger:'.diff-section', start:'top 78%', toggleActions:'play none none none'};
-    gsap.to(dNo,  {opacity:1,x:0,duration:1.0,ease:'power3.out',scrollTrigger:dst});
-    gsap.to(dYes, {opacity:1,x:0,duration:1.0,ease:'power3.out',delay:.2,scrollTrigger:dst});
-  }
-
-  /* ── PARALLAX HERO BG + ORB ─────────────────────────────────────────── */
-  var heroBgImg = q('.hero-bg-img');
-  if(heroBgImg){
-    gsap.to(heroBgImg, {y:120, ease:'none',
-      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1}});
-  }
-  var orb1=q('.hero-orb-1'), orb2=q('.hero-orb-2');
-  if(orb1){
-    gsap.to(orb1, {y:-120, ease:'none',
-      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1}});
-  }
-  if(orb2){
-    gsap.to(orb2, {y:-60, ease:'none',
-      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1.5}});
-  }
-
-  /* ── FAQ STAGGER ────────────────────────────────────────────────────── */
-  var faqItems=qa('.faq-item');
-  gsap.set(faqItems,{opacity:0,y:20});
-  gsap.to(faqItems,{opacity:1,y:0,duration:.6,ease:'power3.out',stagger:.08,
-    scrollTrigger:{trigger:'#faq-list',start:'top 85%',toggleActions:'play none none none'}});
-
-} // end initCine
+        if(PL){ PL.style.transition='opacity .3s ease'; PL.style.opacity='0'; PL.style.pointerEvents='none'; }
+        document.body.style.overflow='';
+        setTimeout(function(){ if(PL) PL.style.display='none'; cb(); },300);
+      },380);
+    },520);
+  },100);
+}
 
 /* ─── ACCORDION ───────────────────────────────────────────────────────── */
 function initAcc(){
   qa('.layer-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      var item  = btn.closest('.layer-item');
-      var body  = item?item.querySelector('.layer-body'):null;
-      var inner = body?body.querySelector('.layer-inner'):null;
-      var arr   = btn.querySelector('.layer-arr');
-      var open  = item&&item.classList.contains('open');
-
+    btn.addEventListener('click',function(){
+      var item=btn.closest('.layer-item');
+      var body=item?item.querySelector('.layer-body'):null;
+      var inner=body?body.querySelector('.layer-inner'):null;
+      var arr=btn.querySelector('.layer-arr');
+      var open=item&&item.classList.contains('open');
       qa('.layer-item').forEach(function(it){
-        var b=it.querySelector('.layer-body');
-        var a=it.querySelector('.layer-btn');
-        var ar=it.querySelector('.layer-arr');
+        var b=it.querySelector('.layer-body'),a=it.querySelector('.layer-btn'),ar=it.querySelector('.layer-arr');
         it.classList.remove('open');
         if(a) a.setAttribute('aria-expanded','false');
         if(ar) ar.classList.remove('rotated');
-        if(b){
-          if(typeof gsap!=='undefined') gsap.to(b,{height:0,duration:.4,ease:'power2.inOut'});
-          else b.style.height='0';
-        }
+        if(b){ if(typeof gsap!=='undefined') gsap.to(b,{height:0,duration:.4,ease:'power2.inOut'}); else b.style.height='0'; }
       });
-
-      if(!open && item && body && inner){
-        item.classList.add('open');
-        btn.setAttribute('aria-expanded','true');
+      if(!open&&item&&body&&inner){
+        item.classList.add('open'); btn.setAttribute('aria-expanded','true');
         if(arr) arr.classList.add('rotated');
         if(typeof gsap!=='undefined'){
           body.style.height='0';
-          gsap.to(body,{height:inner.scrollHeight,duration:.45,ease:'power2.out',
-            onComplete:function(){ body.style.height='auto'; }});
-        } else {
-          body.style.height=inner.scrollHeight+'px';
-        }
+          gsap.to(body,{height:inner.scrollHeight,duration:.45,ease:'power2.out',onComplete:function(){ body.style.height='auto'; }});
+        } else { body.style.height=inner.scrollHeight+'px'; }
       }
     });
   });
@@ -940,22 +719,13 @@ function initDores(){
     {q:'"Minha empresa não é citada pelas IAs."',a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.'},
     {q:'"Quero crescer sem depender de tráfego pago."',a:'Esse é exatamente o perfil que servimos. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.'},
   ];
-
   qa('.dor-btn').forEach(function(btn){
-    btn.addEventListener('click', function(){
+    btn.addEventListener('click',function(){
       var idx=parseInt(btn.dataset.i||'0',10);
       qa('.dor-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-expanded','false'); });
       btn.classList.add('active'); btn.setAttribute('aria-expanded','true');
-
-      var panel=q('#dor-panel'), dpq=q('#dpq'), dpa=q('#dpa');
-      if(panel){
-        panel.style.opacity='0';
-        setTimeout(function(){
-          if(dpq) dpq.textContent=dorData[idx].q;
-          if(dpa) dpa.innerHTML=dorData[idx].a;
-          panel.style.transition='opacity .25s'; panel.style.opacity='1';
-        },180);
-      }
+      var panel=q('#dor-panel'),dpq=q('#dpq'),dpa=q('#dpa');
+      if(panel){ panel.style.opacity='0'; setTimeout(function(){ if(dpq) dpq.textContent=dorData[idx].q; if(dpa) dpa.innerHTML=dorData[idx].a; panel.style.transition='opacity .25s'; panel.style.opacity='1'; },180); }
       qa('.dor-inline').forEach(function(el){ el.style.display='none'; el.setAttribute('aria-hidden','true'); });
       var inl=document.getElementById('dinl-'+idx);
       if(inl){ inl.style.display='block'; inl.setAttribute('aria-hidden','false'); }
@@ -967,19 +737,195 @@ function initDores(){
 function initFAQ(){
   qa('.faq-item').forEach(function(d){
     var arr=d.querySelector('.faq-arr');
-    d.addEventListener('toggle', function(){ if(arr) arr.textContent=d.open?'−':'+'; });
+    d.addEventListener('toggle',function(){ if(arr) arr.textContent=d.open?'−':'+'; });
   });
 }
 
-/* ─── BOOT ────────────────────────────────────────────────────────────── */
-hidePL(function(){
-  initAcc();
-  initDores();
-  initFAQ();
-  initCine();
-});
+/* ─── GSAP + ANIMAÇÕES ────────────────────────────────────────────────── */
+function initCine(){
+  if(typeof gsap==='undefined'){ return; }
+  gsap.registerPlugin(ScrollTrigger);
 
+  /* Lenis — integração CORRETA via gsap.ticker (único loop, sem jank) */
+  if(!isMobile){
+    try{
+      var LC=window.Lenis||(typeof Lenis!=='undefined'?Lenis:null);
+      if(LC){
+        var lenis=new LC({duration:1.2,easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},smoothWheel:true,wheelMultiplier:0.85,smoothTouch:false});
+        lenis.on('scroll',ScrollTrigger.update);
+        gsap.ticker.add(function(time){ lenis.raf(time*1000); });
+        gsap.ticker.lagSmoothing(0);
+      }
+    }catch(e){}
+  }
+
+  /* HERO ENTRANCE */
+  var els={
+    badge:q('#h-badge'),hl1:q('#hl1'),hl2:q('#hl2'),hl3:q('#hl3'),hl4:q('#hl4'),
+    sub:q('#h-sub'),ctas:q('#h-ctas'),proof:q('#h-proof'),
+    dashboard:q('#hero-dashboard'),floatBadge:q('#float-badge'),
+  };
+  gsap.set([els.badge,els.hl1,els.hl2,els.hl3,els.hl4,els.sub,els.ctas,els.proof],{opacity:0,y:30});
+  gsap.set(els.dashboard,{opacity:0,x:isMobile?0:50,rotateY:isMobile?0:6});
+  gsap.set(els.floatBadge,{opacity:0,y:14,scale:.93});
+  var htl=gsap.timeline({defaults:{ease:'power3.out'}});
+  htl
+    .to(els.badge,     {opacity:1,y:0,duration:.6},0.1)
+    .to(els.hl1,       {opacity:1,y:0,duration:.9},0.18)
+    .to(els.hl2,       {opacity:1,y:0,duration:.9},0.28)
+    .to(els.hl3,       {opacity:1,y:0,duration:.9},0.38)
+    .to(els.hl4,       {opacity:1,y:0,duration:.8},0.38)
+    .to(els.sub,       {opacity:1,y:0,duration:.7},0.52)
+    .to(els.ctas,      {opacity:1,y:0,duration:.6},0.65)
+    .to(els.proof,     {opacity:1,y:0,duration:.5},0.75)
+    .to(els.dashboard, {opacity:1,x:0,rotateY:0,duration:1.0,ease:'power2.out'},0.22)
+    .to(els.floatBadge,{opacity:1,y:0,scale:1,duration:.5,ease:'back.out(1.7)'},0.9)
+    .add(function(){ animChart(); animDashStats(); });
+
+  function animChart(){
+    var ol=q('#c-org-line'),pl=q('#c-paid-line'),oa=q('#c-org-area'),pa=q('#c-paid-area');
+    var dot=q('#c-dot'),ring=q('#c-ring'),lbl=q('#c-lbl'),lbl2=q('#c-lbl2');
+    if(!ol) return;
+    gsap.timeline({delay:.15})
+      .to(ol,{strokeDashoffset:0,duration:1.6,ease:'power2.inOut'})
+      .to(pl,{strokeDashoffset:0,duration:1.2,ease:'power2.inOut'},'-=1.2')
+      .to([oa,pa],{opacity:1,duration:.5},'-=.6')
+      .to([dot,ring,lbl,lbl2],{opacity:1,duration:.35,stagger:.08});
+  }
+
+  function animDashStats(){
+    var stats=[{el:q('#ds1'),to:340,sfx:'%'},{el:q('#ds2'),to:90,sfx:'d'},{el:q('#ds3'),to:47,sfx:'+'}];
+    stats.forEach(function(s,i){
+      setTimeout(function(){
+        if(!s.el) return;
+        var start=null,dur=1400;
+        function step(ts){
+          if(!start) start=ts;
+          var p=Math.min((ts-start)/dur,1),e=1-Math.pow(1-p,3);
+          s.el.textContent=Math.round(e*s.to)+s.sfx;
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      },i*180+500);
+    });
+  }
+
+  /* STATEMENT PIN — desktop; mobile: fade simples */
+  var stmtWords=qa('#stmt-h2 .w');
+  if(stmtWords.length){
+    if(!isMobile){
+      gsap.set(stmtWords,{opacity:.15,color:'rgba(255,255,255,.15)'});
+      gsap.timeline({
+        scrollTrigger:{trigger:'#statement',start:'top top',end:'+=700',pin:true,scrub:1,pinSpacing:true}
+      }).to(stmtWords,{opacity:1,color:'rgba(255,255,255,1)',duration:.5,stagger:.12,ease:'none'});
+    } else {
+      gsap.set(stmtWords,{opacity:.5,color:'rgba(255,255,255,.5)'});
+      gsap.to(stmtWords,{opacity:1,color:'rgba(255,255,255,1)',duration:.8,stagger:.05,
+        scrollTrigger:{trigger:'#statement',start:'top 80%',toggleActions:'play none none none'}});
+    }
+  }
+
+  /* MÉTRICAS COUNTER */
+  qa('.metric-card').forEach(function(card){
+    var numEl=card.querySelector('.mc-num');
+    var target=parseInt(card.dataset.val||'0',10);
+    var suffix=card.dataset.sfx||'';
+    var delay=parseInt(card.dataset.di||'0',10)*0.12;
+    gsap.set(card,{opacity:0,y:40,scale:.97});
+    gsap.to(card,{
+      opacity:1,y:0,scale:1,duration:.8,ease:'power3.out',delay:delay,
+      scrollTrigger:{trigger:card,start:'top 87%',toggleActions:'play none none none',
+        onEnter:function(){
+          setTimeout(function(){
+            if(!numEl) return;
+            var start=null,dur=1400;
+            function step(ts){
+              if(!start) start=ts;
+              var p=Math.min((ts-start)/dur,1),e=1-Math.pow(1-p,3);
+              numEl.textContent=Math.round(e*target)+suffix;
+              if(p<1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          },delay*1000+120);
+        }
+      }
+    });
+  });
+
+  /* PROB CARDS HORIZONTAL — apenas desktop */
+  if(!isMobile){
+    var probTrack=q('#prob-track'),probFill=q('#prob-fill'),probCards=qa('.prob-card');
+    if(probTrack&&probCards.length){
+      var cardW=340+24,maxX=(probCards.length-2)*cardW;
+      ScrollTrigger.create({
+        trigger:'#prob-pin',start:'top top',end:'+='+(maxX+400),
+        pin:true,pinSpacing:true,scrub:1,
+        onUpdate:function(self){
+          var x=-self.progress*maxX;
+          gsap.set(probTrack,{x:x});
+          if(probFill) probFill.style.width=(self.progress*100)+'%';
+          var ai=Math.round(-x/cardW);
+          probCards.forEach(function(c,i){ c.classList.toggle('active',i===ai); });
+        }
+      });
+    }
+  } else {
+    var ps=q('.prob-section'); if(ps) ps.classList.add('mobile-scroll');
+  }
+
+  /* REVEAL GENÉRICO */
+  qa('.reveal-item').forEach(function(el){
+    gsap.set(el,{opacity:0,y:40});
+    gsap.to(el,{opacity:1,y:0,duration:.9,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 86%',toggleActions:'play none none none'}});
+  });
+
+  /* ENTIDADE */
+  var entNo=q('#ent-no'),entYes=q('#ent-yes');
+  if(entNo&&entYes){
+    gsap.set(entNo,{opacity:0,x:-60}); gsap.set(entYes,{opacity:0,x:60});
+    var est={trigger:'.entidade-section',start:'top 80%',toggleActions:'play none none none'};
+    gsap.to(entNo, {opacity:1,x:0,duration:.9,ease:'power3.out',scrollTrigger:est});
+    gsap.to(entYes,{opacity:1,x:0,duration:.9,ease:'power3.out',delay:.12,scrollTrigger:est});
+  }
+
+  /* DIFERENCIAL */
+  var dNo=q('#diff-no'),dYes=q('#diff-yes');
+  if(dNo&&dYes){
+    gsap.set(dNo,{opacity:0,x:-60}); gsap.set(dYes,{opacity:0,x:60});
+    var dst={trigger:'.diff-section',start:'top 80%',toggleActions:'play none none none'};
+    gsap.to(dNo, {opacity:1,x:0,duration:.9,ease:'power3.out',scrollTrigger:dst});
+    gsap.to(dYes,{opacity:1,x:0,duration:.9,ease:'power3.out',delay:.15,scrollTrigger:dst});
+  }
+
+  /* PARALLAX — apenas desktop (reduz main-thread no mobile) */
+  if(!isMobile){
+    var heroBgImg=q('.hero-bg-img');
+    if(heroBgImg) gsap.to(heroBgImg,{y:100,ease:'none',
+      scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+    var orb1=q('.hero-orb-1'),orb2=q('.hero-orb-2');
+    if(orb1) gsap.to(orb1,{y:-100,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1}});
+    if(orb2) gsap.to(orb2,{y:-50,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:1.5}});
+  }
+
+  /* FAQ */
+  var faqItems=qa('.faq-item');
+  gsap.set(faqItems,{opacity:0,y:15});
+  gsap.to(faqItems,{opacity:1,y:0,duration:.5,ease:'power3.out',stagger:.07,
+    scrollTrigger:{trigger:'#faq-list',start:'top 87%',toggleActions:'play none none none'}});
+
+} /* end initCine */
+
+/* ─── BOOT ────────────────────────────────────────────────────────────── */
+initAcc();
+initDores();
+initFAQ();
+hidePL(function(){ initCine(); });
+
+}); /* end DOMContentLoaded */
 })();
+</script>
+
 </script>
 
 <script is:inline src="https://api.ilevex.com.br/js/form_embed.js" defer></script>
