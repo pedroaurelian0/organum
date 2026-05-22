@@ -53,7 +53,7 @@ const websiteSchema = {
 <section class="hero" id="hero">
   <!-- Fundo -->
   <div class="hero-bg" aria-hidden="true">
-    <img src="/images/hero-bg.jpg" alt="" class="hero-bg-img" aria-hidden="true" loading="eager" decoding="async"/>
+    <img src="/images/hero-bg.jpg" alt="" class="hero-bg-img" aria-hidden="true" loading="eager" decoding="async" fetchpriority="high"/>
     <div class="hero-bg-overlay" aria-hidden="true"></div>
     <div class="hero-noise" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
@@ -210,22 +210,27 @@ const websiteSchema = {
 <section class="statement-section" id="statement">
   <div class="statement-pin" id="statement-pin">
     <div class="wrap">
-      <p class="stmt-eyebrow">POR QUE A ORGANUM</p>
-      <h2 class="stmt-h2" id="stmt-h2" aria-label="Nenhuma agência brasileira entrega GEO sistematicamente. Nós entregamos — e provamos com dados.">
-        <span class="w">Nenhuma</span>
-        <span class="w">agência</span>
-        <span class="w">brasileira</span>
-        <span class="w">entrega</span>
-        <span class="w wg">GEO</span>
-        <span class="w wg">sistematicamente.</span>
-        <br>
-        <span class="w">Nós</span>
-        <span class="w">entregamos</span>
-        <span class="w">—</span>
-        <span class="w">e</span>
-        <span class="w">provamos</span>
-        <span class="w">com</span>
-        <span class="w wg">dados.</span>
+      <p class="stmt-eyebrow" aria-hidden="true">POR QUE A ORGANUM</p>
+      <h2 class="stmt-h2" id="stmt-h2">
+        <!-- Texto acessível oculto visualmente -->
+        <span class="sr-only">Nenhuma agência brasileira entrega GEO sistematicamente. Nós entregamos — e provamos com dados.</span>
+        <!-- Palavras animadas, aria-hidden para evitar falha de contraste -->
+        <span aria-hidden="true">
+          <span class="w">Nenhuma</span>
+          <span class="w">agência</span>
+          <span class="w">brasileira</span>
+          <span class="w">entrega</span>
+          <span class="w wg">GEO</span>
+          <span class="w wg">sistematicamente.</span>
+          <br>
+          <span class="w">Nós</span>
+          <span class="w">entregamos</span>
+          <span class="w">—</span>
+          <span class="w">e</span>
+          <span class="w">provamos</span>
+          <span class="w">com</span>
+          <span class="w wg">dados.</span>
+        </span>
       </h2>
     </div>
   </div>
@@ -507,7 +512,10 @@ const websiteSchema = {
       </article>
 
       <article class="case-card glass-card reveal-item" aria-label="Case 7+ Vacations">
-        <div class="case-accent" style="background:linear-gradient(135deg,rgba(76,175,100,.3),rgba(46,145,71,.1))" aria-hidden="true"></div>
+        <div class="case-img-wrap" aria-hidden="true">
+          <img src="/images/case-7vacations.jpg" alt="7+ Vacations — Mansões de luxo" class="case-img" loading="lazy" decoding="async"/>
+          <div class="case-img-overlay" aria-hidden="true"></div>
+        </div>
         <div class="case-top">
           <span class="case-tag">Mansões de luxo · EUA</span>
           <h3 class="case-name">7+ Vacations</h3>
@@ -603,9 +611,14 @@ const websiteSchema = {
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 
 <!-- ══════════════════════════════════════════════════════════
+     PRELOAD hero image (LCP)
+     ══════════════════════════════════════════════════════════ -->
+<link rel="preload" as="image" href="/images/hero-bg.jpg" fetchpriority="high"/>
+
+<!-- ══════════════════════════════════════════════════════════
      LIBS CDN — síncronas, ordem garantida
      ══════════════════════════════════════════════════════════ -->
-<script is:inline src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+<script is:inline src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
@@ -969,7 +982,7 @@ hidePL(function(){
 })();
 </script>
 
-<script is:inline src="https://api.ilevex.com.br/js/form_embed.js"></script>
+<script is:inline src="https://api.ilevex.com.br/js/form_embed.js" defer></script>
 
 <!-- ══════════════════════════════════════════════════════════
      ESTILOS
@@ -978,6 +991,12 @@ hidePL(function(){
 /* ── RESET LOCAL ──────────────────────────────────────────────────────── */
 html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 *{ box-sizing:border-box; }
+
+/* ── ACESSIBILIDADE: screen reader only ──────────────────────────────── */
+.sr-only {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px;
+  overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border-width:0;
+}
 
 /* ── CURSOR ───────────────────────────────────────────────────────────── */
 #cur-dot {
@@ -1146,17 +1165,17 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 .hero-bg-img {
   position:absolute; inset:0;
   width:100%; height:100%; object-fit:cover;
-  opacity:.18;
+  opacity:.38;
   will-change:transform;
 }
 .hero-bg-overlay {
   position:absolute; inset:0;
   background:linear-gradient(
     to bottom,
-    rgba(8,8,6,.55) 0%,
-    rgba(8,8,6,.3) 40%,
-    rgba(8,8,6,.7) 80%,
-    rgba(8,8,6,1) 100%
+    rgba(8,8,6,.25) 0%,
+    rgba(8,8,6,.1) 35%,
+    rgba(8,8,6,.45) 75%,
+    rgba(8,8,6,.95) 100%
   );
   z-index:1;
 }
@@ -1321,6 +1340,7 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
   padding:2rem; border-radius:16px;
   display:flex; flex-direction:column; gap:.75rem;
   position:relative; overflow:hidden;
+  background:transparent !important;
   transition:transform .3s;
 }
 .metric-card:hover { transform:translateY(-4px); }
@@ -1422,7 +1442,7 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 .diff-section { background:#080806; padding-block:clamp(4rem,9vw,7rem); }
 .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
 .diff-col { padding:2.5rem; border-radius:16px; }
-.diff-no  { border:1px solid rgba(255,255,255,.06);  background:rgba(255,255,255,.02); }
+.diff-no  { border:1px solid rgba(255,255,255,.08);  background:rgba(0,0,0,.25); }
 .diff-yes { border:1px solid rgba(76,175,100,.2);    background:rgba(76,175,100,.04); }
 .diff-no::before  { background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.1) 100%); }
 .diff-yes::before { background:linear-gradient(135deg,rgba(76,175,100,.35) 0%,rgba(76,175,100,0) 50%,rgba(76,175,100,.35) 100%); }
@@ -1432,7 +1452,7 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 .diff-title { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.35); }
 .green-title { color:var(--g400,#4caf64) !important; }
 .diff-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
-.di { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; display:flex; align-items:flex-start; gap:.75rem; line-height:1.45; }
+.di { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; display:flex; align-items:flex-start; gap:.75rem; line-height:1.45; word-break:break-word; overflow-wrap:anywhere; }
 .di-no  { color:rgba(255,255,255,.3); }
 .di-no span  { color:rgba(220,80,60,.45); flex-shrink:0; }
 .di-yes { color:rgba(255,255,255,.75); }
@@ -1557,6 +1577,8 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 @media(max-width:768px){
   .entidade-grid { grid-template-columns:1fr; }
   .diff-grid     { grid-template-columns:1fr; }
+  .diff-col      { padding:1.5rem; }
+  .di            { font-size:.8125rem; }
   .dores-layout  { grid-template-columns:1fr; }
   .dor-panel     { display:none !important; }
   .cases-grid    { grid-template-columns:1fr; }
