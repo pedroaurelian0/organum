@@ -53,6 +53,8 @@ const websiteSchema = {
 <section class="hero" id="hero">
   <!-- Fundo -->
   <div class="hero-bg" aria-hidden="true">
+    <img src="/images/hero-bg.jpg" alt="" class="hero-bg-img" aria-hidden="true" loading="eager" decoding="async"/>
+    <div class="hero-bg-overlay" aria-hidden="true"></div>
     <div class="hero-noise" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
     <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
@@ -483,7 +485,10 @@ const websiteSchema = {
     </div>
     <div class="cases-grid">
       <article class="case-card glass-card reveal-item" aria-label="Case HunterHunter">
-        <div class="case-accent" aria-hidden="true"></div>
+        <div class="case-img-wrap" aria-hidden="true">
+          <img src="/images/case-hunterhunter.jpg" alt="HunterHunter — Headhunting B2B" class="case-img" loading="lazy" decoding="async"/>
+          <div class="case-img-overlay" aria-hidden="true"></div>
+        </div>
         <div class="case-top">
           <span class="case-tag">Headhunting B2B</span>
           <h3 class="case-name">HunterHunter</h3>
@@ -849,7 +854,12 @@ function initCine(){
     gsap.to(dYes, {opacity:1,x:0,duration:1.0,ease:'power3.out',delay:.2,scrollTrigger:dst});
   }
 
-  /* ── PARALLAX HERO ORB ──────────────────────────────────────────────── */
+  /* ── PARALLAX HERO BG + ORB ─────────────────────────────────────────── */
+  var heroBgImg = q('.hero-bg-img');
+  if(heroBgImg){
+    gsap.to(heroBgImg, {y:120, ease:'none',
+      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1}});
+  }
   var orb1=q('.hero-orb-1'), orb2=q('.hero-orb-2');
   if(orb1){
     gsap.to(orb1, {y:-120, ease:'none',
@@ -1132,6 +1142,23 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
     linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
   background-size:64px 64px;
   mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black,transparent);
+}
+.hero-bg-img {
+  position:absolute; inset:0;
+  width:100%; height:100%; object-fit:cover;
+  opacity:.18;
+  will-change:transform;
+}
+.hero-bg-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(
+    to bottom,
+    rgba(8,8,6,.55) 0%,
+    rgba(8,8,6,.3) 40%,
+    rgba(8,8,6,.7) 80%,
+    rgba(8,8,6,1) 100%
+  );
+  z-index:1;
 }
 .hero-inner {
   display:grid; grid-template-columns:1fr 1fr; gap:4rem;
@@ -1452,9 +1479,22 @@ html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
 }
 .case-card::before { display:none; } /* override glass-card */
 .case-card:hover { border-color:var(--g400,#4caf64); transform:translateY(-6px); box-shadow:0 20px 60px rgba(46,145,71,.1); }
-.case-accent {
-  height:6px;
-  background:linear-gradient(90deg,rgba(46,145,71,.6),rgba(76,175,100,.9),rgba(46,145,71,.4));
+.case-img-wrap {
+  position:relative; overflow:hidden;
+  height:220px;
+  border-radius:16px 16px 0 0;
+}
+.case-img {
+  width:100%; height:100%; object-fit:cover;
+  object-position:center top;
+  transition:transform .6s cubic-bezier(.215,.61,.355,1);
+  display:block;
+}
+.case-card:hover .case-img { transform:scale(1.04); }
+.case-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom,rgba(8,8,6,0) 30%,rgba(8,8,6,.85) 100%);
+  pointer-events:none;
 }
 .case-top   { padding:2rem 2rem 1.5rem; border-bottom:1px solid var(--n100,#f0ede8); }
 .case-tag   { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--g500,#2e9147); display:block; margin-bottom:.75rem; }
