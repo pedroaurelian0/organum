@@ -4,15 +4,14 @@ import Page from '@layouts/Page.astro';
 const faqSchema = {
   '@type': 'FAQPage',
   mainEntity: [
-    { '@type': 'Question', name: 'O que é o Método ORGANUM?', acceptedAnswer: { '@type': 'Answer', text: 'Uma abordagem sistemática em 5 camadas: fundação técnica, identidade de entidade, conteúdo de autoridade, GEO + AEO e Digital PR. Juntas, transformam empresas B2B em autoridades reconhecidas pelo Google e pelas IAs generativas.' } },
-    { '@type': 'Question', name: 'Quanto tempo leva para ver resultados?', acceptedAnswer: { '@type': 'Answer', text: 'Resultados técnicos em 2–4 semanas. Crescimento de tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' } },
-    { '@type': 'Question', name: 'Para quem é a Organum?', acceptedAnswer: { '@type': 'Answer', text: 'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce com faturamento acima de R$500k/ano que querem crescer sem depender de tráfego pago.' } },
+    { '@type': 'Question', name: 'O que é o Método ORGANUM?', acceptedAnswer: { '@type': 'Answer', text: 'Uma abordagem sistemática em 5 camadas: fundação técnica, identidade de entidade, conteúdo de autoridade, GEO + AEO e Digital PR.' } },
+    { '@type': 'Question', name: 'Quanto tempo leva para ver resultados?', acceptedAnswer: { '@type': 'Answer', text: 'Resultados técnicos em 2–4 semanas. Crescimento de tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas.' } },
+    { '@type': 'Question', name: 'Para quem é a Organum?', acceptedAnswer: { '@type': 'Answer', text: 'Empresas B2B com faturamento acima de R$500k/ano que querem crescer sem depender de tráfego pago.' } },
     { '@type': 'Question', name: 'A Organum atende fora de Recife?', acceptedAnswer: { '@type': 'Answer', text: 'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' } },
-    { '@type': 'Question', name: 'O que é GEO — Generative Engine Optimization?', acceptedAnswer: { '@type': 'Answer', text: 'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é apenas ranquear no Google — é ser a resposta que as IAs entregam.' } },
-    { '@type': 'Question', name: 'Qual a diferença entre SEO B2B e SEO tradicional?', acceptedAnswer: { '@type': 'Answer', text: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' } },
+    { '@type': 'Question', name: 'O que é GEO?', acceptedAnswer: { '@type': 'Answer', text: 'Generative Engine Optimization — otimização para ser citado por ChatGPT, Gemini e Perplexity.' } },
+    { '@type': 'Question', name: 'Qual a diferença entre SEO B2B e SEO tradicional?', acceptedAnswer: { '@type': 'Answer', text: 'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados — não em pageviews.' } },
   ],
 };
-
 const websiteSchema = {
   '@type': 'WebSite',
   '@id': 'https://organum.com.br/#website',
@@ -31,93 +30,170 @@ const websiteSchema = {
   schemaExtra={[websiteSchema, faqSchema]}
 >
 
-<!-- ════════════════════════════════════════════
-     PRÉ-LOADER — puro CSS/JS vanilla, sem GSAP
-     ════════════════════════════════════════════ -->
-<div id="pl" aria-hidden="true">
-  <span id="pl-logo">Organum</span>
+<!-- ══════════════════════════════════════════════════════════
+     CURSOR PERSONALIZADO
+     ══════════════════════════════════════════════════════════ -->
+<div id="cur-dot"  aria-hidden="true"></div>
+<div id="cur-ring" aria-hidden="true"></div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PRÉ-LOADER
+     ══════════════════════════════════════════════════════════ -->
+<div id="preloader" aria-hidden="true">
+  <div id="pl-particles"></div>
+  <div id="pl-center">
+    <span id="pl-logo">Organum</span>
+    <div id="pl-bar-wrap"><div id="pl-bar"></div></div>
+  </div>
 </div>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 1 — HERO
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     HERO — fullscreen
+     ══════════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <div class="hero-grid-bg" aria-hidden="true"></div>
-  <div class="hero-glow"    aria-hidden="true"></div>
+  <!-- Fundo -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-noise" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+    <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+    <div class="hero-grid" aria-hidden="true"></div>
+  </div>
+  <!-- Partículas -->
+  <div class="particles" id="particles" aria-hidden="true">
+    {Array.from({length:40}).map((_,i) => <div class="particle" style={`--i:${i}`}></div>)}
+  </div>
 
   <div class="wrap hero-inner">
-    <!-- copy -->
+    <!-- Copy -->
     <div class="hero-copy">
-      <p class="hero-eye" id="h-eye">MÉTODO ORGANUM — 5 CAMADAS COMPROVADAS</p>
+      <div class="hero-badge" id="h-badge">
+        <span class="badge-dot" aria-hidden="true"></span>
+        GEO sistematizado no Brasil — primeiro e único
+      </div>
 
-      <h1 class="hero-title">
-        <span class="hl" id="hl1">SEO orgânico</span>
-        <span class="hl" id="hl2">que gera</span>
-        <span class="hl" id="hl3">pipeline B2B</span>
-        <em   class="hl hem" id="hl4">não apenas cliques</em>
+      <h1 class="hero-h1" id="hero-h1">
+        <span class="h1-l" id="hl1">SEO orgânico</span>
+        <span class="h1-l" id="hl2">que gera</span>
+        <span class="h1-l h1-gradient" id="hl3">pipeline B2B</span>
+        <span class="h1-l h1-em" id="hl4"><em>não apenas cliques</em></span>
       </h1>
 
       <p class="hero-sub" id="h-sub">
-        Do zero técnico à citação por IA.<br>
-        Sem anúncios. Sem dependência de algoritmo.
+        Do zero técnico à citação por IA. Sem anúncios.<br>
+        Sem dependência de algoritmo.
       </p>
 
-      <div class="hero-actions" id="h-ctas">
-        <a href="/auditoria-gratuita" class="btn-primary" id="cta-audit">
-          Solicitar auditoria gratuita &rarr;
+      <div class="hero-ctas" id="h-ctas">
+        <a href="/auditoria-gratuita" class="btn-glow" id="cta-main">
+          <span>Solicitar auditoria gratuita</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
         </a>
-        <a href="/metodo" class="btn-ghost">Ver o método</a>
+        <a href="/metodo" class="btn-glass" id="cta-sec">Ver o método</a>
+      </div>
+
+      <div class="hero-social-proof" id="h-proof">
+        <div class="proof-avatars">
+          <span class="proof-av" style="background:#2e9147">P</span>
+          <span class="proof-av" style="background:#1d7a35">H</span>
+          <span class="proof-av" style="background:#0d3f1a">7</span>
+        </div>
+        <p class="proof-text">+12 empresas B2B crescendo organicamente</p>
       </div>
     </div>
 
-    <!-- gráfico SVG -->
-    <div class="hero-chart-wrap" id="hero-chart-wrap">
-      <svg id="hero-chart" viewBox="0 0 480 320" fill="none"
-           aria-label="Gráfico: pipeline orgânico cresce 127% enquanto tráfego pago cessa ao longo de 12 meses">
-        <line x1="48" y1="30"  x2="460" y2="30"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-        <line x1="48" y1="85"  x2="460" y2="85"  stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-        <line x1="48" y1="140" x2="460" y2="140" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-        <line x1="48" y1="195" x2="460" y2="195" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-        <line x1="48" y1="250" x2="460" y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-        <line x1="48" y1="30"  x2="48"  y2="250" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-        <text x="48"  y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 0</text>
-        <text x="152" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 3</text>
-        <text x="256" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 6</text>
-        <text x="360" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 9</text>
-        <text x="460" y="268" fill="rgba(255,255,255,.25)" font-size="9" text-anchor="middle" font-family="DM Sans,sans-serif">Mês 12</text>
-        <text x="40"  y="254" fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">0</text>
-        <text x="40"  y="144" fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">50</text>
-        <text x="40"  y="34"  fill="rgba(255,255,255,.2)"  font-size="8" text-anchor="end" font-family="DM Sans,sans-serif">100</text>
-        <text x="48"  y="18"  fill="rgba(255,255,255,.25)" font-size="8" font-weight="600" letter-spacing="1" font-family="DM Sans,sans-serif">PIPELINE ORGÂNICO vs. TRÁFEGO PAGO — 12 MESES</text>
-        <path id="c-paid-area" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250 Z" fill="rgba(220,80,60,.07)" opacity="0"/>
-        <path id="c-paid-line" d="M48,246 C90,232 115,185 152,158 C175,140 185,155 205,185 C228,218 252,240 290,248 L460,250"   fill="none" stroke="rgba(200,90,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="800" stroke-dashoffset="800"/>
-        <path id="c-org-area"  d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52 L460,250 Z"         fill="rgba(46,145,71,.12)" opacity="0"/>
-        <path id="c-org-line"  d="M48,249 C90,247 135,240 185,226 C230,213 278,190 322,160 C368,128 415,90 460,52"                      fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="900" stroke-dashoffset="900"/>
-        <circle id="c-dot"  cx="460" cy="52" r="5"  fill="#4caf64" opacity="0"/>
-        <circle id="c-ring" cx="460" cy="52" r="10" fill="none" stroke="rgba(76,175,100,.35)" stroke-width="1.5" opacity="0"/>
-        <g id="c-lbl-org" opacity="0">
-          <rect x="340" y="34" width="116" height="20" rx="2" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.35)" stroke-width="1"/>
-          <text x="348" y="48" fill="#4caf64" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">SEO orgânico ↑ 127%</text>
-        </g>
-        <g id="c-lbl-paid" opacity="0">
-          <rect x="120" y="141" width="108" height="20" rx="2" fill="rgba(220,80,60,.1)" stroke="rgba(200,80,60,.25)" stroke-width="1"/>
-          <text x="128" y="155" fill="rgba(210,120,100,1)" font-size="9" font-weight="600" font-family="DM Sans,sans-serif">Tráfego pago — cessa</text>
-        </g>
-      </svg>
+    <!-- Visual -->
+    <div class="hero-visual" id="hero-visual">
+      <!-- Dashboard glassmorphism -->
+      <div class="hero-dashboard" id="hero-dashboard">
+        <div class="dash-header">
+          <div class="dash-dots">
+            <span style="background:#ff5f57"></span>
+            <span style="background:#febc2e"></span>
+            <span style="background:#28c840"></span>
+          </div>
+          <span class="dash-title">Pipeline orgânico — 12 meses</span>
+        </div>
+        <div class="dash-body">
+          <svg id="hero-chart" viewBox="0 0 440 260" fill="none" aria-label="Gráfico de crescimento orgânico vs tráfego pago">
+            <!-- Grid -->
+            <line x1="40" y1="20"  x2="420" y2="20"  stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+            <line x1="40" y1="75"  x2="420" y2="75"  stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+            <line x1="40" y1="130" x2="420" y2="130" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+            <line x1="40" y1="185" x2="420" y2="185" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+            <line x1="40" y1="230" x2="420" y2="230" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+            <line x1="40" y1="20"  x2="40"  y2="230" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+            <!-- Labels X -->
+            <text x="40"  y="246" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">0</text>
+            <text x="136" y="246" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">3m</text>
+            <text x="232" y="246" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">6m</text>
+            <text x="328" y="246" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">9m</text>
+            <text x="420" y="246" fill="rgba(255,255,255,.2)" font-size="8" text-anchor="middle" font-family="DM Sans,sans-serif">12m</text>
+            <!-- Área pago -->
+            <path id="c-paid-area" d="M40,226 C80,212 105,175 136,152 C159,136 169,149 189,175 C211,204 234,222 270,228 L420,230 Z" fill="rgba(220,80,60,.06)" opacity="0"/>
+            <!-- Linha pago -->
+            <path id="c-paid-line" d="M40,226 C80,212 105,175 136,152 C159,136 169,149 189,175 C211,204 234,222 270,228 L420,230" fill="none" stroke="rgba(200,90,70,.45)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="750" stroke-dashoffset="750"/>
+            <!-- Área orgânico -->
+            <path id="c-org-area" d="M40,229 C80,227 120,220 165,207 C208,194 255,174 298,146 C343,117 383,82 420,45 L420,230 Z" fill="url(#orgGrad)" opacity="0"/>
+            <!-- Linha orgânico -->
+            <path id="c-org-line" d="M40,229 C80,227 120,220 165,207 C208,194 255,174 298,146 C343,117 383,82 420,45" fill="none" stroke="#4caf64" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="850" stroke-dashoffset="850"/>
+            <!-- Ponto final -->
+            <circle id="c-dot"  cx="420" cy="45" r="5"  fill="#4caf64" opacity="0"/>
+            <circle id="c-ring" cx="420" cy="45" r="10" fill="none" stroke="rgba(76,175,100,.3)" stroke-width="1.5" opacity="0"/>
+            <!-- Label orgânico -->
+            <g id="c-lbl" opacity="0">
+              <rect x="300" y="26" width="116" height="20" rx="4" fill="rgba(76,175,100,.12)" stroke="rgba(76,175,100,.3)" stroke-width="1"/>
+              <text x="308" y="40" fill="#4caf64" font-size="8.5" font-weight="600" font-family="DM Sans,sans-serif">SEO orgânico ↑ 340%</text>
+            </g>
+            <!-- Label pago -->
+            <g id="c-lbl2" opacity="0">
+              <rect x="100" y="133" width="112" height="20" rx="4" fill="rgba(220,80,60,.08)" stroke="rgba(200,80,60,.2)" stroke-width="1"/>
+              <text x="108" y="147" fill="rgba(210,110,90,1)" font-size="8.5" font-weight="600" font-family="DM Sans,sans-serif">Tráfego pago — cessa</text>
+            </g>
+            <defs>
+              <linearGradient id="orgGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="rgba(76,175,100,.2)"/>
+                <stop offset="100%" stop-color="rgba(76,175,100,.0)"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          <!-- Stats row -->
+          <div class="dash-stats">
+            <div class="dash-stat">
+              <span class="ds-val" id="ds1">0%</span>
+              <span class="ds-lbl">Crescimento</span>
+            </div>
+            <div class="dash-stat-sep" aria-hidden="true"></div>
+            <div class="dash-stat">
+              <span class="ds-val" id="ds2">0d</span>
+              <span class="ds-lbl">Para citação IA</span>
+            </div>
+            <div class="dash-stat-sep" aria-hidden="true"></div>
+            <div class="dash-stat">
+              <span class="ds-val" id="ds3">0+</span>
+              <span class="ds-lbl">Posições top 3</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Floating badge -->
+      <div class="float-badge" id="float-badge">
+        <span class="fb-icon" aria-hidden="true">✓</span>
+        <span>Citado pelo ChatGPT em 90 dias</span>
+      </div>
     </div>
   </div>
 
-  <div class="hero-divider" id="hero-divider" aria-hidden="true"></div>
-
-  <!-- Ticker -->
+  <!-- Ticker strip -->
   <div class="hero-ticker" aria-label="Empresas que confiam no método">
     <div class="ticker-inner">
-      <span class="ticker-lbl">Confiam no método</span>
-      <div class="ticker-sep" aria-hidden="true"></div>
-      <div class="ticker-track-wrap">
-        <div class="ticker-track">
+      <span class="ticker-label">Confiam no método</span>
+      <div class="ticker-line" aria-hidden="true"></div>
+      <div class="ticker-wrap">
+        <div class="ticker-track t-track-1">
           {['HunterHunter','7+ Vacations','Global Electronics','Sax Trading','Prime Vacations',
-            'HunterHunter','7+ Vacations','Global Electronics','Sax Trading','Prime Vacations'].map(n => (
+            'HunterHunter','7+ Vacations','Global Electronics','Sax Trading','Prime Vacations'].map(n=>(
             <span class="ticker-item">{n}</span>
           ))}
         </div>
@@ -126,118 +202,142 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 2 — STATEMENT
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 2 — STATEMENT PIN (word reveal)
+     ══════════════════════════════════════════════════════════ -->
 <section class="statement-section" id="statement">
-  <div class="wrap statement-grid">
-    <div class="statement-bar" aria-hidden="true"></div>
-    <div>
-      <p class="eyebrow">POR QUE A ORGANUM</p>
-      <h2 class="statement-h2" id="stmt-h2">
-        Nenhuma agência brasileira entrega<br>
-        GEO sistematicamente.<br>
-        <span class="green-text">Nós entregamos — e provamos com dados.</span>
+  <div class="statement-pin" id="statement-pin">
+    <div class="wrap">
+      <p class="stmt-eyebrow">POR QUE A ORGANUM</p>
+      <h2 class="stmt-h2" id="stmt-h2" aria-label="Nenhuma agência brasileira entrega GEO sistematicamente. Nós entregamos — e provamos com dados.">
+        <span class="w">Nenhuma</span>
+        <span class="w">agência</span>
+        <span class="w">brasileira</span>
+        <span class="w">entrega</span>
+        <span class="w wg">GEO</span>
+        <span class="w wg">sistematicamente.</span>
+        <br>
+        <span class="w">Nós</span>
+        <span class="w">entregamos</span>
+        <span class="w">—</span>
+        <span class="w">e</span>
+        <span class="w">provamos</span>
+        <span class="w">com</span>
+        <span class="w wg">dados.</span>
       </h2>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 3 — MÉTRICAS
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 3 — MÉTRICAS (glassmorphism cards)
+     ══════════════════════════════════════════════════════════ -->
 <section class="metrics-section" id="metrics">
   <div class="wrap metrics-grid">
     {[
-      { val: 5,   sfx: '',  lbl: 'Camadas do método',    id: 'm0' },
-      { val: 90,  sfx: 'd', lbl: 'Para citação por IA',  id: 'm1' },
-      { val: 340, sfx: '%', lbl: 'Crescimento orgânico', id: 'm2' },
-      { val: 48,  sfx: 'h', lbl: 'Para o diagnóstico',  id: 'm3' },
-    ].map((m, i) => (
-      <div class="metric-item" id={m.id} data-val={m.val} data-sfx={m.sfx} data-di={i}>
-        <span class="metric-num">{m.val}{m.sfx}</span>
-        <span class="metric-lbl">{m.lbl}</span>
+      { val:5,   sfx:'',  lbl:'Camadas do método',    icon:'⬡', id:'m0' },
+      { val:90,  sfx:'d', lbl:'Para citação por IA',  icon:'◎', id:'m1' },
+      { val:340, sfx:'%', lbl:'Crescimento orgânico', icon:'↑', id:'m2' },
+      { val:48,  sfx:'h', lbl:'Para o diagnóstico',   icon:'◷', id:'m3' },
+    ].map((m,i) => (
+      <div class="metric-card glass-card" id={m.id} data-val={m.val} data-sfx={m.sfx} data-di={i}>
+        <span class="mc-icon" aria-hidden="true">{m.icon}</span>
+        <span class="mc-num">{m.val}{m.sfx}</span>
+        <span class="mc-lbl">{m.lbl}</span>
+        <div class="mc-glow" aria-hidden="true"></div>
       </div>
     ))}
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 4 — PROBLEMA
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 4 — PROBLEMA (cards horizontais com pin)
+     ══════════════════════════════════════════════════════════ -->
 <section class="prob-section" id="problema">
-  <div class="wrap">
-    <div class="section-hd scroll-reveal">
-      <p class="eyebrow dark">O PROBLEMA QUE VOCÊ TEM</p>
-      <h2 class="section-h2">Você investe em anúncios e para de crescer<br>quando para de pagar.</h2>
+  <div class="prob-pin" id="prob-pin">
+    <div class="wrap">
+      <div class="prob-hd">
+        <p class="eyebrow dark">O PROBLEMA QUE VOCÊ TEM</p>
+        <h2 class="section-h2">Você investe em anúncios e para de<br>crescer quando para de pagar.</h2>
+      </div>
     </div>
-    <div class="prob-grid" id="prob-grid">
-      {[
-        { icon:'📈', title:'Tráfego pago não escala sem orçamento',               stat:'+340% no CAC em 3 anos' },
-        { icon:'🤖', title:'Seu site não existe para as IAs generativas',           stat:'73% das pesquisas B2B usam IA' },
-        { icon:'🔍', title:'SEO genérico não funciona para B2B',                    stat:'89% dos leads B2B pesquisam antes' },
-        { icon:'🏛️', title:'Sua empresa não é uma entidade reconhecida',            stat:'Entidade = credibilidade automática' },
-        { icon:'⚡', title:'Concorrentes aparecem primeiro nas buscas estratégicas', stat:'78% das decisões B2B começam no Google' },
-        { icon:'🌱', title:'Seu pipeline depende de indicações e rede de contatos', stat:'CAC orgânico cai 70% em 12 meses' },
-      ].map(c => (
-        <div class="prob-card stagger-child">
-          <span class="prob-icon" aria-hidden="true">{c.icon}</span>
-          <h3 class="prob-title">{c.title}</h3>
-          <p  class="prob-stat">{c.stat}</p>
-        </div>
-      ))}
+    <div class="prob-slider-wrap">
+      <div class="prob-track" id="prob-track">
+        {[
+          { icon:'📈', title:'Tráfego pago não escala sem orçamento', stat:'+340% no CAC em 3 anos',
+            desc:'Cada real gasto em anúncios tem retorno decrescente. O canal que gera hoje exige mais amanhã.' },
+          { icon:'🤖', title:'Seu site não existe para as IAs generativas', stat:'73% das pesquisas B2B usam IA',
+            desc:'ChatGPT, Gemini e Perplexity não recomendam empresas que não são entidades verificáveis.' },
+          { icon:'🔍', title:'SEO genérico não funciona para B2B', stat:'89% dos leads B2B pesquisam antes',
+            desc:'SEO de pageviews não gera pipeline. Você precisa de conteúdo calibrado para o ICP correto.' },
+          { icon:'🏛️', title:'Sua empresa não é uma entidade reconhecida', stat:'Entidade = credibilidade automática',
+            desc:'Sem Knowledge Graph, Wikidata e sameAs cruzados, o Google e as IAs ignoram sua marca.' },
+          { icon:'⚡', title:'Concorrentes aparecem primeiro nas buscas estratégicas', stat:'78% das decisões B2B começam no Google',
+            desc:'Posições estratégicas nos momentos de intenção de compra determinam quem fecha o contrato.' },
+          { icon:'🌱', title:'Seu pipeline depende de indicações e rede', stat:'CAC orgânico cai 70% em 12 meses',
+            desc:'Indicações não escalam. O orgânico cresce enquanto você dorme — e não para quando você para.' },
+        ].map((c,i) => (
+          <div class="prob-card glass-card" data-card={i}>
+            <div class="pc-top">
+              <span class="pc-icon" aria-hidden="true">{c.icon}</span>
+              <span class="pc-num">{String(i+1).padStart(2,'0')}</span>
+            </div>
+            <h3 class="pc-title">{c.title}</h3>
+            <p class="pc-stat">{c.stat}</p>
+            <p class="pc-desc">{c.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+    <div class="prob-progress-wrap" aria-hidden="true">
+      <div class="prob-progress-bar"><div class="prob-progress-fill" id="prob-fill"></div></div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      SEÇÃO 5 — IDENTIDADE DE ENTIDADE
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <section class="entidade-section" id="entidade">
   <div class="wrap">
-    <div class="section-hd scroll-reveal">
+    <div class="section-hd reveal-item">
       <p class="eyebrow">IDENTIDADE DE ENTIDADE</p>
-      <h2 class="section-h2 white">O que as IAs precisam para te recomendar</h2>
+      <h2 class="section-h2 white">O que as IAs precisam para<br>te recomendar</h2>
     </div>
-
     <div class="entidade-grid">
-      <div class="ent-card ent-no" id="ent-no">
-        <div class="ent-head">
-          <span class="ent-icon red" aria-hidden="true">✕</span>
-          <span class="ent-label red">Empresa sem entidade</span>
+      <!-- Sem entidade -->
+      <div class="ent-card ent-no glass-card reveal-item" id="ent-no">
+        <div class="ent-hd">
+          <div class="ent-badge ent-badge-red">✕ Sem entidade</div>
         </div>
         <ul class="ent-list">
-          <li><span class="x-icon" aria-hidden="true">✕</span> Sem página na Wikipedia</li>
-          <li><span class="x-icon" aria-hidden="true">✕</span> Sem item no Wikidata</li>
-          <li><span class="x-icon" aria-hidden="true">✕</span> Sem Knowledge Panel no Google</li>
-          <li><span class="x-icon" aria-hidden="true">✕</span> Sem sameAs cruzados</li>
-          <li><span class="x-icon" aria-hidden="true">✕</span> Invisível para ChatGPT e Gemini</li>
-          <li><span class="x-icon" aria-hidden="true">✕</span> Dependente de anúncios para existir</li>
+          {['Sem página na Wikipedia','Sem item no Wikidata','Sem Knowledge Panel','Sem sameAs cruzados','Invisível para ChatGPT e Gemini','Dependente de anúncios para existir'].map(item=>(
+            <li class="ent-item ent-item-no">
+              <span class="ent-x" aria-hidden="true">✕</span>{item}
+            </li>
+          ))}
         </ul>
       </div>
-
-      <div class="ent-card ent-yes" id="ent-yes">
-        <div class="ent-head">
-          <span class="ent-icon green" aria-hidden="true">✓</span>
-          <span class="ent-label green">Com Organum — entidade estruturada</span>
+      <!-- Com Organum -->
+      <div class="ent-card ent-yes glass-card reveal-item" id="ent-yes">
+        <div class="ent-hd">
+          <div class="ent-badge ent-badge-green">✓ Com Organum</div>
         </div>
         <ul class="ent-list">
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Presença verificável no Wikidata</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Knowledge Graph ativo</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> sameAs cruzados LinkedIn, G.Business</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Menções editoriais qualificadas</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Citada por ChatGPT, Gemini, Perplexity</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Pipeline orgânico crescente sem anúncios</li>
+          {['Presença verificável no Wikidata','Knowledge Graph ativo','sameAs cruzados LinkedIn + G.Business','Menções editoriais qualificadas','Citada por ChatGPT, Gemini, Perplexity','Pipeline orgânico crescente sem anúncios'].map(item=>(
+            <li class="ent-item ent-item-yes">
+              <span class="ent-ok" aria-hidden="true">✓</span>{item}
+            </li>
+          ))}
         </ul>
       </div>
     </div>
-
-    <div class="ia-ticker-wrap">
+    <!-- IA ticker -->
+    <div class="ia-ticker reveal-item">
       <span class="ia-lbl">Citada pelas IAs</span>
       <div class="ia-track-wrap">
         <div class="ia-track">
-          {['ChatGPT','Gemini','Perplexity','Copilot','Grok',
-            'ChatGPT','Gemini','Perplexity','Copilot','Grok'].map(ia => (
+          {['ChatGPT','Gemini','Perplexity','Copilot','Grok','ChatGPT','Gemini','Perplexity','Copilot','Grok'].map(ia=>(
             <span class="ia-item">{ia}</span>
           ))}
         </div>
@@ -246,41 +346,42 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      SEÇÃO 6 — MÉTODO 5 CAMADAS
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <section class="metodo-section" id="metodo">
   <div class="wrap">
-    <div class="section-hd scroll-reveal">
+    <div class="section-hd reveal-item">
       <p class="eyebrow dark">O MÉTODO</p>
       <h2 class="section-h2">5 camadas. A ordem importa.</h2>
     </div>
-
-    <div class="accordion" id="accordion">
+    <div class="layers-wrap" id="layers-wrap">
       {[
-        { num:'01', name:'Fundação técnica',       sub:'Core Web Vitals, silos, Schema Markup',            tag:'Base obrigatória',      tc:'tag-base',
-          txt:'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong> É o pré-requisito que a maioria das agências ignora.' },
-        { num:'02', name:'Identidade de entidade', sub:'Knowledge Graph, Wikidata, sameAs cruzados',       tag:'Diferencial Organum',   tc:'tag-diff',
-          txt:'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado, menções cruzadas. Sem isso, o ChatGPT não te recomenda — independente do seu conteúdo.' },
-        { num:'03', name:'Conteúdo de autoridade', sub:'Clusters semânticos por ICP, E-E-A-T profundo',   tag:'Fonte para IA',         tc:'tag-geo',
-          txt:'Artigos de 2.000+ palavras organizados em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.' },
-        { num:'04', name:'GEO + AEO',              sub:'ChatGPT, Gemini, Perplexity, featured snippets',  tag:'Ninguém entrega isso',  tc:'tag-geo',
-          txt:'<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Answer Engine Optimization para featured snippets e busca por voz. Nenhuma agência brasileira entrega isso sistematicamente.' },
-        { num:'05', name:'Digital PR',             sub:'Link building editorial, assessoria de imprensa digital', tag:'Autoridade externa', tc:'tag-base',
-          txt:'Link building editorial de qualidade em portais de nicho B2B. Assessoria de imprensa digital. <strong>Domain Authority crescente mês a mês.</strong> Cada menção externa reforça a entidade e alimenta as Camadas 02 e 04.' },
-      ].map((l, i) => (
-        <div class="acc-item stagger-child" id={`acc-${i}`}>
-          <button class="acc-hd" data-idx={i} aria-expanded="false" aria-controls={`acc-body-${i}`}>
-            <span class="acc-num">{l.num}</span>
-            <span class="acc-info">
-              <span class="acc-name">{l.name}</span>
-              <span class="acc-sub">{l.sub}</span>
+        { num:'01', name:'Fundação técnica',       sub:'Core Web Vitals · Silos · Schema Markup',           tag:'Base obrigatória', tc:'tg-base',
+          txt:'Core Web Vitals perfeitos, arquitetura de silos semânticos, crawl budget otimizado e Schema Markup completo em JSON-LD. <strong>Sem fundação técnica, as outras 4 camadas não funcionam.</strong>' },
+        { num:'02', name:'Identidade de entidade', sub:'Knowledge Graph · Wikidata · sameAs',               tag:'Diferencial Organum', tc:'tg-diff',
+          txt:'Construímos sua empresa como <strong>entidade verificável pelo Google e pelas IAs</strong>: Knowledge Graph, Wikidata, LinkedIn estruturado. Sem isso, o ChatGPT não te recomenda.' },
+        { num:'03', name:'Conteúdo de autoridade', sub:'Clusters por ICP · E-E-A-T profundo',               tag:'Fonte para IA', tc:'tg-geo',
+          txt:'Artigos de 2.000+ palavras em clusters semânticos por ICP. <strong>E-E-A-T profundo</strong> documentado. Conteúdo que serve como fonte primária para IAs generativas.' },
+        { num:'04', name:'GEO + AEO',              sub:'ChatGPT · Gemini · Perplexity · Featured Snippets', tag:'Ninguém entrega isso', tc:'tg-geo',
+          txt:'<strong>Generative Engine Optimization</strong>: otimização para ser citado por ChatGPT, Gemini, Perplexity, Copilot e Grok. Nenhuma agência brasileira entrega isso sistematicamente.' },
+        { num:'05', name:'Digital PR',             sub:'Link building editorial · Assessoria digital',      tag:'Autoridade externa', tc:'tg-base',
+          txt:'Link building editorial em portais de nicho B2B. <strong>Domain Authority crescente mês a mês.</strong> Cada menção reforça a entidade e alimenta as Camadas 02 e 04.' },
+      ].map((l,i) => (
+        <div class="layer-item reveal-item" id={`layer-${i}`}>
+          <button class="layer-btn" data-idx={i} aria-expanded="false" aria-controls={`lb-${i}`}>
+            <span class="layer-num">{l.num}</span>
+            <span class="layer-info">
+              <span class="layer-name">{l.name}</span>
+              <span class="layer-sub">{l.sub}</span>
             </span>
-            <span class={`acc-tag ${l.tc}`}>{l.tag}</span>
-            <span class="acc-arr" aria-hidden="true">+</span>
+            <span class={`layer-tag ${l.tc}`}>{l.tag}</span>
+            <span class="layer-arr" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 7.5l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
           </button>
-          <div class="acc-body" id={`acc-body-${i}`} style="height:0;overflow:hidden;">
-            <div class="acc-inner" set:html={l.txt} />
+          <div class="layer-body" id={`lb-${i}`} style="height:0;overflow:hidden;">
+            <div class="layer-inner" set:html={l.txt}/>
           </div>
         </div>
       ))}
@@ -288,257 +389,198 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      SEÇÃO 7 — DIFERENCIAL
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <section class="diff-section" id="diferencial">
   <div class="wrap">
-    <div class="section-hd scroll-reveal">
+    <div class="section-hd reveal-item">
       <p class="eyebrow">COMPARATIVO</p>
       <h2 class="section-h2 white">O que nenhuma outra agência entrega<br>— e nós entregamos.</h2>
     </div>
-
     <div class="diff-grid">
-      <div class="diff-col diff-no" id="diff-no">
+      <div class="diff-col diff-no glass-card reveal-item" id="diff-no">
         <div class="diff-col-hd">
-          <span aria-hidden="true" style="color:rgba(220,80,60,.6)">✕</span>
-          <span class="diff-col-title">Agência genérica</span>
+          <span class="diff-x" aria-hidden="true">✕</span>
+          <span class="diff-title">Agência genérica</span>
         </div>
         <ul class="diff-list">
-          <li class="di-no"><span aria-hidden="true">✕</span> SEO técnico básico sem estratégia</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Conteúdo genérico sem ICP definido</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Relatórios de pageviews, não de pipeline</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Ignora GEO e citação por IA</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Não constrói identidade de entidade</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Sem Digital PR editorial</li>
-          <li class="di-no"><span aria-hidden="true">✕</span> Resultados param quando você para de pagar</li>
+          {['SEO técnico básico sem estratégia','Conteúdo genérico sem ICP definido','Relatórios de pageviews, não de pipeline','Ignora GEO e citação por IA','Não constrói identidade de entidade','Sem Digital PR editorial','Resultados param quando você para de pagar'].map(t=>(
+            <li class="di di-no"><span aria-hidden="true">✕</span>{t}</li>
+          ))}
         </ul>
       </div>
-
-      <div class="diff-col diff-yes" id="diff-yes">
+      <div class="diff-col diff-yes glass-card reveal-item" id="diff-yes">
         <div class="diff-col-hd">
-          <span aria-hidden="true" style="color:var(--g400)">✓</span>
-          <span class="diff-col-title" style="color:var(--g400)">Organum</span>
+          <span class="diff-ok" aria-hidden="true">✓</span>
+          <span class="diff-title green-title">Organum</span>
         </div>
         <ul class="diff-list">
-          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>5 camadas integradas</strong> com foco em pipeline</li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> Conteúdo calibrado para o <strong>ICP exato</strong></li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> Relatórios de <strong>leads e oportunidades</strong></li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>GEO sistematizado</strong> — único no Brasil</li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> <strong>Entidade digital</strong> verificável e citável</li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> Link building <strong>editorial de alta qualidade</strong></li>
-          <li class="di-yes"><span aria-hidden="true">✓</span> Ativo orgânico que <strong>cresce mês a mês</strong></li>
+          {[['5 camadas integradas','com foco em pipeline'],['Conteúdo calibrado para o','ICP exato'],['Relatórios de','leads e oportunidades'],['GEO sistematizado','único no Brasil'],['Entidade digital','verificável e citável'],['Link building','editorial de alta qualidade'],['Ativo orgânico que','cresce mês a mês']].map(([a,b])=>(
+            <li class="di di-yes"><span aria-hidden="true">✓</span><span><strong>{a}</strong> {b}</span></li>
+          ))}
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      SEÇÃO 8 — DORES INTERATIVAS
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <section class="dores-section" id="dores">
   <div class="wrap">
-    <div class="section-hd scroll-reveal">
+    <div class="section-hd reveal-item">
       <p class="eyebrow">RECONHECE?</p>
       <h2 class="section-h2 white">Reconhece alguma dessas situações?</h2>
     </div>
-
     <div class="dores-layout">
       <div class="dores-btns" id="dores-btns">
         {[
           { q:'"Meu site aparece no Google mas não gera leads qualificados."',
             a:'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
           { q:'"Quando paro os anúncios, o pipeline seca."',
-            a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
+            a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> — permanentemente.' },
           { q:'"Meu concorrente aparece no ChatGPT. Eu não."',
             a:'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
           { q:'"Já investi em SEO antes e nunca funcionou."',
-            a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
+            a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews.' },
           { q:'"Minha empresa não é citada pelas IAs."',
             a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
           { q:'"Quero crescer sem depender de tráfego pago."',
-            a:'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
-        ].map((d, i) => (
+            a:'Esse é exatamente o perfil que servimos. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
+        ].map((d,i) => (
           <div class="dor-wrap">
-            <button class={`dor-btn${i===0?' active':''}`} data-i={i}
-                    aria-expanded={i===0?'true':'false'} aria-controls={`dor-inline-${i}`}>
-              {d.q}<span class="dor-arr" aria-hidden="true">→</span>
+            <button class={`dor-btn reveal-item${i===0?' active':''}`} data-i={i}
+                    aria-expanded={i===0?'true':'false'} aria-controls={`dinl-${i}`}>
+              <span class="dor-q-text">{d.q}</span>
+              <span class="dor-arr" aria-hidden="true">→</span>
             </button>
-            <div class="dor-inline" id={`dor-inline-${i}`}
+            <div class="dor-inline" id={`dinl-${i}`}
                  aria-hidden={i===0?'false':'true'}
                  style={i===0?'':'display:none'} set:html={d.a}/>
           </div>
         ))}
       </div>
-
-      <div class="dor-box" id="dor-box" aria-live="polite">
-        <p class="dor-box-q" id="dor-q">"Meu site aparece no Google mas não gera leads qualificados."</p>
-        <p class="dor-box-a" id="dor-a">Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.</p>
-        <a href="/auditoria-gratuita" class="dor-link">Solicitar diagnóstico gratuito &rarr;</a>
+      <div class="dor-panel glass-card" id="dor-panel">
+        <div class="dor-panel-icon" aria-hidden="true">💡</div>
+        <p class="dor-panel-q" id="dpq">"Meu site aparece no Google mas não gera leads qualificados."</p>
+        <p class="dor-panel-a" id="dpa">Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.</p>
+        <a href="/auditoria-gratuita" class="dor-cta">Quero resolver isso →</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 9 — PARA QUEM É
-     ════════════════════════════════════════════ -->
-<section class="icp-section" id="para-quem">
-  <div class="wrap">
-    <div class="section-hd scroll-reveal">
-      <p class="eyebrow dark">PERFIL IDEAL</p>
-      <h2 class="section-h2">Para quem é o Método ORGANUM?</h2>
-    </div>
-
-    <div class="icp-grid">
-      <div class="scroll-reveal">
-        <p class="icp-desc">Atendemos empresas B2B com ciclo de venda longo, ticket alto e múltiplos decisores — onde a credibilidade orgânica converte mais que qualquer anúncio.</p>
-        <ul class="icp-list">
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Consultoras e escritórios B2B</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> SaaS com ciclo enterprise</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Distribuidoras e indústrias</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> E-commerce acima de R$500k/ano</li>
-          <li><span class="ok-icon" aria-hidden="true">✓</span> Negócios que querem reduzir dependência de anúncios</li>
-        </ul>
-        <a href="/auditoria-gratuita" class="btn-primary" style="margin-top:2rem;display:inline-flex;">Quero ser avaliado &rarr;</a>
-      </div>
-
-      <div class="scroll-reveal">
-        <p class="table-title">Custo por lead ao longo de 12 meses</p>
-        <table class="icp-table" aria-label="Comparativo custo por lead: tráfego pago vs. orgânico">
-          <thead>
-            <tr>
-              <th scope="col">Período</th>
-              <th scope="col">Tráfego pago</th>
-              <th scope="col" class="th-green">SEO Orgânico</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Mês 1–3</td>  <td>R$ 380/lead</td><td class="td-green">Em construção</td></tr>
-            <tr><td>Mês 4–6</td>  <td>R$ 420/lead</td><td class="td-green">R$ 290/lead</td></tr>
-            <tr><td>Mês 7–9</td>  <td>R$ 490/lead</td><td class="td-green">R$ 180/lead</td></tr>
-            <tr><td>Mês 10–12</td><td>R$ 560/lead</td><td class="td-green">R$ 95/lead</td></tr>
-            <tr class="tr-total"><td>CAC médio anual</td><td>R$ 463/lead</td><td class="td-green">R$ 188/lead</td></tr>
-          </tbody>
-        </table>
-        <p class="table-note">* Baseado em clientes reais. O orgânico não para quando você para de pagar.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════
-     SEÇÃO 10 — CASES
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 9 — CASES
+     ══════════════════════════════════════════════════════════ -->
 <section class="cases-section" id="cases">
   <div class="wrap">
-    <div class="section-hd scroll-reveal">
+    <div class="section-hd reveal-item">
       <p class="eyebrow dark">RESULTADOS REAIS</p>
       <h2 class="section-h2">Cases que provam o método</h2>
     </div>
-
     <div class="cases-grid">
-      <article class="case-card stagger-child" aria-label="Case HunterHunter">
-        <div class="case-hd">
+      <article class="case-card glass-card reveal-item" aria-label="Case HunterHunter">
+        <div class="case-accent" aria-hidden="true"></div>
+        <div class="case-top">
           <span class="case-tag">Headhunting B2B</span>
           <h3 class="case-name">HunterHunter</h3>
           <p class="case-url">hunterhunter.com.br</p>
         </div>
-        <ul class="case-stats">
-          <li><strong class="case-num">47+</strong><span>posições no top 3 do Google</span></li>
-          <li><strong class="case-num">340%</strong><span>crescimento de tráfego orgânico</span></li>
-          <li><strong class="case-num">90d</strong><span>para citação pelo ChatGPT</span></li>
-        </ul>
+        <div class="case-metrics">
+          <div class="cm"><strong class="cm-n">47+</strong><span>posições top 3 Google</span></div>
+          <div class="cm"><strong class="cm-n">340%</strong><span>crescimento orgânico</span></div>
+          <div class="cm"><strong class="cm-n">90d</strong><span>citação pelo ChatGPT</span></div>
+        </div>
         <blockquote class="case-quote">
           "Chegaram leads excelentes esse mês, os melhores com certeza. Me falaram que pesquisaram no ChatGPT."
-          <cite>— Pedro Capizane, CEO da HunterHunter</cite>
+          <cite>— Pedro Capizane, CEO HunterHunter</cite>
         </blockquote>
-        <a href="/cases/hunterhunter" class="case-link">Ver case completo &rarr;</a>
+        <a href="/cases/hunterhunter" class="case-link">Ver case completo →</a>
       </article>
 
-      <article class="case-card stagger-child" aria-label="Case 7+ Vacations">
-        <div class="case-hd">
-          <span class="case-tag">Gestão de mansões · EUA</span>
+      <article class="case-card glass-card reveal-item" aria-label="Case 7+ Vacations">
+        <div class="case-accent" style="background:linear-gradient(135deg,rgba(76,175,100,.3),rgba(46,145,71,.1))" aria-hidden="true"></div>
+        <div class="case-top">
+          <span class="case-tag">Mansões de luxo · EUA</span>
           <h3 class="case-name">7+ Vacations</h3>
           <p class="case-url">7plusvacations.com</p>
         </div>
-        <ul class="case-stats">
-          <li><strong class="case-num">100</strong><span>PageSpeed mobile e desktop</span></li>
-          <li><strong class="case-num">2</strong><span>mercados — PT + EN</span></li>
-          <li><strong class="case-num">Bilíngue</strong><span>SEO PT/EN sistematizado</span></li>
-        </ul>
+        <div class="case-metrics">
+          <div class="cm"><strong class="cm-n">100</strong><span>PageSpeed score</span></div>
+          <div class="cm"><strong class="cm-n">2</strong><span>mercados PT + EN</span></div>
+          <div class="cm"><strong class="cm-n">Bilíngue</strong><span>SEO sistematizado</span></div>
+        </div>
         <blockquote class="case-quote">
-          Presença orgânica estruturada em dois mercados sem duplicação de conteúdo — fundação técnica e entidade desde o dia 1.
+          Presença orgânica estruturada em dois mercados sem duplicação — fundação técnica e entidade desde o dia 1.
           <cite>— Método ORGANUM aplicado</cite>
         </blockquote>
-        <a href="/cases" class="case-link">Ver todos os cases &rarr;</a>
+        <a href="/cases" class="case-link">Ver todos os cases →</a>
       </article>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 11 — FORMULÁRIO GHL
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 10 — FORMULÁRIO GHL
+     ══════════════════════════════════════════════════════════ -->
 <section class="form-section" id="typeform-section">
-  <div class="wrap">
-    <div class="section-hd scroll-reveal">
+  <div class="wrap form-grid">
+    <div class="form-copy reveal-item">
       <p class="eyebrow">DIAGNÓSTICO GRATUITO</p>
-      <h2 class="section-h2 white">Descubra o potencial orgânico do seu<br>site em 48 horas — gratuitamente.</h2>
-      <p class="form-sub">Sem compromisso. Sem pitch de vendas. Um diagnóstico real com dados reais.</p>
+      <h2 class="section-h2 white">Descubra o potencial<br>orgânico do seu site<br>em 48 horas.</h2>
+      <p class="form-sub">Sem compromisso. Sem pitch de vendas.<br>Um diagnóstico real com dados reais.</p>
+      <ul class="form-bullets">
+        <li><span class="fb-ok" aria-hidden="true">✓</span> Análise técnica completa</li>
+        <li><span class="fb-ok" aria-hidden="true">✓</span> Diagnóstico de entidade</li>
+        <li><span class="fb-ok" aria-hidden="true">✓</span> Oportunidades GEO identificadas</li>
+        <li><span class="fb-ok" aria-hidden="true">✓</span> Resultado em 48 horas</li>
+      </ul>
     </div>
-    <div class="form-wrap">
-      <div style="background:#111009;border:1px solid rgba(76,175,100,.15);overflow:hidden;min-height:660px;border-radius:4px;">
-        <iframe
-          src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
-          style="width:100%;height:660px;border:none;display:block;"
-          id="inline-Gpue5KmcF2LTfDXD1Jcf"
-          data-layout="{'id':'INLINE'}"
-          data-trigger-type="alwaysShow"
-          data-trigger-value=""
-          data-activation-type="alwaysActivated"
-          data-activation-value=""
-          data-deactivation-type="neverDeactivate"
-          data-deactivation-value=""
-          data-form-name="Auditoria Gratuita — Organum"
-          data-height="630"
-          data-layout-iframe-id="inline-Gpue5KmcF2LTfDXD1Jcf"
-          data-form-id="Gpue5KmcF2LTfDXD1Jcf"
-          title="Auditoria Gratuita — Organum"
-          loading="lazy"
-        ></iframe>
-      </div>
+    <div class="form-wrap glass-card reveal-item">
+      <iframe
+        src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
+        style="width:100%;height:100%;border:none;border-radius:8px"
+        id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-layout="{'id':'INLINE'}"
+        data-trigger-type="alwaysShow"
+        data-trigger-value=""
+        data-activation-type="alwaysActivated"
+        data-activation-value=""
+        data-deactivation-type="neverDeactivate"
+        data-deactivation-value=""
+        data-form-name="Auditoria Gratuita — Organum"
+        data-height="630"
+        data-layout-iframe-id="inline-Gpue5KmcF2LTfDXD1Jcf"
+        data-form-id="Gpue5KmcF2LTfDXD1Jcf"
+        title="Auditoria Gratuita — Organum"
+        loading="lazy"
+      ></iframe>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     SEÇÃO 12 — FAQ
-     ════════════════════════════════════════════ -->
+<!-- ══════════════════════════════════════════════════════════
+     SEÇÃO 11 — FAQ
+     ══════════════════════════════════════════════════════════ -->
 <section class="faq-section" id="faq">
-  <div class="wrap faq-wrap">
-    <div class="section-hd scroll-reveal">
+  <div class="wrap faq-inner">
+    <div class="section-hd reveal-item">
       <p class="eyebrow dark">PERGUNTAS FREQUENTES</p>
       <h2 class="section-h2">Dúvidas comuns</h2>
     </div>
-
     <div class="faq-list" id="faq-list">
       {[
-        { q:'O que é o Método ORGANUM?',
-          a:'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
-        { q:'Quanto tempo leva para ver resultado?',
-          a:'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
-        { q:'Para quem é a Organum?',
-          a:'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
-        { q:'Vocês atendem fora de Recife?',
-          a:'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
-        { q:'O que é GEO — Generative Engine Optimization?',
-          a:'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
-        { q:'Qual a diferença entre SEO B2B e SEO tradicional?',
-          a:'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados e oportunidades geradas — não em pageviews.' },
-      ].map((f, i) => (
-        <details class="faq-item" id={`faq-${i}`}>
+        { q:'O que é o Método ORGANUM?', a:'Uma abordagem em 5 camadas — fundação técnica, identidade de entidade, conteúdo, GEO/AEO e Digital PR — que transforma empresas B2B em autoridades no Google e nas IAs.' },
+        { q:'Quanto tempo leva para ver resultado?', a:'Resultados técnicos em 2–4 semanas. Tráfego orgânico consistente em 3–6 meses. Citações por IAs em 4–8 semanas para marcas com presença digital mínima.' },
+        { q:'Para quem é a Organum?', a:'Empresas B2B (consultoria, SaaS, distribuidora, indústria) e e-commerce acima de R$500k/ano que querem crescer sem depender de tráfego pago.' },
+        { q:'Vocês atendem fora de Recife?', a:'Sim. Atendemos todo o Brasil e internacionalmente — temos cases bilíngues PT/EN para operações nos EUA.' },
+        { q:'O que é GEO — Generative Engine Optimization?', a:'É a otimização para ser citado pelas IAs generativas como ChatGPT, Gemini e Perplexity. O objetivo não é ranquear no Google — é ser a resposta que as IAs entregam.' },
+        { q:'Qual a diferença entre SEO B2B e SEO tradicional?', a:'SEO B2B foca em pipeline, não em tráfego. O sucesso se mede em leads qualificados — não em pageviews.' },
+      ].map((f,i) => (
+        <details class="faq-item reveal-item" id={`faq-${i}`}>
           <summary class="faq-q">{f.q}<span class="faq-arr" aria-hidden="true">+</span></summary>
           <p class="faq-a">{f.a}</p>
         </details>
@@ -547,275 +589,318 @@ const websiteSchema = {
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════
-     FONTES — non-blocking
-     ════════════════════════════════════════════ -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<!-- ══════════════════════════════════════════════════════════
+     FONTES
+     ══════════════════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'"/>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      LIBS CDN — síncronas, ordem garantida
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <script is:inline src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      SCRIPT PRINCIPAL
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <script is:inline>
 (function(){
 'use strict';
 
-/* ─── PRÉ-LOADER (puro CSS/JS, sem GSAP) ─────────────────────────────── */
-var PL  = document.getElementById('pl');
+/* ─── CURSOR ──────────────────────────────────────────────────────────── */
+var curDot  = document.getElementById('cur-dot');
+var curRing = document.getElementById('cur-ring');
+var mouseX=0, mouseY=0, ringX=0, ringY=0;
+
+document.addEventListener('mousemove', function(e){
+  mouseX = e.clientX; mouseY = e.clientY;
+  if(curDot){ curDot.style.transform = 'translate('+(mouseX-3)+'px,'+(mouseY-3)+'px)'; }
+});
+
+function lerpCursor(){
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  if(curRing) curRing.style.transform = 'translate('+(ringX-16)+'px,'+(ringY-16)+'px)';
+  requestAnimationFrame(lerpCursor);
+}
+lerpCursor();
+
+document.querySelectorAll('a,button').forEach(function(el){
+  el.addEventListener('mouseenter', function(){ if(curRing) curRing.classList.add('expand'); });
+  el.addEventListener('mouseleave', function(){ if(curRing) curRing.classList.remove('expand'); });
+});
+
+/* ─── PRÉ-LOADER ──────────────────────────────────────────────────────── */
+var PL  = document.getElementById('preloader');
 var PLO = document.getElementById('pl-logo');
+var PLB = document.getElementById('pl-bar');
 
 function hidePL(cb){
-  if(!PL) { cb(); return; }
+  if(!PL){ cb(); return; }
   document.body.style.overflow = 'hidden';
 
-  // 200ms silêncio → logo emerge
+  // Barra de progresso
+  if(PLB){
+    PLB.style.transition = 'width 1.0s cubic-bezier(.16,1,.3,1)';
+    setTimeout(function(){ PLB.style.width='100%'; }, 100);
+  }
+
+  // Logo emerge após 200ms
   setTimeout(function(){
-    PLO.style.opacity       = '1';
-    PLO.style.letterSpacing = '-0.02em';
-
-    // 1000ms logo visível → sobe e some
+    if(PLO){
+      PLO.style.opacity = '1';
+      PLO.style.letterSpacing = '-0.02em';
+    }
+    // Logo sobe e some após 1.2s total
     setTimeout(function(){
-      PLO.style.opacity   = '0';
-      PLO.style.transform = 'translateY(-80px)';
-
+      if(PLO){
+        PLO.style.opacity = '0';
+        PLO.style.transform = 'translateY(-100px) scale(.9)';
+      }
       setTimeout(function(){
-        PL.style.opacity        = '0';
-        PL.style.pointerEvents  = 'none';
+        if(PL){
+          PL.style.opacity = '0';
+          PL.style.pointerEvents = 'none';
+        }
         document.body.style.overflow = '';
-
         setTimeout(function(){
-          PL.style.display = 'none';
+          if(PL) PL.style.display = 'none';
           cb();
-        }, 350);
+        }, 400);
       }, 500);
     }, 1000);
   }, 200);
 }
 
-/* ─── Helpers ─────────────────────────────────────────────────────────── */
-function q(sel){ return document.querySelector(sel); }
-function qa(sel){ return Array.from(document.querySelectorAll(sel)); }
+/* ─── HELPERS ─────────────────────────────────────────────────────────── */
+function q(s){ return document.querySelector(s); }
+function qa(s){ return Array.from(document.querySelectorAll(s)); }
 
-/* ─── GSAP + Lenis init ──────────────────────────────────────────────── */
+/* ─── MAIN ─────────────────────────────────────────────────────────────── */
 function initCine(){
-  // Verificar dependências
-  if(typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined'){
-    console.warn('ORGANUM: GSAP não carregou — conteúdo permanece visível');
-    return;
-  }
-
+  if(typeof gsap === 'undefined'){ return; }
   gsap.registerPlugin(ScrollTrigger);
 
   /* ── Lenis ──────────────────────────────────────────────────────────── */
-  var lenisOk = false;
-  var lenis;
-
-  try {
-    var LenisClass = window.Lenis || (typeof Lenis !== 'undefined' ? Lenis : null);
-    if(LenisClass){
-      lenis = new LenisClass({
-        duration: 1.4,
-        easing: function(t){ return Math.min(1, 1.001 - Math.pow(2, -10*t)); },
-        orientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 0.8,
-        smoothTouch: false,
-      });
+  try{
+    var LC = window.Lenis || (typeof Lenis!=='undefined'?Lenis:null);
+    if(LC){
+      var lenis = new LC({ duration:1.4, easing:function(t){return Math.min(1,1.001-Math.pow(2,-10*t));}, smoothWheel:true, wheelMultiplier:0.85, smoothTouch:false });
       lenis.on('scroll', ScrollTrigger.update);
-      function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
-      requestAnimationFrame(raf);
-      lenisOk = true;
+      function rf(t){ lenis.raf(t); requestAnimationFrame(rf); }
+      requestAnimationFrame(rf);
     }
-  } catch(e){ console.warn('Lenis error:', e); }
+  }catch(e){}
 
   /* ── HERO ENTRANCE ──────────────────────────────────────────────────── */
   var els = {
-    eye:  q('#h-eye'),
-    hl1:  q('#hl1'),
-    hl2:  q('#hl2'),
-    hl3:  q('#hl3'),
-    hl4:  q('#hl4'),
-    sub:  q('#h-sub'),
-    ctas: q('#h-ctas'),
-    div:  q('#hero-divider'),
-    chart:q('#hero-chart-wrap'),
+    badge: q('#h-badge'), hl1:q('#hl1'), hl2:q('#hl2'), hl3:q('#hl3'), hl4:q('#hl4'),
+    sub:q('#h-sub'), ctas:q('#h-ctas'), proof:q('#h-proof'),
+    dashboard:q('#hero-dashboard'), floatBadge:q('#float-badge'),
   };
 
-  // Setar estado inicial ANTES de animar (não via CSS — assim sempre visível sem JS)
-  gsap.set([els.eye,els.hl1,els.hl2,els.hl3,els.hl4,els.sub,els.ctas], { opacity:0, y:40 });
-  gsap.set(els.div,  { scaleX:0, transformOrigin:'left center' });
-  gsap.set(els.chart,{ opacity:0, x:50 });
+  gsap.set([els.badge,els.hl1,els.hl2,els.hl3,els.hl4,els.sub,els.ctas,els.proof], {opacity:0,y:40});
+  gsap.set(els.dashboard, {opacity:0,x:60,rotateY:8});
+  gsap.set(els.floatBadge, {opacity:0,y:20,scale:.9});
 
-  var heroTl = gsap.timeline({ defaults:{ ease:'power3.out' } });
-  heroTl
-    .to(els.eye,  { opacity:1, y:0, duration:0.8 }, 0.1)
-    .to(els.hl1,  { opacity:1, y:0, duration:1.0 }, 0.2)
-    .to(els.hl2,  { opacity:1, y:0, duration:1.0 }, 0.35)
-    .to(els.hl3,  { opacity:1, y:0, duration:1.0 }, 0.5)
-    .to(els.hl4,  { opacity:1, y:0, duration:0.9 }, 0.5)
-    .to(els.sub,  { opacity:1, y:0, duration:0.8 }, 0.7)
-    .to(els.ctas, { opacity:1, y:0, duration:0.7 }, 0.9)
-    .to(els.div,  { scaleX:1, duration:1.4, ease:'power2.inOut' }, 1.0)
-    .to(els.chart,{ opacity:1, x:0, duration:1.2 }, 0.4)
-    .add(animChart, '-=0.4');
+  var htl = gsap.timeline({defaults:{ease:'power3.out'}});
+  htl
+    .to(els.badge,     {opacity:1,y:0,duration:.7}, 0.1)
+    .to(els.hl1,       {opacity:1,y:0,duration:1.0}, 0.2)
+    .to(els.hl2,       {opacity:1,y:0,duration:1.0}, 0.32)
+    .to(els.hl3,       {opacity:1,y:0,duration:1.0}, 0.44)
+    .to(els.hl4,       {opacity:1,y:0,duration:.9},  0.44)
+    .to(els.sub,       {opacity:1,y:0,duration:.8},  0.62)
+    .to(els.ctas,      {opacity:1,y:0,duration:.7},  0.78)
+    .to(els.proof,     {opacity:1,y:0,duration:.6},  0.90)
+    .to(els.dashboard, {opacity:1,x:0,rotateY:0,duration:1.2,ease:'power2.out'}, 0.3)
+    .to(els.floatBadge,{opacity:1,y:0,scale:1,duration:.6,ease:'back.out(1.7)'}, 1.1)
+    .add(function(){ animChart(); animDashStats(); });
 
   /* ── SVG CHART ──────────────────────────────────────────────────────── */
   function animChart(){
-    var orgLine  = q('#c-org-line');
-    var paidLine = q('#c-paid-line');
-    var orgArea  = q('#c-org-area');
-    var paidArea = q('#c-paid-area');
-    var dot      = q('#c-dot');
-    var ring     = q('#c-ring');
-    var lblOrg   = q('#c-lbl-org');
-    var lblPaid  = q('#c-lbl-paid');
-    if(!orgLine) return;
-
-    gsap.timeline({ delay:0.1 })
-      .to(orgLine,  { strokeDashoffset:0, duration:1.8, ease:'power2.inOut' })
-      .to(paidLine, { strokeDashoffset:0, duration:1.4, ease:'power2.inOut' }, '-=1.4')
-      .to([orgArea,paidArea], { opacity:1, duration:0.6 }, '-=0.8')
-      .to([dot,ring,lblOrg,lblPaid], { opacity:1, duration:0.5, stagger:0.12 });
+    var ol=q('#c-org-line'), pl=q('#c-paid-line'), oa=q('#c-org-area'), pa=q('#c-paid-area');
+    var dot=q('#c-dot'), ring=q('#c-ring'), lbl=q('#c-lbl'), lbl2=q('#c-lbl2');
+    if(!ol) return;
+    gsap.timeline({delay:.2})
+      .to(ol,  {strokeDashoffset:0, duration:1.8, ease:'power2.inOut'})
+      .to(pl,  {strokeDashoffset:0, duration:1.4, ease:'power2.inOut'}, '-=1.4')
+      .to([oa,pa], {opacity:1, duration:.6}, '-=.8')
+      .to([dot,ring,lbl,lbl2], {opacity:1, duration:.4, stagger:.1});
   }
 
-  /* ── STATEMENT CLIP REVEAL ──────────────────────────────────────────── */
-  var stH2 = q('#stmt-h2');
-  if(stH2){
-    gsap.set(stH2, { clipPath:'inset(0 100% 0 0)' });
-    gsap.to(stH2, {
-      clipPath:'inset(0 0% 0 0)', duration:1.4, ease:'power3.inOut',
-      scrollTrigger:{ trigger:stH2, start:'top 82%', toggleActions:'play none none none' }
+  /* ── DASHBOARD STATS COUNTER ────────────────────────────────────────── */
+  function animDashStats(){
+    var stats=[{el:q('#ds1'),from:0,to:340,sfx:'%'},{el:q('#ds2'),from:0,to:90,sfx:'d'},{el:q('#ds3'),from:0,to:47,sfx:'+'}];
+    stats.forEach(function(s,i){
+      setTimeout(function(){
+        if(!s.el) return;
+        var start=null, dur=1500;
+        function step(ts){
+          if(!start) start=ts;
+          var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
+          s.el.textContent=Math.round(e*s.to)+s.sfx;
+          if(p<1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }, i*200+600);
     });
   }
 
-  /* ── METRICS COUNTER ────────────────────────────────────────────────── */
-  qa('.metric-item').forEach(function(item){
-    var numEl  = item.querySelector('.metric-num');
-    var target = parseInt(item.dataset.val||'0',10);
-    var suffix = item.dataset.sfx||'';
-    var delay  = parseInt(item.dataset.di||'0',10) * 0.15;
+  /* ── STATEMENT PIN + WORD REVEAL ────────────────────────────────────── */
+  var words = qa('#stmt-h2 .w');
+  gsap.set(words, {opacity:.15, color:'rgba(255,255,255,.15)'});
 
-    gsap.set(item, { opacity:0, y:50 });
-    gsap.to(item, {
-      opacity:1, y:0, duration:0.9, ease:'power3.out', delay:delay,
-      scrollTrigger:{
-        trigger:item, start:'top 85%', toggleActions:'play none none none',
+  gsap.timeline({
+    scrollTrigger:{
+      trigger:'#statement', start:'top top', end:'+=700', pin:true, scrub:1,
+      pinSpacing:true,
+    }
+  }).to(words, {opacity:1, color:'rgba(255,255,255,1)', duration:.5, stagger:.12, ease:'none'});
+
+  /* ── MÉTRICAS COUNTER ───────────────────────────────────────────────── */
+  qa('.metric-card').forEach(function(card){
+    var numEl = card.querySelector('.mc-num');
+    var target = parseInt(card.dataset.val||'0',10);
+    var suffix = card.dataset.sfx||'';
+    var delay  = parseInt(card.dataset.di||'0',10)*0.15;
+
+    gsap.set(card, {opacity:0, y:50, scale:.96});
+    gsap.to(card, {
+      opacity:1, y:0, scale:1, duration:.9, ease:'power3.out', delay:delay,
+      scrollTrigger:{trigger:card, start:'top 85%', toggleActions:'play none none none',
         onEnter:function(){
-          if(!numEl) return;
-          var start=null, dur=1800;
-          function step(ts){
-            if(!start) start=ts;
-            var p = Math.min((ts-start)/dur,1);
-            var e = 1-Math.pow(1-p,3);
-            numEl.textContent = Math.round(e*target)+suffix;
-            if(p<1) requestAnimationFrame(step);
-          }
-          setTimeout(function(){ requestAnimationFrame(step); }, delay*1000+200);
+          setTimeout(function(){
+            if(!numEl) return;
+            var start=null, dur=1800;
+            function step(ts){
+              if(!start) start=ts;
+              var p=Math.min((ts-start)/dur,1), e=1-Math.pow(1-p,3);
+              numEl.textContent=Math.round(e*target)+suffix;
+              if(p<1) requestAnimationFrame(step);
+            }
+            requestAnimationFrame(step);
+          }, delay*1000+200);
         }
       }
     });
   });
 
-  /* ── SCROLL REVEAL GENÉRICO ─────────────────────────────────────────── */
-  qa('.scroll-reveal').forEach(function(el){
-    gsap.set(el,{ opacity:0, y:50 });
-    gsap.to(el,{
-      opacity:1, y:0, duration:1.0, ease:'power3.out',
-      scrollTrigger:{ trigger:el, start:'top 82%', toggleActions:'play none none none' }
-    });
-  });
+  /* ── PROB CARDS HORIZONTAL PIN ──────────────────────────────────────── */
+  var probTrack = q('#prob-track');
+  var probFill  = q('#prob-fill');
+  var probCards = qa('.prob-card');
 
-  /* ── STAGGER GRUPOS ─────────────────────────────────────────────────── */
-  // Agrupar .stagger-child por pai
-  var groups = {};
-  qa('.stagger-child').forEach(function(el){
-    var key = el.parentElement ? (el.parentElement.id||el.parentElement.className) : 'r';
-    if(!groups[key]) groups[key]=[];
-    groups[key].push(el);
-  });
-  Object.keys(groups).forEach(function(k){
-    var group = groups[k];
-    gsap.set(group,{ opacity:0, y:40 });
-    gsap.to(group,{
-      opacity:1, y:0, duration:0.8, ease:'power3.out', stagger:0.1,
-      scrollTrigger:{ trigger:group[0], start:'top 82%', toggleActions:'play none none none' }
+  if(probTrack && probCards.length){
+    var cardW   = 340 + 24; // width + gap
+    var maxX    = (probCards.length - 2) * cardW;
+
+    ScrollTrigger.create({
+      trigger: '#prob-pin',
+      start: 'top top',
+      end: '+=' + (maxX + 400),
+      pin: true,
+      pinSpacing: true,
+      scrub: 1,
+      onUpdate: function(self){
+        var x = -self.progress * maxX;
+        gsap.set(probTrack, {x:x});
+        if(probFill) probFill.style.width = (self.progress*100)+'%';
+
+        // Card ativo
+        var activeIdx = Math.round(-x / cardW);
+        probCards.forEach(function(c,i){
+          c.classList.toggle('active', i===activeIdx);
+        });
+      }
+    });
+  }
+
+  /* ── REVEAL GENÉRICO ────────────────────────────────────────────────── */
+  qa('.reveal-item').forEach(function(el){
+    gsap.set(el, {opacity:0, y:50});
+    gsap.to(el, {
+      opacity:1, y:0, duration:1.0, ease:'power3.out',
+      scrollTrigger:{trigger:el, start:'top 84%', toggleActions:'play none none none'}
     });
   });
 
   /* ── ENTIDADE CARDS ─────────────────────────────────────────────────── */
-  var entNo  = q('#ent-no');
-  var entYes = q('#ent-yes');
+  var entNo=q('#ent-no'), entYes=q('#ent-yes');
   if(entNo && entYes){
-    gsap.set(entNo,  { opacity:0, x:-60 });
-    gsap.set(entYes, { opacity:0, x:60 });
-    var entST = { trigger:'.entidade-section', start:'top 75%', toggleActions:'play none none none' };
-    gsap.to(entNo,  { opacity:1, x:0, duration:0.9, ease:'power3.out', scrollTrigger:entST });
-    gsap.to(entYes, { opacity:1, x:0, duration:0.9, ease:'power3.out', delay:0.15, scrollTrigger:entST });
+    gsap.set(entNo,  {opacity:0, x:-80});
+    gsap.set(entYes, {opacity:0, x:80});
+    var est={trigger:'.entidade-section', start:'top 78%', toggleActions:'play none none none'};
+    gsap.to(entNo,  {opacity:1,x:0,duration:1.0,ease:'power3.out',scrollTrigger:est});
+    gsap.to(entYes, {opacity:1,x:0,duration:1.0,ease:'power3.out',delay:.15,scrollTrigger:est});
   }
 
-  /* ── DIFERENCIAL COLUNAS ────────────────────────────────────────────── */
-  var dNo  = q('#diff-no');
-  var dYes = q('#diff-yes');
+  /* ── DIFF COLS ──────────────────────────────────────────────────────── */
+  var dNo=q('#diff-no'), dYes=q('#diff-yes');
   if(dNo && dYes){
-    gsap.set(dNo,  { opacity:0, x:-60 });
-    gsap.set(dYes, { opacity:0, x:60 });
-    var dST = { trigger:'.diff-section', start:'top 75%', toggleActions:'play none none none' };
-    gsap.to(dNo,  { opacity:1, x:0, duration:1.0, ease:'power3.out', scrollTrigger:dST });
-    gsap.to(dYes, { opacity:1, x:0, duration:1.0, ease:'power3.out', delay:0.2, scrollTrigger:dST });
+    gsap.set(dNo,  {opacity:0, x:-80});
+    gsap.set(dYes, {opacity:0, x:80});
+    var dst={trigger:'.diff-section', start:'top 78%', toggleActions:'play none none none'};
+    gsap.to(dNo,  {opacity:1,x:0,duration:1.0,ease:'power3.out',scrollTrigger:dst});
+    gsap.to(dYes, {opacity:1,x:0,duration:1.0,ease:'power3.out',delay:.2,scrollTrigger:dst});
+  }
+
+  /* ── PARALLAX HERO ORB ──────────────────────────────────────────────── */
+  var orb1=q('.hero-orb-1'), orb2=q('.hero-orb-2');
+  if(orb1){
+    gsap.to(orb1, {y:-120, ease:'none',
+      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1}});
+  }
+  if(orb2){
+    gsap.to(orb2, {y:-60, ease:'none',
+      scrollTrigger:{trigger:'#hero', start:'top top', end:'bottom top', scrub:1.5}});
   }
 
   /* ── FAQ STAGGER ────────────────────────────────────────────────────── */
-  var faqItems = qa('.faq-item');
-  gsap.set(faqItems, { opacity:0, y:20 });
-  gsap.to(faqItems, {
-    opacity:1, y:0, duration:0.6, ease:'power3.out', stagger:0.08,
-    scrollTrigger:{ trigger:'#faq-list', start:'top 85%', toggleActions:'play none none none' }
-  });
+  var faqItems=qa('.faq-item');
+  gsap.set(faqItems,{opacity:0,y:20});
+  gsap.to(faqItems,{opacity:1,y:0,duration:.6,ease:'power3.out',stagger:.08,
+    scrollTrigger:{trigger:'#faq-list',start:'top 85%',toggleActions:'play none none none'}});
 
 } // end initCine
 
 /* ─── ACCORDION ───────────────────────────────────────────────────────── */
-function initAccordion(){
-  qa('.acc-hd').forEach(function(btn){
+function initAcc(){
+  qa('.layer-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var item   = btn.closest('.acc-item');
-      var body   = item ? item.querySelector('.acc-body') : null;
-      var inner  = body ? body.querySelector('.acc-inner') : null;
-      var arr    = btn.querySelector('.acc-arr');
-      var isOpen = item && item.classList.contains('open');
+      var item  = btn.closest('.layer-item');
+      var body  = item?item.querySelector('.layer-body'):null;
+      var inner = body?body.querySelector('.layer-inner'):null;
+      var arr   = btn.querySelector('.layer-arr');
+      var open  = item&&item.classList.contains('open');
 
-      // Fechar tudo
-      qa('.acc-item').forEach(function(it){
-        var b = it.querySelector('.acc-body');
-        var a = it.querySelector('.acc-arr');
-        var h = it.querySelector('.acc-hd');
+      qa('.layer-item').forEach(function(it){
+        var b=it.querySelector('.layer-body');
+        var a=it.querySelector('.layer-btn');
+        var ar=it.querySelector('.layer-arr');
         it.classList.remove('open');
-        if(h) h.setAttribute('aria-expanded','false');
-        if(a) a.textContent = '+';
-        if(b) b.style.height='0';
+        if(a) a.setAttribute('aria-expanded','false');
+        if(ar) ar.classList.remove('rotated');
+        if(b){
+          if(typeof gsap!=='undefined') gsap.to(b,{height:0,duration:.4,ease:'power2.inOut'});
+          else b.style.height='0';
+        }
       });
 
-      // Abrir se estava fechado
-      if(!isOpen && item && body && inner){
+      if(!open && item && body && inner){
         item.classList.add('open');
         btn.setAttribute('aria-expanded','true');
-        if(arr) arr.textContent = '−';
-
-        if(typeof gsap !== 'undefined'){
+        if(arr) arr.classList.add('rotated');
+        if(typeof gsap!=='undefined'){
           body.style.height='0';
-          gsap.to(body,{ height:inner.scrollHeight, duration:0.45, ease:'power2.out',
-            onComplete:function(){ body.style.height='auto'; } });
+          gsap.to(body,{height:inner.scrollHeight,duration:.45,ease:'power2.out',
+            onComplete:function(){ body.style.height='auto'; }});
         } else {
-          body.style.height = inner.scrollHeight+'px';
+          body.style.height=inner.scrollHeight+'px';
         }
       }
     });
@@ -824,73 +909,48 @@ function initAccordion(){
 
 /* ─── DORES ───────────────────────────────────────────────────────────── */
 function initDores(){
-  var dorData = [
-    { q:'"Meu site aparece no Google mas não gera leads qualificados."',
-      a:'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.' },
-    { q:'"Quando paro os anúncios, o pipeline seca."',
-      a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> mês a mês — permanentemente.' },
-    { q:'"Meu concorrente aparece no ChatGPT. Eu não."',
-      a:'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.' },
-    { q:'"Já investi em SEO antes e nunca funcionou."',
-      a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews ou posições.' },
-    { q:'"Minha empresa não é citada pelas IAs."',
-      a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.' },
-    { q:'"Quero crescer sem depender de tráfego pago."',
-      a:'Esse é exatamente o perfil que o Método ORGANUM serve. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.' },
+  var dorData=[
+    {q:'"Meu site aparece no Google mas não gera leads qualificados."',a:'Tráfego sem intenção de compra. A Camada 03 resolve: <strong>conteúdo que captura o ICP certo</strong> no momento exato da jornada de decisão.'},
+    {q:'"Quando paro os anúncios, o pipeline seca."',a:'Dependência total de paid. O Método ORGANUM constrói <strong>um ativo orgânico que cresce sem custo incremental</strong> — permanentemente.'},
+    {q:'"Meu concorrente aparece no ChatGPT. Eu não."',a:'GEO ausente. A Camada 04 posiciona sua marca como <strong>fonte confiável para as IAs generativas</strong> em 4 a 8 semanas.'},
+    {q:'"Já investi em SEO antes e nunca funcionou."',a:'SEO genérico para B2B falha. O Método é diferente: <strong>5 camadas integradas com foco em pipeline</strong>, não em pageviews.'},
+    {q:'"Minha empresa não é citada pelas IAs."',a:'Entidade digital ausente. A Camada 02 constrói <strong>sua presença verificável no Knowledge Graph</strong> — pré-requisito para citação por IA.'},
+    {q:'"Quero crescer sem depender de tráfego pago."',a:'Esse é exatamente o perfil que servimos. <strong>Pipeline orgânico B2B previsível</strong> — sem anúncios, sem dependência de algoritmo.'},
   ];
 
   qa('.dor-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      var idx = parseInt(btn.dataset.i||'0',10);
+      var idx=parseInt(btn.dataset.i||'0',10);
+      qa('.dor-btn').forEach(function(b){ b.classList.remove('active'); b.setAttribute('aria-expanded','false'); });
+      btn.classList.add('active'); btn.setAttribute('aria-expanded','true');
 
-      qa('.dor-btn').forEach(function(b){
-        b.classList.remove('active');
-        b.setAttribute('aria-expanded','false');
-      });
-      btn.classList.add('active');
-      btn.setAttribute('aria-expanded','true');
-
-      // Desktop
-      var box = q('#dor-box');
-      var qEl = q('#dor-q');
-      var aEl = q('#dor-a');
-      if(box){
-        box.style.opacity='0';
+      var panel=q('#dor-panel'), dpq=q('#dpq'), dpa=q('#dpa');
+      if(panel){
+        panel.style.opacity='0';
         setTimeout(function(){
-          if(qEl) qEl.textContent = dorData[idx].q;
-          if(aEl) aEl.innerHTML  = dorData[idx].a;
-          box.style.transition='opacity .25s';
-          box.style.opacity='1';
-        }, 180);
+          if(dpq) dpq.textContent=dorData[idx].q;
+          if(dpa) dpa.innerHTML=dorData[idx].a;
+          panel.style.transition='opacity .25s'; panel.style.opacity='1';
+        },180);
       }
-
-      // Mobile inline
-      qa('.dor-inline').forEach(function(el){
-        el.style.display='none';
-        el.setAttribute('aria-hidden','true');
-      });
-      var inline = document.getElementById('dor-inline-'+idx);
-      if(inline){
-        inline.style.display='block';
-        inline.setAttribute('aria-hidden','false');
-      }
+      qa('.dor-inline').forEach(function(el){ el.style.display='none'; el.setAttribute('aria-hidden','true'); });
+      var inl=document.getElementById('dinl-'+idx);
+      if(inl){ inl.style.display='block'; inl.setAttribute('aria-hidden','false'); }
     });
   });
 }
 
-/* ─── FAQ ARROW ───────────────────────────────────────────────────────── */
+/* ─── FAQ ─────────────────────────────────────────────────────────────── */
 function initFAQ(){
   qa('.faq-item').forEach(function(d){
-    var arr = d.querySelector('.faq-arr');
-    d.addEventListener('toggle', function(){
-      if(arr) arr.textContent = d.open ? '−' : '+';
-    });
+    var arr=d.querySelector('.faq-arr');
+    d.addEventListener('toggle', function(){ if(arr) arr.textContent=d.open?'−':'+'; });
   });
 }
 
 /* ─── BOOT ────────────────────────────────────────────────────────────── */
 hidePL(function(){
-  initAccordion();
+  initAcc();
   initDores();
   initFAQ();
   initCine();
@@ -901,467 +961,571 @@ hidePL(function(){
 
 <script is:inline src="https://api.ilevex.com.br/js/form_embed.js"></script>
 
-<!-- ════════════════════════════════════════════
+<!-- ══════════════════════════════════════════════════════════
      ESTILOS
-     ════════════════════════════════════════════ -->
+     ══════════════════════════════════════════════════════════ -->
 <style>
-/* ── PRÉ-LOADER ─────────────────────────────────────────────────────────── */
-#pl {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  background: var(--n950, #0c0a08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity .35s ease;
+/* ── RESET LOCAL ──────────────────────────────────────────────────────── */
+html,body { max-width:100vw; overflow-x:hidden; cursor:none; }
+*{ box-sizing:border-box; }
+
+/* ── CURSOR ───────────────────────────────────────────────────────────── */
+#cur-dot {
+  position:fixed; top:0; left:0;
+  width:6px; height:6px; border-radius:50%;
+  background:#4caf64;
+  pointer-events:none; z-index:99999;
+  transform:translate(-50%,-50%);
+  transition:transform .05s;
 }
+#cur-ring {
+  position:fixed; top:0; left:0;
+  width:32px; height:32px; border-radius:50%;
+  border:1.5px solid rgba(76,175,100,.5);
+  pointer-events:none; z-index:99998;
+  transform:translate(-50%,-50%);
+  transition:width .3s, height .3s, border-color .3s;
+}
+#cur-ring.expand { width:48px; height:48px; border-color:rgba(76,175,100,.8); }
+
+/* ── PRÉ-LOADER ───────────────────────────────────────────────────────── */
+#preloader {
+  position:fixed; inset:0; z-index:9999;
+  background:#080806;
+  display:flex; align-items:center; justify-content:center;
+  transition:opacity .4s ease;
+}
+#pl-particles {
+  position:absolute; inset:0; overflow:hidden;
+}
+#pl-center { display:flex; flex-direction:column; align-items:center; gap:2rem; z-index:1; }
 #pl-logo {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  font-weight: 900;
-  color: #fff;
-  letter-spacing: 0.3em;
-  opacity: 0;
-  transform: translateY(0);
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:clamp(2.5rem,5vw,4rem); font-weight:900; color:#fff;
+  letter-spacing:0.3em;
+  opacity:0; transform:translateY(0) scale(1);
   transition:
     opacity .6s cubic-bezier(.16,1,.3,1),
     letter-spacing .6s cubic-bezier(.16,1,.3,1),
     transform .5s cubic-bezier(.4,0,.2,1);
 }
+#pl-bar-wrap { width:160px; height:1px; background:rgba(76,175,100,.15); border-radius:1px; overflow:hidden; }
+#pl-bar      { height:100%; width:0; background:linear-gradient(90deg,#2e9147,#4caf64); border-radius:1px; }
 
-/* ── HERO ────────────────────────────────────────────────────────────────── */
+/* ── GLASS CARD ───────────────────────────────────────────────────────── */
+.glass-card {
+  position:relative; isolation:isolate;
+  background:rgba(255,255,255,.025);
+  border-radius:16px;
+}
+.glass-card::before {
+  content:''; position:absolute; inset:0;
+  padding:1px; border-radius:inherit;
+  background:linear-gradient(135deg,
+    rgba(76,175,100,.35) 0%,
+    rgba(76,175,100,.0)  50%,
+    rgba(76,175,100,.35) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events:none; z-index:1;
+}
+
+/* ── TIPOGRAFIA ───────────────────────────────────────────────────────── */
+.eyebrow {
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--g400,#4caf64); margin-bottom:1rem;
+}
+.eyebrow.dark { color:var(--n400,#a09c92); }
+.section-hd   { margin-bottom:3.5rem; }
+.section-h2   {
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:clamp(2rem,3.5vw,3rem); font-weight:900; line-height:1.1;
+  color:var(--n800,#272420); letter-spacing:-.02em;
+}
+.section-h2.white { color:#fff; }
+.green-text { color:var(--g500,#2e9147); }
+
+/* ── BOTÕES ───────────────────────────────────────────────────────────── */
+.btn-glow {
+  display:inline-flex; align-items:center; gap:.625rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.875rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  padding:.9375rem 2rem; border-radius:8px;
+  background:linear-gradient(135deg,var(--g500,#2e9147),var(--g400,#4caf64));
+  color:#fff; text-decoration:none;
+  box-shadow:0 0 0 0 rgba(76,175,100,0);
+  transition:box-shadow .3s, transform .2s;
+  position:relative; overflow:hidden;
+}
+.btn-glow::after {
+  content:''; position:absolute; inset:-2px;
+  border-radius:inherit;
+  background:linear-gradient(135deg,rgba(76,175,100,.4),rgba(46,145,71,.4));
+  filter:blur(12px); z-index:-1; opacity:0;
+  transition:opacity .3s;
+}
+.btn-glow:hover { transform:translateY(-2px); box-shadow:0 8px 32px rgba(76,175,100,.35); }
+.btn-glow:hover::after { opacity:1; }
+
+.btn-glass {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.875rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+  padding:.9375rem 2rem; border-radius:8px;
+  background:rgba(255,255,255,.05);
+  color:rgba(255,255,255,.8); text-decoration:none;
+  border:1px solid rgba(255,255,255,.12);
+  transition:all .2s;
+}
+.btn-glass:hover { background:rgba(255,255,255,.1); color:#fff; border-color:rgba(255,255,255,.25); }
+
+/* ── PARTÍCULAS ───────────────────────────────────────────────────────── */
+.particles { position:absolute; inset:0; overflow:hidden; pointer-events:none; }
+.particle {
+  position:absolute;
+  width:2px; height:2px; border-radius:50%;
+  background:var(--g400,#4caf64);
+  left:calc(var(--i,0) * 2.5% + 1%);
+  top:calc((var(--i,0) * 7 % 100) * 1%);
+  animation: float-p calc(6s + var(--i,0) * .4s) ease-in-out infinite alternate;
+  animation-delay:calc(var(--i,0) * -.3s);
+  opacity:calc(.1 + (var(--i,0) % 5) * .06);
+}
+@keyframes float-p {
+  0%   { transform:translateY(0) translateX(0) scale(1); }
+  50%  { transform:translateY(-40px) translateX(10px) scale(1.5); opacity:.6; }
+  100% { transform:translateY(-80px) translateX(-5px) scale(.8); opacity:.1; }
+}
+
+/* ── HERO ─────────────────────────────────────────────────────────────── */
 .hero {
-  position: relative;
-  min-height: 100svh;
-  background: var(--n950, #0c0a08);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
+  position:relative; min-height:100svh;
+  background:#080806;
+  display:flex; flex-direction:column; overflow:hidden;
 }
-.hero-grid-bg {
-  position: absolute;
-  inset: 0;
+.hero-bg { position:absolute; inset:0; pointer-events:none; }
+.hero-noise {
+  position:absolute; inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity:.035; mix-blend-mode:overlay;
+}
+.hero-orb {
+  position:absolute; border-radius:50%;
+  filter:blur(100px); pointer-events:none;
+}
+.hero-orb-1 {
+  width:700px; height:700px;
+  background:radial-gradient(circle,rgba(46,145,71,.12) 0%,transparent 70%);
+  top:-150px; left:50%; transform:translateX(-50%);
+}
+.hero-orb-2 {
+  width:400px; height:400px;
+  background:radial-gradient(circle,rgba(76,175,100,.08) 0%,transparent 70%);
+  bottom:10%; right:5%;
+}
+.hero-grid {
+  position:absolute; inset:0;
   background-image:
-    linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none;
-}
-.hero-glow {
-  position: absolute;
-  top: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(46,145,71,.08) 0%, transparent 70%);
-  pointer-events: none;
+    linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black,transparent);
 }
 .hero-inner {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: center;
-  flex: 1;
-  padding-top: clamp(5rem, 12vw, 8rem);
-  padding-bottom: clamp(3rem, 6vw, 5rem);
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem;
+  align-items:center; flex:1;
+  padding-top:clamp(5rem,11vw,8rem); padding-bottom:clamp(3rem,6vw,5rem);
 }
-.hero-copy { color: #fff; }
-.hero-eye {
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .65rem;
-  font-weight: 700;
-  letter-spacing: .18em;
-  text-transform: uppercase;
-  color: var(--n400, #a09c92);
-  margin-bottom: 1.5rem;
+.hero-copy { color:#fff; }
+
+.hero-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.75rem; font-weight:600; letter-spacing:.06em;
+  padding:.4rem 1rem .4rem .6rem; border-radius:100px;
+  background:rgba(76,175,100,.08);
+  border:1px solid rgba(76,175,100,.25);
+  color:var(--g400,#4caf64); margin-bottom:1.75rem;
 }
-.hero-title {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(3.5rem, 6vw, 6rem);
-  font-weight: 900;
-  line-height: .93;
-  letter-spacing: -.03em;
-  color: #fff;
-  margin-bottom: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: .08em;
+.badge-dot {
+  width:6px; height:6px; border-radius:50%; background:var(--g400,#4caf64); flex-shrink:0;
+  animation:pulse-dot 2s ease-in-out infinite;
 }
-.hl { display: block; }
-.hem { font-style: italic; color: var(--g400, #4caf64); font-size: .65em; letter-spacing: -.01em; }
+@keyframes pulse-dot {
+  0%,100% { opacity:.6; transform:scale(.9); }
+  50%     { opacity:1;  transform:scale(1.2); }
+}
+
+.hero-h1 {
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:clamp(3.2rem,5.5vw,6rem); font-weight:900;
+  line-height:.92; letter-spacing:-.03em; color:#fff;
+  margin-bottom:1.5rem;
+  display:flex; flex-direction:column; gap:.06em;
+}
+.h1-l { display:block; }
+.h1-gradient {
+  background:linear-gradient(90deg,#4caf64 0%,#a8e6b8 40%,#2e9147 70%,#4caf64 100%);
+  background-size:200%;
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+  animation:grad-shift 5s linear infinite;
+}
+@keyframes grad-shift {
+  0%   { background-position:0% center; }
+  100% { background-position:200% center; }
+}
+.h1-em { font-size:.55em; }
+.h1-em em { font-style:italic; color:rgba(255,255,255,.45); -webkit-text-fill-color:rgba(255,255,255,.45); }
 
 .hero-sub {
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,.5);
-  max-width: 44ch;
-  margin-bottom: 2.5rem;
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.5);
+  max-width:42ch; margin-bottom:2.5rem;
 }
-.hero-actions {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-.btn-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .875rem;
-  font-weight: 600;
-  padding: .875rem 2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: var(--g500, #2e9147);
-  color: #fff;
-  border: none;
-  transition: background .2s, transform .15s;
-}
-.btn-primary:hover { background: var(--g600, #1d7a35); transform: translateY(-1px); }
-.btn-ghost {
-  display: inline-flex;
-  align-items: center;
-  gap: .5rem;
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .875rem;
-  font-weight: 600;
-  padding: .875rem 2rem;
-  border-radius: 2px;
-  cursor: pointer;
-  letter-spacing: .02em;
-  text-transform: uppercase;
-  text-decoration: none;
-  background: transparent;
-  color: rgba(255,255,255,.7);
-  border: 1px solid rgba(255,255,255,.25);
-  transition: all .2s;
-}
-.btn-ghost:hover { color:#fff; border-color:rgba(255,255,255,.6); background:rgba(255,255,255,.05); }
+.hero-ctas { display:flex; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:2rem; }
 
-.hero-chart-wrap { display:flex; align-items:center; justify-content:flex-end; }
-#hero-chart { width:100%; max-width:520px; }
-
-.hero-divider {
-  height: 1px;
-  background: rgba(255,255,255,.07);
-  margin-inline: clamp(1rem, 4vw, 3rem);
+.hero-social-proof { display:flex; align-items:center; gap:.875rem; }
+.proof-avatars { display:flex; }
+.proof-av {
+  width:28px; height:28px; border-radius:50%; border:2px solid #080806;
+  display:flex; align-items:center; justify-content:center;
+  font-size:.625rem; font-weight:700; color:#fff;
+  margin-right:-8px;
 }
+.proof-text { font-size:.8125rem; color:rgba(255,255,255,.35); padding-left:.5rem; }
+
+/* Dashboard glassmorphism */
+.hero-visual { position:relative; display:flex; align-items:center; justify-content:flex-end; }
+.hero-dashboard {
+  width:100%; max-width:520px;
+  background:rgba(12,10,8,.8);
+  border-radius:16px; overflow:hidden;
+  backdrop-filter:blur(24px);
+  border:1px solid rgba(76,175,100,.15);
+  box-shadow:0 32px 80px rgba(0,0,0,.6), 0 0 0 1px rgba(76,175,100,.05) inset;
+}
+.dash-header {
+  display:flex; align-items:center; gap:1rem;
+  padding:.875rem 1.25rem;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+}
+.dash-dots { display:flex; gap:.375rem; }
+.dash-dots span { width:10px; height:10px; border-radius:50%; display:block; }
+.dash-title { font-size:.7rem; font-weight:500; color:rgba(255,255,255,.3); letter-spacing:.06em; }
+.dash-body { padding:1.25rem; }
+#hero-chart { width:100%; }
+.dash-stats {
+  display:flex; align-items:center; gap:0;
+  border-top:1px solid rgba(255,255,255,.06); margin-top:1rem; padding-top:1rem;
+}
+.dash-stat { flex:1; text-align:center; }
+.dash-stat-sep { width:1px; height:32px; background:rgba(255,255,255,.07); flex-shrink:0; }
+.ds-val { display:block; font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.5rem; font-weight:900; color:var(--g400,#4caf64); }
+.ds-lbl { display:block; font-size:.65rem; color:rgba(255,255,255,.3); text-transform:uppercase; letter-spacing:.08em; margin-top:.125rem; }
+
+.float-badge {
+  position:absolute; bottom:-16px; left:-20px;
+  display:flex; align-items:center; gap:.5rem;
+  padding:.625rem 1.125rem; border-radius:100px;
+  background:rgba(13,63,26,.95);
+  border:1px solid rgba(76,175,100,.35);
+  backdrop-filter:blur(16px);
+  font-size:.8125rem; font-weight:600; color:var(--g400,#4caf64);
+  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  white-space:nowrap;
+}
+.fb-icon { color:var(--g400,#4caf64); font-size:1rem; }
 
 /* Ticker */
 .hero-ticker {
-  background: rgba(255,255,255,.03);
-  border-top: 1px solid rgba(255,255,255,.06);
-  padding: 1.25rem clamp(1rem, 4vw, 3rem);
+  border-top:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+  padding:.875rem clamp(1rem,4vw,3rem);
 }
 .ticker-inner { display:flex; align-items:center; gap:1.5rem; overflow:hidden; }
-.ticker-lbl {
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
-  color: rgba(255,255,255,.3); white-space:nowrap; flex-shrink:0;
+.ticker-label {
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.65rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase;
+  color:rgba(255,255,255,.25); white-space:nowrap; flex-shrink:0;
 }
-.ticker-sep { width:1px; height:16px; background:rgba(255,255,255,.12); flex-shrink:0; }
-.ticker-track-wrap {
-  overflow:hidden; flex:1;
-  mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
-  -webkit-mask-image: linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
-}
-.ticker-track {
-  display:flex; gap:3rem; width:max-content;
-  animation: ticker-scroll 22s linear infinite;
-}
-.ticker-item { font-size:.875rem; font-weight:500; color:rgba(255,255,255,.4); white-space:nowrap; }
-
-/* ── STATEMENT ──────────────────────────────────────────────────────────── */
-.statement-section {
-  background: var(--n50, #f7f6f4);
-  padding-block: clamp(5rem, 10vw, 8rem);
-}
-.statement-grid { display:grid; grid-template-columns:auto 1fr; gap:3rem; align-items:start; }
-.statement-bar { width:2px; height:52px; background:var(--g500,#2e9147); margin-top:1.75rem; flex-shrink:0; }
-.statement-h2 {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(2rem, 4vw, 3.5rem);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -.02em;
-  color: var(--n800, #272420);
-}
-.green-text { color: var(--g500, #2e9147); }
-
-/* ── MÉTRICAS ────────────────────────────────────────────────────────────── */
-.metrics-section {
-  background: var(--n950, #0c0a08);
-  padding-block: clamp(4rem, 8vw, 6rem);
-  border-top: 1px solid rgba(255,255,255,.05);
-  border-bottom: 1px solid rgba(255,255,255,.05);
-}
-.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2rem; }
-.metric-item { display:flex; flex-direction:column; gap:.75rem; }
-.metric-num {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 900;
-  color: var(--g400, #4caf64);
-  line-height: 1;
-  letter-spacing: -.03em;
-}
-.metric-lbl {
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .8125rem; font-weight:500;
-  color: rgba(255,255,255,.4);
-  letter-spacing: .05em; text-transform:uppercase;
-}
-
-/* ── UTILITÁRIOS ─────────────────────────────────────────────────────────── */
-.eyebrow {
-  font-family: var(--font-sans, 'DM Sans', system-ui, sans-serif);
-  font-size: .65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
-  color: var(--g400, #4caf64); margin-bottom:1rem;
-}
-.eyebrow.dark { color: var(--n400, #a09c92); }
-.section-hd { margin-bottom:3.5rem; }
-.section-h2 {
-  font-family: var(--font-serif, 'Playfair Display', Georgia, serif);
-  font-size: clamp(2rem, 3.5vw, 3rem);
-  font-weight: 900; line-height:1.1;
-  color: var(--n800, #272420); letter-spacing:-.02em;
-}
-.section-h2.white { color:#fff; }
-
-/* ── PROBLEMA ────────────────────────────────────────────────────────────── */
-.prob-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
-.prob-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
-.prob-card {
-  background:#fff; border:1px solid var(--n200,#e5e1db); border-radius:4px; padding:2rem;
-  transition: border-color .3s, transform .3s, box-shadow .3s;
-}
-.prob-card:hover { border-color:var(--g400,#4caf64); transform:translateY(-4px); box-shadow:0 12px 32px rgba(46,145,71,.08); }
-.prob-icon { font-size:1.75rem; display:block; margin-bottom:1rem; }
-.prob-title { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.0625rem; font-weight:700; color:var(--n800,#272420); line-height:1.3; margin-bottom:.75rem; }
-.prob-stat { font-size:.8125rem; color:var(--g500,#2e9147); font-weight:600; letter-spacing:.02em; }
-
-/* ── ENTIDADE ────────────────────────────────────────────────────────────── */
-.entidade-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
-.entidade-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
-.ent-card { border-radius:4px; padding:2.5rem; }
-.ent-no  { background:rgba(220,80,60,.04);  border:1px solid rgba(220,80,60,.15); }
-.ent-yes { background:rgba(76,175,100,.06); border:1px solid rgba(76,175,100,.2); }
-.ent-head { display:flex; align-items:center; gap:.75rem; margin-bottom:1.75rem; }
-.ent-icon { font-size:1.25rem; }
-.ent-icon.red   { color:rgba(220,80,60,.7); }
-.ent-icon.green { color:var(--g400,#4caf64); }
-.ent-label { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
-.ent-label.red   { color:rgba(220,80,60,.7); }
-.ent-label.green { color:var(--g400,#4caf64); }
-.ent-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
-.ent-list li { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:.75rem; }
-.x-icon  { color:rgba(220,80,60,.6); font-size:.875rem; flex-shrink:0; }
-.ok-icon { color:var(--g400,#4caf64); font-size:.875rem; flex-shrink:0; }
-
-/* IA Ticker */
-.ia-ticker-wrap { display:flex; align-items:center; gap:1.5rem; padding:1.25rem 0; border-top:1px solid rgba(255,255,255,.06); overflow:hidden; }
-.ia-lbl { font-size:.7rem; font-weight:700; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.3); white-space:nowrap; flex-shrink:0; }
-.ia-track-wrap {
+.ticker-line { width:1px; height:14px; background:rgba(255,255,255,.1); flex-shrink:0; }
+.ticker-wrap {
   overflow:hidden; flex:1;
   mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
   -webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent);
 }
-.ia-track { display:flex; gap:3rem; width:max-content; animation:ticker-scroll 18s linear infinite; }
-.ia-item  { font-size:.875rem; font-weight:600; color:rgba(255,255,255,.4); white-space:nowrap; letter-spacing:.05em; }
+.ticker-track {
+  display:flex; gap:3.5rem; width:max-content;
+  animation:ticker-scroll 24s linear infinite;
+}
+.ticker-item { font-size:.8125rem; font-weight:500; color:rgba(255,255,255,.35); white-space:nowrap; letter-spacing:.02em; }
 
-/* ── MÉTODO ──────────────────────────────────────────────────────────────── */
+/* ── STATEMENT ────────────────────────────────────────────────────────── */
+.statement-section {
+  background:var(--n950,#0c0a08);
+  min-height:100vh;
+}
+.statement-pin {
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding-block:clamp(4rem,8vw,6rem);
+}
+.stmt-eyebrow {
+  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
+  font-size:.65rem; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+  color:rgba(255,255,255,.25); margin-bottom:2rem;
+}
+.stmt-h2 {
+  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
+  font-size:clamp(2.25rem,5vw,4.5rem); font-weight:900;
+  line-height:1.1; letter-spacing:-.02em;
+}
+.stmt-h2 .w { display:inline; margin-right:.3em; color:rgba(255,255,255,.15); transition:color .3s; }
+.stmt-h2 .wg { color:rgba(76,175,100,.15); }
+
+/* ── MÉTRICAS ─────────────────────────────────────────────────────────── */
+.metrics-section { background:#080806; padding-block:clamp(4rem,8vw,6rem); }
+.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.5rem; }
+.metric-card {
+  padding:2rem; border-radius:16px;
+  display:flex; flex-direction:column; gap:.75rem;
+  position:relative; overflow:hidden;
+  transition:transform .3s;
+}
+.metric-card:hover { transform:translateY(-4px); }
+.metric-card:hover .mc-glow { opacity:1; }
+.mc-icon { font-size:1.25rem; color:rgba(76,175,100,.5); }
+.mc-num  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:clamp(2.5rem,4vw,4rem); font-weight:900; color:var(--g400,#4caf64); line-height:1; letter-spacing:-.03em; }
+.mc-lbl  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.75rem; font-weight:500; color:rgba(255,255,255,.35); letter-spacing:.06em; text-transform:uppercase; }
+.mc-glow { position:absolute; inset:-20px; background:radial-gradient(circle,rgba(76,175,100,.08),transparent); opacity:0; transition:opacity .4s; pointer-events:none; }
+
+/* ── PROBLEMA ─────────────────────────────────────────────────────────── */
+.prob-section { background:var(--n50,#f7f6f4); }
+.prob-pin { min-height:100vh; padding-top:clamp(4rem,8vw,6rem); overflow:hidden; }
+.prob-hd  { padding-bottom:3rem; }
+.prob-slider-wrap { overflow:visible; padding-bottom:3rem; }
+.prob-track {
+  display:flex; gap:24px; padding-left:clamp(1rem,4vw,3rem);
+  cursor:grab;
+}
+.prob-track:active { cursor:grabbing; }
+.prob-card {
+  min-width:340px; padding:2.5rem; border-radius:16px; flex-shrink:0;
+  background:#fff;
+  border:1px solid var(--n200,#e5e1db);
+  transition:transform .4s cubic-bezier(.215,.61,.355,1), box-shadow .4s, border-color .4s;
+}
+.prob-card::before {
+  background:linear-gradient(135deg,rgba(160,156,146,.3) 0%,rgba(160,156,146,0) 50%,rgba(160,156,146,.3) 100%);
+}
+.prob-card.active {
+  border-color:var(--g400,#4caf64);
+  box-shadow:0 16px 48px rgba(46,145,71,.1);
+}
+.prob-card.active::before {
+  background:linear-gradient(135deg,rgba(76,175,100,.35) 0%,rgba(76,175,100,0) 50%,rgba(76,175,100,.35) 100%);
+}
+.pc-top { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.25rem; }
+.pc-icon { font-size:2rem; }
+.pc-num  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.5rem; font-weight:900; color:var(--n300,#ccc); }
+.prob-card.active .pc-num { color:var(--g400,#4caf64); }
+.pc-title { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.0625rem; font-weight:700; color:var(--n800,#272420); line-height:1.3; margin-bottom:.75rem; }
+.pc-stat  { font-size:.8125rem; color:var(--g500,#2e9147); font-weight:600; letter-spacing:.02em; margin-bottom:.875rem; }
+.pc-desc  { font-size:.875rem; color:var(--n600,#5a5650); line-height:1.7; }
+.prob-progress-wrap { padding:0 clamp(1rem,4vw,3rem) 3rem; }
+.prob-progress-bar  { height:2px; background:rgba(0,0,0,.08); border-radius:2px; }
+.prob-progress-fill { height:100%; background:linear-gradient(90deg,var(--g500,#2e9147),var(--g400,#4caf64)); border-radius:2px; width:0; transition:width .1s; }
+
+/* ── ENTIDADE ─────────────────────────────────────────────────────────── */
+.entidade-section { background:#080806; padding-block:clamp(4rem,9vw,7rem); }
+.entidade-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; margin-bottom:3rem; }
+.ent-card { padding:2.5rem; border-radius:16px; }
+.ent-no   { border:1px solid rgba(220,80,60,.12);  background:rgba(220,80,60,.03); }
+.ent-yes  { border:1px solid rgba(76,175,100,.2);  background:rgba(76,175,100,.04); }
+.ent-no::before  { background:linear-gradient(135deg,rgba(220,80,60,.25) 0%,rgba(220,80,60,0) 50%,rgba(220,80,60,.25) 100%); }
+.ent-yes::before { background:linear-gradient(135deg,rgba(76,175,100,.35) 0%,rgba(76,175,100,0) 50%,rgba(76,175,100,.35) 100%); }
+.ent-hd { margin-bottom:1.75rem; }
+.ent-badge {
+  display:inline-flex; align-items:center;
+  font-size:.7rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase;
+  padding:.35rem .875rem; border-radius:100px;
+}
+.ent-badge-red   { background:rgba(220,80,60,.1);  color:rgba(220,80,60,.8);  border:1px solid rgba(220,80,60,.2); }
+.ent-badge-green { background:rgba(76,175,100,.1); color:var(--g400,#4caf64); border:1px solid rgba(76,175,100,.25); }
+.ent-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
+.ent-item { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.6); display:flex; align-items:center; gap:.75rem; }
+.ent-x  { color:rgba(220,80,60,.55); flex-shrink:0; }
+.ent-ok { color:var(--g400,#4caf64); flex-shrink:0; }
+.ia-ticker { display:flex; align-items:center; gap:1.5rem; overflow:hidden; padding:1.5rem 0; border-top:1px solid rgba(255,255,255,.06); }
+.ia-lbl { font-size:.65rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:rgba(255,255,255,.25); white-space:nowrap; flex-shrink:0; }
+.ia-track-wrap { overflow:hidden; flex:1; mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent); -webkit-mask-image:linear-gradient(90deg,transparent,black 5%,black 95%,transparent); }
+.ia-track { display:flex; gap:3rem; width:max-content; animation:ticker-scroll 18s linear infinite; }
+.ia-item  { font-size:.875rem; font-weight:600; color:rgba(76,175,100,.5); letter-spacing:.06em; white-space:nowrap; }
+
+/* ── MÉTODO ───────────────────────────────────────────────────────────── */
 .metodo-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
-.accordion { border-top:1px solid var(--n200,#e5e1db); }
-.acc-item  { border-bottom:1px solid var(--n200,#e5e1db); }
-.acc-hd {
+.layers-wrap { border-top:1px solid var(--n200,#e5e1db); }
+.layer-item  { border-bottom:1px solid var(--n200,#e5e1db); }
+.layer-btn {
   width:100%; display:flex; align-items:center; gap:1.5rem;
   padding:1.75rem 0; background:none; border:none; cursor:pointer; text-align:left;
   transition:background .15s;
 }
-.acc-hd:hover { background:rgba(0,0,0,.02); }
-.acc-num {
-  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
-  font-size:1.5rem; font-weight:900; color:var(--n400,#a09c92); min-width:2.5rem; flex-shrink:0;
-  transition:color .3s;
-}
-.acc-item.open .acc-num { color:var(--g500,#2e9147); }
-.acc-info { flex:1; display:flex; flex-direction:column; gap:.25rem; }
-.acc-name { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.125rem; font-weight:700; color:var(--n800,#272420); }
-.acc-sub  { font-size:.8125rem; color:var(--n400,#a09c92); }
-.acc-tag  { font-size:.65rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.35rem .75rem; border-radius:2px; white-space:nowrap; flex-shrink:0; }
-.tag-base { background:rgba(46,145,71,.1);  color:var(--g600,#1d7a35); }
-.tag-diff { background:rgba(46,145,71,.2);  color:var(--g500,#2e9147); }
-.tag-geo  { background:rgba(46,145,71,.08); color:var(--g600,#1d7a35); border:1px solid rgba(46,145,71,.25); }
-.acc-arr  { font-size:1.5rem; font-weight:300; color:var(--n400,#a09c92); flex-shrink:0; width:1.5rem; text-align:center; transition:color .3s; }
-.acc-item.open .acc-arr { color:var(--g500,#2e9147); }
-.acc-body { overflow:hidden; height:0; }
-.acc-inner {
-  padding:0 0 2rem 4rem;
-  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
-  font-size:.9375rem; line-height:1.8; color:var(--n600,#5a5650);
-}
-.acc-inner strong { color:var(--n800,#272420); font-weight:600; }
+.layer-btn:hover { background:rgba(76,175,100,.02); }
+.layer-num  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.5rem; font-weight:900; color:var(--n400,#a09c92); min-width:2.5rem; flex-shrink:0; transition:color .3s; }
+.layer-item.open .layer-num { color:var(--g500,#2e9147); }
+.layer-info { flex:1; display:flex; flex-direction:column; gap:.25rem; }
+.layer-name { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.125rem; font-weight:700; color:var(--n800,#272420); }
+.layer-sub  { font-size:.8125rem; color:var(--n400,#a09c92); }
+.layer-tag  { font-size:.6rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; padding:.3rem .75rem; border-radius:100px; white-space:nowrap; flex-shrink:0; }
+.tg-base { background:rgba(46,145,71,.1);  color:var(--g600,#1d7a35); }
+.tg-diff { background:rgba(46,145,71,.2);  color:var(--g500,#2e9147); border:1px solid rgba(46,145,71,.3); }
+.tg-geo  { background:rgba(76,175,100,.08); color:var(--g600,#1d7a35); border:1px solid rgba(76,175,100,.2); }
+.layer-arr { display:flex; align-items:center; color:var(--n400,#a09c92); flex-shrink:0; transition:transform .4s cubic-bezier(.215,.61,.355,1),color .3s; }
+.layer-arr.rotated { transform:rotate(180deg); color:var(--g500,#2e9147); }
+.layer-body  { height:0; overflow:hidden; }
+.layer-inner { padding:0 0 2rem 4rem; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; line-height:1.8; color:var(--n600,#5a5650); }
+.layer-inner strong { color:var(--n800,#272420); font-weight:600; }
 
-/* ── DIFERENCIAL ─────────────────────────────────────────────────────────── */
-.diff-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+/* ── DIFERENCIAL ──────────────────────────────────────────────────────── */
+.diff-section { background:#080806; padding-block:clamp(4rem,9vw,7rem); }
 .diff-grid { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
-.diff-col { border-radius:4px; padding:2.5rem; }
-.diff-no  { background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.06); }
-.diff-yes { background:rgba(76,175,100,.06);  border:1px solid rgba(76,175,100,.2); }
-.diff-col-hd { display:flex; align-items:center; gap:.75rem; margin-bottom:1.75rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,.08); font-size:1.125rem; }
-.diff-col-title { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.4); }
+.diff-col { padding:2.5rem; border-radius:16px; }
+.diff-no  { border:1px solid rgba(255,255,255,.06);  background:rgba(255,255,255,.02); }
+.diff-yes { border:1px solid rgba(76,175,100,.2);    background:rgba(76,175,100,.04); }
+.diff-no::before  { background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 50%,rgba(255,255,255,.1) 100%); }
+.diff-yes::before { background:linear-gradient(135deg,rgba(76,175,100,.35) 0%,rgba(76,175,100,0) 50%,rgba(76,175,100,.35) 100%); }
+.diff-col-hd { display:flex; align-items:center; gap:.75rem; margin-bottom:1.75rem; padding-bottom:1.5rem; border-bottom:1px solid rgba(255,255,255,.07); font-size:1.125rem; }
+.diff-x    { color:rgba(220,80,60,.55); }
+.diff-ok   { color:var(--g400,#4caf64); }
+.diff-title { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.35); }
+.green-title { color:var(--g400,#4caf64) !important; }
 .diff-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
-.di-no  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.35); display:flex; align-items:flex-start; gap:.75rem; }
-.di-yes { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.75); display:flex; align-items:flex-start; gap:.75rem; }
-.di-no  span { color:rgba(220,80,60,.5); flex-shrink:0; }
+.di { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; display:flex; align-items:flex-start; gap:.75rem; line-height:1.45; }
+.di-no  { color:rgba(255,255,255,.3); }
+.di-no span  { color:rgba(220,80,60,.45); flex-shrink:0; }
+.di-yes { color:rgba(255,255,255,.75); }
 .di-yes span { color:var(--g400,#4caf64); flex-shrink:0; }
 .di-yes strong { color:var(--g400,#4caf64); font-weight:600; }
 
-/* ── DORES ───────────────────────────────────────────────────────────────── */
-.dores-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
+/* ── DORES ────────────────────────────────────────────────────────────── */
+.dores-section { background:#080806; padding-block:clamp(4rem,9vw,7rem); }
 .dores-layout  { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
 .dores-btns    { display:flex; flex-direction:column; gap:.5rem; }
 .dor-wrap      { display:flex; flex-direction:column; }
 .dor-btn {
   width:100%; text-align:left;
-  background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06);
-  color:rgba(255,255,255,.5); padding:1.125rem 1.5rem;
+  background:rgba(255,255,255,.025); border:1px solid rgba(255,255,255,.07);
+  color:rgba(255,255,255,.45); padding:1.125rem 1.25rem;
   font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
   font-size:.875rem; font-style:italic; cursor:pointer;
-  transition:all .2s; border-radius:2px;
-  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+  transition:all .25s cubic-bezier(.215,.61,.355,1);
+  border-radius:8px; display:flex; align-items:center; justify-content:space-between; gap:1rem;
 }
 .dor-btn:hover { background:rgba(255,255,255,.05); color:rgba(255,255,255,.75); border-color:rgba(255,255,255,.15); }
-.dor-btn.active { background:rgba(76,175,100,.06); border-color:rgba(76,175,100,.3); color:rgba(255,255,255,.85); }
-.dor-arr { font-style:normal; color:var(--g400,#4caf64); opacity:0; transition:opacity .2s; flex-shrink:0; }
+.dor-btn.active { background:rgba(76,175,100,.06); border-color:rgba(76,175,100,.3); color:rgba(255,255,255,.9); }
+.dor-arr  { font-style:normal; color:var(--g400,#4caf64); opacity:0; transition:opacity .2s,transform .2s; flex-shrink:0; }
 .dor-btn.active .dor-arr,
-.dor-btn:hover  .dor-arr { opacity:1; }
-.dor-inline {
-  background:rgba(76,175,100,.04); border-left:3px solid var(--g500,#2e9147);
-  padding:1.25rem 1.5rem 1.5rem;
-  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
-  font-size:.875rem; color:rgba(255,255,255,.55); line-height:1.7;
-}
+.dor-btn:hover  .dor-arr  { opacity:1; }
+.dor-btn.active .dor-arr  { transform:translateX(4px); }
+.dor-inline { background:rgba(76,175,100,.04); border-left:2px solid var(--g500,#2e9147); padding:1.125rem 1.25rem 1.375rem; font-size:.875rem; color:rgba(255,255,255,.5); line-height:1.7; border-radius:0 0 8px 8px; }
 .dor-inline strong { color:var(--g400,#4caf64); font-weight:600; }
+.dor-panel { position:sticky; top:6rem; padding:2.5rem; }
+.dor-panel-icon { font-size:2rem; margin-bottom:1.25rem; opacity:.6; }
+.dor-panel-q { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.0625rem; font-style:italic; color:rgba(255,255,255,.6); margin-bottom:1.25rem; line-height:1.5; }
+.dor-panel-a  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:rgba(255,255,255,.55); line-height:1.8; margin-bottom:2rem; }
+.dor-panel-a strong { color:var(--g400,#4caf64); font-weight:600; }
+.dor-cta { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--g400,#4caf64); text-decoration:none; transition:color .2s; }
+.dor-cta:hover { color:var(--g500,#2e9147); }
 
-.dor-box {
-  position:sticky; top:6rem;
-  background:rgba(76,175,100,.06); border:1px solid rgba(76,175,100,.2);
-  border-radius:4px; padding:2.5rem;
-}
-.dor-box-q {
-  font-family:var(--font-serif,'Playfair Display',Georgia,serif);
-  font-size:1.0625rem; font-style:italic; color:rgba(255,255,255,.6);
-  margin-bottom:1.25rem; line-height:1.5;
-}
-.dor-box-a {
-  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
-  font-size:.9375rem; color:rgba(255,255,255,.6); line-height:1.8; margin-bottom:2rem;
-}
-.dor-box-a strong { color:var(--g400,#4caf64); font-weight:600; }
-.dor-link {
-  font-family:var(--font-sans,'DM Sans',system-ui,sans-serif);
-  font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em;
-  color:var(--g400,#4caf64); text-decoration:none; transition:color .2s;
-}
-.dor-link:hover { color:var(--g500,#2e9147); }
-
-/* ── ICP ─────────────────────────────────────────────────────────────────── */
-.icp-section  { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
-.icp-grid     { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
-.icp-desc     { font-size:1.0625rem; color:var(--n600,#5a5650); line-height:1.75; margin-bottom:2rem; }
-.icp-list     { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
-.icp-list li  { display:flex; align-items:center; gap:.75rem; font-size:.9375rem; color:var(--n800,#272420); }
-.table-title  { font-size:.75rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--n400,#a09c92); margin-bottom:1rem; }
-.icp-table    { width:100%; border-collapse:collapse; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.875rem; }
-.icp-table th { text-align:left; padding:.75rem 1rem; background:var(--n950,#0c0a08); color:rgba(255,255,255,.6); font-weight:600; font-size:.75rem; letter-spacing:.06em; text-transform:uppercase; }
-.th-green     { color:var(--g400,#4caf64) !important; }
-.icp-table td { padding:.875rem 1rem; border-bottom:1px solid var(--n200,#e5e1db); color:var(--n600,#5a5650); }
-.td-green     { color:var(--g500,#2e9147); font-weight:600; }
-.tr-total td  { font-weight:700; color:var(--n800,#272420); background:rgba(46,145,71,.04); }
-.tr-total .td-green { color:var(--g500,#2e9147); }
-.table-note   { font-size:.75rem; color:var(--n400,#a09c92); margin-top:.75rem; font-style:italic; }
-
-/* ── CASES ───────────────────────────────────────────────────────────────── */
-.cases-section { background:var(--n0,#fff); padding-block:clamp(4rem,9vw,7rem); border-top:1px solid var(--n200,#e5e1db); }
+/* ── CASES ────────────────────────────────────────────────────────────── */
+.cases-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); border-top:1px solid var(--n200,#e5e1db); }
 .cases-grid    { display:grid; grid-template-columns:1fr 1fr; gap:2rem; }
 .case-card {
-  background:var(--n50,#f7f6f4); border:1px solid var(--n200,#e5e1db); border-radius:4px; padding:2.5rem;
+  border-radius:16px; padding:0; overflow:hidden;
+  background:#fff; border:1px solid var(--n200,#e5e1db);
   transition:border-color .3s, transform .3s, box-shadow .3s;
 }
-.case-card:hover { border-color:var(--g400,#4caf64); transform:scale(1.02); box-shadow:0 16px 48px rgba(46,145,71,.08); }
-.case-hd    { margin-bottom:2rem; }
+.case-card::before { display:none; } /* override glass-card */
+.case-card:hover { border-color:var(--g400,#4caf64); transform:translateY(-6px); box-shadow:0 20px 60px rgba(46,145,71,.1); }
+.case-accent {
+  height:6px;
+  background:linear-gradient(90deg,rgba(46,145,71,.6),rgba(76,175,100,.9),rgba(46,145,71,.4));
+}
+.case-top   { padding:2rem 2rem 1.5rem; border-bottom:1px solid var(--n100,#f0ede8); }
 .case-tag   { font-size:.65rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--g500,#2e9147); display:block; margin-bottom:.75rem; }
-.case-name  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.75rem; font-weight:900; color:var(--n800,#272420); margin-bottom:.25rem; }
+.case-name  { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.875rem; font-weight:900; color:var(--n800,#272420); margin-bottom:.25rem; }
 .case-url   { font-size:.8125rem; color:var(--n400,#a09c92); }
-.case-stats { list-style:none; padding:0; margin:0 0 2rem; display:flex; flex-direction:column; gap:.75rem; }
-.case-stats li  { display:flex; align-items:baseline; gap:.75rem; font-size:.875rem; color:var(--n600,#5a5650); }
-.case-num   { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.5rem; font-weight:900; color:var(--g500,#2e9147); }
-.case-quote { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:.9375rem; font-style:italic; color:var(--n600,#5a5650); line-height:1.6; border-left:2px solid var(--g500,#2e9147); padding-left:1rem; margin:0 0 1.5rem; }
+.case-metrics { display:flex; padding:1.5rem 2rem; gap:0; border-bottom:1px solid var(--n100,#f0ede8); }
+.cm { flex:1; display:flex; flex-direction:column; align-items:center; text-align:center; gap:.25rem; }
+.cm:not(:last-child) { border-right:1px solid var(--n200,#e5e1db); }
+.cm-n { font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:1.75rem; font-weight:900; color:var(--g500,#2e9147); }
+.cm span:last-child { font-size:.75rem; color:var(--n400,#a09c92); text-align:center; }
+.case-quote { padding:1.5rem 2rem; font-family:var(--font-serif,'Playfair Display',Georgia,serif); font-size:.9375rem; font-style:italic; color:var(--n600,#5a5650); line-height:1.6; border-left:3px solid var(--g400,#4caf64); margin:0 2rem 0 2rem; border-radius:0; }
 .case-quote cite { display:block; font-style:normal; font-size:.75rem; font-weight:600; color:var(--n400,#a09c92); margin-top:.75rem; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); }
-.case-link  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--g500,#2e9147); text-decoration:none; transition:color .2s; }
-.case-link:hover { color:var(--g600,#1d7a35); }
+.case-link { display:block; padding:1.25rem 2rem; font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.8125rem; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--g500,#2e9147); text-decoration:none; transition:color .2s,background .2s; }
+.case-link:hover { background:rgba(46,145,71,.04); color:var(--g600,#1d7a35); }
 
-/* ── FORM ────────────────────────────────────────────────────────────────── */
-.form-section { background:var(--n950,#0c0a08); padding-block:clamp(4rem,9vw,7rem); }
-.form-sub     { font-size:1rem; color:rgba(255,255,255,.4); max-width:50ch; margin-top:1rem; line-height:1.7; }
-.form-wrap    { max-width:800px; margin-inline:auto; }
+/* ── FORMULÁRIO ───────────────────────────────────────────────────────── */
+.form-section { background:#080806; padding-block:clamp(4rem,9vw,7rem); }
+.form-grid { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start; }
+.form-copy { color:#fff; }
+.form-sub  { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:1rem; color:rgba(255,255,255,.4); line-height:1.7; margin-bottom:2rem; margin-top:1rem; }
+.form-bullets { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:.875rem; }
+.form-bullets li { display:flex; align-items:center; gap:.75rem; font-size:.9375rem; color:rgba(255,255,255,.6); }
+.fb-ok { color:var(--g400,#4caf64); font-size:.875rem; flex-shrink:0; }
+.form-wrap { min-height:660px; padding:0; border-radius:16px; overflow:hidden; }
+.form-wrap iframe { display:block; }
 
-/* ── FAQ ─────────────────────────────────────────────────────────────────── */
+/* ── FAQ ──────────────────────────────────────────────────────────────── */
 .faq-section { background:var(--n50,#f7f6f4); padding-block:clamp(4rem,9vw,7rem); }
-.faq-wrap    { max-width:780px; margin-inline:auto; }
+.faq-inner   { max-width:800px; margin-inline:auto; }
 .faq-list    { border-top:1px solid var(--n200,#e5e1db); }
 .faq-item    { border-bottom:1px solid var(--n200,#e5e1db); }
 .faq-q {
   display:flex; align-items:center; justify-content:space-between; gap:1rem;
   padding:1.5rem 0; cursor:pointer; list-style:none;
   font-family:var(--font-serif,'Playfair Display',Georgia,serif);
-  font-size:1.0625rem; font-weight:700; color:var(--n800,#272420);
-  transition:color .2s;
+  font-size:1.0625rem; font-weight:700; color:var(--n800,#272420); transition:color .2s;
 }
 .faq-q::-webkit-details-marker { display:none; }
 .faq-q:hover { color:var(--g600,#1d7a35); }
-.faq-arr { font-size:1.25rem; font-weight:300; color:var(--g500,#2e9147); flex-shrink:0; transition:color .2s; }
+.faq-arr { font-size:1.25rem; font-weight:300; color:var(--g500,#2e9147); flex-shrink:0; transition:color .2s,transform .3s; }
+.faq-item[open] .faq-arr { transform:rotate(45deg); }
 .faq-a   { font-family:var(--font-sans,'DM Sans',system-ui,sans-serif); font-size:.9375rem; color:var(--n600,#5a5650); line-height:1.8; padding-bottom:1.5rem; max-width:68ch; }
 
-/* ── KEYFRAMES ───────────────────────────────────────────────────────────── */
-@keyframes ticker-scroll {
-  from { transform:translateX(0); }
-  to   { transform:translateX(-50%); }
-}
+/* ── KEYFRAMES ────────────────────────────────────────────────────────── */
+@keyframes ticker-scroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-/* ── RESPONSIVE ──────────────────────────────────────────────────────────── */
-@media (max-width:1024px) {
-  .hero-inner   { grid-template-columns:1fr; gap:3rem; padding-top:clamp(4rem,10vw,6rem); }
-  .hero-chart-wrap { justify-content:center; }
-  .metrics-grid { grid-template-columns:repeat(2,1fr); gap:1.5rem; }
-  .icp-grid     { grid-template-columns:1fr; gap:2.5rem; }
-}
-@media (max-width:768px) {
-  .statement-grid { grid-template-columns:1fr; gap:1rem; }
-  .statement-bar  { display:none; }
-  .entidade-grid  { grid-template-columns:1fr; }
-  .diff-grid      { grid-template-columns:1fr; }
-  .dores-layout   { grid-template-columns:1fr; }
-  .dor-box        { display:none !important; }
-  .cases-grid     { grid-template-columns:1fr; }
-  .prob-grid      { grid-template-columns:repeat(2,1fr); }
-}
-@media (max-width:600px) {
-  .prob-grid    { grid-template-columns:1fr; }
-  .metrics-grid { grid-template-columns:repeat(2,1fr); }
-}
+/* ── WRAP ─────────────────────────────────────────────────────────────── */
+.wrap { max-width:1200px; margin-inline:auto; padding-inline:clamp(1rem,4vw,3rem); }
 
-/* ── OVERFLOW GUARD ──────────────────────────────────────────────────────── */
-html,body { max-width:100vw; overflow-x:hidden; }
-.hero { max-width:100vw; }
+/* ── RESPONSIVE ───────────────────────────────────────────────────────── */
+@media(max-width:1024px){
+  .hero-inner    { grid-template-columns:1fr; gap:3rem; padding-top:clamp(4rem,9vw,6rem); }
+  .hero-visual   { justify-content:center; }
+  .metrics-grid  { grid-template-columns:repeat(2,1fr); }
+  .icp-grid      { grid-template-columns:1fr; gap:2.5rem; }
+  .form-grid     { grid-template-columns:1fr; }
+  html,body      { cursor:auto; }
+  #cur-dot,#cur-ring { display:none; }
+}
+@media(max-width:768px){
+  .entidade-grid { grid-template-columns:1fr; }
+  .diff-grid     { grid-template-columns:1fr; }
+  .dores-layout  { grid-template-columns:1fr; }
+  .dor-panel     { display:none !important; }
+  .cases-grid    { grid-template-columns:1fr; }
+  #stmt-h2       { font-size:clamp(1.75rem,6vw,2.5rem); }
+  .prob-card     { min-width:280px; }
+}
+@media(max-width:600px){
+  .metrics-grid  { grid-template-columns:repeat(2,1fr); }
+}
 </style>
 
 </Page>
