@@ -711,8 +711,9 @@ function initCine(){
         easing: function(t){return Math.min(1,1.001-Math.pow(2,-10*t));},
         smoothWheel: true,
         wheelMultiplier: 0.85,
-        syncTouch: true,
-        smoothTouch: true
+        syncTouch: false,
+        smoothTouch: true,
+        touchMultiplier: 1.5
       });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(function(time){ lenis.raf(time*1000); });
