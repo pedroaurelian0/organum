@@ -113,7 +113,7 @@ const schemaService = {
       <h2 style="font-family:var(--serif);font-size:clamp(2rem,5vw,4rem);font-weight:900;line-height:.95;letter-spacing:-.03em;color:#fff;margin-bottom:1rem;">Solicite agora.<br/><em style="color:var(--g400);font-style:italic;">Resposta em at&#xE9; 48 horas.</em></h2>
       <p style="font-size:1rem;color:rgba(255,255,255,.45);max-width:44ch;margin-inline:auto;line-height:1.7;">Preencha abaixo. Pedro analisa pessoalmente e envia o diagn&#xF3;stico. Sem spam, sem CRM autom&#xE1;tico, sem vendedor.</p>
     </div>
-    <div style="background:#0e0c0a;border:1px solid rgba(76,175,100,.2);overflow:hidden;box-shadow:...;min-height:660px;">
+    <div class="form-container" style="background:#0e0c0a;border:1px solid rgba(76,175,100,.2);overflow:visible !important;box-shadow:...;min-height:660px;position:relative;">
       <iframe
         src="https://api.ilevex.com.br/widget/form/Gpue5KmcF2LTfDXD1Jcf"
         style="width:100%;height:660px;border:none;display:block;"
@@ -130,7 +130,6 @@ const schemaService = {
         data-layout-iframe-id="inline-auditoria"
         data-form-id="Gpue5KmcF2LTfDXD1Jcf"
         title="Formul&#xE1;rio de auditoria gratuita &#x2014; Organum"
-        loading="lazy"
       ></iframe>
     </div>
     <p style="margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.2);text-align:center;">Seus dados s&#xE3;o protegidos conforme a LGPD. <a href="/privacidade" style="color:rgba(255,255,255,.3);text-decoration:none;">Ver pol&#xED;tica de privacidade</a></p>
@@ -169,6 +168,18 @@ const schemaService = {
 <script src="https://api.ilevex.com.br/js/form_embed.js" is:inline></script>
 
 <style>
+/* Resolve conflitos do embed do GHL com a classe .reveal do site */
+.form-container iframe.reveal,
+.form-container .reveal {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  visibility: visible !important;
+}
+.form-container iframe {
+  display: block !important;
+}
+
 @media (max-width: 768px) {
   .pains-grid { grid-template-columns: 1fr !important; }
   .coverage-grid { grid-template-columns: 1fr 1fr !important; }
