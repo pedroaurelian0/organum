@@ -1,0 +1,894 @@
+---
+// Página de proposta comercial — Vale do Moxuara
+// URL: organum.com.br/proposta/vale-do-moxuara
+const title       = "Diagnóstico SEO — Vale do Moxuara × Organum";
+const description = "Diagnóstico completo e proposta de engajamento para o Vale do Moxuara.";
+---
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>{title}</title>
+<meta name="description" content={description}>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── RESET & TOKENS ─────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --g400:#4caf64;--g500:#2e9147;--g600:#1d7a35;
+  --n950:#0c0a08;--n900:#141210;--n800:#211f1b;--n700:#2f2d28;
+  --n600:#4a4741;--n500:#6b6860;--n400:#8c8a83;--n300:#b0ada4;
+  --n200:#d4d1c8;--n100:#eceae4;--n50:#f8f6f0;
+  --red:#e03c2f;--amber:#d97706;
+  --sp4:4px;--sp8:8px;--sp12:12px;--sp16:16px;--sp20:20px;
+  --sp24:24px;--sp32:32px;--sp40:40px;--sp48:48px;--sp64:64px;
+  --r8:8px;--r12:12px;--r16:16px;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--n950);color:var(--n100);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────── */
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--g400)}
+.display{font-family:var(--serif);font-weight:400;line-height:1.1}
+.display em{font-style:italic;color:var(--g400)}
+.lead{font-size:17px;font-weight:300;color:var(--n300);line-height:1.75}
+.muted{color:var(--n500)}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.wrap{width:100%;max-width:680px;margin:0 auto;padding:0 var(--sp20)}
+section{padding:var(--sp64) 0}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+
+/* ─── NAV ────────────────────────────────────────── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:var(--sp16) var(--sp20);
+  display:flex;justify-content:space-between;align-items:center;
+  transition:background .4s,backdrop-filter .4s;
+}
+nav.scrolled{background:rgba(12,10,8,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-logo{font-family:var(--serif);font-size:17px;color:var(--n100)}
+.nav-pill{
+  font-size:12px;font-weight:600;letter-spacing:.04em;
+  color:var(--g400);padding:8px 18px;
+  border:1px solid rgba(76,175,100,.35);border-radius:100px;
+  text-decoration:none;transition:background .25s;
+  -webkit-tap-highlight-color:transparent;
+}
+.nav-pill:active{background:rgba(76,175,100,.12)}
+
+/* ─── HERO ───────────────────────────────────────── */
+.hero{
+  min-height:100svh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:calc(80px + var(--sp40)) var(--sp20) var(--sp64);
+  text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse 120% 60% at 50% -10%,rgba(76,175,100,.14) 0%,transparent 65%);
+}
+.hero::after{
+  content:'';position:absolute;inset:-50%;
+  width:200%;height:200%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
+  opacity:.4;pointer-events:none;animation:grain 8s steps(10) infinite;
+}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-3%)}20%{transform:translate(3%,2%)}30%{transform:translate(-1%,4%)}40%{transform:translate(2%,-1%)}50%{transform:translate(-3%,3%)}60%{transform:translate(1%,-2%)}70%{transform:translate(-2%,1%)}80%{transform:translate(3%,-3%)}90%{transform:translate(-1%,2%)}}
+
+.hero-eyebrow{margin-bottom:var(--sp24);opacity:0;animation:fadeUp .7s ease forwards .1s}
+.hero-h1{font-size:clamp(36px,9vw,72px);margin-bottom:var(--sp20);opacity:0;animation:fadeUp .7s ease forwards .25s}
+.hero-lead{max-width:520px;margin:0 auto var(--sp40);opacity:0;animation:fadeUp .7s ease forwards .4s}
+
+/* KPI strip */
+.kpi-strip{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  background:rgba(255,255,255,.06);border-radius:var(--r16);overflow:hidden;
+  border:1px solid rgba(255,255,255,.08);
+  opacity:0;animation:fadeUp .7s ease forwards .55s;
+}
+.kpi-cell{background:var(--n900);padding:var(--sp20) var(--sp16);text-align:center}
+.kpi-val{font-family:var(--serif);font-size:clamp(26px,6vw,38px);font-weight:600;color:#f87171;display:block;line-height:1;margin-bottom:6px}
+.kpi-val.good{color:var(--g400)}
+.kpi-lbl{font-size:11px;letter-spacing:.07em;text-transform:uppercase;color:var(--n500)}
+
+.scroll-cue{
+  position:absolute;bottom:var(--sp24);left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  color:var(--n600);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  opacity:0;animation:fadeUp .8s ease forwards 1s;
+}
+.scroll-line{width:1px;height:32px;background:linear-gradient(to bottom,var(--n600),transparent);animation:pulse 2s ease infinite}
+
+/* ─── PERGUNTA PROVOCATIVA ───────────────────────── */
+.provoca{
+  padding:var(--sp64) var(--sp20);
+  background:linear-gradient(180deg,var(--n950) 0%,rgba(76,175,100,.05) 50%,var(--n950) 100%);
+}
+.provoca-q{
+  font-family:var(--serif);font-size:clamp(22px,5vw,40px);font-weight:400;
+  line-height:1.3;text-align:center;max-width:600px;margin:0 auto var(--sp32);
+}
+.provoca-q mark{
+  background:none;color:var(--g400);
+  border-bottom:2px solid rgba(76,175,100,.4);
+  padding-bottom:2px;
+}
+.ai-demo{max-width:560px;margin:0 auto;background:var(--n900);border:1px solid rgba(255,255,255,.08);border-radius:var(--r16);overflow:hidden}
+.ai-header{display:flex;align-items:center;gap:10px;padding:var(--sp12) var(--sp16);background:var(--n800);border-bottom:1px solid rgba(255,255,255,.06)}
+.ai-dot{width:8px;height:8px;border-radius:50%;background:var(--g500)}
+.ai-name{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--n400)}
+.ai-query{padding:var(--sp16);font-size:14px;color:var(--n400);border-bottom:1px solid rgba(255,255,255,.04);font-style:italic}
+.ai-answer{padding:var(--sp16);font-size:14px;line-height:1.7;color:var(--n300)}
+.ai-missing{display:inline-block;background:rgba(224,60,47,.15);color:#f87171;border-radius:4px;padding:1px 6px;text-decoration:line-through;font-style:italic}
+.ai-present{color:var(--g400);font-weight:500}
+
+/* ─── SECTION HEADER ─────────────────────────────── */
+.sec-head{margin-bottom:var(--sp40)}
+.sec-head .eyebrow{margin-bottom:var(--sp12)}
+.sec-head h2{font-family:var(--serif);font-size:clamp(24px,5vw,40px);font-weight:400;line-height:1.2;margin-bottom:var(--sp12)}
+.sec-head p{font-size:15px;color:var(--n400);line-height:1.75}
+
+/* ─── SCORE CARDS ────────────────────────────────── */
+.score-stack{display:flex;flex-direction:column;gap:2px;border-radius:var(--r16);overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+.score-row{display:flex;align-items:flex-start;gap:var(--sp16);padding:var(--sp20);background:var(--n900);transition:background .2s;cursor:default}
+.score-row:active{background:var(--n800)}
+.score-icon{width:40px;height:40px;border-radius:var(--r8);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px}
+.ic-red{background:rgba(224,60,47,.12)}
+.ic-amber{background:rgba(217,119,6,.12)}
+.ic-blue{background:rgba(29,111,184,.12)}
+.score-body{flex:1;min-width:0}
+.score-tag{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:100px;margin-bottom:6px}
+.tag-r{background:rgba(224,60,47,.15);color:#f87171;border:1px solid rgba(224,60,47,.2)}
+.tag-a{background:rgba(217,119,6,.15);color:#fbbf24;border:1px solid rgba(217,119,6,.2)}
+.tag-b{background:rgba(29,111,184,.15);color:#60a5fa;border:1px solid rgba(29,111,184,.2)}
+.score-body h3{font-size:15px;font-weight:600;color:var(--n100);margin-bottom:4px}
+.score-body p{font-size:13px;color:var(--n500);line-height:1.6}
+.score-num{font-family:var(--serif);font-size:11px;color:var(--n700);flex-shrink:0;padding-top:4px}
+
+/* ─── METRO METRICS ──────────────────────────────── */
+.metro-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp8);margin-bottom:var(--sp32)}
+.metro{padding:var(--sp20) var(--sp16);background:var(--n900);border-radius:var(--r12);border:1px solid rgba(255,255,255,.06);text-align:center}
+.metro.bad{border-color:rgba(224,60,47,.3);background:rgba(224,60,47,.06)}
+.metro.good{border-color:rgba(76,175,100,.3);background:rgba(76,175,100,.06)}
+.metro-val{font-family:var(--serif);font-size:clamp(24px,6vw,34px);font-weight:600;display:block;line-height:1;margin-bottom:4px}
+.metro.bad .metro-val{color:#f87171}
+.metro.good .metro-val{color:var(--g400)}
+.metro-lbl{font-size:11px;color:var(--n500);letter-spacing:.06em;text-transform:uppercase}
+
+/* ─── PROBLEMA ITEMS ─────────────────────────────── */
+.prob-list{display:flex;flex-direction:column;gap:var(--sp8)}
+.prob{
+  display:grid;grid-template-columns:32px 1fr;gap:var(--sp12);
+  padding:var(--sp16);background:var(--n900);
+  border:1px solid rgba(255,255,255,.06);border-radius:var(--r12);
+  opacity:0;transform:translateX(-16px);
+  transition:opacity .5s ease,transform .5s ease;
+}
+.prob.vis{opacity:1;transform:none}
+.prob-n{font-family:var(--serif);font-size:20px;font-weight:600;color:var(--n700);line-height:1;padding-top:4px;text-align:center}
+.prob strong{display:block;font-size:14px;font-weight:600;color:var(--n100);margin-bottom:4px}
+.prob span{font-size:13px;color:var(--n500);line-height:1.6;display:block;margin-bottom:8px}
+.prob-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 8px;border-radius:100px}
+.pb-r{background:rgba(224,60,47,.15);color:#f87171}
+.pb-a{background:rgba(217,119,6,.15);color:#fbbf24}
+
+/* ─── PERGUNTA 2 ─────────────────────────────────── */
+.interlude{padding:var(--sp64) var(--sp20);text-align:center}
+.interlude-q{font-family:var(--serif);font-size:clamp(20px,5vw,36px);font-weight:400;line-height:1.4;max-width:540px;margin:0 auto var(--sp24)}
+.interlude-q strong{color:var(--g400)}
+.interlude-note{font-size:14px;color:var(--n500);max-width:440px;margin:0 auto}
+
+/* ─── TABLE ──────────────────────────────────────── */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-bottom:var(--sp32);border-radius:var(--r12);border:1px solid rgba(255,255,255,.07)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:400px}
+th{text-align:left;font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n500);padding:12px var(--sp16);background:var(--n900);border-bottom:1px solid rgba(255,255,255,.07)}
+td{padding:13px var(--sp16);color:var(--n300);border-bottom:1px solid rgba(255,255,255,.04)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(255,255,255,.015)}
+.cr{color:#f87171;font-family:var(--serif)}
+.ca{color:#fbbf24}
+.cg{color:var(--g400)}
+
+/* ─── PERGUNTA 3 — IA ────────────────────────────── */
+.ia-provoca{padding:var(--sp64) var(--sp20);background:var(--n900);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06)}
+.ia-provoca-inner{max-width:640px;margin:0 auto}
+.ia-q{font-family:var(--serif);font-size:clamp(22px,5vw,38px);font-weight:400;line-height:1.3;margin-bottom:var(--sp24)}
+.ia-q mark{background:none;color:var(--g400);border-bottom:2px solid rgba(76,175,100,.35);padding-bottom:2px}
+.ia-p{font-size:15px;color:var(--n400);line-height:1.8;margin-bottom:var(--sp24)}
+.ia-stat{display:flex;align-items:flex-start;gap:var(--sp16);padding:var(--sp16);background:rgba(224,60,47,.07);border-left:3px solid #f87171;border-radius:0 var(--r8) var(--r8) 0;margin-bottom:var(--sp12)}
+.ia-stat-num{font-family:var(--serif);font-size:28px;font-weight:600;color:#f87171;line-height:1;flex-shrink:0}
+.ia-stat-txt{font-size:13px;color:var(--n400);line-height:1.6;padding-top:4px}
+.ia-stat.pos{background:rgba(76,175,100,.07);border-left-color:var(--g400)}
+.ia-stat.pos .ia-stat-num{color:var(--g400)}
+
+/* ─── PROJEÇÃO ────────────────────────────────────── */
+.proj-cards{display:flex;flex-direction:column;gap:var(--sp8)}
+.proj-item2{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:var(--sp8);padding:var(--sp16);background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:var(--r12)}
+.pj-before,.pj-after{display:flex;flex-direction:column}
+.pj-lbl{font-size:10px;color:var(--n600);letter-spacing:.06em;text-transform:uppercase;margin-bottom:3px}
+.pj-val-b{font-family:var(--serif);font-size:15px;color:#f87171;font-weight:600}
+.pj-val-a{font-family:var(--serif);font-size:15px;color:var(--g400);font-weight:600;text-align:right}
+.pj-lbl-a{text-align:right}
+.pj-arrow{color:var(--g500);font-size:18px;line-height:1;flex-shrink:0}
+
+/* ─── MÉTODO ─────────────────────────────────────── */
+.timeline{position:relative;padding-left:var(--sp32)}
+.timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--g500) 0%,transparent 100%)}
+.tl-step{position:relative;padding:0 0 var(--sp40) var(--sp24);opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.tl-step.vis{opacity:1;transform:none}
+.tl-step::before{content:'';position:absolute;left:-4px;top:6px;width:9px;height:9px;border-radius:50%;background:var(--g400);border:2px solid var(--n950)}
+.tl-num{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g500);margin-bottom:6px}
+.tl-step h3{font-size:17px;font-weight:600;color:var(--n100);margin-bottom:6px}
+.tl-step p{font-size:14px;color:var(--n500);line-height:1.7;margin-bottom:10px}
+.tl-tag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:.08em;padding:3px 10px;border-radius:100px;background:rgba(76,175,100,.1);color:var(--g400);border:1px solid rgba(76,175,100,.2)}
+
+/* ─── INVESTIMENTO ───────────────────────────────── */
+.inv-cards{display:flex;flex-direction:column;gap:var(--sp16);margin-bottom:var(--sp32)}
+.inv-card{background:var(--n900);border:1px solid rgba(255,255,255,.07);border-radius:var(--r16);padding:var(--sp32) var(--sp24);position:relative}
+.inv-card.feat{border-color:rgba(76,175,100,.35);background:rgba(76,175,100,.04)}
+.inv-badge{position:absolute;top:-13px;left:var(--sp24);font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:var(--g500);color:#fff;padding:4px 14px;border-radius:100px}
+.inv-price{font-family:var(--serif);font-size:clamp(34px,8vw,46px);font-weight:600;color:var(--n50);line-height:1;margin-bottom:4px}
+.inv-note{font-size:12px;color:var(--n500);margin-bottom:var(--sp20)}
+.inv-card h3{font-size:15px;font-weight:600;color:var(--n300);margin-bottom:var(--sp16)}
+.inv-list{list-style:none;display:flex;flex-direction:column;gap:10px}
+.inv-list li{font-size:13px;color:var(--n500);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
+.inv-list li::before{content:'→';color:var(--g500);flex-shrink:0;margin-top:1px}
+
+/* ─── CALLOUT ────────────────────────────────────── */
+.callout{padding:var(--sp32) var(--sp24);background:rgba(76,175,100,.06);border:1px solid rgba(76,175,100,.15);border-radius:var(--r16)}
+.callout h3{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--n100);margin-bottom:10px}
+.callout p{font-size:14px;color:var(--n400);line-height:1.8}
+.callout p strong{color:var(--g400)}
+
+/* ─── CTA SECTION ────────────────────────────────── */
+.cta-sec{padding:var(--sp64) var(--sp20);text-align:center;background:linear-gradient(180deg,transparent 0%,rgba(76,175,100,.07) 50%,transparent 100%)}
+.cta-sec h2{font-family:var(--serif);font-size:clamp(26px,6vw,44px);font-weight:400;margin-bottom:var(--sp12)}
+.cta-sec p{font-size:15px;color:var(--n400);margin-bottom:var(--sp40);max-width:480px;margin-left:auto;margin-right:auto}
+.cta-btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--g500);color:#fff;
+  font-family:var(--sans);font-size:15px;font-weight:600;letter-spacing:.02em;
+  padding:18px var(--sp40);border-radius:100px;border:none;cursor:pointer;
+  width:100%;max-width:360px;
+  transition:background .25s,transform .2s,box-shadow .25s;
+  -webkit-tap-highlight-color:transparent;
+}
+.cta-btn:active{background:var(--g600);transform:scale(.98)}
+
+/* ─── FOOTER ─────────────────────────────────────── */
+footer{padding:var(--sp40) var(--sp20);text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+.foot-logo{font-family:var(--serif);font-size:20px;color:var(--n400);margin-bottom:6px}
+.foot-sub{font-size:12px;color:var(--n700)}
+
+/* ─── ACCEPT OVERLAY ─────────────────────────────── */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(12,10,8,.97);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.overlay.on{display:block}
+.confetti-c{position:fixed;inset:0;pointer-events:none;z-index:501}
+.ov-inner{position:relative;z-index:502;max-width:480px;margin:0 auto;padding:var(--sp64) var(--sp20) var(--sp40);text-align:center}
+.check-ring{width:72px;height:72px;border-radius:50%;background:rgba(76,175,100,.15);border:2px solid var(--g400);display:flex;align-items:center;justify-content:center;margin:0 auto var(--sp24);animation:popIn .5s cubic-bezier(.175,.885,.32,1.275) forwards}
+.check-ring svg{width:32px;height:32px;stroke:var(--g400);stroke-width:2.5;fill:none;stroke-dasharray:50;stroke-dashoffset:50;animation:dash .5s ease forwards .35s}
+.ov-title{font-family:var(--serif);font-size:32px;font-weight:400;margin-bottom:10px;opacity:0;animation:fadeUp .5s ease forwards .5s}
+.ov-sub{font-size:15px;color:var(--n400);margin-bottom:var(--sp40);opacity:0;animation:fadeUp .5s ease forwards .65s}
+.form-wrap-ov{text-align:left;opacity:0;animation:fadeUp .5s ease forwards .8s}
+.fg{margin-bottom:var(--sp16)}
+.fg label{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n500);margin-bottom:7px}
+.fg input,.fg textarea{width:100%;background:var(--n800);border:1px solid rgba(255,255,255,.1);border-radius:var(--r8);color:var(--n100);font-family:var(--sans);font-size:15px;padding:14px var(--sp16);outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--g400)}
+.fg textarea{resize:vertical;min-height:80px}
+.check-lbl{display:flex;align-items:flex-start;gap:12px;padding:var(--sp16);background:rgba(76,175,100,.07);border:1px solid rgba(76,175,100,.2);border-radius:var(--r12);margin-bottom:var(--sp24);cursor:pointer}
+.check-lbl input{width:18px;height:18px;flex-shrink:0;margin-top:3px;accent-color:var(--g400);cursor:pointer}
+.check-txt{font-size:13px;color:var(--n500);line-height:1.6}
+.check-txt strong{color:var(--n100)}
+.sub-btn{width:100%;background:var(--g500);color:#fff;font-family:var(--sans);font-size:15px;font-weight:600;padding:16px;border-radius:100px;border:none;cursor:pointer;transition:background .25s;-webkit-tap-highlight-color:transparent}
+.sub-btn:active{background:var(--g600)}
+.sub-btn:disabled{opacity:.45;cursor:not-allowed}
+.success-box{display:none;padding:var(--sp32);background:rgba(76,175,100,.08);border:1px solid rgba(76,175,100,.2);border-radius:var(--r16);text-align:center}
+.success-box.on{display:block}
+.success-box h3{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--g400);margin-bottom:8px}
+.success-box p{font-size:14px;color:var(--n500)}
+.back-btn{background:none;border:none;color:var(--n600);font-size:13px;font-family:var(--sans);cursor:pointer;margin-top:var(--sp20);padding:var(--sp8) 0}
+
+/* ─── ANIMATIONS ─────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes dash{to{stroke-dashoffset:0}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+/* ─── SCROLL REVEAL ──────────────────────────────── */
+.rev{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rev.vis{opacity:1;transform:none}
+
+/* ─── DESKTOP UPGRADES (>640px) ─────────────────── */
+@media(min-width:640px){
+  .wrap{padding:0 var(--sp40)}
+  section{padding:var(--sp64) 0}
+  .kpi-strip{grid-template-columns:repeat(4,1fr)}
+  .metro-grid{grid-template-columns:repeat(4,1fr)}
+  .inv-cards{flex-direction:row}
+  .inv-card{flex:1}
+  .cta-btn{width:auto}
+  nav{padding:var(--sp20) var(--sp40)}
+  .hero{padding:calc(80px + var(--sp64)) var(--sp40) var(--sp64)}
+  .proj-item2{padding:var(--sp20) var(--sp24)}
+  .pj-val-b,.pj-val-a{font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <span class="nav-logo">Organum</span>
+  <a href="#aceitar" class="nav-pill">Aceitar proposta</a>
+</nav>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <p class="eyebrow hero-eyebrow">Diagnóstico SEO · Vale do Moxuara · Junho 2026</p>
+  <h1 class="display hero-h1">
+    O Moxuara aparece<br>
+    quando a noiva<br>
+    <em>pergunta à IA?</em>
+  </h1>
+  <p class="lead hero-lead">
+    Auditamos seu site nas 5 camadas do Método Organum.
+    O que encontramos explica por que você recebe menos clientes
+    do que deveria — e mostra exatamente o que vai mudar.
+  </p>
+  <div class="kpi-strip">
+    <div class="kpi-cell"><span class="kpi-val">0</span><span class="kpi-lbl">H1s no site</span></div>
+    <div class="kpi-cell"><span class="kpi-val">12,1s</span><span class="kpi-lbl">LCP Mobile</span></div>
+    <div class="kpi-cell"><span class="kpi-val">5</span><span class="kpi-lbl">GTMs fragmentados</span></div>
+    <div class="kpi-cell"><span class="kpi-val">~0%</span><span class="kpi-lbl">Presença nas IAs</span></div>
+  </div>
+  <div class="scroll-cue">
+    <span>ver diagnóstico</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ PERGUNTA 1 — IA ══════════ -->
+<section class="provoca">
+  <div class="wrap">
+    <h2 class="provoca-q rev">
+      Quando alguém perguntar ao ChatGPT<br>
+      <mark>"Onde casar numa fazenda no Espírito Santo?"</mark><br>
+      — o seu nome aparece na resposta?
+    </h2>
+    <div class="ai-demo rev">
+      <div class="ai-header">
+        <div class="ai-dot"></div>
+        <span class="ai-name">ChatGPT · resposta atual</span>
+      </div>
+      <div class="ai-query">"Onde casar numa fazenda no Espírito Santo?"</div>
+      <div class="ai-answer">
+        Algumas opções populares para casamentos em fazenda no Espírito Santo incluem
+        <span class="ai-present">Fazenda Boa Esperança (Domingos Martins)</span>,
+        <span class="ai-present">Sítio das Pedras (Santa Teresa)</span>
+        e <span class="ai-present">Villa Verde Eventos (Viana)</span>.<br><br>
+        <span class="ai-missing">Vale do Moxuara — Cariacica/ES</span>
+        <span style="color:var(--n600);font-size:13px;display:block;margin-top:10px">
+          ↑ Não aparece. Não porque é ruim — mas porque as IAs não sabem que existe.
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 1 — DIAGNÓSTICO GERAL ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 1 — Diagnóstico geral</p>
+      <h2>O site ranqueia por sobrevivência,<br>não por otimização.</h2>
+      <p>Tráfego orgânico existe mesmo sem infraestrutura SEO. Isso é prova de demanda real sendo capturada de forma ineficiente. Todas as 5 camadas precisam de intervenção.</p>
+    </div>
+    <div class="score-stack rev">
+      <div class="score-row">
+        <div class="score-icon ic-red">🔴</div>
+        <div class="score-body">
+          <span class="score-tag tag-r">Crítico</span>
+          <h3>Fundação Técnica</h3>
+          <p>LCP mobile 12,1s. Nenhuma página tem H1. 5 GTMs conflitantes. /passaporte/ trava por 18 segundos.</p>
+        </div>
+        <span class="score-num">01</span>
+      </div>
+      <div class="score-row">
+        <div class="score-icon ic-red">🔴</div>
+        <div class="score-body">
+          <span class="score-tag tag-r">Ausente</span>
+          <h3>Identidade de Entidade</h3>
+          <p>Wikidata inexistente. Knowledge Graph inativo. Schema Organization não implementado.</p>
+        </div>
+        <span class="score-num">02</span>
+      </div>
+      <div class="score-row">
+        <div class="score-icon ic-red">🔴</div>
+        <div class="score-body">
+          <span class="score-tag tag-r">Ausente</span>
+          <h3>Conteúdo de Autoridade</h3>
+          <p>Zero artigos. O site é 100% landing pages de conversão. Nenhuma página responde perguntas do ICP.</p>
+        </div>
+        <span class="score-num">03</span>
+      </div>
+      <div class="score-row">
+        <div class="score-icon ic-amber">🟡</div>
+        <div class="score-body">
+          <span class="score-tag tag-a">Não testado</span>
+          <h3>GEO + AEO</h3>
+          <p>Presença em ChatGPT, Gemini e Perplexity desconhecida. Sem Schema FAQPage em nenhuma URL.</p>
+        </div>
+        <span class="score-num">04</span>
+      </div>
+      <div class="score-row">
+        <div class="score-icon ic-blue">🔵</div>
+        <div class="score-body">
+          <span class="score-tag tag-b">Fraco</span>
+          <h3>Digital PR</h3>
+          <p>Instagram e Facebook ativos. Zero backlinks editoriais. Sem menções em portais do ES.</p>
+        </div>
+        <span class="score-num">05</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 2 — TÉCNICO ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 2 — Fundação Técnica</p>
+      <h2>Desktop 99. Mobile 66.<br>O problema está onde o cliente está.</h2>
+      <p>Seu cliente pesquisa no celular, na fila do mercado, no intervalo do trabalho. É exatamente nesse momento que o site trava por 12 segundos.</p>
+    </div>
+    <div class="metro-grid rev">
+      <div class="metro bad"><span class="metro-val">12,1s</span><span class="metro-lbl">LCP Mobile</span></div>
+      <div class="metro good"><span class="metro-val">0,6s</span><span class="metro-lbl">LCP Desktop</span></div>
+      <div class="metro bad"><span class="metro-val">4,6s</span><span class="metro-lbl">LCP Real (CrUX)</span></div>
+      <div class="metro bad"><span class="metro-val">18s</span><span class="metro-lbl">/passaporte/</span></div>
+    </div>
+    <div class="prob-list">
+      <div class="prob">
+        <span class="prob-n">01</span>
+        <div>
+          <strong>H1 ausente em 100% das páginas</strong>
+          <span>Nenhuma das 6 URLs tem H1. O crawler não tem âncora semântica para identificar o tema de nenhuma página.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">02</span>
+        <div>
+          <strong>Títulos com "LP -" exposto na SERP</strong>
+          <span>"LP - Casamentos - Vale do Moxuara" aparece assim no Google. Sinaliza amadorismo e desperdiça o espaço mais valioso de SEO.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">03</span>
+        <div>
+          <strong>5 GTMs rodando ao mesmo tempo</strong>
+          <span>Dados inflados, atribuição errada, 5 pixels do Meta em conflito. Você não sabe de onde vêm seus leads reais.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">04</span>
+        <div>
+          <strong>Meta descriptions com 11 a 28 caracteres</strong>
+          <span>A página de eventos corporativos tem apenas "Seu evento". A de casamentos, "Seu casamento". Invisível para o Google e para o usuário.</span>
+          <span class="prob-badge pb-a">Alto</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">05</span>
+        <div>
+          <strong>Imagens com nomes de câmera brutos</strong>
+          <span>IMG_7922-1.jpg, DSC_8052-1.jpg, WhatsApp-Image-2019... Uma das imagens tem 1,4 MB sem compressão.</span>
+          <span class="prob-badge pb-a">Alto</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">06</span>
+        <div>
+          <strong>Render-blocking: 2.740ms de economia estimada</strong>
+          <span>Scripts CSS/JS bloqueiam a renderização inicial. Font-display ausente acrescenta 500ms. JS desnecessário: 388 KiB.</span>
+          <span class="prob-badge pb-a">Alto</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ INTERLUDE 2 — DINHEIRO NA MESA ══════════ -->
+<section class="interlude">
+  <div class="wrap">
+    <h2 class="interlude-q rev">
+      Quantos casamentos passaram pelo Google,<br>
+      chegaram ao seu site e <strong>foram embora</strong><br>
+      enquanto o LCP travava 12 segundos?
+    </h2>
+    <p class="interlude-note rev">
+      A taxa de abandono em mobile dobra para cada segundo extra de carregamento acima de 3s.
+      Você está perdendo clientes antes de dizer uma palavra.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 3 — ENTIDADE ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 3 — Identidade de Entidade</p>
+      <h2>Para o Google e para as IAs,<br>o Vale do Moxuara não existe.</h2>
+      <p>A identidade digital é a fundação invisível que determina se você é citado — ou ignorado — por ChatGPT, Gemini e Perplexity.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table>
+        <thead><tr><th>Elemento</th><th>Status</th><th>Consequência</th></tr></thead>
+        <tbody>
+          <tr><td>Schema Organization</td><td class="cr">Ausente</td><td>Google não identifica como entidade</td></tr>
+          <tr><td>Schema LocalBusiness</td><td class="cr">Ausente</td><td>Sem rich results (estrelas, horário, mapa)</td></tr>
+          <tr><td>Wikidata</td><td class="cr">Ausente</td><td>IAs não têm fonte verificável para citar</td></tr>
+          <tr><td>Knowledge Graph</td><td class="cr">Inativo</td><td>Sem painel lateral no Google</td></tr>
+          <tr><td>Schema FAQPage</td><td class="cr">Ausente</td><td>Zero chance de featured snippet ou citação por IA</td></tr>
+          <tr><td>Schema Event</td><td class="cr">Ausente</td><td>Sem rich results de eventos em Cariacica/ES</td></tr>
+          <tr><td>sameAs cruzados</td><td class="ca">Parcial</td><td>Redes sociais sem linkagem em structured data</td></tr>
+          <tr><td>Google Maps embed</td><td class="cg">Presente</td><td>Localização identificável</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ IA PROVOCA ══════════ -->
+<section class="ia-provoca">
+  <div class="ia-provoca-inner">
+    <h2 class="ia-q rev">
+      Você disse que quer ser citado<br>pelo ChatGPT.<br>
+      Hoje isso é <mark>tecnicamente impossível</mark>.
+    </h2>
+    <p class="ia-p rev">
+      O ChatGPT, Gemini e Perplexity citam empresas quando encontram três coisas:
+      uma entidade Wikidata verificável, Schema Organization com referências cruzadas,
+      e conteúdo que responde às perguntas que o decisor faz.
+      O Vale do Moxuara não tem nenhuma das três.
+    </p>
+    <div class="ia-stat rev">
+      <span class="ia-stat-num">0</span>
+      <span class="ia-stat-txt">elementos dos 3 necessários para citação por IA estão presentes no site hoje.</span>
+    </div>
+    <div class="ia-stat pos rev">
+      <span class="ia-stat-num">90d</span>
+      <span class="ia-stat-txt">é o prazo estimado para ter os 3 implementados e o baseline GEO documentado com a Organum.</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 4 — CONTEÚDO ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 4 — Conteúdo</p>
+      <h2>O site é 100% conversão.<br>Zero descoberta.</h2>
+      <p>Quem não está pronto para contratar simplesmente não encontra o Moxuara. O Google distribui autoridade para quem educa — você não aparece para nenhuma query informacional.</p>
+    </div>
+    <div class="tbl-wrap rev">
+      <table>
+        <thead><tr><th>Query do ICP</th><th>Intenção</th><th>Hoje</th></tr></thead>
+        <tbody>
+          <tr><td>fazenda para casamento no Espírito Santo</td><td class="ca">Decisão</td><td class="cr">Não aparece</td></tr>
+          <tr><td>onde fazer aniversário adulto no ES</td><td class="ca">Decisão</td><td class="cr">Não aparece</td></tr>
+          <tr><td>festa na fazenda perto de Vitória</td><td class="ca">Decisão</td><td class="cr">Não aparece</td></tr>
+          <tr><td>passeio pedagógico fazenda Cariacica</td><td class="ca">Decisão</td><td class="cr">Não aparece</td></tr>
+          <tr><td>evento corporativo ao ar livre Vitória</td><td class="ca">Avaliação</td><td class="cr">Não aparece</td></tr>
+          <tr><td>o que fazer em Cariacica com crianças</td><td class="cg">Descoberta</td><td class="cr">Não aparece</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 5 — PROJEÇÃO ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 5 — Projeção 90 dias</p>
+      <h2>Antes e depois do<br>Método Organum.</h2>
+      <p>Metas verificáveis com linha de base documentada. Cada KPI tem critério de sucesso concreto.</p>
+    </div>
+    <div class="proj-cards rev">
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">4,6s — reprovado</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">&lt; 2,5s — aprovado</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">0 de 6 H1s</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">6 de 6 H1s</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">0 schemas</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">5+ types ativos</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">Wikidata ausente</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">Entrada com Q-ID</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">0 artigos</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">3 pilares + 6 satélites</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">~0% nas IAs</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">1+ query citada</span></div>
+      </div>
+      <div class="proj-item2">
+        <div class="pj-before"><span class="pj-lbl">Hoje</span><span class="pj-val-b">5 GTMs</span></div>
+        <span class="pj-arrow">→</span>
+        <div class="pj-after"><span class="pj-lbl pj-lbl-a">90 dias</span><span class="pj-val-a">1 consolidado</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 6 — MÉTODO ══════════ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 6 — Metodologia</p>
+      <h2>5 camadas sequenciais.<br>Nenhuma é opcional.</h2>
+      <p>O Método Organum foi construído para que cada camada potencialize a anterior. Conteúdo sem fundação técnica não ranqueia. Entidade sem conteúdo não é citada.</p>
+    </div>
+    <div class="timeline">
+      <div class="tl-step">
+        <p class="tl-num">Camada 1 — Mês 1</p>
+        <h3>Fundação Técnica</h3>
+        <p>Core Web Vitals mobile corrigidos via PHP/Code Snippets. H1, títulos e meta descriptions reescritos nas 6 páginas. GTM consolidado em 1 container. /passaporte/ investigada e desbloqueada. Search Console configurado.</p>
+        <span class="tl-tag">Incluído no setup</span>
+      </div>
+      <div class="tl-step">
+        <p class="tl-num">Camada 2 — Mês 1</p>
+        <h3>Identidade de Entidade</h3>
+        <p>Criação da entrada Wikidata do Vale do Moxuara. Schema Organization + LocalBusiness + sameAs cruzados. Schema Event em todas as páginas de serviço. Teste baseline GEO nas 3 IAs documentado.</p>
+        <span class="tl-tag">Incluído no setup</span>
+      </div>
+      <div class="tl-step">
+        <p class="tl-num">Camada 3 — Meses 2–6</p>
+        <h3>Conteúdo de Autoridade</h3>
+        <p>3 artigos pilares: casamento fazenda ES, festa fazenda Vitória, passeio pedagógico. FAQPage Schema em todas as páginas de serviço. Páginas com keyword local. Clusters por segmento.</p>
+        <span class="tl-tag">Incluído no retainer</span>
+      </div>
+      <div class="tl-step">
+        <p class="tl-num">Camada 4 — Meses 3–6</p>
+        <h3>GEO + AEO</h3>
+        <p>Re-teste trimestral nas 3 IAs. Otimização de FAQPage para featured snippets. Monitoramento de citações orgânicas. Ajuste de conteúdo por queries emergentes do ICP.</p>
+        <span class="tl-tag">Incluído no retainer</span>
+      </div>
+      <div class="tl-step">
+        <p class="tl-num">Camada 5 — Mês 4+</p>
+        <h3>Digital PR</h3>
+        <p>Pitch para portais capixabas: Correio do ES, A Gazeta, ES Hoje. Blogs de casamento e turismo local. Publicação de "Guia de Fazendas para Eventos no ES" como link magnet.</p>
+        <span class="tl-tag">Incluído no retainer</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══════════ CAP 7 — INVESTIMENTO ══════════ -->
+<section id="aceitar">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <p class="eyebrow">Capítulo 7 — Investimento</p>
+      <h2>Estrutura de engajamento.</h2>
+      <p>Setup único para resolver a fundação e criar a identidade. Retainer mensal para crescimento contínuo a partir do mês 3.</p>
+    </div>
+    <div class="inv-cards rev">
+      <div class="inv-card">
+        <h3>Setup Único</h3>
+        <div class="inv-price">R$&nbsp;5.000</div>
+        <div class="inv-note">2× no cartão sem juros</div>
+        <ul class="inv-list">
+          <li>Correção completa Camada 1: CWV, H1, títulos, meta, GTM, Search Console</li>
+          <li>Criação Wikidata + Schema Organization + LocalBusiness</li>
+          <li>Schema Event em todas as páginas de serviço</li>
+          <li>sameAs cruzados + entidade consolidada</li>
+          <li>Teste baseline GEO nas 3 IAs documentado</li>
+          <li>Relatório de entrega com KPIs validados</li>
+        </ul>
+      </div>
+      <div class="inv-card feat">
+        <span class="inv-badge">Retainer mensal</span>
+        <h3>SEO/GEO Mensal</h3>
+        <div class="inv-price">R$&nbsp;1.000</div>
+        <div class="inv-note">A partir do mês 3</div>
+        <ul class="inv-list">
+          <li>Produção de 2 artigos de autoridade por mês</li>
+          <li>FAQPage Schema em páginas de serviço</li>
+          <li>Monitoramento e re-teste GEO trimestral</li>
+          <li>Digital PR: pitch para portais do ES</li>
+          <li>Relatório mensal com evolução de KPIs</li>
+          <li>Ajustes técnicos contínuos</li>
+        </ul>
+      </div>
+    </div>
+    <div class="callout rev">
+      <h3>Por que o Vale do Moxuara é o case ideal agora</h3>
+      <p>Segmento local com <strong>baixa concorrência SEO no ES</strong>. Múltiplos serviços = múltiplos clusters semânticos. WordPress + Elementor é a stack que a Organum executa sem atrito. E o mais importante: <strong>há tráfego orgânico chegando mesmo sem otimização</strong> — a demanda existe. A questão é capturá-la antes que um concorrente o faça.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>Pronto para ser<br>encontrado?</h2>
+    <p>Clique abaixo para aceitar formalmente esta proposta. O formulário registra data, hora e dados para formalização do contrato.</p>
+    <button class="cta-btn" onclick="openAccept()">Aceitar proposta →</button>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Organum</div>
+  <div class="foot-sub">SEO Orgânico B2B e GEO · organum.com.br · Pedro Aureliano · Junho 2026</div>
+</footer>
+
+<!-- ══════════ OVERLAY ══════════ -->
+<div class="overlay" id="overlay">
+  <canvas class="confetti-c" id="confettiC"></canvas>
+  <div class="ov-inner">
+    <div class="check-ring">
+      <svg viewBox="0 0 36 36"><polyline points="4,18 14,28 32,8"/></svg>
+    </div>
+    <h2 class="ov-title">Proposta aceita.</h2>
+    <p class="ov-sub">Preencha seus dados para formalizar o engajamento. Você receberá o contrato em até 24 horas.</p>
+    <div class="form-wrap-ov" id="formWrap">
+      <div class="fg"><label>Nome completo</label><input type="text" id="f_nome" placeholder="Seu nome completo" autocomplete="name"></div>
+      <div class="fg"><label>E-mail</label><input type="email" id="f_email" placeholder="seu@email.com" autocomplete="email"></div>
+      <div class="fg"><label>Telefone / WhatsApp</label><input type="tel" id="f_tel" placeholder="(27) 99999-9999" autocomplete="tel"></div>
+      <div class="fg"><label>CNPJ</label><input type="text" id="f_cnpj" placeholder="00.000.000/0000-00"></div>
+      <div class="fg"><label>Razão social</label><input type="text" id="f_razao" placeholder="Nome jurídico da empresa" autocomplete="organization"></div>
+      <div class="fg"><label>Observações (opcional)</label><textarea id="f_obs" placeholder="Algum detalhe adicional..."></textarea></div>
+      <label class="check-lbl">
+        <input type="checkbox" id="f_aceite">
+        <span class="check-txt">
+          <strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta comercial da Organum, incluindo valores, escopo e condições aqui descritos. Aceite registrado em: <span id="ts"></span>
+        </span>
+      </label>
+      <button class="sub-btn" id="subBtn" onclick="submitForm()">Confirmar aceite e enviar</button>
+    </div>
+    <div class="success-box" id="successBox">
+      <h3>Confirmado.</h3>
+      <p>Pedro Aureliano entrará em contato em até 24 horas para enviar o contrato e confirmar o início do engajamento.</p>
+    </div>
+    <button class="back-btn" onclick="closeAccept()">← Voltar à proposta</button>
+  </div>
+</div>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), {passive:true});
+
+/* SCROLL REVEAL */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 60);
+      io.unobserve(e.target);
+    }
+  });
+}, {threshold: .08, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.rev,.tl-step,.prob').forEach(el => io.observe(el));
+
+/* ACCEPT */
+function openAccept() {
+  document.getElementById('overlay').classList.add('on');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('ts').textContent = new Date().toLocaleString('pt-BR', {
+    day:'2-digit', month:'2-digit', year:'numeric',
+    hour:'2-digit', minute:'2-digit', second:'2-digit'
+  });
+  startConfetti();
+  setTimeout(stopConfetti, 3800);
+}
+function closeAccept() {
+  document.getElementById('overlay').classList.remove('on');
+  document.body.style.overflow = '';
+}
+
+/* FORM */
+function submitForm() {
+  const nome  = document.getElementById('f_nome').value.trim();
+  const email = document.getElementById('f_email').value.trim();
+  const tel   = document.getElementById('f_tel').value.trim();
+  const cnpj  = document.getElementById('f_cnpj').value.trim();
+  const razao = document.getElementById('f_razao').value.trim();
+  const obs   = document.getElementById('f_obs').value.trim();
+  const aceite = document.getElementById('f_aceite').checked;
+  const ts    = document.getElementById('ts').textContent;
+  if (!nome || !email || !cnpj || !razao) { alert('Preencha nome, e-mail, CNPJ e razão social.'); return; }
+  if (!aceite) { alert('Marque o checkbox de aceite para continuar.'); return; }
+  const btn = document.getElementById('subBtn');
+  btn.disabled = true;
+  btn.textContent = 'Enviando…';
+
+  /* Webhook — substitua pela URL real do seu GHL/Make/Zapier */
+  const WEBHOOK = 'https://hooks.zapier.com/hooks/catch/PLACEHOLDER/proposta-aceite/';
+  const payload = { nome, email, tel, cnpj, razao, obs, ts,
+    proposta: 'Vale do Moxuara', url: window.location.href };
+
+  fetch(WEBHOOK, { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(payload) })
+    .catch(() => {}) /* se sem webhook, não bloqueia */
+    .finally(() => {
+      document.getElementById('formWrap').style.display = 'none';
+      document.getElementById('successBox').classList.add('on');
+    });
+}
+
+/* CONFETTI */
+let confettiAF, confettiParts = [];
+function startConfetti() {
+  const c = document.getElementById('confettiC');
+  const ctx = c.getContext('2d');
+  c.width = window.innerWidth; c.height = window.innerHeight;
+  confettiParts = Array.from({length:120}, () => ({
+    x: Math.random()*c.width, y: Math.random()*c.height - c.height,
+    w: 6+Math.random()*6, h: 10+Math.random()*6,
+    color: ['#4caf64','#2e9147','#a8e6b8','#f0faf2','#fff'][Math.floor(Math.random()*5)],
+    r: Math.random()*360, dr: (Math.random()-0.5)*6,
+    vy: 2+Math.random()*4, vx: (Math.random()-0.5)*2
+  }));
+  (function loop() {
+    ctx.clearRect(0,0,c.width,c.height);
+    confettiParts.forEach(p => {
+      ctx.save(); ctx.translate(p.x+p.w/2, p.y+p.h/2);
+      ctx.rotate(p.r*Math.PI/180); ctx.fillStyle=p.color;
+      ctx.fillRect(-p.w/2, -p.h/2, p.w, p.h); ctx.restore();
+      p.x+=p.vx; p.y+=p.vy; p.r+=p.dr;
+      if(p.y>c.height) { p.y=-p.h; p.x=Math.random()*c.width; }
+    });
+    confettiAF = requestAnimationFrame(loop);
+  })();
+}
+function stopConfetti() {
+  cancelAnimationFrame(confettiAF);
+  const c = document.getElementById('confettiC');
+  c.getContext('2d').clearRect(0,0,c.width,c.height);
+}
+</script>
+</body>
+</html>
