@@ -1,0 +1,205 @@
+﻿---
+title: "Schema Markup JSON-LD para Empresas B2B: os 5 tipos que mais impactam ranqueamento e GEO"
+description: "279 schemas inválidos → 0 erros críticos. Os 5 schemas JSON-LD obrigatórios para B2B e como cada um impacta ranqueamento e GEO."
+publishedAt: 2026-06-19
+cluster: 'seo-tecnico'
+tags: ["schema markup b2b", "json-ld seo", "schema organization", "rich results b2b"]
+wordCount: 2100
+readingTime: 9
+author: "Pedro Aureliano"
+---
+
+Schema Markup é o vocabulário que permite ao Google e às IAs generativas entenderem o conteúdo de um site de forma estruturada — além de simplesmente ler o texto.
+
+Em uma auditoria de site B2B realizada em maio de 2026, foram encontrados **279 schemas inválidos**. Nenhuma página estava elegível para rich results. O conteúdo existia, mas era opaco para o Google e invisível para as IAs.
+
+Após correção, o Rich Results Test zerou erros críticos. Em 30 dias, o tráfego orgânico cresceu +5.817%.
+
+## Por que schema markup importa para SEO B2B
+
+### Para ranqueamento orgânico
+- Schemas válidos aumentam a elegibilidade para rich results (FAQs expandidas, breadcrumbs, avaliações)
+- O Google usa schemas para entender a relação entre páginas e confirmar autoridade de tópico
+- Schema Organization com sameAs cruzados reforça a identidade de entidade da empresa
+
+### Para GEO (citação por IAs)
+- IAs generativas leem schemas como dados estruturados — mais confiáveis que texto corrido
+- Schema FAQPage é extraído diretamente como Q&A em respostas conversacionais
+- Schema Person com Wikidata vinculado estabelece autoria verificável
+- Schema Service descreve o que a empresa faz em formato que as IAs processam facilmente
+
+## Os 5 schemas obrigatórios para sites B2B
+
+### 1. Schema Organization
+
+O schema mais crítico — define a identidade da empresa para o Google e as IAs.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nome da Empresa",
+  "url": "https://empresa.com.br",
+  "logo": "https://empresa.com.br/logo.png",
+  "foundingDate": "2020",
+  "areaServed": {
+    "@type": "Country",
+    "name": "Brasil"
+  },
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q[ID]",
+    "https://linkedin.com/company/[slug]",
+    "https://glassdoor.com/[slug]"
+  ],
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Nome do Fundador",
+      "sameAs": "https://www.wikidata.org/wiki/Q[ID-fundador]"
+    }
+  ]
+}
+```
+
+**Onde implementar:** em todas as páginas, de preferência no `<head>` via snippet global.
+
+### 2. Schema Service
+
+Descreve o serviço da empresa em formato estruturado. Crítico para empresas B2B de serviços.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Nome do Serviço",
+  "description": "Descrição clara do serviço em 1-2 frases",
+  "provider": {
+    "@type": "Organization",
+    "name": "Nome da Empresa",
+    "sameAs": "https://www.wikidata.org/wiki/Q[ID]"
+  },
+  "areaServed": "Brasil",
+  "serviceType": "[tipo de serviço]"
+}
+```
+
+**Onde implementar:** na landing page pilar de cada cluster de serviço.
+
+### 3. Schema FAQPage
+
+O schema com maior impacto direto em GEO. Cada Q&A é extraível pelas IAs como resposta estruturada.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Pergunta exata que o ICP faz",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Resposta direta e completa em 2-4 frases, com dado verificável quando possível."
+      }
+    }
+  ]
+}
+```
+
+**Onde implementar:** em todos os artigos de blog e nas LPs pilares. Mínimo de 5 Q&As por página.
+
+**Regra para GEO:** as perguntas devem ser as queries reais que o ICP faz nas IAs — não perguntas genéricas sobre o tópico.
+
+### 4. Schema HowTo
+
+Processo em etapas com duração declarada. Eleva elegibilidade para featured snippets e é extraído pelas IAs em queries de "como funciona" e "como fazer".
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": "Como [fazer X]",
+  "totalTime": "P45D",
+  "step": [
+    {
+      "@type": "HowToStep",
+      "name": "Etapa 1 — Nome",
+      "text": "Descrição da etapa com ação concreta."
+    },
+    {
+      "@type": "HowToStep",
+      "name": "Etapa 2 — Nome",
+      "text": "Descrição da etapa com ação concreta."
+    }
+  ]
+}
+```
+
+**Onde implementar:** em artigos que explicam processos, metodologias e etapas de contratação/implementação.
+
+### 5. Schema Person (Autor)
+
+Vincula o conteúdo a uma pessoa real com entidade verificável. Crítico para E-E-A-T.
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nome do Autor",
+  "jobTitle": "Cargo / Especialidade",
+  "url": "https://empresa.com.br/sobre/[nome]",
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q[ID]",
+    "https://linkedin.com/in/[slug]"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Nome da Empresa",
+    "sameAs": "https://www.wikidata.org/wiki/Q[ID-empresa]"
+  }
+}
+```
+
+**Onde implementar:** em todos os artigos de blog e páginas de serviço.
+
+## Os erros de schema mais comuns em sites B2B
+
+| Erro | Impacto | Correção |
+|---|---|---|
+| Schema inválido por campo obrigatório faltando | Sem rich results | Verificar campos required no schema.org |
+| Schema Organization sem sameAs | Entidade fraca | Adicionar Wikidata + LinkedIn + Glassdoor |
+| FAQPage com perguntas genéricas | Baixa extração por IAs | Usar queries reais do ICP |
+| Person sem sameAs para Wikidata | E-E-A-T fraco | Criar Wikidata do autor se não existir |
+| Schema duplicado no mesmo tipo | Conflito de entidade | Um schema por tipo por página |
+| JSON-LD com erro de sintaxe | Schema ignorado | Validar via validator.schema.org |
+
+## Como validar schemas
+
+Três ferramentas obrigatórias:
+
+1. **Rich Results Test** (search.google.com/test/rich-results) — valida elegibilidade para rich results
+2. **Schema.org Validator** (validator.schema.org) — valida sintaxe e campos
+3. **Search Console → Melhorias** — monitora schemas indexados e erros em escala
+
+Após implementação, rodar o Rich Results Test em cada página principal. Meta: 0 erros críticos, 0 avisos críticos.
+
+---
+
+*Pedro Aureliano é fundador da Organum. Schemas JSON-LD são implementados como parte obrigatória da Camada 1 (Fundação Técnica) do Método Organum.*
+
+## FAQ
+
+**Schema markup afeta diretamente o ranqueamento?**
+Schema é um fator de ranqueamento indireto: não garante posição, mas aumenta elegibilidade para rich results (que melhoram CTR) e melhora a compreensão do Google sobre o conteúdo (que pode melhorar relevância). O impacto mais direto é em GEO — schemas válidos são processados pelas IAs generativas como dados estruturados confiáveis.
+
+**Qual schema tem mais impacto para B2B de serviços?**
+Para ranqueamento: Organization + FAQPage. Para GEO: FAQPage + Service + Person. Para E-E-A-T: Person com sameAs para Wikidata. A combinação dos cinco schemas descritos neste artigo cobre as três frentes simultaneamente.
+
+**Posso implementar schema sem programar?**
+Sim, com limitações. Plugins de SEO como Rank Math e Yoast geram schemas básicos (Organization, Article, FAQPage). Para schemas customizados (Service com Wikidata, HowTo com tempo específico, Person com sameAs), é necessário implementar JSON-LD manualmente via `<script type="application/ld+json">` ou snippet PHP.
+
+**Schemas precisam ser atualizados?**
+Sim. Qualquer mudança no conteúdo que o schema descreve (nome, serviço, FAQ) precisa ser refletida no schema. Schemas desatualizados podem gerar inconsistências que o Google penaliza. A recomendação: revisar schemas a cada atualização significativa de conteúdo.
+
+**Como saber se meu schema está sendo lido pelo Google?**
+Search Console → Melhorias → [tipo de schema]. O Google lista as páginas onde detectou schemas e indica erros ou avisos. Uma página com schema implementado que não aparece aqui pode estar com JSON inválido ou em URL não-indexada.

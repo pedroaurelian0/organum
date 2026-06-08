@@ -1,0 +1,147 @@
+﻿---
+title: "Identidade de Entidade no SEO B2B: por que o Wikidata determina quem o Google e o ChatGPT reconhecem"
+description: "Sem entrada no Wikidata, sua empresa é anônima para o Google e para as IAs. O que é identidade de entidade, como criar e por que é pré-requisito para GEO B2B."
+publishedAt: 2026-06-17
+cluster: "geo-aeo"
+tags: ["identidade de entidade seo", "wikidata seo b2b", "knowledge graph google", "seo b2b"]
+wordCount: 2050
+readingTime: 8
+author: "Pedro Aureliano"
+---
+
+Existe uma diferença fundamental entre um site que tem conteúdo sobre um tópico e uma entidade reconhecida como referência nesse tópico.
+
+O Google e as IAs generativas tratam essas duas situações de forma completamente diferente.
+
+Um site com conteúdo pode ou não ranquear dependendo de centenas de variáveis. Uma entidade reconhecida tem uma âncora no Knowledge Graph — uma representação estruturada de quem ela é, o que faz, com quem se relaciona — que o Google e as IAs usam como referência ao processar qualquer menção a esse nome.
+
+Identidade de entidade é a diferença entre existir na web e ser reconhecível por ela.
+
+## O que é identidade de entidade em SEO
+
+Identidade de entidade é o conjunto de sinais estruturados que permitem ao Google e às IAs identificar sua empresa de forma inequívoca:
+
+- **Wikidata** — base de conhecimento aberta que serve como referência de entidade para o Google, Wikipedia e IAs
+- **Knowledge Graph** — representação interna do Google que conecta entidades, atributos e relacionamentos
+- **Schema Organization** — markup estruturado no site declarando nome, URL, sameAs
+- **sameAs cruzados** — conexões verificadas entre perfis da empresa em plataformas diferentes (LinkedIn, Glassdoor, Crunchbase, etc.)
+
+## Por que Wikidata é o ponto de partida
+
+Wikidata é a base de dados aberta que alimenta o Wikipedia e serve como referência primária para o Knowledge Graph do Google. Uma empresa com entrada no Wikidata tem:
+
+1. **Q-ID único** — identificador permanente e inequívoco para a entidade
+2. **Atributos estruturados** — setor, país, fundadores, website, data de fundação
+3. **Relacionamentos** — conexão com entidades relacionadas (fundadores, parceiros, setor)
+4. **Corroboração externa** — o Wikidata é editado por terceiros, o que aumenta a credibilidade da entidade
+
+Para as IAs generativas, uma empresa com Q-ID no Wikidata é uma entidade real com contexto verificável. Uma empresa sem essa âncora é um nome que pode ou não pertencer a uma empresa específica.
+
+## Como criar identidade de entidade para empresas B2B
+
+### Passo 1 — Criar entrada no Wikidata
+
+Acessar wikidata.org e criar item com os seguintes campos obrigatórios:
+
+```
+instance of: empresa (Q4830453 = business)
+industry: setor relevante (ex: Q4931830 = consulting)
+country: Brasil (Q155)
+official website: https://empresa.com.br
+inception: [data de fundação]
+founder: [Q-ID do fundador se existir]
+```
+
+Após criação, a entrada recebe um Q-ID (ex: Q139893028) que serve como identificador permanente.
+
+### Passo 2 — Criar entradas para fundadores
+
+Fundadores com entidade própria no Wikidata reforçam a identidade da empresa. Campos relevantes:
+
+```
+instance of: human (Q5)
+employer: [Q-ID da empresa]
+occupation: executivo / empresário / especialista
+```
+
+O cruzamento empresa ↔ fundadores via Wikidata cria um grafo de relacionamentos que o Google processa como sinal de entidade consolidada.
+
+### Passo 3 — Atualizar Schema Organization no site
+
+Com o Q-ID da empresa criado, atualizar o Schema Organization:
+
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nome da Empresa",
+  "url": "https://empresa.com.br",
+  "foundingDate": "YYYY",
+  "areaServed": "BR",
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q[ID]",
+    "https://linkedin.com/company/[slug]",
+    "https://glassdoor.com/[slug]"
+  ],
+  "founder": [
+    {
+      "@type": "Person",
+      "name": "Nome do Fundador",
+      "sameAs": "https://www.wikidata.org/wiki/Q[ID-fundador]"
+    }
+  ]
+}
+```
+
+### Passo 4 — Verificar Knowledge Graph
+
+Após criar Wikidata e atualizar Schema, verificar se o Knowledge Graph está sendo construído:
+- Pesquisar o nome da empresa no Google
+- Painel de entidade aparece no lado direito?
+- Se não, o processo pode levar semanas — o Google precisa rastrear e processar as novas informações
+
+## O que os dados de um caso real mostram
+
+Um cliente B2B que completou o processo de identidade de entidade:
+
+- Wikidata criado: empresa (Q-ID) + 2 fundadores (Q-IDs)
+- Schema Organization atualizado com sameAs para Wikidata + LinkedIn
+- Schema Person implementado nas páginas de conteúdo com Wikidata do fundador
+
+Resultado em 30 dias:
+- 10 sessões via ChatGPT no primeiro mês (GEO ainda em início)
+- Rich Results Test: elegível com 0 erros críticos
+- Schemas de Service e Person com Wikidata vinculado: ativos
+
+Com GEO completamente executado sobre essa base de entidade, a meta é citação confirmada nas 3 principais IAs para queries prioritárias do ICP.
+
+## Identidade de entidade vs. SEO on-page: a diferença
+
+SEO on-page otimiza o conteúdo de páginas específicas. Identidade de entidade otimiza **a empresa como um todo** no grafo de conhecimento.
+
+Um site pode ter excelente SEO on-page — titles otimizados, conteúdo longo, keywords corretas — e ainda ser tratado como entidade anônima pelo Google e pelas IAs.
+
+Um site com identidade de entidade estabelecida beneficia **todas as páginas** de forma transversal: o Google sabe quem é a empresa, no que é especializada e quais são suas conexões com outras entidades relevantes.
+
+Para SEO B2B de longo prazo, identidade de entidade não é opcional. É a fundação sobre a qual toda a autoridade de conteúdo é ancorada.
+
+---
+
+*Pedro Aureliano é fundador da Organum (Wikidata Q139816104). A metodologia Organum inclui identidade de entidade como Camada 2 obrigatória.*
+
+## FAQ
+
+**O que é o Knowledge Graph do Google?**
+O Knowledge Graph é a base de dados interna do Google que representa entidades (pessoas, empresas, lugares, conceitos) e os relacionamentos entre elas. Quando uma empresa aparece como painel de entidade no lado direito dos resultados de busca, ela tem representação no Knowledge Graph. Empresas com Knowledge Graph ativo têm vantagem de autoridade sobre empresas sem ele.
+
+**Wikidata é obrigatório para SEO B2B?**
+Não é tecnicamente obrigatório, mas é o caminho mais eficiente para estabelecer entidade reconhecida. O Wikidata alimenta o Knowledge Graph do Google e é usado como referência por IAs generativas. Sem Wikidata, o processo de reconhecimento de entidade é mais lento e depende exclusivamente de sinais externos.
+
+**Qualquer empresa pode criar entrada no Wikidata?**
+O Wikidata tem critérios de notabilidade. Empresas com presença digital verificável, fundadores identificáveis e operação real geralmente atendem os critérios. Empresas sem nenhuma presença externa podem ter a entrada contestada ou removida. A forma mais segura é criar a entrada após estabelecer ao menos perfil no LinkedIn e site com Schema Organization.
+
+**Como o sameAs no Schema Organization funciona?**
+O campo `sameAs` no Schema Organization declara que a entidade descrita é a mesma que aparece em outras URLs. O Google usa esses cruzamentos para consolidar informações sobre a entidade e aumentar a confiança nas declarações do Schema. Quanto mais perfis verificados cruzados, mais forte o sinal de entidade.
+
+**Quanto tempo leva para o Knowledge Graph ser confirmado após criar o Wikidata?**
+Varia de semanas a meses. O Google precisa rastrear o Wikidata, processar o Schema Organization atualizado e consolidar os sinais. O processo pode ser acelerado com: Schema Organization correto, sameAs completo, menções externas da empresa em outros sites e conteúdo de alta autoridade no próprio site.

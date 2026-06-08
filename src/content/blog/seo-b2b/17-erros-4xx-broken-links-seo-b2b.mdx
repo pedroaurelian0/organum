@@ -1,0 +1,132 @@
+﻿---
+title: "218 Erros 4xx e 230 Broken Links: como erros técnicos destroem o SEO B2B"
+description: "Diagnóstico real: 218 páginas mortas e 230 links quebrados bloqueando a indexação de um site B2B. Como identificar, priorizar e corrigir sem derrubar o site."
+publishedAt: 2026-06-26
+cluster: 'seo-tecnico'
+tags: ["erros 4xx seo", "broken links seo", "auditoria técnica seo b2b", "fundação técnica seo"]
+wordCount: 1900
+readingTime: 7
+author: "Pedro Aureliano"
+---
+
+Em uma auditoria técnica de site B2B realizada em maio de 2026, o rastreamento identificou:
+
+- **218 erros 4xx** — páginas que retornam "não encontrado" para o Google e para os usuários
+- **230 broken links internos** — links dentro do site apontando para páginas que não existem mais
+
+Esses dois problemas, combinados, são bloqueadores críticos de ranqueamento. Enquanto existirem, qualquer investimento em conteúdo novo tem eficácia reduzida.
+
+## Por que erros 4xx destroem o SEO B2B
+
+### 1. Budget de rastreamento desperdiçado
+
+O Googlebot tem um limite de páginas que rastreia em cada visita ao site (crawl budget). Cada erro 4xx que o bot encontra consome esse budget sem retornar conteúdo válido.
+
+Para um site com 200 páginas de conteúdo real e 218 erros 4xx, o Googlebot pode estar gastando metade do crawl budget em páginas mortas — o que significa que páginas de conteúdo novo podem demorar semanas para ser rastreadas e indexadas.
+
+### 2. Autoridade fragmentada
+
+Links internos distribuem autoridade (PageRank interno) entre as páginas do site. Um link interno que aponta para um erro 4xx não distribui autoridade — ela desaparece.
+
+230 broken links internos = 230 rotas de autoridade quebradas. As páginas que deveriam receber autoridade (LPs pilares, páginas de serviço) ficam desconectadas dos artigos que deveriam alimentá-las.
+
+### 3. Experiência do usuário degradada
+
+Um usuário que clica em um link interno e cai em uma página 404 sai do site. Isso aumenta a taxa de rejeição e gera sinal negativo para o Google sobre a qualidade da experiência no site.
+
+## Como identificar erros 4xx e broken links
+
+### Ferramentas gratuitas
+- **Google Search Console** → Cobertura → Erro 404: lista todas as páginas que o Google tentou rastrear e encontrou erro
+- **Screaming Frog** (versão gratuita: 500 URLs): rastreia o site completo e mapeia todos os 4xx e links quebrados
+
+### Ferramentas pagas
+- **Ahrefs Site Audit**: identifica 4xx, broken links e também backlinks externos apontando para páginas mortas
+- **Semrush Site Audit**: similar ao Ahrefs
+
+### O que exportar do diagnóstico
+1. Lista de URLs com erro 4xx (cada URL que retorna 404 ou 410)
+2. Lista de páginas de origem dos broken links (de qual página saem os links quebrados)
+3. Lista de backlinks externos que apontam para 4xx (prioritário — não perder autoridade externa)
+
+## Como priorizar a correção
+
+Nem todos os 4xx têm o mesmo impacto. A ordem de prioridade:
+
+### Prioridade 1 — 4xx com backlinks externos
+Páginas que tinham links de outros sites e foram deletadas. A autoridade externa está sendo perdida. Corrigir primeiro com redirecionamento 301 para a página mais relevante.
+
+### Prioridade 2 — 4xx linkadas internamente
+Páginas que ainda têm links internos apontando para elas. Corrigir com redirecionamento 301 ou remover o link interno.
+
+### Prioridade 3 — 4xx sem link externo nem interno
+Páginas mortas que o Google encontrou por outros meios (sitemap antigo, cache). Corrigir com 410 (gone) ou deixar 404.
+
+## Como corrigir — as três ações possíveis
+
+### Opção 1 — Redirecionamento 301
+Para páginas que mudaram de URL ou foram renomeadas. O 301 transfere a autoridade da URL antiga para a nova.
+
+```apache
+# .htaccess (Apache)
+Redirect 301 /url-antiga/ /url-nova/
+```
+
+Para WordPress, usar plugin de redirecionamento (Redirection) ou via functions.php:
+
+```php
+function organum_custom_redirects() {
+    if ($_SERVER['REQUEST_URI'] === '/url-antiga/') {
+        wp_redirect('/url-nova/', 301);
+        exit;
+    }
+}
+add_action('template_redirect', 'organum_custom_redirects');
+```
+
+### Opção 2 — Restaurar a página
+Para páginas que foram deletadas acidentalmente mas tinham conteúdo relevante. Restaurar o conteúdo na mesma URL.
+
+### Opção 3 — Retornar 410 (Gone)
+Para páginas que foram intencionalmente removidas e não têm equivalente. O 410 informa ao Google que a remoção foi intencional — o bot para de tentar rastreá-la mais rapidamente do que com 404.
+
+## Como corrigir broken links internos
+
+Para cada broken link identificado:
+1. Abrir a página de origem
+2. Localizar o link quebrado
+3. Atualizar para a URL correta ou remover o link se não tiver equivalente
+
+Para sites WordPress com volume alto (230+ broken links), automatizar com:
+- Plugin **Broken Link Checker** para identificar e atualizar em bulk
+- Exportar lista do Screaming Frog e fazer find-and-replace em banco de dados (requer backup prévio)
+
+## O resultado após correção
+
+Com 218 erros 4xx e 230 broken links resolvidos:
+- Crawl budget liberado para rastrear páginas de conteúdo real
+- Internal linking restaurado — autoridade fluindo para LPs pilares
+- Páginas novas publicadas indexadas em dias, não semanas
+
+Este é o pré-requisito absoluto antes de publicar qualquer novo conteúdo nos clusters. Sem isso, cada artigo novo publicado indexa em condição degradada.
+
+---
+
+*Pedro Aureliano é fundador da Organum. Correção de 4xx e broken links é parte obrigatória da Camada 1 do Método Organum.*
+
+## FAQ
+
+**Quantos erros 4xx são aceitáveis em um site B2B?**
+Zero erros 4xx em páginas indexadas e em páginas com links internos ou externos apontando para elas. Erros 4xx em URLs que nunca foram indexadas e não têm links (tentativas de scan malicioso, por exemplo) são inofensivos. O critério é: se o Google ou um usuário real pode chegar à URL, ela precisa retornar conteúdo válido ou um redirecionamento.
+
+**Broken links externos (de outros sites para o meu) também precisam ser corrigidos?**
+Sim — e são a prioridade mais alta. Links externos de outros sites transferem autoridade para a sua página. Se essa página foi deletada e retorna 404, a autoridade se perde. Redirecionar via 301 para a página mais relevante preserva a autoridade do link externo.
+
+**O Search Console já lista todos os meus erros 4xx?**
+O Search Console lista os 4xx que o Googlebot encontrou durante o rastreamento — que pode ser um subconjunto do total. Para diagnóstico completo, o Search Console deve ser combinado com um rastreamento manual do Screaming Frog ou Ahrefs, que visita todas as URLs conhecidas do site.
+
+**Posso usar 404 em vez de 301 para páginas deletadas?**
+Sim, com ressalvas. 404 é adequado para páginas que nunca tiveram tráfego, conteúdo relevante ou backlinks. Para páginas que tinham qualquer um desses atributos, o 301 preserva o valor. Errar para o lado do 301 é mais seguro que errar para o lado do 404.
+
+**Broken links prejudicam o ranqueamento diretamente?**
+Indiretamente, sim. Broken links não são penalização direta, mas fragmentam o fluxo de autoridade interna e degradam a experiência do usuário. Um site com 230 broken links tem internal linking eficazmente quebrado — as páginas de conversão não recebem a autoridade que deveriam dos artigos.

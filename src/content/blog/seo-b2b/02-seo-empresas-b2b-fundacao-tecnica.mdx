@@ -1,0 +1,140 @@
+﻿---
+title: "SEO para Empresas B2B: por que a fundação técnica determina tudo"
+description: "218 erros 4xx, 279 schemas inválidos e Core Web Vitals zerados: o que acontece quando você ignora a fundação técnica antes de investir em conteúdo B2B."
+publishedAt: 2026-06-11
+cluster: "seo-b2b"
+tags: ["seo para empresas b2b", "fundação técnica seo", "core web vitals", "auditoria seo"]
+wordCount: 2200
+readingTime: 9
+author: "Pedro Aureliano"
+---
+
+Existe um padrão recorrente em sites B2B que chegam à Organum: a empresa investiu meses em produção de conteúdo sem resultado. Os artigos estão publicados, as keywords estão corretas — mas o tráfego orgânico não cresce.
+
+O diagnóstico quase sempre é o mesmo: a fundação técnica está quebrada.
+
+## O que é fundação técnica em SEO B2B
+
+Fundação técnica é o conjunto de condições que permitem ao Google rastrear, entender e ranquear um site com eficiência. Não é opcional. Sem fundação técnica sólida, todo investimento em conteúdo tem retorno degradado.
+
+Os componentes críticos:
+
+- **Core Web Vitals** — LCP, INP e CLS dentro das metas do Google
+- **Ausência de erros 4xx** — páginas mortas desperdiçam budget de rastreamento
+- **Internal linking estruturado** — fluxo de autoridade entre páginas
+- **Schemas JSON-LD válidos** — elegibilidade para rich results e leitura por IAs
+- **Canonical tags corretas** — sem risco de conteúdo duplicado
+- **Sitemap atualizado** — indexação eficiente de novas páginas
+
+## O que acontece quando a fundação está quebrada
+
+Em uma auditoria real de site B2B no segmento de serviços executivos, o diagnóstico revelou:
+
+| Problema | Quantidade | Impacto |
+|---|---|---|
+| Erros 4xx (páginas mortas) | 218 | Budget de rastreamento desperdiçado |
+| Broken links internos | 230 | Autoridade fragmentada |
+| Schemas inválidos | 279 itens | Zero rich results |
+| Páginas sem canonical | 53% | Risco de duplicidade |
+| Internal linking | 5% de cobertura | Silos desconectados |
+| Core Web Vitals | 0% aprovação | Penalização de ranqueamento |
+
+Com esse perfil técnico, publicar novos artigos é contraproducente: o Google não consegue rastrear o site com eficiência, não entende a estrutura de tópicos e não confia nos schemas. A autoridade que deveria fluir para as páginas de conversão se dissipa nos erros.
+
+## Como a fundação técnica foi resolvida
+
+A correção foi executada em 8 fases paralelas, sem derrubar o site:
+
+### Fase 1 — Diagnóstico completo
+Rastreamento total do site mapeando todos os erros de rastreamento, broken links, schemas inválidos e problemas de indexação.
+
+### Fase 2 — Core Web Vitals
+Quatro otimizações críticas implementadas via snippets PHP:
+- **Defer JS v3** — scripts de terceiros carregados de forma assíncrona
+- **CLS Fix v2** — elementos que causam layout shift identificados e estabilizados
+- **GHL Facade** — formulário externo carregado via lazy load (não bloqueia LCP)
+- **LCP Preload** — imagem principal precarregada com `rel=preload`
+
+### Fase 3 — Schemas JSON-LD
+Quatro tipos de schema implementados na landing page pilar:
+- **Service** — com Wikidata Q-ID da empresa
+- **HowTo** — processo em 4 etapas com `totalTime` declarado
+- **FAQPage** — 7 perguntas e respostas estruturadas
+- **Person** — fundador com Wikidata Q-ID
+
+### Fase 4 — On-page
+Title tags, meta descriptions e canonical tags configuradas para todas as páginas principais via regras automáticas que sobrevivem a atualizações de tema.
+
+### Fases 5-8 — Cache, rastreamento, validação
+Plugin de cache configurado, GTM e pixels validados, Rich Results Test com 0 erros críticos.
+
+## O resultado após correção da fundação
+
+Antes vs. depois em 30 dias:
+
+- **Core Web Vitals:** 0% → elegível (LCP, CLS, INP aprovados)
+- **Rich Results Test:** 279 erros → 0 erros críticos
+- **Tráfego orgânico:** 32 visitas/28 dias → 355 novos usuários em maio
+- **Variação orgânica:** +5.817%
+- **Sessões via ChatGPT:** 0 → 10 (validação GEO)
+
+Mais relevante: o tráfego orgânico superou o tráfego pago (Google Ads ativo) no primeiro mês.
+
+## A regra que a maioria ignora
+
+SEO para empresas B2B tem uma sequência que não pode ser invertida:
+
+1. Resolver fundação técnica
+2. Estabelecer identidade de entidade
+3. Publicar conteúdo de autoridade
+4. Otimizar para GEO/AEO
+5. Construir autoridade via Digital PR
+
+Pular para o passo 3 sem completar 1 e 2 não é atalho — é desperdício. O conteúdo publicado sobre fundação quebrada indexa com dificuldade, não acumula autoridade e não é citado por IAs.
+
+## Como auditar a fundação técnica do seu site B2B
+
+Checklist básico para diagnóstico inicial:
+
+**Core Web Vitals**
+- [ ] LCP < 2,5s no mobile
+- [ ] INP < 200ms
+- [ ] CLS < 0,1
+
+**Rastreamento**
+- [ ] Zero erros 4xx em páginas indexadas
+- [ ] Sitemap enviado e sem erros no Search Console
+- [ ] Robots.txt não bloqueando páginas importantes
+
+**Schemas**
+- [ ] Rich Results Test sem erros críticos
+- [ ] Schema Organization com sameAs configurado
+- [ ] Schema de conteúdo em todas as páginas principais
+
+**On-page**
+- [ ] Todas as páginas com canonical declarado
+- [ ] Title tags únicas e dentro de 60 caracteres
+- [ ] Internal linking > 30% de cobertura entre páginas relacionadas
+
+Se algum desses itens falhar, a fundação está comprometida. Resolver isso antes de qualquer investimento em conteúdo é o pré-requisito absoluto.
+
+---
+
+*Pedro Aureliano é fundador da Organum, agência especializada em SEO orgânico B2B. Entre em contato para uma auditoria técnica completa do seu site.*
+
+## FAQ
+
+**O que são Core Web Vitals e por que importam para SEO B2B?**
+Core Web Vitals são métricas de experiência do usuário definidas pelo Google: LCP (velocidade de carregamento), INP (responsividade) e CLS (estabilidade visual). Sites que não atingem as metas são penalizados no ranqueamento. Para B2B, onde o decisor acessa em contextos variados, um site lento tem impacto direto na taxa de rejeição e na conversão.
+
+**Quantos erros 4xx são aceitáveis em um site B2B?**
+Zero erros 4xx em páginas indexadas. Páginas mortas com links apontando para elas desperdiçam budget de rastreamento e fragmentam o fluxo de autoridade. Qualquer página 4xx deve ser redirecionada (301) para o conteúdo mais relevante ou removida dos links internos.
+
+**Por que schemas inválidos bloqueiam os resultados de SEO?**
+Schemas inválidos não geram rich results (estrelas, FAQs, HowTo nos resultados de busca) e dificultam a leitura do conteúdo por IAs generativas. Com schemas válidos, o Google e os modelos de linguagem entendem o conteúdo de forma estruturada, aumentando a elegibilidade para featured snippets e citações em respostas de IA.
+
+**Quanto tempo leva para corrigir a fundação técnica de um site B2B?**
+Depende do volume de erros. Em um site com ~200 páginas e os problemas descritos neste artigo, a correção completa levou um mês em paralelo com a operação normal do site. Correções críticas (Core Web Vitals, schemas da página principal) podem ser implementadas em 1-2 semanas.
+
+**Devo pausar a produção de conteúdo enquanto corrijo a fundação técnica?**
+Não necessariamente. O conteúdo pode ser produzido em paralelo, mas não deve ser publicado antes de a fundação estar resolvida. Publicar sobre base técnica quebrada resulta em indexação deficiente e desperdício de autoridade. A sequência correta é: corrigir fundação → publicar conteúdo otimizado.

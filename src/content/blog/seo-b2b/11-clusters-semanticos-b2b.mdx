@@ -1,0 +1,140 @@
+﻿---
+title: "Clusters Semânticos B2B: como estruturar conteúdo que acumula autoridade (não dispersa)"
+description: "Blog com 32 visitas em 28 dias para 355 usuários em um mês. A arquitetura de silos semânticos que transformou conteúdo avulso em canal orgânico de leads B2B."
+publishedAt: 2026-06-20
+cluster: "seo-b2b"
+tags: ["clusters semanticos b2b", "silos seo", "arquitetura de conteúdo b2b", "seo para empresas b2b"]
+wordCount: 2050
+readingTime: 8
+author: "Pedro Aureliano"
+---
+
+A maioria dos blogs B2B não geram tráfego orgânico significativo porque não foram construídos como clusters — foram construídos como coleções.
+
+Uma coleção de artigos tem autoridade diluída: cada artigo compete individualmente, sem sinergia com os outros. Um cluster semântico concentra autoridade: os artigos se reforçam mutuamente e canalizam relevância para a página de conversão.
+
+Em um caso real de consultoria B2B, um blog com 32 visitas em 28 dias chegou a 355 novos usuários no primeiro mês após o início da estruturação por clusters. Antes de qualquer artigo novo ser publicado — apenas reorganização da arquitetura existente e publicação de uma LP pilar.
+
+## O que é um cluster semântico
+
+Um cluster semântico é um grupo de páginas que cobrem um tópico e seus subtópicos de forma sistemática, com estrutura de internal linking que concentra autoridade na página central.
+
+Componentes:
+
+- **LP Pilar** — página central do tópico, com alta densidade de informação, schemas ativos e foco em conversão
+- **Artigos Satélite** — cobrem subtópicos e etapas da jornada, sempre linkando para a pilar
+- **Hub de cluster** — URL de categoria que agrega todos os artigos e distribui autoridade
+- **Internal linking estruturado** — regra explícita de fluxo de autoridade
+
+## Por que clusters funcionam melhor que artigos avulsos
+
+O Google avalia autoridade de tópico, não apenas relevância de página. Um site com 30 artigos cobindo aleatoriamente tópicos diferentes tem autoridade diluída em 30 direções. Um site com 30 artigos organizados em 3 clusters de 10 tem autoridade concentrada em 3 tópicos — e o Google trata como referência nessas 3 áreas.
+
+Para B2B, isso é ainda mais crítico: o decisor pesquisa tópicos relacionados ao longo de semanas. Se uma empresa aparece em múltiplas queries da mesma jornada (topo, meio e fundo de funil), constrói reconhecimento que converte.
+
+## A arquitetura de 5 clusters de um cliente B2B real
+
+Para uma empresa de consultoria B2B no segmento de serviços executivos, o mapeamento de 5 clusters foi:
+
+| Cluster | Keyword Pilar | Hub URL | Artigos |
+|---|---|---|---|
+| 1 — Serviço principal | [keyword pilar serviço] | /categoria-principal/ | 10 |
+| 2 — Segmento especializado | [keyword segmento] | /segmento/ | 8 |
+| 3 — Risco e objeção | [keyword objeção] | /risco-categoria/ | 8 |
+| 4 — Mercado e tendência | [keyword mercado] | /mercado-categoria/ | 8 |
+| 5 — Vertical e geo | [keyword vertical] | /vertical/ | 8 |
+
+Cada cluster tem uma LP pilar como destino de conversão e artigos satélite cobrindo cada etapa da jornada do ICP.
+
+## Como mapear os artigos de um cluster
+
+Para cada cluster, a estrutura por intent:
+
+**Topo de funil — informacional**
+- O que é [serviço]?
+- Como funciona o processo de [serviço]?
+- Qual a diferença entre [serviço] e [alternativa]?
+
+**Meio de funil — avaliação**
+- Quando contratar [serviço]?
+- Como escolher [fornecedor]?
+- Quais são as etapas de [processo]?
+
+**Fundo de funil — transacional**
+- Quanto custa [serviço]?
+- [Serviço] vs [alternativa]: comparativo
+- Como contratar [serviço] B2B?
+
+**Decisão — comparativo**
+- [Empresa A] vs [Empresa B]: diferenças
+- O que avaliar antes de contratar [serviço]
+
+Essa cobertura garante que a empresa aparece para o mesmo decisor em todas as fases da jornada — do momento em que ele ainda está aprendendo até o momento em que está pesquisando fornecedores.
+
+## A regra de internal linking obrigatória
+
+Internal linking não é opcional em clusters. É a mecânica que faz o sistema funcionar.
+
+Regra para cada artigo satélite:
+1. Link para a LP pilar do cluster (sempre)
+2. Link para 1 artigo adjacente no mesmo cluster
+3. Link para 1 página de serviço relevante
+
+Regra para a LP pilar:
+- Links para todos os artigos satélite publicados no cluster
+
+Regra para o hub:
+- Links para todos os artigos e para a LP pilar
+
+**O que acontece sem essa estrutura:** os artigos publicam, indexam, mas a autoridade fica fragmentada. A LP pilar (página de conversão) não recebe o fluxo de autoridade dos satélites e não rankeia para as queries de fundo de funil.
+
+## Como implementar clusters em sites WordPress
+
+Para sites WordPress com muitos artigos avulsos já publicados, a migração para estrutura de clusters envolve:
+
+1. **Auditar o conteúdo existente** — categorizar cada artigo por cluster e intent
+2. **Criar LPs pilares** — uma por cluster, com schemas completos
+3. **Criar hubs de cluster** — URLs de categoria limpas (sem /category/ no path)
+4. **Adicionar internal links** — retroativamente nos artigos existentes
+5. **Remover ou redirecionar artigos fracos** — conteúdo com < 500 palavras e zero tráfego dilui autoridade
+
+Para novos artigos: nunca publicar sem definir o cluster, o intent e os 3 internal links obrigatórios.
+
+## Frontmatter MDX para rastreamento de clusters
+
+Para sites Astro/MDX, o frontmatter deve incluir metadados de cluster:
+
+```yaml
+---
+title: "Título do artigo"
+cluster: "nome-do-cluster"
+intent: "topo | meio | fundo | decisão"
+pillarUrl: "/url-da-lp-pilar/"
+internalLinks:
+  - "/artigo-adjacente-1/"
+  - "/pagina-de-servico/"
+---
+```
+
+Isso permite gerar internal links automaticamente e rastrear a cobertura de cada cluster programaticamente.
+
+---
+
+*Pedro Aureliano é fundador da Organum. Arquitetura de clusters semânticos é parte da Camada 3 (Conteúdo de Autoridade) do Método Organum.*
+
+## FAQ
+
+**Quantos artigos preciso por cluster para ter autoridade?**
+A estrutura mínima funcional é 1 LP pilar + 4-5 artigos satélite cobrindo as principais etapas da jornada. Para autoridade robusta, 8-10 artigos cobrindo todos os intents é o ideal. O mais importante é cobertura completa da jornada — 4 artigos bem posicionados na jornada valem mais que 12 artigos avulsos.
+
+**Cluster semântico é o mesmo que pillar page?**
+Não exatamente. A pillar page (LP pilar) é um componente do cluster — é a página central. O cluster é o sistema completo: pilar + satélites + internal linking estruturado + hub de categoria. A pillar page sem os satélites e sem o internal linking correto não gera o efeito de concentração de autoridade.
+
+**O que fazer com artigos antigos que não se encaixam em nenhum cluster?**
+Três opções: (1) editar e reposicionar o artigo em um cluster existente, adicionando internal links corretos; (2) redirecionar para uma página mais relevante se o conteúdo for fraco ou redundante; (3) deixar como está se tiver tráfego próprio, mas sem esperar que contribua para a autoridade de cluster.
+
+**Posso ter clusters em dois idiomas no mesmo site?**
+Sim, com hreflang corretamente configurado. Cada cluster em cada idioma deve ter sua própria LP pilar, hub e artigos satélite. O internal linking deve ser dentro do mesmo idioma — não cruzar links entre versões PT e EN dos mesmos artigos.
+
+**Como medir se um cluster está funcionando?**
+Três KPIs por cluster: (1) posição da LP pilar para a keyword pilar (objetivo: top 10); (2) tráfego orgânico acumulado do cluster (pilar + satélites); (3) conversões geradas pelo cluster (formulários preenchidos, leads, contatos). Se a LP pilar não está ranqueando após 90 dias com cluster completo, revisar fundação técnica e E-E-A-T.

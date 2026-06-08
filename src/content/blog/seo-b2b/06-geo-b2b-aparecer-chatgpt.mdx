@@ -1,0 +1,154 @@
+﻿---
+title: "GEO B2B: como fazer sua empresa aparecer no ChatGPT quando o decisor pesquisa"
+description: "Um cliente B2B recebeu 10 sessões do ChatGPT no primeiro mês — com GEO ainda no início. O que é GEO, como funciona e como aplicar para empresas B2B."
+publishedAt: 2026-06-15
+cluster: "geo-aeo"
+tags: ["geo b2b", "aparecer no chatgpt", "generative engine optimization", "seo b2b 2026"]
+wordCount: 2100
+readingTime: 9
+author: "Pedro Aureliano"
+---
+
+Em maio de 2026, um cliente B2B de serviços executivos recebeu 10 sessões oriundas do ChatGPT. O trabalho de GEO ainda estava no início — identidade de entidade sendo completada, conteúdo em fase de publicação inicial.
+
+10 sessões pode parecer pouco. Mas significa que o ChatGPT **já estava citando essa empresa** nas respostas para queries do ICP. Com a estratégia GEO completa em execução, esse número cresce de forma não-linear.
+
+## O que é GEO — Generative Engine Optimization
+
+GEO é a otimização para que sua empresa seja citada por IAs generativas (ChatGPT, Gemini, Perplexity, Copilot) quando usuários fazem perguntas relacionadas ao seu mercado.
+
+É diferente de SEO tradicional: SEO otimiza para aparecer nos resultados do Google. GEO otimiza para ser mencionado nas *respostas* que as IAs geram para os usuários.
+
+Para empresas B2B, a diferença é crítica. O decisor de 2026 faz perguntas como:
+- "Quais são as melhores consultorias de headhunting executivo no Brasil?"
+- "Como funciona o processo de recrutamento de CTO?"
+- "Qual a diferença entre headhunter e agência de RH?"
+
+Se a sua empresa não aparece nessas respostas, você é invisível para uma parcela crescente do seu ICP antes mesmo de eles chegarem ao Google.
+
+## Como as IAs decidem o que citar
+
+As IAs generativas não indexam a web em tempo real como o Google. Elas foram treinadas em grandes volumes de texto e usam mecanismos de busca externos para complementar respostas.
+
+Os fatores que aumentam a probabilidade de citação são:
+
+### 1. Entidade estabelecida
+IAs citam entidades reconhecidas com mais frequência. Uma empresa com:
+- Entrada no Wikidata com Q-ID
+- Schema Organization com sameAs cruzados (Wikidata, LinkedIn, Glassdoor)
+- Knowledge Graph confirmado no Google
+
+...tem probabilidade de citação significativamente maior do que uma empresa sem essas âncoras.
+
+### 2. Conteúdo com definição direta
+IAs preferem extrair texto que responde perguntas de forma direta. Um artigo que começa com:
+
+*"Headhunting executivo é o processo de identificação e abordagem ativa de profissionais sênior qualificados para posições de liderança em empresas..."*
+
+...é muito mais citável do que um artigo que começa com introdução genérica sobre o mercado.
+
+### 3. Dados verificáveis
+IAs evitam citar afirmações sem evidência. Artigos com dados mensuráveis, pesquisas citadas e resultados específicos têm vantagem sobre conteúdo genérico.
+
+### 4. Schema FAQPage
+FAQPage estruturado é lido por IAs como perguntas e respostas diretas — o formato ideal para extração em respostas conversacionais.
+
+### 5. Menções externas
+Quanto mais sites de autoridade mencionam sua empresa, mais dados de treinamento e contexto as IAs têm sobre quem você é e no que você é referência.
+
+## O que bloqueia a citação por IAs
+
+Os bloqueadores mais comuns em sites B2B:
+
+| Bloqueador | Impacto |
+|---|---|
+| Sem entrada Wikidata | IA não tem âncora de entidade reconhecida |
+| Schema inválido ou ausente | IA não lê a estrutura do conteúdo corretamente |
+| Conteúdo sem definição direta | IA prefere fontes com respostas estruturadas |
+| Sem FAQPage | Perguntas e respostas não estão em formato extraível |
+| Zero menções externas | IA não tem corroboração de autoridade |
+
+Em um diagnóstico real de cliente B2B, todos esses bloqueadores estavam presentes simultaneamente: Wikidata ausente, 279 schemas inválidos, conteúdo sem estrutura para extração, zero menções editoriais.
+
+## Como implementar GEO para empresas B2B
+
+### Passo 1 — Completar identidade de entidade
+
+Criar entrada Wikidata com campos:
+- `instance of` — tipo de organização (empresa de consultoria, etc.)
+- `industry` — setor de atuação
+- `country` — país de operação
+- `official website` — URL do site
+- `founders` — fundadores com Q-IDs próprios
+
+Atualizar Schema Organization no site:
+```json
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Nome da Empresa",
+  "url": "https://empresa.com.br",
+  "sameAs": [
+    "https://www.wikidata.org/wiki/Q[ID]",
+    "https://linkedin.com/company/empresa",
+    "https://glassdoor.com/empresa"
+  ]
+}
+```
+
+### Passo 2 — Estruturar conteúdo para extração
+
+Cada artigo precisa:
+- Definição direta no primeiro parágrafo
+- Dados específicos e verificáveis
+- Schema FAQPage com 5-7 perguntas reais do ICP
+- Autoria com Schema Person e Wikidata do autor
+
+### Passo 3 — Testar baseline GEO
+
+Antes de escalar, documentar o estado atual:
+1. Definir 5 queries que o ICP usa nas IAs
+2. Testar no ChatGPT, Gemini e Perplexity
+3. Documentar: a empresa aparece? Em que contexto? Quais concorrentes são citados?
+4. Essa é a linha de base — re-testar a cada 90 dias
+
+### Passo 4 — Monitorar via Google Analytics
+
+Criar segmento para tráfego referral de IAs:
+- chatgpt.com
+- perplexity.ai
+- gemini.google.com
+- bing.com (Copilot)
+
+Sessões originárias dessas fontes são validação direta de citação por IA.
+
+## O que esperar com GEO bem executado
+
+Com identidade de entidade completa, conteúdo estruturado para extração e clusters publicados:
+
+- Citação orgânica nas IAs para queries prioritárias do ICP
+- Tráfego referral de ChatGPT, Perplexity e Gemini crescendo mensalmente
+- Leads que chegam já com contexto sobre a empresa — encurtando o ciclo de venda
+
+No caso real do cliente B2B: 10 sessões via ChatGPT no primeiro mês, com GEO ainda em fase inicial. A meta para 90 dias é citação confirmada em pelo menos 1 query prioritária nas 3 IAs principais.
+
+---
+
+*Pedro Aureliano é fundador da Organum. GEO sistematizado para empresas B2B é o diferencial da metodologia Organum no Brasil.*
+
+## FAQ
+
+**O que é GEO (Generative Engine Optimization)?**
+GEO é a otimização para que sua empresa seja citada por IAs generativas como ChatGPT, Gemini e Perplexity quando usuários fazem perguntas relacionadas ao seu mercado. Enquanto SEO tradicional otimiza para resultados do Google, GEO otimiza para aparecer nas respostas conversacionais das IAs.
+
+**GEO substitui o SEO tradicional para empresas B2B?**
+Não substitui — complementa. SEO e GEO operam em camadas diferentes da mesma jornada. O decisor pesquisa no Google E pergunta ao ChatGPT. Uma empresa com SEO sólido e GEO ativo cobre toda a jornada. Uma empresa com apenas um dos dois tem lacuna de visibilidade.
+
+**Como saber se minha empresa está sendo citada pelo ChatGPT?**
+Teste manual: entre no ChatGPT e faça 5 perguntas que seu ICP tipicamente faz sobre o seu mercado. Sua empresa aparece? Se sim, em que contexto e junto com quais concorrentes? Complementarmente, monitore sessões de referral de chatgpt.com no Google Analytics.
+
+**Quanto tempo leva para o GEO gerar resultado?**
+Depende do estado atual da identidade de entidade e do volume de conteúdo publicado. Com Wikidata completo, schemas corretos e conteúdo estruturado para extração, os primeiros sinais (sessões via ChatGPT) aparecem em 30-60 dias. Citação consistente em queries prioritárias leva 90-180 dias.
+
+**Todas as empresas B2B podem se beneficiar do GEO?**
+Especialmente empresas B2B. Decisores de alto ticket — os que contratam consultorias, SaaS enterprise, serviços especializados — são usuários intensos de IAs como ChatGPT e Perplexity. Estar nas respostas que eles recebem é presença de marca no momento de pesquisa ativa.

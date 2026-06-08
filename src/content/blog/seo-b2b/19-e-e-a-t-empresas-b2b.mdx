@@ -1,0 +1,148 @@
+﻿---
+title: "E-E-A-T para Empresas B2B: como demonstrar autoridade real que o Google (e as IAs) reconhecem"
+description: "Experience, Expertise, Authoritativeness, Trustworthiness: os 4 sinais que determinam se seu conteúdo B2B ranqueia ou não."
+publishedAt: 2026-06-28
+cluster: "seo-b2b"
+tags: ["e-e-a-t b2b", "autoridade seo", "conteúdo de autoridade b2b", "seo de autoridade b2b"]
+wordCount: 2000
+readingTime: 8
+author: "Pedro Aureliano"
+---
+
+E-E-A-T não é uma métrica que o Google calcula diretamente. É um framework de avaliação que os Quality Raters do Google usam para avaliar a qualidade das páginas — e que, indiretamente, informa os algoritmos de ranqueamento.
+
+Para B2B de alto ticket, E-E-A-T é mais crítico do que para qualquer outro segmento. O decisor que pesquisa uma consultoria executiva ou um SaaS B2B enterprise avalia os mesmos sinais que o Google avalia: quem escreve isso? Essa empresa tem experiência real? O que outros dizem sobre ela?
+
+## O que é E-E-A-T
+
+**Experience (Experiência):** o conteúdo demonstra experiência em primeira pessoa com o tópico? Cases reais, dados mensuráveis, situações específicas — não conteúdo genérico que poderia ter sido escrito por qualquer pessoa sem nunca ter executado o que descreve.
+
+**Expertise (Especialização):** o autor e a empresa têm qualificação verificável para o tópico? Credenciais, histórico, especialização demonstrável no setor.
+
+**Authoritativeness (Autoridade):** outros reconhecem a empresa e o autor como referência? Menções externas, links editoriais, citações em veículos do setor.
+
+**Trustworthiness (Confiabilidade):** o site é transparente e confiável? Schemas corretos, HTTPS, política de privacidade, informações de contato, metodologia declarada.
+
+## Como construir cada componente para B2B
+
+### Experience — dados reais em vez de teoria
+
+**O que funciona:**
+- Resultados mensuráveis de casos reais (com dados específicos, sem revelar identidade do cliente se necessário)
+- Exemplos de diagnósticos, problemas encontrados e soluções aplicadas
+- Referências a situações reais com detalhes que demonstram que você executou
+
+**Exemplo de conteúdo com Experience:**
+
+❌ "Erros técnicos em sites B2B podem prejudicar o ranqueamento."
+✅ "Em uma auditoria realizada em maio de 2026, encontramos 218 erros 4xx, 230 broken links e 279 schemas inválidos — o que explicava por que o site tinha 0% de aprovação em Core Web Vitals apesar de ter conteúdo publicado."
+
+O segundo exemplo demonstra experiência de execução real. O primeiro é afirmação genérica.
+
+### Expertise — autoria verificável com profundidade
+
+**O que funciona:**
+- Autoria identificada com nome, cargo e especialização declarada
+- Schema Person com sameAs para Wikidata e LinkedIn
+- Página de autor com histórico verificável
+- Profundidade técnica que separa especialista de generalista
+
+**Implementação em Schema:**
+
+```json
+{
+  "@type": "Article",
+  "author": {
+    "@type": "Person",
+    "name": "Pedro Aureliano",
+    "jobTitle": "Especialista em SEO B2B",
+    "sameAs": [
+      "https://www.wikidata.org/wiki/Q139816078",
+      "https://linkedin.com/in/pedro-aureliano"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Organum",
+      "sameAs": "https://www.wikidata.org/wiki/Q139816104"
+    }
+  }
+}
+```
+
+### Authoritativeness — ser citado por outros
+
+**O que funciona:**
+- Links editoriais em veículos B2B do setor
+- Menções em podcasts, artigos e pesquisas externas
+- Citações pelas IAs generativas (validação de autoridade de forma crescente)
+- Participação como especialista em eventos e publicações do setor
+
+**Como construir:**
+- Digital PR com pesquisa de mercado proprietária (dados exclusivos = citação natural)
+- Expert quotes para jornalistas (HARO e equivalentes)
+- Guest posts em blogs do setor com audiência do ICP
+
+**Relação com GEO:** uma empresa citada pelo ChatGPT para queries relevantes do ICP está demonstrando autoridade de forma crescentemente reconhecível pelo Google.
+
+### Trustworthiness — transparência técnica e editorial
+
+**O que funciona:**
+- Schema Organization com dados completos e verificáveis
+- HTTPS ativo e certificado válido
+- Políticas de privacidade e termos de uso acessíveis
+- Informações de contato claras e verificáveis
+- Metodologia declarada e consistente
+- Dados citados com fonte verificável
+
+**O que destrói confiança:**
+- Schemas com informações inconsistentes com o site
+- Conteúdo sem data de publicação ou autor identificado
+- Claims sem evidência ("somos os melhores do Brasil")
+- Backlinks de domínios tóxicos (18,4% do caso real — sinal negativo de trust)
+
+## E-E-A-T na prática: checklist por página
+
+**Para LPs de serviço:**
+- [ ] Schema Organization com sameAs completo
+- [ ] Schema Service com dados específicos
+- [ ] Depoimentos ou cases verificáveis
+- [ ] Dados quantitativos com fonte
+- [ ] Informações de contato claras
+
+**Para artigos de blog:**
+- [ ] Autor identificado com Schema Person e Wikidata
+- [ ] Data de publicação e última atualização
+- [ ] Fontes citadas para afirmações relevantes
+- [ ] Experiência demonstrada (caso real ou dado específico)
+- [ ] Schema FAQPage com perguntas do ICP
+
+## O impacto de E-E-A-T no ranqueamento B2B
+
+Um artigo com E-E-A-T forte compite melhor contra conteúdo gerado em escala sem especialização real.
+
+No caso real de cliente B2B:
+- Taxa de fechamento de leads qualificados: 62,5% (média do setor: 15-25%)
+- O ICP que chegava pelo canal orgânico chegava **pré-qualificado** — já havia lido o conteúdo de autoridade e já confiava na empresa antes do primeiro contato
+
+E-E-A-T alto não gera apenas ranqueamento melhor. Gera leads com percepção de autoridade construída antes da primeira conversa comercial.
+
+---
+
+*Pedro Aureliano é fundador da Organum (Wikidata Q139816104). E-E-A-T é um pilar central da Camada 3 (Conteúdo de Autoridade) do Método Organum.*
+
+## FAQ
+
+**O Google mede E-E-A-T diretamente?**
+Não há uma "pontuação de E-E-A-T" no algoritmo do Google. E-E-A-T é um framework dos Quality Raters Guidelines — o guia que humanos contratados pelo Google usam para avaliar qualidade de resultados. Esses dados de avaliação humana informam indiretamente os algoritmos de machine learning. Os sinais de E-E-A-T (links editoriais, autoria verificável, schemas corretos) são o que o algoritmo mede.
+
+**E-E-A-T impacta apenas conteúdo de "Your Money or Your Life" (YMYL)?**
+E-E-A-T foi originalmente mais crítico para YMYL (saúde, finanças, direito). Mas o Google expandiu a aplicação: qualquer tópico onde a qualidade do conteúdo importa para a experiência do usuário é avaliado por esses critérios. Para B2B de alto ticket — onde o decisor está avaliando fornecedores para contratos de R$50.000+ — E-E-A-T é especialmente relevante.
+
+**Posso ter E-E-A-T forte sem casos de clientes identificados?**
+Sim. Cases anônimos com dados reais (sem revelar o cliente) demonstram Experience de forma convincente. "Um cliente B2B de headhunting executivo atingiu ROI de 1.184% em 30 dias" demonstra experiência real sem identificar o cliente. A especificidade dos dados é o que importa — não o nome da empresa.
+
+**Como o Wikidata contribui para E-E-A-T?**
+Wikidata fornece identidade verificável para o autor e a empresa — o componente de Expertise do E-E-A-T. Um autor com Q-ID do Wikidata é uma entidade verificável no grafo de conhecimento global. O Google e as IAs tratam entidades com Wikidata como mais confiáveis do que nomes sem ancoragem verificável.
+
+**E-E-A-T de autor ou de empresa é mais importante?**
+Para SEO B2B, ambos importam e se reforçam. A autoridade da empresa (links editoriais, Knowledge Graph) sustenta a autoridade do autor (Schema Person, Wikidata). A autoridade do autor (especialização técnica demonstrável, menções como expert) sustenta a autoridade do conteúdo da empresa. O ideal é desenvolver os dois em paralelo.

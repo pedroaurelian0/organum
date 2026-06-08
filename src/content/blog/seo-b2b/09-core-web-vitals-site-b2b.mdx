@@ -1,0 +1,142 @@
+﻿---
+title: "Core Web Vitals para Sites B2B: como sair de 0% para aprovação em 30 dias"
+description: "LCP, INP e CLS reprovados em um site B2B de serviços executivos. As 4 correções que resolveram os Core Web Vitals e desbloquearam o ranqueamento orgânico."
+publishedAt: 2026-06-18
+cluster: 'seo-tecnico'
+tags: ["core web vitals b2b", "lcp seo", "performance site b2b", "fundação técnica seo"]
+wordCount: 2000
+readingTime: 8
+author: "Pedro Aureliano"
+---
+
+Core Web Vitals reprovados não é só um problema de UX. É um bloqueador de ranqueamento.
+
+Em um site B2B de serviços executivos auditado em maio de 2026, o diagnóstico era claro: **0% de aprovação em Core Web Vitals**. LCP, INP e CLS todos reprovados. O site estava sendo penalizado pelo Google em todas as queries onde competia.
+
+A correção levou um mês. Resultado: aprovação completa, 0 erros críticos no Rich Results Test e tráfego orgânico crescendo +5.817%.
+
+## O que são Core Web Vitals e por que impactam SEO B2B
+
+Core Web Vitals são três métricas de experiência do usuário definidas pelo Google como fatores de ranqueamento:
+
+| Métrica | O que mede | Meta |
+|---|---|---|
+| **LCP** (Largest Contentful Paint) | Tempo para o maior elemento visível carregar | < 2,5s |
+| **INP** (Interaction to Next Paint) | Responsividade a cliques e interações | < 200ms |
+| **CLS** (Cumulative Layout Shift) | Estabilidade visual — elementos que "pulam" | < 0,1 |
+
+Sites que não atingem essas metas recebem penalização no ranqueamento. Para B2B, onde a decisão de pesquisa acontece frequentemente em contextos profissionais e mobile, um site lento ou instável tem impacto direto na taxa de rejeição.
+
+## O diagnóstico real: o que estava quebrando cada métrica
+
+### LCP reprovado — a imagem principal sem preload
+
+Em sites WordPress com Elementor, o elemento LCP frequentemente é a imagem hero ou o banner principal. Sem `rel=preload`, o browser só descobre essa imagem quando o HTML já foi processado e os CSS carregados — tarde demais para um LCP aprovado.
+
+**Causa adicional:** scripts de terceiros (GTM, pixels, fontes) carregando de forma síncrona e bloqueando o render.
+
+### INP reprovado — JavaScript pesado no thread principal
+
+INP mede a latência entre a interação do usuário e a próxima renderização. Scripts executando no thread principal durante a interação causam bloqueio.
+
+**Causa:** plugins de formulário externo (GHL), scripts de analytics e bibliotecas JavaScript carregando de forma síncrona.
+
+### CLS reprovado — elementos que carregam depois e empurram o layout
+
+Layout Shift acontece quando elementos visuais carregam de forma assíncrona e deslocam o conteúdo já renderizado. Causas comuns: fontes sem `font-display: swap`, imagens sem dimensões declaradas, embeds externos sem dimensão reservada.
+
+## As 4 correções implementadas
+
+### Correção 1 — Defer JS v3
+
+Todos os scripts de terceiros (GTM, pixels, fontes externas) movidos para carregamento assíncrono (`defer` e `async`). Scripts críticos identificados e mantidos síncronos; scripts não-críticos diferidos.
+
+Impacto: redução imediata no tempo de bloqueio do thread principal, melhorando LCP e INP.
+
+```php
+// Padrão de implementação — scripts diferidos via wp_enqueue_scripts
+function organum_defer_scripts($tag, $handle, $src) {
+    $defer_scripts = ['gtm', 'analytics', 'pixel'];
+    foreach ($defer_scripts as $script) {
+        if (strpos($handle, $script) !== false) {
+            return str_replace('<script', '<script defer', $tag);
+        }
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'organum_defer_scripts', 10, 3);
+```
+
+### Correção 2 — CLS Fix v2
+
+Fontes carregadas com `font-display: swap` para evitar layout shift durante carregamento. Imagens com dimensões explícitas declaradas via CSS para reservar espaço antes do carregamento. Embeds de terceiros com container de dimensão fixa.
+
+### Correção 3 — GHL Facade (Lazy Load)
+
+O formulário GoHighLevel embarcado como iframe bloqueava o LCP por iniciar carregamento imediatamente. Solução: facade estática que exibe a aparência do formulário e inicia o carregamento do iframe real apenas quando o usuário interage (click-to-load).
+
+Impacto: formulário não compete mais com o elemento LCP pelo bandwidth na inicialização da página.
+
+### Correção 4 — LCP Preload
+
+Imagem identificada como elemento LCP adicionada com `rel=preload` no `<head>` antes de qualquer outro recurso:
+
+```html
+<link rel="preload" as="image" href="/wp-content/themes/[tema]/assets/hero.webp" fetchpriority="high">
+```
+
+Isso garante que o browser começa a baixar a imagem imediatamente, antes mesmo de processar o CSS.
+
+## Resultado após as 4 correções
+
+| Métrica | Antes | Depois |
+|---|---|---|
+| LCP | Reprovado | Aprovado (< 2,5s) |
+| INP | Reprovado | Aprovado (< 200ms) |
+| CLS | Reprovado | Aprovado (< 0,1) |
+| Core Web Vitals geral | 0% | Elegível |
+| Rich Results Test | 279 erros | 0 erros críticos |
+
+## Implementação que sobrevive a atualizações
+
+Um risco comum em WordPress é que otimizações aplicadas diretamente em arquivos de tema são sobrescritas na próxima atualização.
+
+A solução: implementar todas as correções via plugin de snippets PHP (Code Snippets). Cada correção é um snippet independente com ID rastreado:
+
+- Snippet 10, 12, 14 — Core Web Vitals e performance geral
+- Snippet 15, 19, 20 — Schemas e entidade
+- Snippet 23, 25, 26 — Rastreamento e GHL
+- Snippet 27, 28, 32 — On-page e canonicals
+
+Qualquer atualização de tema ou plugin não afeta os snippets. As correções persistem.
+
+## O que verificar antes de testar Core Web Vitals
+
+Antes de rodar PageSpeed Insights ou o relatório de CWV do Search Console:
+
+1. **Desativar RUCSS** (WP Rocket) — Remove Unused CSS pode causar regressão de LCP ao remover CSS crítico que o plugin não identifica como usado
+2. **Desativar Critical CSS agressivo** — mesma razão
+3. **Testar em conexão 4G simulada** — o threshold do Google é medido em condições de campo, não laboratório
+
+Após desativar esses recursos e implementar as 4 correções, rodar PageSpeed Insights. Se os três métricas estiverem verdes, o site está elegível para ranqueamento sem penalização de CWV.
+
+---
+
+*Pedro Aureliano é fundador da Organum. A correção de Core Web Vitals é parte obrigatória da Camada 1 do Método Organum.*
+
+## FAQ
+
+**Core Web Vitals reprovados prejudicam muito o SEO?**
+Sim — são um fator de ranqueamento confirmado pelo Google desde 2021. Sites com CWV reprovados competem em desvantagem contra sites com performance equivalente mas CWV aprovados. Para B2B com tickets altos, onde cada posição de ranqueamento representa receita significativa, resolver CWV é prioritário.
+
+**O que é INP e como é diferente do antigo FID?**
+INP (Interaction to Next Paint) substituiu o FID (First Input Delay) em março de 2024. O FID media apenas a latência do primeiro input; o INP mede a pior latência de interação durante toda a sessão. É uma métrica mais difícil de passar — scripts que causavam FID aceitável podem causar INP reprovado.
+
+**RUCSS do WP Rocket melhora ou prejudica Core Web Vitals?**
+Depende do site. RUCSS pode melhorar CLS ao reduzir CSS não-utilizado, mas pode causar regressão de LCP se remover CSS que o plugin não identifica como usado na renderização crítica. A recomendação para a maioria dos sites WordPress: manter RUCSS desativado e otimizar Core Web Vitals via outros métodos.
+
+**Posso testar Core Web Vitals antes de publicar correções?**
+Sim. PageSpeed Insights usa tanto dados de laboratório (tempo real) quanto dados de campo (CrUX — Chrome User Experience Report). Para testar correções rapidamente, use os dados de laboratório do PageSpeed Insights. Para monitorar performance real, acompanhe o relatório de CWV no Google Search Console (atualizado mensalmente).
+
+**Quanto tempo leva para Core Web Vitals melhorar após as correções?**
+Os dados de laboratório (PageSpeed) refletem imediatamente. Os dados de campo (CrUX) levam 28 dias para atualizar no Search Console — o Google agrega dados dos últimos 28 dias de visitas reais. A melhora no ranqueamento começa a aparecer à medida que os novos dados de campo se consolidam.
