@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Proposta SEO — LedHome × Organum</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --serif:'Playfair Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --y400:#f59e0b;--y600:#d97706;--y800:#92400e;
+  --g400:#4caf64;--g500:#2e9147;
+  --r400:#f87171;
+  --n950:#0c0a08;--n900:#141210;--n800:#211f1b;--n700:#2f2d28;
+  --n600:#4a4741;--n500:#6b6860;--n400:#8c8a83;--n300:#b0ada4;
+  --n200:#d4d1c8;--n100:#eceae4;--n50:#f8f6f0;
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);background:var(--n950);color:var(--n100);font-size:16px;line-height:1.7;overflow-x:hidden}
+
+.wrap{width:100%;max-width:700px;margin:0 auto;padding:0 20px}
+section{padding:72px 0}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent)}
+.rev{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rev.vis{opacity:1;transform:none}
+.eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--y400)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:background .4s}
+nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.06)}
+.nav-logo{font-family:var(--serif);font-size:16px;color:var(--n100)}
+.nav-pill{font-size:12px;font-weight:600;color:var(--y400);padding:8px 16px;border:1px solid rgba(245,158,11,.35);border-radius:100px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;padding:100px 20px 48px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;pointer-events:none;background:radial-gradient(ellipse 130% 55% at 50% -5%,rgba(245,158,11,.1) 0%,transparent 62%)}
+.hero-grain{position:absolute;inset:-50%;width:200%;height:200%;opacity:.3;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.05'/%3E%3C/svg%3E");animation:grain 8s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}20%{transform:translate(-2%,-3%)}50%{transform:translate(-3%,3%)}80%{transform:translate(3%,-3%)}}
+.hero-inner{position:relative;z-index:2;max-width:700px;margin:0 auto;width:100%}
+.hero-ey{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--y400);margin-bottom:24px;opacity:0;animation:fadeUp .7s ease forwards .1s}
+.hero-h1{font-family:var(--serif);font-size:clamp(34px,8vw,68px);font-weight:400;line-height:1.1;margin-bottom:20px;opacity:0;animation:fadeUp .7s ease forwards .25s}
+.hero-h1 em{font-style:italic;color:var(--y400)}
+.hero-sub{font-size:16px;font-weight:300;color:var(--n300);max-width:540px;margin-bottom:48px;line-height:1.8;opacity:0;animation:fadeUp .7s ease forwards .4s}
+.hero-kpis{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.05);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);opacity:0;animation:fadeUp .7s ease forwards .6s}
+.kpi{background:var(--n900);padding:20px 16px;text-align:center}
+.kpi-val{font-family:var(--serif);font-size:clamp(22px,5.5vw,32px);font-weight:600;display:block;line-height:1;margin-bottom:5px;color:var(--r400)}
+.kpi-lbl{font-size:11px;color:var(--n500);letter-spacing:.06em;text-transform:uppercase;line-height:1.4}
+.scroll-cue{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:var(--n600);font-size:10px;letter-spacing:.12em;text-transform:uppercase;z-index:2;opacity:0;animation:fadeUp .8s ease forwards 1s}
+.scroll-line{width:1px;height:28px;background:linear-gradient(to bottom,var(--n600),transparent);animation:pulse 2s ease infinite}
+
+/* SEC HEADER */
+.sh{margin-bottom:40px}
+.sh .eyebrow{margin-bottom:12px}
+.sh h2{font-family:var(--serif);font-size:clamp(24px,5vw,40px);font-weight:400;line-height:1.2;margin-bottom:12px}
+.sh p{font-size:15px;color:var(--n400);line-height:1.75;max-width:580px}
+
+/* DÚVIDAS — ACCORDION */
+.faq-list{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
+.faq-item{background:var(--n900);border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
+.faq-q-text{font-size:15px;font-weight:500;color:var(--n100);line-height:1.4}
+.faq-icon{width:24px;height:24px;border-radius:50%;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .3s,background .2s}
+.faq-icon span{font-size:14px;color:var(--y400);line-height:1;transition:transform .3s;display:block}
+.faq-item.open .faq-icon{background:rgba(245,158,11,.2)}
+.faq-item.open .faq-icon span{transform:rotate(45deg)}
+.faq-body{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease}
+.faq-item.open .faq-body{max-height:600px}
+.faq-content{padding:0 20px 20px;font-size:14px;color:var(--n400);line-height:1.8;border-top:1px solid rgba(255,255,255,.05)}
+.faq-content p{margin-bottom:12px}
+.faq-content p:last-child{margin-bottom:0}
+.faq-content strong{color:var(--n100)}
+.faq-content .highlight-box{margin-top:12px;padding:14px 16px;background:rgba(76,175,100,.07);border:1px solid rgba(76,175,100,.15);border-radius:8px;font-size:13px;color:var(--g400);line-height:1.7}
+.faq-content .score-track{margin-top:14px;display:flex;flex-direction:column;gap:6px}
+.score-step{display:flex;align-items:center;gap:12px;padding:9px 14px;background:var(--n800);border-radius:8px}
+.score-val{font-family:var(--serif);font-size:16px;font-weight:600;flex-shrink:0;width:44px}
+.sv-r{color:var(--r400)}
+.sv-y{color:var(--y400)}
+.sv-g{color:var(--g400)}
+.score-desc{font-size:13px;color:var(--n400)}
+
+/* DIAGNÓSTICO */
+.prob-list{display:flex;flex-direction:column;gap:8px}
+.prob{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px;opacity:0;transform:translateX(-16px);transition:opacity .5s ease,transform .5s ease}
+.prob.vis{opacity:1;transform:none}
+.prob-n{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--n700);line-height:1;padding-top:4px;text-align:center}
+.prob strong{display:block;font-size:14px;font-weight:600;color:var(--n100);margin-bottom:4px}
+.prob span{font-size:13px;color:var(--n500);line-height:1.6;display:block;margin-bottom:8px}
+.prob-badge{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:2px 8px;border-radius:100px}
+.pb-r{background:rgba(248,113,113,.15);color:var(--r400)}
+.pb-y{background:rgba(245,158,11,.15);color:var(--y400)}
+.pb-g{background:rgba(76,175,100,.15);color:var(--g400)}
+
+/* FASES */
+.fase{margin-bottom:32px}
+.fase-header{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:var(--n900);border:1px solid rgba(255,255,255,.07);border-bottom:none;border-radius:12px 12px 0 0}
+.fase-num{width:36px;height:36px;border-radius:50%;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;font-weight:600;color:var(--y400);flex-shrink:0}
+.fase-title h3{font-size:16px;font-weight:600;color:var(--n100);margin-bottom:3px}
+.fase-title p{font-size:13px;color:var(--n500)}
+.fase-rows{border:1px solid rgba(255,255,255,.07);border-top:none;border-radius:0 0 12px 12px;overflow:hidden}
+.frow{padding:13px 16px;border-bottom:1px solid rgba(255,255,255,.04);background:var(--n900)}
+.frow:last-child{border-bottom:none}
+.frow strong{display:block;font-size:14px;font-weight:600;color:var(--n100);margin-bottom:3px}
+.frow span{font-size:13px;color:var(--n500);line-height:1.6}
+.frow-tag{display:inline-block;font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:100px;margin-top:6px}
+.ft-now{background:rgba(248,113,113,.15);color:var(--r400)}
+.ft-m2{background:rgba(245,158,11,.15);color:var(--y400)}
+.ft-m3{background:rgba(76,175,100,.15);color:var(--g400)}
+
+/* KWS */
+.kw-list{display:flex;flex-direction:column;gap:6px}
+.kw{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--n900);border:1px solid rgba(255,255,255,.05);border-radius:9px}
+.kw-text{font-size:14px;color:var(--n100)}
+.kw-tag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:100px;white-space:nowrap;flex-shrink:0}
+.kt-f{background:rgba(76,175,100,.15);color:var(--g400)}
+.kt-m{background:rgba(245,158,11,.15);color:var(--y400)}
+.kt-t{background:rgba(96,165,250,.15);color:#60a5fa}
+
+/* PROJEÇÃO */
+.proj-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
+.prow{padding:16px 20px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px}
+.prow-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:6px}
+.prow-label{font-size:12px;font-weight:600;color:var(--n300);letter-spacing:.04em}
+.prow-total{font-family:var(--serif);font-size:17px;font-weight:600;color:var(--y400)}
+.prow-cols{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pcol-lbl{font-size:10px;color:var(--n600);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.ptrack{height:6px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;margin-bottom:4px}
+.pfill-kw{background:rgba(245,158,11,.55);height:100%;border-radius:100px;width:0;transition:width 1s ease}
+.pfill-vis{background:rgba(76,175,100,.55);height:100%;border-radius:100px;width:0;transition:width 1s ease}
+.pcol-nums{font-size:12px;color:var(--n500)}
+
+/* COMPARATIVO */
+.dual-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.04);border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.07);margin-bottom:32px}
+.dual-col{background:var(--n900);padding:22px 18px}
+.dual-col h3{font-size:13px;font-weight:600;margin-bottom:14px;letter-spacing:.04em}
+.dual-col.ads h3{color:#60a5fa}
+.dual-col.seo h3{color:var(--g400)}
+.dual-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:13px;color:var(--n400);line-height:1.5}
+.dual-col.ads .dual-item::before{content:'→';color:#60a5fa;flex-shrink:0;margin-top:2px;font-size:11px}
+.dual-col.seo .dual-item::before{content:'→';color:var(--g400);flex-shrink:0;margin-top:2px;font-size:11px}
+
+/* INVESTIMENTO */
+.inv-box{background:var(--n900);border:2px solid rgba(245,158,11,.3);border-radius:16px;padding:32px 24px;margin-bottom:16px;position:relative}
+.inv-badge{position:absolute;top:-13px;left:24px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--y600);color:#fff;padding:4px 14px;border-radius:100px}
+.inv-block{margin-bottom:24px}
+.inv-block-label{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--n500);margin-bottom:8px}
+.inv-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.inv-price{font-family:var(--serif);font-size:clamp(36px,8vw,50px);font-weight:600;color:var(--n50);line-height:1}
+.inv-note{font-size:13px;color:var(--n500)}
+.inv-sep{height:1px;background:rgba(255,255,255,.06);margin:20px 0}
+.inv-lines{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
+.inv-line{display:flex;justify-content:space-between;align-items:baseline;padding:12px 16px;background:var(--n800);border-radius:8px;gap:12px}
+.inv-line-label{font-size:14px;color:var(--n300)}
+.inv-line-val{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--n100);white-space:nowrap}
+.inv-line.hl{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.15)}
+.inv-line.hl .inv-line-label{color:var(--y400)}
+.inv-line.hl .inv-line-val{color:var(--y400)}
+.inv-obs{padding:14px 16px;background:rgba(76,175,100,.06);border:1px solid rgba(76,175,100,.14);border-radius:10px;font-size:13px;color:var(--n400);line-height:1.7}
+.inv-obs strong{color:var(--g400)}
+
+/* TIMELINE */
+.steps{display:flex;flex-direction:column;gap:6px}
+.step{display:grid;grid-template-columns:56px 1fr;gap:14px;padding:14px 16px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:9px}
+.step-when{font-size:11px;font-weight:600;color:var(--g500);letter-spacing:.05em;text-transform:uppercase;padding-top:3px;line-height:1.4}
+.step strong{display:block;font-size:14px;font-weight:600;color:var(--n100);margin-bottom:3px}
+.step span{font-size:13px;color:var(--n500)}
+.step.now{border-color:rgba(248,113,113,.25);background:rgba(248,113,113,.04)}
+.step.now .step-when{color:var(--r400)}
+.step.key{border-color:rgba(245,158,11,.2);background:rgba(245,158,11,.03)}
+.step.key .step-when{color:var(--y400)}
+
+/* CTA */
+.cta-sec{padding:72px 0;text-align:center;background:linear-gradient(180deg,transparent,rgba(245,158,11,.07) 50%,transparent)}
+.cta-sec h2{font-family:var(--serif);font-size:clamp(26px,6vw,42px);font-weight:400;margin-bottom:14px}
+.cta-sec h2 em{font-style:italic;color:var(--y400)}
+.cta-sec p{font-size:15px;color:var(--n400);margin-bottom:40px;max-width:440px;margin-left:auto;margin-right:auto}
+.cta-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--y600);color:#fff;font-family:var(--sans);font-size:15px;font-weight:600;padding:18px 40px;border-radius:100px;border:none;cursor:pointer;width:100%;max-width:340px;transition:background .25s;-webkit-tap-highlight-color:transparent}
+.cta-btn:active{background:#b45309;transform:scale(.98)}
+
+footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255,.05)}
+.foot-logo{font-family:var(--serif);font-size:18px;color:var(--n400);margin-bottom:6px}
+.foot-sub{font-size:12px;color:var(--n700)}
+
+/* OVERLAY */
+.overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(12,10,8,.97);overflow-y:auto;-webkit-overflow-scrolling:touch}
+.overlay.on{display:block}
+.confetti-c{position:fixed;inset:0;pointer-events:none;z-index:501}
+.ov-inner{position:relative;z-index:502;max-width:480px;margin:0 auto;padding:64px 20px 48px;text-align:center}
+.check-ring{width:72px;height:72px;border-radius:50%;background:rgba(245,158,11,.12);border:2px solid var(--y400);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;animation:popIn .5s cubic-bezier(.175,.885,.32,1.275) forwards}
+.check-ring svg{width:32px;height:32px;stroke:var(--y400);stroke-width:2.5;fill:none;stroke-dasharray:50;stroke-dashoffset:50;animation:dash .5s ease forwards .35s}
+.ov-title{font-family:var(--serif);font-size:32px;font-weight:400;margin-bottom:10px;opacity:0;animation:fadeUp .5s ease forwards .5s}
+.ov-sub{font-size:15px;color:var(--n400);margin-bottom:40px;opacity:0;animation:fadeUp .5s ease forwards .65s}
+.form-wrap{text-align:left;opacity:0;animation:fadeUp .5s ease forwards .8s}
+.fg{margin-bottom:16px}
+.fg label{display:block;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n500);margin-bottom:7px}
+.fg input,.fg textarea{width:100%;background:var(--n800);border:1px solid rgba(255,255,255,.1);border-radius:8px;color:var(--n100);font-family:var(--sans);font-size:15px;padding:14px 16px;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.fg input:focus,.fg textarea:focus{border-color:var(--y400)}
+.fg textarea{resize:vertical;min-height:80px}
+.check-lbl{display:flex;align-items:flex-start;gap:12px;padding:16px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:12px;margin-bottom:24px;cursor:pointer}
+.check-lbl input{width:18px;height:18px;flex-shrink:0;margin-top:3px;accent-color:var(--y400);cursor:pointer}
+.check-txt{font-size:13px;color:var(--n500);line-height:1.6}
+.check-txt strong{color:var(--n100)}
+.sub-btn{width:100%;background:var(--y600);color:#fff;font-family:var(--sans);font-size:15px;font-weight:600;padding:16px;border-radius:100px;border:none;cursor:pointer;transition:background .25s;-webkit-tap-highlight-color:transparent}
+.sub-btn:active{background:#b45309}
+.sub-btn:disabled{opacity:.45;cursor:not-allowed}
+.success-box{display:none;padding:32px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.2);border-radius:16px;text-align:center}
+.success-box.on{display:block}
+.success-box h3{font-family:var(--serif);font-size:24px;font-weight:400;color:var(--y400);margin-bottom:8px}
+.success-box p{font-size:14px;color:var(--n500)}
+.back-btn{background:none;border:none;color:var(--n600);font-size:13px;font-family:var(--sans);cursor:pointer;margin-top:20px;padding:8px 0;display:block;margin-left:auto;margin-right:auto}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes popIn{from{transform:scale(.4);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes dash{to{stroke-dashoffset:0}}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+@media(min-width:640px){
+  .wrap{padding:0 40px}
+  nav{padding:20px 40px}
+  .hero{padding:120px 40px 64px}
+  .cta-btn{width:auto}
+  .step{grid-template-columns:72px 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-logo">Organum</span>
+  <a href="#aceitar" class="nav-pill">Aceitar proposta</a>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <p class="hero-ey">Proposta SEO · LedHome Iluminação · Maio 2026</p>
+    <h1 class="hero-h1">20 anos de mercado.<br><em>3 palavras-chave</em><br>no Google.</h1>
+    <p class="hero-sub">
+      A LedHome tem showroom, equipe especializada e 20 anos de reputação no ES.
+      Tudo isso existe — mas o Google não sabe. Clientes buscam
+      "loja de iluminação Vitória" todos os dias e você não aparece.
+      Esse é o problema que o SEO resolve.
+    </p>
+    <div class="hero-kpis">
+      <div class="kpi"><span class="kpi-val">3</span><span class="kpi-lbl">Keywords orgânicas ativas</span></div>
+      <div class="kpi"><span class="kpi-val">31</span><span class="kpi-lbl">Visitas orgânicas/mês</span></div>
+      <div class="kpi"><span class="kpi-val">34/100</span><span class="kpi-lbl">Performance mobile</span></div>
+      <div class="kpi"><span class="kpi-val">75,5%</span><span class="kpi-lbl">Taxa de rejeição</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>ver proposta</span><div class="scroll-line"></div></div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ DÚVIDAS DO KAIO ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Suas perguntas — respondidas</p>
+      <h2>Antes de falar em plano,<br>vamos às dúvidas direto.</h2>
+      <p>Você fez três perguntas objetivas. As respostas estão aqui — sem enrolação.</p>
+    </div>
+
+    <div class="faq-list rev">
+
+      <div class="faq-item open" id="faq1">
+        <div class="faq-q" onclick="toggleFaq('faq1')">
+          <span class="faq-q-text">"Os R$&nbsp;2.000 — pago agora e vocês começam?"</span>
+          <span class="faq-icon"><span>+</span></span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-content">
+            <p>Sim. <strong>O pagamento do setup de R$&nbsp;2.000 libera o início imediato</strong> — na mesma semana já começamos as correções técnicas da Fase 1. Pode parcelar no cartão se preferir; o início não depende de qual parcela cair, depende da confirmação do pedido.</p>
+            <p>Esse valor cobre toda a Fase 1: correção do H2 "PRODUTO DE TESTE" em todas as categorias, reescrita de títulos e meta descriptions, correção dos 404s, otimização de imagens, scripts, cache e Google Business Profile. É um trabalho único — não se repete.</p>
+            <p>O retainer de R$&nbsp;500/mês começa no <strong>mês 2</strong>, logo após a entrega da Fase 1. Não no mês 3 — no mês seguinte ao setup.</p>
+            <div class="highlight-box">Resumo: R$&nbsp;2.000 agora → Fase 1 entregue em 30 dias → R$&nbsp;500/mês começa no mês 2.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq2">
+        <div class="faq-q" onclick="toggleFaq('faq2')">
+          <span class="faq-q-text">"Meu concorrente está 100/100. Em quanto tempo a LedHome chega lá?"</span>
+          <span class="faq-icon"><span>+</span></span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-content">
+            <p>Vamos ser diretos: <strong>sites de e-commerce raramente atingem 100/100</strong>. O próprio Google Shopping fica abaixo de 90. Para chegar a 100, um site precisa ser essencialmente estático — sem plataforma de e-commerce, sem scripts de terceiros, sem filtros de produto.</p>
+            <p>Se o seu concorrente está em 100, o site dele provavelmente é um catálogo simples sem transação. A LedHome tem e-commerce real na Tray — isso adiciona complexidade que limita o score máximo, mas é exatamente essa complexidade que gera vendas.</p>
+            <p><strong>O que importa não é chegar em 100 — é sair da zona vermelha (34) para a zona verde (acima de 75)</strong>, que é onde o Google para de penalizar e o Quality Score das suas campanhas melhora.</p>
+            <div class="score-track">
+              <div class="score-step"><span class="score-val sv-r">34</span><span class="score-desc">Hoje — reprovado, penalizado pelo Google</span></div>
+              <div class="score-step"><span class="score-val sv-y">60+</span><span class="score-desc">Mês 2 — após Fase 1 de correções técnicas</span></div>
+              <div class="score-step"><span class="score-val sv-y">65–75</span><span class="score-desc">6 meses — otimizações contínuas</span></div>
+              <div class="score-step"><span class="score-val sv-g">75–85</span><span class="score-desc">12 meses — zona verde consolidada</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq3">
+        <div class="faq-q" onclick="toggleFaq('faq3')">
+          <span class="faq-q-text">"E se não chegar na meta — tem como condicionar o pagamento ao resultado?"</span>
+          <span class="faq-icon"><span>+</span></span>
+        </div>
+        <div class="faq-body">
+          <div class="faq-content">
+            <p>É uma pergunta legítima e a gente entende de onde vem. A resposta honesta é: <strong>não trabalhamos com modelo de pagamento condicionado ao score</strong> — e vamos explicar por quê isso protege você, não a Organum.</p>
+            <p>Se o pagamento ficasse travado no score 100, o incentivo seria otimizar para o número, não para o resultado do negócio. Daria para chegar em 100 desativando scripts, removendo funcionalidades e simplificando o site a ponto de ele parar de funcionar como e-commerce. Você teria 100 no PageSpeed e um site que não converte.</p>
+            <p><strong>O que entregamos com documentação:</strong> relatório de baseline antes de começar (score atual, posições, tráfego), relatório após Fase 1 (score, o que foi feito, evidências), e relatório mensal com evolução de posições e tráfego orgânico. Cada entrega é verificável no Google Search Console, que você acessa diretamente — sem depender de nós para ver os dados.</p>
+            <div class="highlight-box">O compromisso não é com o número — é com a trajetória documentada e com o acesso total aos dados, sempre.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ OPORTUNIDADE ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">O diagnóstico — o que foi encontrado</p>
+      <h2>Problemas que estão ativamente<br>prejudicando o ranqueamento hoje.</h2>
+    </div>
+
+    <div class="prob-list">
+      <div class="prob">
+        <span class="prob-n">01</span>
+        <div>
+          <strong>H2 "PRODUTO DE TESTE" em todas as páginas de categoria</strong>
+          <span>Em absolutamente todas as categorias — spots, arandelas, fitas de LED, lustres — o segundo heading é literalmente "PRODUTO DE TESTE". O Google lê H2s como indicadores do tema da página. Esse erro penaliza todas as categorias ao mesmo tempo.</span>
+          <span class="prob-badge pb-r">Crítico — corrigível hoje</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">02</span>
+        <div>
+          <strong>Títulos com 5 a 19 caracteres — sem keywords</strong>
+          <span>"Spots" (5 chars). "Arandelas" (9 chars). O Google não consegue associar essas páginas a nenhuma busca relevante. "Spots de Embutir LED | LedHome Iluminação ES" é o que deveria estar ali.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">03</span>
+        <div>
+          <strong>LCP mobile de 12,5 segundos</strong>
+          <span>Imagens sem WebP e sem lazy loading são a causa principal — 2.956 KB de economia estimada. O cliente abre o site no celular e espera mais de 12 segundos para ver conteúdo. A maioria sai antes disso.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">04</span>
+        <div>
+          <strong>CLS 0,809 no desktop — layout "pulando"</strong>
+          <span>Meta do Google é abaixo de 0,1. Imagens sem dimensões explícitas fazem o layout se mover enquanto carrega — penalização direta de Core Web Vitals.</span>
+          <span class="prob-badge pb-r">Crítico</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">05</span>
+        <div>
+          <strong>/lustres-e-pendente retorna 404 com links ativos</strong>
+          <span>URL quebrada com inlinks apontando para ela. Dilui a autoridade das páginas de categoria. Correção simples: redirect 301 para a URL correta.</span>
+          <span class="prob-badge pb-y">Alto</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">06</span>
+        <div>
+          <strong>Charset ISO-8859-1 em todas as páginas</strong>
+          <span>Deveria ser UTF-8. Tildes e cedilhas aparecem incorretamente nos snippets do Google — prejudica o CTR orgânico antes mesmo do ranqueamento.</span>
+          <span class="prob-badge pb-y">Alto</span>
+        </div>
+      </div>
+      <div class="prob">
+        <span class="prob-n">07</span>
+        <div>
+          <strong>Página /noticias indexada, sem H1, sem conteúdo</strong>
+          <span>Blog vazio consumindo crawl budget e enviando sinal de site com conteúdo pobre. Oportunidade desperdiçada — com conteúdo estratégico, vira o canal de maior crescimento.</span>
+          <span class="prob-badge pb-g">Oportunidade</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ TRÁFEGO PAGO VS ORGÂNICO ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Por que SEO agora</p>
+      <h2>O tráfego pago para quando<br>o orçamento para.</h2>
+      <p>Você já tem as campanhas rodando e gerando resultado. O SEO constrói um segundo canal — permanente, de custo decrescente — que complementa o que você já investe.</p>
+    </div>
+    <div class="dual-grid rev">
+      <div class="dual-col ads">
+        <h3>Tráfego pago (já existe)</h3>
+        <div class="dual-item">Resultado imediato enquanto o orçamento roda</div>
+        <div class="dual-item">Custo por clique pago ao Google a cada visita</div>
+        <div class="dual-item">Para imediatamente se o investimento cessar</div>
+        <div class="dual-item">ROI disputado com concorrentes no leilão</div>
+      </div>
+      <div class="dual-col seo">
+        <h3>SEO orgânico (o que falta)</h3>
+        <div class="dual-item">Resultado crescente e permanente ao longo do tempo</div>
+        <div class="dual-item">Clique sem custo de mídia após o ranqueamento</div>
+        <div class="dual-item">Continua gerando retorno mesmo sem verba ativa</div>
+        <div class="dual-item">ROI aumenta com o tempo — autoridade acumulada</div>
+      </div>
+    </div>
+
+    <div class="sh rev" style="margin-bottom:24px">
+      <h2>Buscas que existem hoje<br>e a LedHome não aparece.</h2>
+    </div>
+    <div class="kw-list rev">
+      <div class="kw"><span class="kw-text">"loja de iluminação vitória"</span><span class="kw-tag kt-f">Alta intenção local</span></div>
+      <div class="kw"><span class="kw-text">"spots de embutir led"</span><span class="kw-tag kt-m">Topo de demanda</span></div>
+      <div class="kw"><span class="kw-text">"projeto de iluminação residencial"</span><span class="kw-tag kt-f">Lead qualificado</span></div>
+      <div class="kw"><span class="kw-text">"perfil de led para sanca"</span><span class="kw-tag kt-m">Intenção técnica</span></div>
+      <div class="kw"><span class="kw-text">"iluminação para reforma"</span><span class="kw-tag kt-f">Momento de decisão</span></div>
+      <div class="kw"><span class="kw-text">"como iluminar sala de estar"</span><span class="kw-tag kt-t">Topo de funil</span></div>
+    </div>
+    <p style="font-size:13px;color:var(--n600);text-align:center;margin-top:12px">Nenhum concorrente local tem presença orgânica forte nessas buscas. A janela está aberta agora.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ FASES ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">O plano — 3 fases</p>
+      <h2>Cada fase potencializa<br>a anterior.</h2>
+      <p>Fase 1 resolve o que está ativamente prejudicando o ranqueamento. Fase 2 cria as páginas que capturam demanda real. Fase 3 escala o canal orgânico.</p>
+    </div>
+
+    <div class="fase rev">
+      <div class="fase-header">
+        <div class="fase-num">1</div>
+        <div class="fase-title"><h3>Correções técnicas e on-page</h3><p>Mês 1 · coberto pelo setup de R$&nbsp;2.000</p></div>
+      </div>
+      <div class="fase-rows">
+        <div class="frow"><strong>Remover "PRODUTO DE TESTE" de todas as categorias</strong><span>Correção do template na Tray. Impacto simultâneo em todas as páginas de categoria.</span><span class="frow-tag ft-now">Semana 1</span></div>
+        <div class="frow"><strong>Reescrita de títulos e meta descriptions</strong><span>De "Spots" para "Spots de Embutir LED | LedHome Iluminação ES" — com keywords e localização em todas as categorias.</span><span class="frow-tag ft-now">Semana 1–2</span></div>
+        <div class="frow"><strong>Otimização de imagens: WebP + lazy loading + dimensões</strong><span>Resolve o LCP de 12,5s e o CLS de 0,809. Economia estimada: 2.956 KB. Performance sobe de 34 para 60+ em mobile.</span><span class="frow-tag ft-now">Semana 2–3</span></div>
+        <div class="frow"><strong>Correção de 404s + noindex em páginas internas</strong><span>Redirect 301 para /lustres-e-pendentes. Noindex em /my-account/login, /cadastro, /loja/clic.php — limpa o crawl budget.</span><span class="frow-tag ft-now">Semana 1</span></div>
+        <div class="frow"><strong>Charset UTF-8 + cache + scripts assíncronos</strong><span>Resolve encoding nos snippets do Google e remove 1.080ms de bloqueio de renderização.</span><span class="frow-tag ft-now">Semana 2</span></div>
+        <div class="frow"><strong>Google Business Profile — otimização com keywords locais</strong><span>Ranqueamento em "loja de iluminação Vitória" no mapa antes mesmo dos resultados orgânicos.</span><span class="frow-tag ft-now">Semana 1</span></div>
+      </div>
+    </div>
+
+    <div class="fase rev">
+      <div class="fase-header">
+        <div class="fase-num">2</div>
+        <div class="fase-title"><h3>Conteúdo estratégico</h3><p>Meses 3–6 · coberto pelo retainer de R$&nbsp;500/mês</p></div>
+      </div>
+      <div class="fase-rows">
+        <div class="frow"><strong>/projeto-de-iluminacao-vitoria-es</strong><span>"Projeto de iluminação vitória ES" — fundo de funil, lead pronto para contratar.</span><span class="frow-tag ft-m2">Mês 3</span></div>
+        <div class="frow"><strong>/loja-de-iluminacao-vila-velha</strong><span>"Loja de iluminação vila velha" — busca local com alta intenção de compra presencial.</span><span class="frow-tag ft-m2">Mês 3</span></div>
+        <div class="frow"><strong>/spots-de-embutir-led-como-escolher + /perfil-de-led-para-sanca</strong><span>Meio de funil — cliente comparando produtos. Alta demanda, baixa concorrência editorial local.</span><span class="frow-tag ft-m2">Mês 4</span></div>
+        <div class="frow"><strong>/como-iluminar-sala-de-estar + /temperatura-de-cor-guia</strong><span>Topo de funil — captura quem ainda está pesquisando. Gera autoridade temática no domínio.</span><span class="frow-tag ft-m2">Mês 5</span></div>
+        <div class="frow"><strong>/iluminacao-residencial-vitoria</strong><span>"Iluminação residencial vitória" — busca local de alto valor comercial.</span><span class="frow-tag ft-m2">Mês 6</span></div>
+      </div>
+    </div>
+
+    <div class="fase rev">
+      <div class="fase-header">
+        <div class="fase-num">3</div>
+        <div class="fase-title"><h3>Autoridade e escala</h3><p>Mês 6+ · canal orgânico se torna autônomo</p></div>
+      </div>
+      <div class="fase-rows">
+        <div class="frow"><strong>Blog técnico: 2–4 artigos/mês</strong><span>Guias de compra, iluminação residencial e comercial — autoridade temática que alimenta o ranqueamento de todas as outras páginas.</span><span class="frow-tag ft-m3">Mês 6+</span></div>
+        <div class="frow"><strong>Rich snippets de produto (Schema.org)</strong><span>Otimização de 200+ páginas de produto com structured data para Google Shopping — visibilidade extra sem custo adicional de mídia.</span><span class="frow-tag ft-m3">Mês 6+</span></div>
+        <div class="frow"><strong>Link building local</strong><span>Parcerias editoriais com sites de arquitetura e decoração do ES. Backlinks que aumentam a autoridade de domínio permanentemente.</span><span class="frow-tag ft-m3">Mês 7+</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ PROJEÇÃO ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Projeção — 12 meses</p>
+      <h2>De 3 para 300–500<br>keywords orgânicas.</h2>
+      <p>Projeção conservadora baseada em sites locais de nicho com concorrência similar ao mercado de iluminação do ES.</p>
+    </div>
+    <div class="proj-rows rev">
+      <div class="prow">
+        <div class="prow-header"><span class="prow-label">Hoje — baseline</span><span class="prow-total">3 keywords · 31 visitas/mês</span></div>
+        <div class="prow-cols">
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="1"></div></div><span class="pcol-nums">3</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="1"></div></div><span class="pcol-nums">31</span></div>
+        </div>
+      </div>
+      <div class="prow">
+        <div class="prow-header"><span class="prow-label">3 meses — Fase 1 entregue</span><span class="prow-total">30–50 keywords · 200–400 visitas</span></div>
+        <div class="prow-cols">
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="10"></div></div><span class="pcol-nums">30–50</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="10"></div></div><span class="pcol-nums">200–400</span></div>
+        </div>
+      </div>
+      <div class="prow">
+        <div class="prow-header"><span class="prow-label">6 meses — Fase 2 em andamento</span><span class="prow-total">100–200 keywords · 800–1.500 visitas</span></div>
+        <div class="prow-cols">
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="40"></div></div><span class="pcol-nums">100–200</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="37"></div></div><span class="pcol-nums">800–1.500</span></div>
+        </div>
+      </div>
+      <div class="prow">
+        <div class="prow-header"><span class="prow-label">12 meses — Fase 3 consolidada</span><span class="prow-total">300–500 keywords · 2.000–4.000 visitas</span></div>
+        <div class="prow-cols">
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="100"></div></div><span class="pcol-nums">300–500</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="100"></div></div><span class="pcol-nums">2.000–4.000</span></div>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:var(--n600);text-align:center">4.000 visitas × 3–5% de conversão = 120–200 contatos qualificados/mês sem custo de mídia.</p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ══ INVESTIMENTO ══ -->
+<section id="aceitar">
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Investimento</p>
+      <h2>Simples e direto.</h2>
+    </div>
+    <div class="inv-box rev">
+      <span class="inv-badge">SEO Organum — LedHome</span>
+
+      <div class="inv-block">
+        <div class="inv-block-label">Setup único — mês 1</div>
+        <div class="inv-price-row">
+          <span class="inv-price">R$&nbsp;2.000</span>
+          <span class="inv-note">pagamento único · pode parcelar no cartão</span>
+        </div>
+      </div>
+
+      <div class="inv-sep"></div>
+
+      <div class="inv-block" style="margin-bottom:0">
+        <div class="inv-block-label">Fee mensal — a partir do mês 2</div>
+        <div class="inv-lines">
+          <div class="inv-line"><span class="inv-line-label">Gestão de tráfego (já contratado)</span><span class="inv-line-val">R$&nbsp;1.500/mês</span></div>
+          <div class="inv-line hl"><span class="inv-line-label">SEO mensal — conteúdo + monitoramento</span><span class="inv-line-val">R$&nbsp;500/mês</span></div>
+          <div class="inv-line" style="background:rgba(255,255,255,.03)"><span class="inv-line-label" style="font-weight:600;color:var(--n200)">Total fee mensal</span><span class="inv-line-val" style="font-size:20px">R$&nbsp;2.000/mês</span></div>
+        </div>
+        <div class="inv-obs">
+          <strong>Como funciona:</strong> R$&nbsp;2.000 de setup pago agora → Fase 1 entregue em 30 dias → relatório de baseline e entrega documentada → retainer de R$&nbsp;2.000/mês começa no mês 2 cobrindo gestão de tráfego + SEO em uma única fatura.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CRONOGRAMA ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Cronograma</p>
+      <h2>O que acontece<br>semana a semana.</h2>
+    </div>
+    <div class="steps rev">
+      <div class="step now"><span class="step-when">Agora</span><div><strong>Aprovação e pagamento do setup</strong><span>R$&nbsp;2.000 — pode parcelar no cartão. Início na mesma semana.</span></div></div>
+      <div class="step now"><span class="step-when">Semana 1</span><div><strong>Correção do H2 "PRODUTO DE TESTE" + Google Business Profile</strong><span>Impacto em todas as categorias simultaneamente. Maior impacto por menor esforço de todo o plano.</span></div></div>
+      <div class="step now"><span class="step-when">Semana 1–2</span><div><strong>Reescrita de títulos, meta descriptions, correção de 404s</strong><span>Todas as páginas de categoria com keywords e localização. Redirect 301 nos links quebrados.</span></div></div>
+      <div class="step key"><span class="step-when">Semana 2–3</span><div><strong>Otimização de imagens e performance</strong><span>WebP + lazy loading + dimensões explícitas. LCP de 12,5s → meta abaixo de 4s. CLS de 0,809 → meta abaixo de 0,1.</span></div></div>
+      <div class="step key"><span class="step-when">Mês 1 — entrega</span><div><strong>Relatório de Fase 1 com evidências</strong><span>Score antes e depois, posições atuais no Search Console, baseline de tráfego. Tudo documentado e verificável por você.</span></div></div>
+      <div class="step"><span class="step-when">Mês 2</span><div><strong>Retainer inicia — R$&nbsp;2.000/mês</strong><span>Fatura unificada: gestão de tráfego + SEO. Início da produção das páginas estratégicas da Fase 2.</span></div></div>
+      <div class="step"><span class="step-when">Mês 3–6</span><div><strong>7 páginas de conteúdo estratégico publicadas</strong><span>Capturando tráfego de alta intenção que hoje nenhum concorrente local está respondendo.</span></div></div>
+      <div class="step"><span class="step-when">Mês 6+</span><div><strong>Blog técnico + 200+ produtos + link building</strong><span>Canal orgânico se torna o de menor CPL do negócio — crescendo de forma autônoma.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec">
+  <div class="wrap">
+    <h2>Pronto para o Google<br><em>saber que você existe?</em></h2>
+    <p>Clique abaixo para aceitar formalmente esta proposta. O formulário registra data e hora do aceite para formalização do contrato.</p>
+    <button class="cta-btn" onclick="openAccept()">Aceitar proposta →</button>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-logo">Organum</div>
+  <div class="foot-sub">SEO Orgânico · organum.com.br · Pedro Aureliano · Maio 2026</div>
+</footer>
+
+<!-- ══ OVERLAY ══ -->
+<div class="overlay" id="overlay">
+  <canvas class="confetti-c" id="confettiC"></canvas>
+  <div class="ov-inner">
+    <div class="check-ring"><svg viewBox="0 0 36 36"><polyline points="4,18 14,28 32,8"/></svg></div>
+    <h2 class="ov-title">Proposta aceita.</h2>
+    <p class="ov-sub">Preencha seus dados para formalizar. Pedro entra em contato em até 24 horas e as correções começam na mesma semana.</p>
+    <div class="form-wrap" id="formWrap">
+      <div class="fg"><label>Nome completo</label><input type="text" id="f_nome" placeholder="Kaio..." autocomplete="name"></div>
+      <div class="fg"><label>E-mail</label><input type="email" id="f_email" placeholder="seu@email.com" autocomplete="email"></div>
+      <div class="fg"><label>Telefone / WhatsApp</label><input type="tel" id="f_tel" placeholder="(27) 99999-9999" autocomplete="tel"></div>
+      <div class="fg"><label>CNPJ</label><input type="text" id="f_cnpj" placeholder="00.000.000/0000-00"></div>
+      <div class="fg"><label>Razão social</label><input type="text" id="f_razao" placeholder="LedHome Iluminação..." autocomplete="organization"></div>
+      <div class="fg"><label>Observações (opcional)</label><textarea id="f_obs" placeholder="Alguma dúvida ou detalhe adicional..."></textarea></div>
+      <label class="check-lbl">
+        <input type="checkbox" id="f_aceite">
+        <span class="check-txt"><strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta de SEO da Organum, incluindo valores, escopo e condições aqui descritos. Aceite registrado em: <span id="ts"></span></span>
+      </label>
+      <button class="sub-btn" id="subBtn" onclick="submitForm()">Confirmar aceite e enviar</button>
+    </div>
+    <div class="success-box" id="successBox">
+      <h3>Confirmado, Kaio.</h3>
+      <p>Pedro Aureliano entrará em contato em até 24 horas. As correções da Fase 1 começam na mesma semana da aprovação.</p>
+    </div>
+    <button class="back-btn" onclick="closeAccept()">← Voltar à proposta</button>
+  </div>
+</div>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50),{passive:true});
+
+const io=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*60);io.unobserve(e.target);}
+  });
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rev,.prob').forEach(el=>io.observe(el));
+
+function toggleFaq(id){
+  const item=document.getElementById(id);
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+function animateProjBars(){
+  document.querySelectorAll('.pfill-kw,.pfill-vis').forEach(b=>{
+    setTimeout(()=>{b.style.width=b.getAttribute('data-w')+'%';},200);
+  });
+}
+const projObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateProjBars();projObs.disconnect();}
+},{threshold:.2});
+const projEl=document.querySelector('.proj-rows');
+if(projEl)projObs.observe(projEl);
+
+function openAccept(){
+  document.getElementById('overlay').classList.add('on');
+  document.body.style.overflow='hidden';
+  document.getElementById('ts').textContent=new Date().toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit'});
+  startConfetti();setTimeout(stopConfetti,3800);
+}
+function closeAccept(){
+  document.getElementById('overlay').classList.remove('on');
+  document.body.style.overflow='';
+}
+function submitForm(){
+  const nome=document.getElementById('f_nome').value.trim();
+  const email=document.getElementById('f_email').value.trim();
+  const tel=document.getElementById('f_tel').value.trim();
+  const cnpj=document.getElementById('f_cnpj').value.trim();
+  const razao=document.getElementById('f_razao').value.trim();
+  const obs=document.getElementById('f_obs').value.trim();
+  const aceite=document.getElementById('f_aceite').checked;
+  const ts=document.getElementById('ts').textContent;
+  if(!nome||!email||!cnpj||!razao){alert('Preencha nome, e-mail, CNPJ e razão social.');return;}
+  if(!aceite){alert('Marque o checkbox de aceite para continuar.');return;}
+  const btn=document.getElementById('subBtn');
+  btn.disabled=true;btn.textContent='Enviando...';
+  const sub=encodeURIComponent('[ACEITE] Proposta SEO — LedHome');
+  const body=encodeURIComponent(
+    'ACEITE DE PROPOSTA — ORGANUM SEO\n==================================\n'+
+    'Data/Hora: '+ts+'\n\n'+
+    'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: '+tel+'\nCNPJ: '+cnpj+'\nRazão Social: '+razao+'\nObservações: '+(obs||'—')+'\n\n'+
+    'ESCOPO ACEITO\nCliente: LedHome Iluminação\n'+
+    'Setup SEO: R$2.000 (pagamento único — mês 1)\n'+
+    'Fee mensal a partir do mês 2:\n  Gestão de tráfego: R$1.500/mês\n  SEO mensal: R$500/mês\n  Total: R$2.000/mês (fatura única)'
+  );
+  window.location.href='mailto:pedro.aureliano95@gmail.com?subject='+sub+'&body='+body;
+  setTimeout(()=>{
+    document.getElementById('formWrap').style.display='none';
+    document.getElementById('successBox').classList.add('on');
+  },1500);
+}
+const cv=document.getElementById('confettiC');
+const cx=cv.getContext('2d');
+let pts=[],af,run=false;
+function startConfetti(){
+  cv.width=innerWidth;cv.height=innerHeight;pts=[];
+  const cols=['#f59e0b','#d97706','#fbbf24','#ffffff','#fde68a','#4caf64'];
+  for(let i=0;i<100;i++)pts.push({x:Math.random()*cv.width,y:-10-Math.random()*180,w:5+Math.random()*7,h:3+Math.random()*4,r:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.14,vy:2+Math.random()*3,vx:(Math.random()-.5)*1.4,c:cols[Math.floor(Math.random()*cols.length)],o:1});
+  run=true;tick();
+}
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  pts.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.r+=p.rv;if(p.y>cv.height*.65)p.o=Math.max(0,p.o-.025);cx.save();cx.globalAlpha=p.o;cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});
+  if(run)af=requestAnimationFrame(tick);
+}
+function stopConfetti(){run=false;cancelAnimationFrame(af);cx.clearRect(0,0,cv.width,cv.height);}
+</script>
+</body>
+</html>
