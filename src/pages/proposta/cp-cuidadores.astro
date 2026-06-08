@@ -85,14 +85,14 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .sh p{font-size:15px;color:var(--n400);line-height:1.75;max-width:580px}
 
 /* ── ALERTA CRÍTICO ── */
-.alert-box{border-radius:14px;overflow:hidden;margin-bottom:32px}
-.alert-header{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(224,60,47,.12);border:1px solid rgba(224,60,47,.2);border-bottom:none;border-radius:14px 14px 0 0}
+.alert-box{border-radius:14px;overflow:hidden;margin-bottom:32px;}
+.alert-header{display:flex;align-items:center;gap:12px;padding:16px 20px;background:rgba(224,60,47,.12);border:1px solid rgba(224,60,47,.2);border-bottom:none;border-radius:14px 14px 0 0;}
 .alert-icon{font-size:18px;flex-shrink:0}
 .alert-title{font-size:13px;font-weight:600;color:var(--r400);letter-spacing:.04em}
-.alert-body{padding:20px;background:rgba(224,60,47,.06);border:1px solid rgba(224,60,47,.15);border-top:none;border-radius:0 0 14px 14px;font-size:14px;color:var(--n300);line-height:1.75}
+.alert-body{padding:20px;background:rgba(224,60,47,.06);border:1px solid rgba(224,60,47,.15);border-top:none;border-radius:0 0 14px 14px;font-size:14px;color:var(--n300);line-height:1.75;}
 .alert-body strong{color:var(--r400)}
 
-/* ── TABS ── */
+/* ── TABS (INTERACTIVE) ── */
 .tab-bar{display:flex;gap:2px;background:var(--n800);border-radius:10px;padding:4px;margin-bottom:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .tab-bar::-webkit-scrollbar{display:none}
 .tab{flex:1;min-width:80px;text-align:center;font-size:12px;font-weight:600;padding:10px 8px;border-radius:7px;cursor:pointer;color:var(--n500);border:none;background:none;font-family:var(--sans);letter-spacing:.02em;white-space:nowrap;transition:all .2s;-webkit-tap-highlight-color:transparent}
@@ -100,7 +100,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .tab-panel{display:none}
 .tab-panel.active{display:block}
 
-/* ── CPC CHART ── */
+/* ── EVOLUÇÃO DO CPC (gráfico de barras) ── */
 .cpc-chart{display:flex;align-items:flex-end;gap:6px;height:140px;padding:0 0 24px;position:relative}
 .cpc-chart::after{content:'';position:absolute;bottom:24px;left:0;right:0;height:1px;background:rgba(255,255,255,.06)}
 .cpc-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px}
@@ -116,7 +116,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .kw-cost{font-family:var(--serif);font-size:18px;font-weight:600;color:var(--r400);text-align:right;white-space:nowrap}
 .kw-conv{font-size:10px;font-weight:600;color:var(--r400);text-align:right;letter-spacing:.06em;text-transform:uppercase}
 
-/* ── TÉCNICO ── */
+/* ── PROBLEMA TÉCNICO ── */
 .tech-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:24px}
 .tech-cell{padding:20px 16px;background:var(--n900);border-radius:12px;border:1px solid rgba(255,255,255,.06);text-align:center}
 .tech-cell.bad{border-color:rgba(248,113,113,.3);background:rgba(248,113,113,.06)}
@@ -140,7 +140,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .comp-bar-fill{height:100%;border-radius:100px;background:rgba(248,113,113,.5);transition:width 1s ease}
 .comp-item.you .comp-bar-fill{background:var(--g500)}
 
-/* ── IA PANEL ── */
+/* ── PERGUNTA IA ── */
 .ia-panel{border-radius:14px;overflow:hidden;margin:32px 0}
 .ia-top{display:flex;align-items:center;gap:10px;padding:14px 16px;background:var(--n800);border:1px solid rgba(255,255,255,.08);border-bottom:none;border-radius:14px 14px 0 0}
 .ia-dot{width:8px;height:8px;border-radius:50%;background:var(--g500);flex-shrink:0}
@@ -150,15 +150,8 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .ia-miss{display:inline-block;background:rgba(224,60,47,.15);color:var(--r400);border-radius:4px;padding:1px 7px;text-decoration:line-through;font-style:italic}
 .ia-pres{color:var(--g400);font-weight:500}
 .ia-note{font-size:13px;color:var(--n600);margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,.06)}
-.ia-stat{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;border-radius:10px;border-left:3px solid transparent}
-.ia-stat.bad{background:rgba(224,60,47,.07);border-left-color:var(--r400)}
-.ia-stat.pos{background:rgba(76,175,100,.07);border-left-color:var(--g400)}
-.ia-stat-num{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1;flex-shrink:0;padding-top:2px}
-.ia-stat.bad .ia-stat-num{color:var(--r400)}
-.ia-stat.pos .ia-stat-num{color:var(--g400)}
-.ia-stat-txt{font-size:14px;color:var(--n400);line-height:1.6}
 
-/* ── MÓDULOS ── */
+/* ── MÓDULOS PLANO ── */
 .modulo{margin-bottom:40px}
 .modulo-header{display:flex;align-items:flex-start;gap:14px;padding:20px;background:var(--n900);border:1px solid rgba(255,255,255,.07);border-bottom:none;border-radius:12px 12px 0 0}
 .modulo-num{width:36px;height:36px;border-radius:50%;background:rgba(76,175,100,.15);border:1px solid rgba(76,175,100,.25);display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:14px;font-weight:600;color:var(--g400);flex-shrink:0}
@@ -174,7 +167,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .mrow-tag.s2{background:rgba(217,119,6,.15);color:var(--a400)}
 .mrow-tag.s3{background:rgba(76,175,100,.15);color:var(--g400)}
 
-/* ── PROJEÇÃO ── */
+/* ── PROJEÇÃO COMPARATIVA ── */
 .compare-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
 .cmp{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;padding:16px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px}
 .cmp-lbl{font-size:11px;color:var(--n600);letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px}
@@ -182,6 +175,8 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .cmp-va{font-family:var(--serif);font-size:15px;color:var(--g400);font-weight:600;text-align:right}
 .cmp-lbl-r{text-align:right}
 .cmp-arrow{color:var(--g500);font-size:16px;flex-shrink:0}
+
+/* ── PROJEÇÃO DE LEADS ── */
 .proj-months{display:flex;flex-direction:column;gap:8px;margin-bottom:32px}
 .pm{padding:16px 20px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px}
 .pm-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
@@ -194,7 +189,9 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .pm-fill-ads{background:rgba(59,130,246,.5);height:100%;border-radius:100px;transition:width 1s ease}
 .pm-fill-org{background:rgba(76,175,100,.6);height:100%;border-radius:100px;transition:width 1s ease}
 .pm-nums{font-size:12px;color:var(--n500)}
-.roi-box{padding:32px 24px;background:rgba(76,175,100,.07);border:1px solid rgba(76,175,100,.18);border-radius:14px;margin-bottom:32px}
+
+/* ── ROI BOX ── */
+.roi-box{padding:32px 24px;background:rgba(76,175,100,.07);border:1px solid rgba(76,175,100,.18);border-radius:14px;margin-bottom:32px;}
 .roi-box h3{font-family:var(--serif);font-size:20px;font-weight:400;color:var(--n100);margin-bottom:16px}
 .roi-row{display:flex;justify-content:space-between;align-items:baseline;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px}
 .roi-row:last-child{border-bottom:none;font-weight:600;font-size:16px}
@@ -202,17 +199,17 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .roi-row span:last-child{font-family:var(--serif);color:var(--g400)}
 
 /* ── INVESTIMENTO ── */
-.inv-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-.inv-main{background:var(--n900);border:2px solid rgba(76,175,100,.35);border-radius:16px;padding:32px 24px;position:relative}
-.inv-secondary{background:var(--n900);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 24px;position:relative}
-.inv-badge{position:absolute;top:-13px;left:24px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--g500);color:#fff;padding:4px 14px;border-radius:100px}
+.inv-main{background:var(--n900);border:2px solid rgba(76,175,100,.35);border-radius:16px;padding:32px 24px;margin-bottom:16px;position:relative;}
+.inv-badge{position:absolute;top:-13px;left:24px;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--g500);color:#fff;padding:4px 14px;border-radius:100px;}
 .inv-price{font-family:var(--serif);font-size:clamp(40px,9vw,56px);font-weight:600;color:var(--n50);line-height:1;margin-bottom:4px}
 .inv-note{font-size:13px;color:var(--n500);margin-bottom:24px}
 .inv-list{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
 .inv-list li{font-size:14px;color:var(--n400);display:flex;align-items:flex-start;gap:10px;line-height:1.5}
 .inv-list li::before{content:'✓';color:var(--g500);flex-shrink:0;font-weight:600}
-.inv-verba{padding:16px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;font-size:13px;color:var(--n400);line-height:1.7}
+.inv-verba{padding:16px;background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:10px;font-size:13px;color:var(--n400);line-height:1.7;}
 .inv-verba strong{color:var(--b400)}
+
+/* ── DIFF TABLE ── */
 .diff-table{display:flex;flex-direction:column;gap:2px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.07);margin-bottom:32px}
 .diff-head{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--n800);padding:10px 14px;gap:8px}
 .diff-head span{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--n500)}
@@ -222,8 +219,8 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .diff-row span:nth-child(2){color:var(--r400)}
 .diff-row span:nth-child(3){color:var(--g400)}
 
-/* ── PRÓXIMOS PASSOS ── */
-.steps{display:flex;flex-direction:column;gap:8px}
+/* ── TIMELINE PRÓXIMOS PASSOS ── */
+.steps{display:flex;flex-direction:column;gap:2px}
 .step{display:grid;grid-template-columns:60px 1fr;gap:16px;padding:16px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px}
 .step-when{font-size:11px;font-weight:600;color:var(--g500);letter-spacing:.06em;text-transform:uppercase;padding-top:3px;line-height:1.4}
 .step strong{display:block;font-size:14px;font-weight:600;color:var(--n100);margin-bottom:3px}
@@ -277,14 +274,22 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 @keyframes dash{to{stroke-dashoffset:0}}
 @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
 
+/* ── IA STAT (inline style override) ── */
+.ia-stat{display:flex;align-items:flex-start;gap:16px;padding:16px 20px;border-radius:10px;border-left:3px solid transparent}
+.ia-stat.bad{background:rgba(224,60,47,.07);border-left-color:var(--r400)}
+.ia-stat.pos{background:rgba(76,175,100,.07);border-left-color:var(--g400)}
+.ia-stat-num{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1;flex-shrink:0;padding-top:2px}
+.ia-stat.bad .ia-stat-num{color:var(--r400)}
+.ia-stat.pos .ia-stat-num{color:var(--g400)}
+.ia-stat-txt{font-size:14px;color:var(--n400);line-height:1.6}
+
 /* ── DESKTOP ── */
 @media(min-width:640px){
   .wrap{padding:0 40px}
   nav{padding:20px 40px}
   .hero{padding:120px 40px 64px}
   .tech-grid{grid-template-columns:repeat(4,1fr)}
-  .inv-cards{flex-direction:row}
-  .inv-main,.inv-secondary{flex:1}
+  .inv-price{font-size:56px}
   .cta-btn{width:auto}
   .step{grid-template-columns:80px 1fr}
 }
@@ -341,12 +346,13 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
       </div>
     </div>
 
+    <!-- TABS INTERATIVAS -->
     <div class="rev">
       <div class="tab-bar">
-        <button class="tab active" onclick="switchTab('cpc')">Evolução do CPC</button>
-        <button class="tab" onclick="switchTab('kws')">Top Keywords</button>
-        <button class="tab" onclick="switchTab('comp')">Concorrentes</button>
-        <button class="tab" onclick="switchTab('demo')">Quem busca</button>
+        <button class="tab active" onclick="switchTab('cpc',event)">Evolução do CPC</button>
+        <button class="tab" onclick="switchTab('kws',event)">Top Keywords</button>
+        <button class="tab" onclick="switchTab('comp',event)">Concorrentes</button>
+        <button class="tab" onclick="switchTab('demo',event)">Quem busca</button>
       </div>
 
       <!-- TAB: CPC -->
@@ -576,77 +582,57 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
     <div class="sh rev">
       <p class="eyebrow">Capítulo 6 — Investimento</p>
       <h2>Plano Growth + GEO.</h2>
-      <p>A verba de mídia fica com você — paga diretamente ao Google. Você nunca perde o controle das suas contas.</p>
+      <p>A verba de mídia você paga diretamente ao Google — fica na sua mão, sem intermediário. R$&nbsp;4.900/mês é o custo de gestão e execução.</p>
     </div>
-    <div class="inv-cards rev">
-      <div class="inv-main">
-        <span class="inv-badge">Recomendado</span>
-        <h3 style="font-size:14px;font-weight:600;color:var(--n400);margin-bottom:8px">Gestão mensal — 3 contas + GEO</h3>
-        <div class="inv-price">R$&nbsp;3.000</div>
-        <div class="inv-note">/mês · fidelidade mínima de 3 meses</div>
-        <ul class="inv-list">
-          <li>Gestão completa das 3 contas Google Ads (CP Cuidadores, CuidaRio, SIP)</li>
-          <li>Rastreamento de conversão configurado — WhatsApp + formulário</li>
-          <li>Dashboard unificado em tempo real</li>
-          <li>Segmentação por bairro + palavras negativas + ajuste de lances</li>
-          <li>Extensões de anúncio completas em todas as contas</li>
-          <li>Relatório mensal com CPL, leads qualificados e ROI documentado</li>
-          <li>Reunião mensal de alinhamento estratégico</li>
-        </ul>
-        <div class="inv-verba">
-          <strong>Verba de mídia (Google Ads):</strong> pago por você diretamente ao Google. Recomendação inicial: R$&nbsp;8.000–10.000/mês total nas 3 contas, distribuídos por performance.
-        </div>
-      </div>
-      <div class="inv-secondary">
-        <span class="inv-badge" style="background:var(--n700)">Add-on — mês 1</span>
-        <h3 style="font-size:14px;font-weight:600;color:var(--n400);margin-bottom:8px">Entidade Digital + GEO</h3>
-        <div class="inv-price" style="font-size:clamp(32px,7vw,44px)">R$&nbsp;2.000</div>
-        <div class="inv-note">setup único · incluso nos primeiros 3 meses</div>
-        <ul class="inv-list">
-          <li>Schema Markup completo (Organization, LocalBusiness, FAQPage)</li>
-          <li>Criação de entrada Wikidata para CP Cuidadores e CuidaRio</li>
-          <li>Knowledge Graph — entidade verificável e citável</li>
-          <li>Baseline GEO documentado (ChatGPT, Gemini, Perplexity)</li>
-          <li>5 artigos de autoridade — cluster "cuidador RJ"</li>
-          <li>5 artigos de bairro — Copacabana, Barra, Tijuca, Niterói, Ipanema</li>
-          <li>Relatório de 1ª citação por IA — documentado com evidência</li>
-        </ul>
+    <div class="inv-main rev">
+      <span class="inv-badge">Plano Growth + GEO</span>
+      <div class="inv-price">R$&nbsp;4.900</div>
+      <div class="inv-note">por mês — verba Google Ads paga direto ao Google</div>
+      <ul class="inv-list">
+        <li>Gestão Google Ads — 3 contas corrigidas desde a semana 1</li>
+        <li>Fim do canibalismo digital — semana 1</li>
+        <li>Rastreamento de conversão configurado</li>
+        <li>Integração das LPs + CRM conectado ao pipeline</li>
+        <li>Dashboard unificado + relatório automático toda semana</li>
+        <li>Schema Markup + Knowledge Graph + Wikidata</li>
+        <li>4 artigos/mês — cluster semântico Rio de Janeiro</li>
+        <li>GEO Monitoring mensal — citações nas IAs documentadas</li>
+      </ul>
+      <div class="inv-verba">
+        <strong>Verba de mídia recomendada:</strong> R$&nbsp;7.000–9.000/mês no Google Ads — menos do que você gasta hoje em uma única conta, com estrutura e rastreamento corretos gerando significativamente mais leads qualificados.
       </div>
     </div>
 
+    <div class="sh rev" style="margin-bottom:24px"><h2>Por que é diferente do gestor anterior.</h2></div>
     <div class="diff-table rev">
-      <div class="diff-head"><span>Critério</span><span>Hoje</span><span>Com a proposta</span></div>
-      <div class="diff-row"><span>Conversões configuradas</span><span>Zero</span><span>WhatsApp + form + ligação</span></div>
-      <div class="diff-row"><span>Relatório de leads</span><span>Nenhum</span><span>Dashboard diário em tempo real</span></div>
-      <div class="diff-row"><span>Competição entre as contas</span><span>Ativa — pagando duplo</span><span>Eliminada — territórios separados</span></div>
-      <div class="diff-row"><span>Presença ChatGPT/Gemini</span><span>Zero</span><span>Entidade + citação documentada 90d</span></div>
-      <div class="diff-row"><span>Controle do cliente</span><span>Dependente do gestor</span><span>Você acessa tudo a qualquer hora</span></div>
+      <div class="diff-head"><span>Item</span><span>Gestor anterior</span><span>Nexxo + Organum</span></div>
+      <div class="diff-row"><span>Rastreamento</span><span>Nunca configurado — 0 dados em 6 meses</span><span>Semana 1 — você vê cada lead</span></div>
+      <div class="diff-row"><span>Relatórios</span><span>Explicações vagas — "o Google está instável"</span><span>Dashboard em tempo real + relatório toda semana</span></div>
+      <div class="diff-row"><span>Acesso aos ativos</span><span>Você depende dele para tudo</span><span>Admin em tudo — sempre</span></div>
+      <div class="diff-row"><span>SEO orgânico</span><span>Zero — 5 anos sem presença orgânica</span><span>Construído desde o mês 1 — ativo permanente</span></div>
+      <div class="diff-row"><span>Presença nas IAs</span><span>Inexistente — nunca foi tocado</span><span>Meta documentada: citada em 90 dias</span></div>
+      <div class="diff-row"><span>Propriedade</span><span>Incerto — dependência criada</span><span>100% seus — domínios, conteúdo, CRM, campanhas</span></div>
     </div>
+  </div>
+</section>
 
-    <div class="sh rev" style="margin-bottom:24px">
-      <h2>Próximos passos.</h2>
+<!-- ══ PRÓXIMOS PASSOS ══ -->
+<section>
+  <div class="wrap">
+    <div class="sh rev">
+      <p class="eyebrow">Capítulo 7 — Cronograma</p>
+      <h2>Da aprovação ao<br>primeiro resultado.</h2>
     </div>
     <div class="steps rev">
-      <div class="step urgent">
-        <span class="step-when">Hoje</span>
-        <div><strong>Aceite da proposta + acesso às contas</strong><span>Você me concede acesso de gestor às 3 contas Google Ads. As correções de emergência começam no mesmo dia.</span></div>
-      </div>
-      <div class="step urgent">
-        <span class="step-when">Semana 1</span>
-        <div><strong>Rastreamento + palavras negativas + separação de contas</strong><span>O Google para de desperdiçar verba. Você para de competir contra si mesma. Resultado visível em 7 dias.</span></div>
-      </div>
-      <div class="step">
-        <span class="step-when">Semana 2</span>
-        <div><strong>Segmentação + extensões + ajuste de lances</strong><span>CPC começa a cair. CTR começa a subir. Dashboard ao vivo com os dados em tempo real.</span></div>
-      </div>
-      <div class="step">
-        <span class="step-when">Mês 1</span>
-        <div><strong>Schema Markup + Wikidata + Knowledge Graph</strong><span>Entidade digital estabelecida. Baseline GEO documentado. Google passa a entender quem são CP Cuidadores e CuidaRio.</span></div>
-      </div>
-      <div class="step">
-        <span class="step-when">Mês 2–3</span>
-        <div><strong>Conteúdo de autoridade + GEO Monitoring</strong><span>10 artigos publicados. Primeira citação por IA documentada. Canal orgânico começa a gerar leads gratuitos.</span></div>
-      </div>
+      <div class="step"><span class="step-when">Hoje<br>09/06</span><div><strong>Aprovação e assinatura do contrato</strong><span>Alinhamento com seu pai e confirmação para iniciar imediatamente.</span></div></div>
+      <div class="step urgent"><span class="step-when">Dia 1–3</span><div><strong>Rastreamento de conversão nas 3 contas — EMERGÊNCIA</strong><span>Configurar WhatsApp + formulário como conversão. O algoritmo começa a aprender imediatamente.</span></div></div>
+      <div class="step urgent"><span class="step-when">Dia 3–5</span><div><strong>300+ negativações + fim do canibalismo digital</strong><span>Correção de correspondência ampla. Separação de keywords por conta. Economia imediata.</span></div></div>
+      <div class="step"><span class="step-when">Semana 2</span><div><strong>Auditoria técnica das LPs + integração CRM</strong><span>Core Web Vitals corrigidos antes de rodar tráfego. Pixel e rastreamento funcionando.</span></div></div>
+      <div class="step"><span class="step-when">Semana 2</span><div><strong>Segmentação geográfica bairros A/B + ajuste de lance</strong><span>Copacabana, Ipanema, Leblon, Barra, Tijuca, Niterói. Redução de CPC estimada: 10–15%.</span></div></div>
+      <div class="step"><span class="step-when">Semana 3–4</span><div><strong>Schema Markup + Knowledge Graph + Wikidata</strong><span>Entidade digital ativada. Pré-requisito para citação nas IAs.</span></div></div>
+      <div class="step"><span class="step-when">Semana 4</span><div><strong>Primeiro relatório completo</strong><span>CPL real, leads qualificados, baseline GEO documentado. Pela primeira vez em 5 anos você verá os números reais.</span></div></div>
+      <div class="step"><span class="step-when">Mês 2</span><div><strong>Primeiros artigos publicados — tráfego orgânico começa</strong><span>Canal gratuito crescendo em paralelo ao paid. Cada artigo é um ativo permanente.</span></div></div>
+      <div class="step"><span class="step-when">Mês 3</span><div><strong>Teste GEO — empresa citada no ChatGPT e Gemini</strong><span>Baseline documentado. Você verá com evidência concreta a presença nas IAs.</span></div></div>
     </div>
   </div>
 </section>
@@ -654,42 +640,40 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 <!-- ══ CTA ══ -->
 <section class="cta-sec">
   <div class="wrap">
-    <h2>Pronta para ser<br>a resposta da IA?</h2>
-    <p>Clique abaixo para aceitar formalmente esta proposta. O formulário registra data, hora e dados para formalização do contrato.</p>
+    <h2>Pronta para ter<br>clareza total?</h2>
+    <p>Clique abaixo para aceitar formalmente esta proposta. O preenchimento registra data, hora e dados para formalização do contrato.</p>
     <button class="cta-btn" onclick="openAccept()">Aceitar proposta →</button>
   </div>
 </section>
 
 <footer>
   <div class="foot-logos">Nexxo Digital × Organum</div>
-  <div class="foot-sub">Growth + GEO · organum.com.br · Pedro Aureliano · Junho 2026</div>
+  <div class="foot-sub">Pedro Aureliano · pedro.aureliano95@gmail.com · Junho 2026</div>
 </footer>
 
 <!-- ══ OVERLAY ══ -->
 <div class="overlay" id="overlay">
   <canvas class="confetti-c" id="confettiC"></canvas>
   <div class="ov-inner">
-    <div class="check-ring">
-      <svg viewBox="0 0 36 36"><polyline points="4,18 14,28 32,8"/></svg>
-    </div>
+    <div class="check-ring"><svg viewBox="0 0 36 36"><polyline points="4,18 14,28 32,8"/></svg></div>
     <h2 class="ov-title">Proposta aceita.</h2>
-    <p class="ov-sub">Preencha seus dados para formalizar o engajamento. Você receberá o contrato em até 24 horas.</p>
+    <p class="ov-sub">Preencha seus dados para formalizar o engajamento. Pedro entrará em contato em até 24 horas com o contrato.</p>
     <div class="form-wrap" id="formWrap">
-      <div class="fg"><label>Nome completo</label><input type="text" id="f_nome" placeholder="Seu nome completo" autocomplete="name"></div>
+      <div class="fg"><label>Nome completo</label><input type="text" id="f_nome" placeholder="Nathalia..." autocomplete="name"></div>
       <div class="fg"><label>E-mail</label><input type="email" id="f_email" placeholder="seu@email.com" autocomplete="email"></div>
       <div class="fg"><label>Telefone / WhatsApp</label><input type="tel" id="f_tel" placeholder="(21) 99999-9999" autocomplete="tel"></div>
-      <div class="fg"><label>CNPJ</label><input type="text" id="f_cnpj" placeholder="00.000.000/0000-00"></div>
-      <div class="fg"><label>Razão social</label><input type="text" id="f_razao" placeholder="Nome jurídico da empresa" autocomplete="organization"></div>
-      <div class="fg"><label>Observações (opcional)</label><textarea id="f_obs" placeholder="Algum detalhe adicional..."></textarea></div>
+      <div class="fg"><label>CNPJ principal</label><input type="text" id="f_cnpj" placeholder="00.000.000/0000-00"></div>
+      <div class="fg"><label>Razão social</label><input type="text" id="f_razao" placeholder="CP Cuidadores Profissionais..." autocomplete="organization"></div>
+      <div class="fg"><label>Observações (opcional)</label><textarea id="f_obs" placeholder="Alguma dúvida ou detalhe adicional..."></textarea></div>
       <label class="check-lbl">
         <input type="checkbox" id="f_aceite">
-        <span class="check-txt"><strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta comercial da Nexxo Digital × Organum, incluindo valores, escopo e condições aqui descritos. Aceite registrado em: <span id="ts"></span></span>
+        <span class="check-txt"><strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta comercial da Nexxo Digital + Organum, incluindo valores, escopo e condições aqui descritos. Aceite registrado em: <span id="ts"></span></span>
       </label>
       <button class="sub-btn" id="subBtn" onclick="submitForm()">Confirmar aceite e enviar</button>
     </div>
     <div class="success-box" id="successBox">
-      <h3>Confirmado.</h3>
-      <p>Pedro Aureliano entrará em contato em até 24 horas para enviar o contrato e confirmar o início do engajamento.</p>
+      <h3>Confirmado, Nathalia.</h3>
+      <p>Pedro Aureliano entrará em contato em até 24 horas para enviar o contrato e agendar o kick-off. As correções de emergência no Google Ads começam na mesma semana.</p>
     </div>
     <button class="back-btn" onclick="closeAccept()">← Voltar à proposta</button>
   </div>
@@ -701,64 +685,51 @@ const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50),{passive:true});
 
 /* SCROLL REVEAL */
-const io=new IntersectionObserver((entries)=>{
+const io=new IntersectionObserver(entries=>{
   entries.forEach((e,i)=>{
-    if(e.isIntersecting){
-      setTimeout(()=>e.target.classList.add('vis'),i*80);
-      io.unobserve(e.target);
-    }
+    if(e.isIntersecting){setTimeout(()=>e.target.classList.add('vis'),i*60);io.unobserve(e.target);}
   });
-},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rev').forEach(el=>io.observe(el));
 
-/* CPC CHART — animate bars on first view */
-const cpcBars=document.querySelectorAll('.cpc-bar');
-const cpcObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      cpcBars.forEach(b=>{b.style.height=b.dataset.h+'%'});
-      cpcObs.disconnect();
-    }
-  });
-},{threshold:.3});
-const chart=document.getElementById('cpcChart');
-if(chart)cpcObs.observe(chart);
+/* TABS */
+function switchTab(id,ev){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('tp-'+id).classList.add('active');
+  if(ev&&ev.currentTarget)ev.currentTarget.classList.add('active');
+  if(id==='comp') animateBars();
+}
 
-/* COMPETITOR BARS */
-const compObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.comp-bar-fill').forEach(b=>{b.style.width=(b.dataset.w||0)+'%'});
-      compObs.disconnect();
-    }
+/* CPC BARS */
+function animateCPC(){
+  document.querySelectorAll('.cpc-bar').forEach(b=>{
+    const h=b.getAttribute('data-h');
+    setTimeout(()=>{b.style.height=h+'%';},200);
   });
-},{threshold:.2});
-const compList=document.querySelector('.comp-list');
-if(compList)compObs.observe(compList);
+}
+setTimeout(animateCPC,600);
+
+/* COMP BARS */
+function animateBars(){
+  document.querySelectorAll('.comp-bar-fill').forEach(b=>{
+    const w=b.getAttribute('data-w');
+    setTimeout(()=>{b.style.width=w+'%';},100);
+  });
+}
 
 /* PROJ BARS */
-const projObs=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      document.querySelectorAll('.pm-fill-ads').forEach(b=>{b.style.width=(b.dataset.w||0)+'%'});
-      document.querySelectorAll('.pm-fill-org').forEach(b=>{b.style.width=(b.dataset.w||0)+'%'});
-      projObs.disconnect();
-    }
+function animateProjBars(){
+  document.querySelectorAll('.pm-fill-ads,.pm-fill-org').forEach(b=>{
+    const w=b.getAttribute('data-w');
+    setTimeout(()=>{b.style.width=w+'%';},200);
   });
-},{threshold:.1});
-const projList=document.querySelector('.proj-months');
-if(projList)projObs.observe(projList);
-
-/* TABS */
-function switchTab(id){
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>{if(t.getAttribute('onclick').includes("'"+id+"'"))t.classList.add('active')});
-  const panel=document.getElementById('tp-'+id);
-  if(panel)panel.classList.add('active');
-  if(id==='cpc')cpcBars.forEach(b=>{b.style.height=b.dataset.h+'%'});
-  if(id==='comp')document.querySelectorAll('.comp-bar-fill').forEach(b=>{b.style.width=(b.dataset.w||0)+'%'});
 }
+const projObs=new IntersectionObserver(entries=>{
+  if(entries[0].isIntersecting){animateProjBars();projObs.disconnect();}
+},{threshold:.2});
+const projEl=document.querySelector('.proj-months');
+if(projEl)projObs.observe(projEl);
 
 /* ACCEPT */
 function openAccept(){
@@ -786,50 +757,36 @@ function submitForm(){
   if(!aceite){alert('Marque o checkbox de aceite para continuar.');return;}
   const btn=document.getElementById('subBtn');
   btn.disabled=true;btn.textContent='Enviando...';
-  const sub=encodeURIComponent('[ACEITE] Proposta Nexxo+Organum — CP Cuidadores / CuidaRio');
+  const sub=encodeURIComponent('[ACEITE] Proposta Growth + GEO — CP Cuidadores / Nathalia');
   const body=encodeURIComponent(
-    'ACEITE DE PROPOSTA COMERCIAL\n================================\n'+
+    'ACEITE DE PROPOSTA COMERCIAL — NEXXO DIGITAL + ORGANUM\n=======================================================\n'+
     'Data/Hora: '+ts+'\n\n'+
     'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: '+tel+'\nCNPJ: '+cnpj+'\nRazão Social: '+razao+'\nObservações: '+(obs||'—')+'\n\n'+
-    'PROPOSTA ACEITA\nCliente: CP Cuidadores / CuidaRio / SIP\nGestão mensal: R$3.000/mês\nSetup Entidade Digital + GEO: R$2.000\nEscopo: Growth (Google Ads 3 contas) + GEO (Wikidata + Schema + Conteúdo)'
+    'PROPOSTA ACEITA\nCliente: CP Cuidadores Profissionais / CuidaRio / SIP\nValor: R$4.900/mês\nVerba Google Ads: paga diretamente ao Google\nEscopo: Growth + GEO — Nexxo Digital + Organum\nInício: correções de emergência na semana 1'
   );
   window.location.href='mailto:pedro.aureliano95@gmail.com?subject='+sub+'&body='+body;
   setTimeout(()=>{
     document.getElementById('formWrap').style.display='none';
     document.getElementById('successBox').classList.add('on');
-  },1000);
+  },1500);
 }
 
 /* CONFETTI */
-let confettiAF,confettiParts=[];
+const cv=document.getElementById('confettiC');
+const cx=cv.getContext('2d');
+let pts=[],af,run=false;
 function startConfetti(){
-  const c=document.getElementById('confettiC');
-  const ctx=c.getContext('2d');
-  c.width=window.innerWidth;c.height=window.innerHeight;
-  confettiParts=Array.from({length:120},()=>({
-    x:Math.random()*c.width,y:Math.random()*c.height-c.height,
-    w:6+Math.random()*6,h:10+Math.random()*6,
-    color:['#4caf64','#2e9147','#a8e6b8','#3b82f6','#fff'][Math.floor(Math.random()*5)],
-    r:Math.random()*360,dr:(Math.random()-0.5)*6,
-    vy:2+Math.random()*4,vx:(Math.random()-0.5)*2
-  }));
-  (function loop(){
-    ctx.clearRect(0,0,c.width,c.height);
-    confettiParts.forEach(p=>{
-      ctx.save();ctx.translate(p.x+p.w/2,p.y+p.h/2);
-      ctx.rotate(p.r*Math.PI/180);ctx.fillStyle=p.color;
-      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();
-      p.x+=p.vx;p.y+=p.vy;p.r+=p.dr;
-      if(p.y>c.height){p.y=-p.h;p.x=Math.random()*c.width;}
-    });
-    confettiAF=requestAnimationFrame(loop);
-  })();
+  cv.width=innerWidth;cv.height=innerHeight;pts=[];
+  const cols=['#4caf64','#2e9147','#3b82f6','#ffffff','#a8e6b8','#bfdbfe'];
+  for(let i=0;i<100;i++)pts.push({x:Math.random()*cv.width,y:-10-Math.random()*180,w:5+Math.random()*7,h:3+Math.random()*4,r:Math.random()*Math.PI*2,rv:(Math.random()-.5)*.14,vy:2+Math.random()*3,vx:(Math.random()-.5)*1.4,c:cols[Math.floor(Math.random()*cols.length)],o:1});
+  run=true;tick();
 }
-function stopConfetti(){
-  cancelAnimationFrame(confettiAF);
-  const c=document.getElementById('confettiC');
-  c.getContext('2d').clearRect(0,0,c.width,c.height);
+function tick(){
+  cx.clearRect(0,0,cv.width,cv.height);
+  pts.forEach(p=>{p.y+=p.vy;p.x+=p.vx;p.r+=p.rv;if(p.y>cv.height*.65)p.o=Math.max(0,p.o-.025);cx.save();cx.globalAlpha=p.o;cx.translate(p.x,p.y);cx.rotate(p.r);cx.fillStyle=p.c;cx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cx.restore()});
+  if(run)af=requestAnimationFrame(tick);
 }
+function stopConfetti(){run=false;cancelAnimationFrame(af);cx.clearRect(0,0,cv.width,cv.height);}
 </script>
 </body>
 </html>
