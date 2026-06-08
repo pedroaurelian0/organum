@@ -1,12 +1,9 @@
-﻿---
-// Proposta LedHome — standalone, sem layout pai
----
-<Fragment set:html={`<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Proposta SEO â€” LedHome Ã— Organum</title>
+<title>Proposta SEO — LedHome × Organum</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -61,7 +58,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .sh h2{font-family:var(--serif);font-size:clamp(24px,5vw,40px);font-weight:400;line-height:1.2;margin-bottom:12px}
 .sh p{font-size:15px;color:var(--n400);line-height:1.75;max-width:580px}
 
-/* DÃšVIDAS â€” ACCORDION */
+/* DÚVIDAS — ACCORDION */
 .faq-list{display:flex;flex-direction:column;gap:8px;margin-bottom:0}
 .faq-item{background:var(--n900);border:1px solid rgba(255,255,255,.07);border-radius:12px;overflow:hidden}
 .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 20px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none}
@@ -85,7 +82,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .sv-g{color:var(--g400)}
 .score-desc{font-size:13px;color:var(--n400)}
 
-/* DIAGNÃ“STICO */
+/* DIAGNÓSTICO */
 .prob-list{display:flex;flex-direction:column;gap:8px}
 .prob{display:grid;grid-template-columns:28px 1fr;gap:12px;padding:16px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px;opacity:0;transform:translateX(-16px);transition:opacity .5s ease,transform .5s ease}
 .prob.vis{opacity:1;transform:none}
@@ -122,7 +119,7 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .kt-m{background:rgba(245,158,11,.15);color:var(--y400)}
 .kt-t{background:rgba(96,165,250,.15);color:#60a5fa}
 
-/* PROJEÃ‡ÃƒO */
+/* PROJEÇÃO */
 .proj-rows{display:flex;flex-direction:column;gap:8px;margin-bottom:24px}
 .prow{padding:16px 20px;background:var(--n900);border:1px solid rgba(255,255,255,.06);border-radius:10px}
 .prow-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px;flex-wrap:wrap;gap:6px}
@@ -142,8 +139,8 @@ nav.scrolled{background:rgba(12,10,8,.92);backdrop-filter:blur(20px);border-bott
 .dual-col.ads h3{color:#60a5fa}
 .dual-col.seo h3{color:var(--g400)}
 .dual-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:9px;font-size:13px;color:var(--n400);line-height:1.5}
-.dual-col.ads .dual-item::before{content:'â†’';color:#60a5fa;flex-shrink:0;margin-top:2px;font-size:11px}
-.dual-col.seo .dual-item::before{content:'â†’';color:var(--g400);flex-shrink:0;margin-top:2px;font-size:11px}
+.dual-col.ads .dual-item::before{content:'→';color:#60a5fa;flex-shrink:0;margin-top:2px;font-size:11px}
+.dual-col.seo .dual-item::before{content:'→';color:var(--g400);flex-shrink:0;margin-top:2px;font-size:11px}
 
 /* INVESTIMENTO */
 .inv-box{background:var(--n900);border:2px solid rgba(245,158,11,.3);border-radius:16px;padding:32px 24px;margin-bottom:16px;position:relative}
@@ -236,24 +233,24 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
   <a href="#aceitar" class="nav-pill">Aceitar proposta</a>
 </nav>
 
-<!-- â•â• HERO â•â• -->
+<!-- ══ HERO ══ -->
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-grain"></div>
   <div class="hero-inner">
-    <p class="hero-ey">Proposta SEO Â· LedHome IluminaÃ§Ã£o Â· Maio 2026</p>
+    <p class="hero-ey">Proposta SEO · LedHome Iluminação · Maio 2026</p>
     <h1 class="hero-h1">20 anos de mercado.<br><em>3 palavras-chave</em><br>no Google.</h1>
     <p class="hero-sub">
-      A LedHome tem showroom, equipe especializada e 20 anos de reputaÃ§Ã£o no ES.
-      Tudo isso existe â€” mas o Google nÃ£o sabe. Clientes buscam
-      "loja de iluminaÃ§Ã£o VitÃ³ria" todos os dias e vocÃª nÃ£o aparece.
-      Esse Ã© o problema que o SEO resolve.
+      A LedHome tem showroom, equipe especializada e 20 anos de reputação no ES.
+      Tudo isso existe — mas o Google não sabe. Clientes buscam
+      "loja de iluminação Vitória" todos os dias e você não aparece.
+      Esse é o problema que o SEO resolve.
     </p>
     <div class="hero-kpis">
-      <div class="kpi"><span class="kpi-val">3</span><span class="kpi-lbl">Keywords orgÃ¢nicas ativas</span></div>
-      <div class="kpi"><span class="kpi-val">31</span><span class="kpi-lbl">Visitas orgÃ¢nicas/mÃªs</span></div>
+      <div class="kpi"><span class="kpi-val">3</span><span class="kpi-lbl">Keywords orgânicas ativas</span></div>
+      <div class="kpi"><span class="kpi-val">31</span><span class="kpi-lbl">Visitas orgânicas/mês</span></div>
       <div class="kpi"><span class="kpi-val">34/100</span><span class="kpi-lbl">Performance mobile</span></div>
-      <div class="kpi"><span class="kpi-val">75,5%</span><span class="kpi-lbl">Taxa de rejeiÃ§Ã£o</span></div>
+      <div class="kpi"><span class="kpi-val">75,5%</span><span class="kpi-lbl">Taxa de rejeição</span></div>
     </div>
   </div>
   <div class="scroll-cue"><span>ver proposta</span><div class="scroll-line"></div></div>
@@ -261,47 +258,47 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 
 <div class="divider"></div>
 
-<!-- â•â• DÃšVIDAS DO KAIO â•â• -->
+<!-- ══ DÚVIDAS DO KAIO ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
-      <p class="eyebrow">Suas perguntas â€” respondidas</p>
-      <h2>Antes de falar em plano,<br>vamos Ã s dÃºvidas direto.</h2>
-      <p>VocÃª fez trÃªs perguntas objetivas. As respostas estÃ£o aqui â€” sem enrolaÃ§Ã£o.</p>
+      <p class="eyebrow">Suas perguntas — respondidas</p>
+      <h2>Antes de falar em plano,<br>vamos às dúvidas direto.</h2>
+      <p>Você fez três perguntas objetivas. As respostas estão aqui — sem enrolação.</p>
     </div>
 
     <div class="faq-list rev">
 
       <div class="faq-item open" id="faq1">
         <div class="faq-q" onclick="toggleFaq('faq1')">
-          <span class="faq-q-text">"Os R$&nbsp;2.000 â€” pago agora e vocÃªs comeÃ§am?"</span>
+          <span class="faq-q-text">"Os R$&nbsp;2.000 — pago agora e vocês começam?"</span>
           <span class="faq-icon"><span>+</span></span>
         </div>
         <div class="faq-body">
           <div class="faq-content">
-            <p>Sim. <strong>O pagamento do setup de R$&nbsp;2.000 libera o inÃ­cio imediato</strong> â€” na mesma semana jÃ¡ comeÃ§amos as correÃ§Ãµes tÃ©cnicas da Fase 1. Pode parcelar no cartÃ£o se preferir; o inÃ­cio nÃ£o depende de qual parcela cair, depende da confirmaÃ§Ã£o do pedido.</p>
-            <p>Esse valor cobre toda a Fase 1: correÃ§Ã£o do H2 "PRODUTO DE TESTE" em todas as categorias, reescrita de tÃ­tulos e meta descriptions, correÃ§Ã£o dos 404s, otimizaÃ§Ã£o de imagens, scripts, cache e Google Business Profile. Ã‰ um trabalho Ãºnico â€” nÃ£o se repete.</p>
-            <p>O retainer de R$&nbsp;500/mÃªs comeÃ§a no <strong>mÃªs 2</strong>, logo apÃ³s a entrega da Fase 1. NÃ£o no mÃªs 3 â€” no mÃªs seguinte ao setup.</p>
-            <div class="highlight-box">Resumo: R$&nbsp;2.000 agora â†’ Fase 1 entregue em 30 dias â†’ R$&nbsp;500/mÃªs comeÃ§a no mÃªs 2.</div>
+            <p>Sim. <strong>O pagamento do setup de R$&nbsp;2.000 libera o início imediato</strong> — na mesma semana já começamos as correções técnicas da Fase 1. Pode parcelar no cartão se preferir; o início não depende de qual parcela cair, depende da confirmação do pedido.</p>
+            <p>Esse valor cobre toda a Fase 1: correção do H2 "PRODUTO DE TESTE" em todas as categorias, reescrita de títulos e meta descriptions, correção dos 404s, otimização de imagens, scripts, cache e Google Business Profile. É um trabalho único — não se repete.</p>
+            <p>O retainer de R$&nbsp;500/mês começa no <strong>mês 2</strong>, logo após a entrega da Fase 1. Não no mês 3 — no mês seguinte ao setup.</p>
+            <div class="highlight-box">Resumo: R$&nbsp;2.000 agora → Fase 1 entregue em 30 dias → R$&nbsp;500/mês começa no mês 2.</div>
           </div>
         </div>
       </div>
 
       <div class="faq-item" id="faq2">
         <div class="faq-q" onclick="toggleFaq('faq2')">
-          <span class="faq-q-text">"Meu concorrente estÃ¡ 100/100. Em quanto tempo a LedHome chega lÃ¡?"</span>
+          <span class="faq-q-text">"Meu concorrente está 100/100. Em quanto tempo a LedHome chega lá?"</span>
           <span class="faq-icon"><span>+</span></span>
         </div>
         <div class="faq-body">
           <div class="faq-content">
-            <p>Vamos ser diretos: <strong>sites de e-commerce raramente atingem 100/100</strong>. O prÃ³prio Google Shopping fica abaixo de 90. Para chegar a 100, um site precisa ser essencialmente estÃ¡tico â€” sem plataforma de e-commerce, sem scripts de terceiros, sem filtros de produto.</p>
-            <p>Se o seu concorrente estÃ¡ em 100, o site dele provavelmente Ã© um catÃ¡logo simples sem transaÃ§Ã£o. A LedHome tem e-commerce real na Tray â€” isso adiciona complexidade que limita o score mÃ¡ximo, mas Ã© exatamente essa complexidade que gera vendas.</p>
-            <p><strong>O que importa nÃ£o Ã© chegar em 100 â€” Ã© sair da zona vermelha (34) para a zona verde (acima de 75)</strong>, que Ã© onde o Google para de penalizar e o Quality Score das suas campanhas melhora.</p>
+            <p>Vamos ser diretos: <strong>sites de e-commerce raramente atingem 100/100</strong>. O próprio Google Shopping fica abaixo de 90. Para chegar a 100, um site precisa ser essencialmente estático — sem plataforma de e-commerce, sem scripts de terceiros, sem filtros de produto.</p>
+            <p>Se o seu concorrente está em 100, o site dele provavelmente é um catálogo simples sem transação. A LedHome tem e-commerce real na Tray — isso adiciona complexidade que limita o score máximo, mas é exatamente essa complexidade que gera vendas.</p>
+            <p><strong>O que importa não é chegar em 100 — é sair da zona vermelha (34) para a zona verde (acima de 75)</strong>, que é onde o Google para de penalizar e o Quality Score das suas campanhas melhora.</p>
             <div class="score-track">
-              <div class="score-step"><span class="score-val sv-r">34</span><span class="score-desc">Hoje â€” reprovado, penalizado pelo Google</span></div>
-              <div class="score-step"><span class="score-val sv-y">60+</span><span class="score-desc">MÃªs 2 â€” apÃ³s Fase 1 de correÃ§Ãµes tÃ©cnicas</span></div>
-              <div class="score-step"><span class="score-val sv-y">65â€“75</span><span class="score-desc">6 meses â€” otimizaÃ§Ãµes contÃ­nuas</span></div>
-              <div class="score-step"><span class="score-val sv-g">75â€“85</span><span class="score-desc">12 meses â€” zona verde consolidada</span></div>
+              <div class="score-step"><span class="score-val sv-r">34</span><span class="score-desc">Hoje — reprovado, penalizado pelo Google</span></div>
+              <div class="score-step"><span class="score-val sv-y">60+</span><span class="score-desc">Mês 2 — após Fase 1 de correções técnicas</span></div>
+              <div class="score-step"><span class="score-val sv-y">65–75</span><span class="score-desc">6 meses — otimizações contínuas</span></div>
+              <div class="score-step"><span class="score-val sv-g">75–85</span><span class="score-desc">12 meses — zona verde consolidada</span></div>
             </div>
           </div>
         </div>
@@ -309,15 +306,15 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 
       <div class="faq-item" id="faq3">
         <div class="faq-q" onclick="toggleFaq('faq3')">
-          <span class="faq-q-text">"E se nÃ£o chegar na meta â€” tem como condicionar o pagamento ao resultado?"</span>
+          <span class="faq-q-text">"E se não chegar na meta — tem como condicionar o pagamento ao resultado?"</span>
           <span class="faq-icon"><span>+</span></span>
         </div>
         <div class="faq-body">
           <div class="faq-content">
-            <p>Ã‰ uma pergunta legÃ­tima e a gente entende de onde vem. A resposta honesta Ã©: <strong>nÃ£o trabalhamos com modelo de pagamento condicionado ao score</strong> â€” e vamos explicar por quÃª isso protege vocÃª, nÃ£o a Organum.</p>
-            <p>Se o pagamento ficasse travado no score 100, o incentivo seria otimizar para o nÃºmero, nÃ£o para o resultado do negÃ³cio. Daria para chegar em 100 desativando scripts, removendo funcionalidades e simplificando o site a ponto de ele parar de funcionar como e-commerce. VocÃª teria 100 no PageSpeed e um site que nÃ£o converte.</p>
-            <p><strong>O que entregamos com documentaÃ§Ã£o:</strong> relatÃ³rio de baseline antes de comeÃ§ar (score atual, posiÃ§Ãµes, trÃ¡fego), relatÃ³rio apÃ³s Fase 1 (score, o que foi feito, evidÃªncias), e relatÃ³rio mensal com evoluÃ§Ã£o de posiÃ§Ãµes e trÃ¡fego orgÃ¢nico. Cada entrega Ã© verificÃ¡vel no Google Search Console, que vocÃª acessa diretamente â€” sem depender de nÃ³s para ver os dados.</p>
-            <div class="highlight-box">O compromisso nÃ£o Ã© com o nÃºmero â€” Ã© com a trajetÃ³ria documentada e com o acesso total aos dados, sempre.</div>
+            <p>É uma pergunta legítima e a gente entende de onde vem. A resposta honesta é: <strong>não trabalhamos com modelo de pagamento condicionado ao score</strong> — e vamos explicar por quê isso protege você, não a Organum.</p>
+            <p>Se o pagamento ficasse travado no score 100, o incentivo seria otimizar para o número, não para o resultado do negócio. Daria para chegar em 100 desativando scripts, removendo funcionalidades e simplificando o site a ponto de ele parar de funcionar como e-commerce. Você teria 100 no PageSpeed e um site que não converte.</p>
+            <p><strong>O que entregamos com documentação:</strong> relatório de baseline antes de começar (score atual, posições, tráfego), relatório após Fase 1 (score, o que foi feito, evidências), e relatório mensal com evolução de posições e tráfego orgânico. Cada entrega é verificável no Google Search Console, que você acessa diretamente — sem depender de nós para ver os dados.</p>
+            <div class="highlight-box">O compromisso não é com o número — é com a trajetória documentada e com o acesso total aos dados, sempre.</div>
           </div>
         </div>
       </div>
@@ -328,68 +325,68 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 
 <div class="divider"></div>
 
-<!-- â•â• OPORTUNIDADE â•â• -->
+<!-- ══ OPORTUNIDADE ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
-      <p class="eyebrow">O diagnÃ³stico â€” o que foi encontrado</p>
-      <h2>Problemas que estÃ£o ativamente<br>prejudicando o ranqueamento hoje.</h2>
+      <p class="eyebrow">O diagnóstico — o que foi encontrado</p>
+      <h2>Problemas que estão ativamente<br>prejudicando o ranqueamento hoje.</h2>
     </div>
 
     <div class="prob-list">
       <div class="prob">
         <span class="prob-n">01</span>
         <div>
-          <strong>H2 "PRODUTO DE TESTE" em todas as pÃ¡ginas de categoria</strong>
-          <span>Em absolutamente todas as categorias â€” spots, arandelas, fitas de LED, lustres â€” o segundo heading Ã© literalmente "PRODUTO DE TESTE". O Google lÃª H2s como indicadores do tema da pÃ¡gina. Esse erro penaliza todas as categorias ao mesmo tempo.</span>
-          <span class="prob-badge pb-r">CrÃ­tico â€” corrigÃ­vel hoje</span>
+          <strong>H2 "PRODUTO DE TESTE" em todas as páginas de categoria</strong>
+          <span>Em absolutamente todas as categorias — spots, arandelas, fitas de LED, lustres — o segundo heading é literalmente "PRODUTO DE TESTE". O Google lê H2s como indicadores do tema da página. Esse erro penaliza todas as categorias ao mesmo tempo.</span>
+          <span class="prob-badge pb-r">Crítico — corrigível hoje</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">02</span>
         <div>
-          <strong>TÃ­tulos com 5 a 19 caracteres â€” sem keywords</strong>
-          <span>"Spots" (5 chars). "Arandelas" (9 chars). O Google nÃ£o consegue associar essas pÃ¡ginas a nenhuma busca relevante. "Spots de Embutir LED | LedHome IluminaÃ§Ã£o ES" Ã© o que deveria estar ali.</span>
-          <span class="prob-badge pb-r">CrÃ­tico</span>
+          <strong>Títulos com 5 a 19 caracteres — sem keywords</strong>
+          <span>"Spots" (5 chars). "Arandelas" (9 chars). O Google não consegue associar essas páginas a nenhuma busca relevante. "Spots de Embutir LED | LedHome Iluminação ES" é o que deveria estar ali.</span>
+          <span class="prob-badge pb-r">Crítico</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">03</span>
         <div>
           <strong>LCP mobile de 12,5 segundos</strong>
-          <span>Imagens sem WebP e sem lazy loading sÃ£o a causa principal â€” 2.956 KB de economia estimada. O cliente abre o site no celular e espera mais de 12 segundos para ver conteÃºdo. A maioria sai antes disso.</span>
-          <span class="prob-badge pb-r">CrÃ­tico</span>
+          <span>Imagens sem WebP e sem lazy loading são a causa principal — 2.956 KB de economia estimada. O cliente abre o site no celular e espera mais de 12 segundos para ver conteúdo. A maioria sai antes disso.</span>
+          <span class="prob-badge pb-r">Crítico</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">04</span>
         <div>
-          <strong>CLS 0,809 no desktop â€” layout "pulando"</strong>
-          <span>Meta do Google Ã© abaixo de 0,1. Imagens sem dimensÃµes explÃ­citas fazem o layout se mover enquanto carrega â€” penalizaÃ§Ã£o direta de Core Web Vitals.</span>
-          <span class="prob-badge pb-r">CrÃ­tico</span>
+          <strong>CLS 0,809 no desktop — layout "pulando"</strong>
+          <span>Meta do Google é abaixo de 0,1. Imagens sem dimensões explícitas fazem o layout se mover enquanto carrega — penalização direta de Core Web Vitals.</span>
+          <span class="prob-badge pb-r">Crítico</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">05</span>
         <div>
           <strong>/lustres-e-pendente retorna 404 com links ativos</strong>
-          <span>URL quebrada com inlinks apontando para ela. Dilui a autoridade das pÃ¡ginas de categoria. CorreÃ§Ã£o simples: redirect 301 para a URL correta.</span>
+          <span>URL quebrada com inlinks apontando para ela. Dilui a autoridade das páginas de categoria. Correção simples: redirect 301 para a URL correta.</span>
           <span class="prob-badge pb-y">Alto</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">06</span>
         <div>
-          <strong>Charset ISO-8859-1 em todas as pÃ¡ginas</strong>
-          <span>Deveria ser UTF-8. Tildes e cedilhas aparecem incorretamente nos snippets do Google â€” prejudica o CTR orgÃ¢nico antes mesmo do ranqueamento.</span>
+          <strong>Charset ISO-8859-1 em todas as páginas</strong>
+          <span>Deveria ser UTF-8. Tildes e cedilhas aparecem incorretamente nos snippets do Google — prejudica o CTR orgânico antes mesmo do ranqueamento.</span>
           <span class="prob-badge pb-y">Alto</span>
         </div>
       </div>
       <div class="prob">
         <span class="prob-n">07</span>
         <div>
-          <strong>PÃ¡gina /noticias indexada, sem H1, sem conteÃºdo</strong>
-          <span>Blog vazio consumindo crawl budget e enviando sinal de site com conteÃºdo pobre. Oportunidade desperdiÃ§ada â€” com conteÃºdo estratÃ©gico, vira o canal de maior crescimento.</span>
+          <strong>Página /noticias indexada, sem H1, sem conteúdo</strong>
+          <span>Blog vazio consumindo crawl budget e enviando sinal de site com conteúdo pobre. Oportunidade desperdiçada — com conteúdo estratégico, vira o canal de maior crescimento.</span>
           <span class="prob-badge pb-g">Oportunidade</span>
         </div>
       </div>
@@ -399,95 +396,95 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 
 <div class="divider"></div>
 
-<!-- â•â• TRÃFEGO PAGO VS ORGÃ‚NICO â•â• -->
+<!-- ══ TRÁFEGO PAGO VS ORGÂNICO ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
       <p class="eyebrow">Por que SEO agora</p>
-      <h2>O trÃ¡fego pago para quando<br>o orÃ§amento para.</h2>
-      <p>VocÃª jÃ¡ tem as campanhas rodando e gerando resultado. O SEO constrÃ³i um segundo canal â€” permanente, de custo decrescente â€” que complementa o que vocÃª jÃ¡ investe.</p>
+      <h2>O tráfego pago para quando<br>o orçamento para.</h2>
+      <p>Você já tem as campanhas rodando e gerando resultado. O SEO constrói um segundo canal — permanente, de custo decrescente — que complementa o que você já investe.</p>
     </div>
     <div class="dual-grid rev">
       <div class="dual-col ads">
-        <h3>TrÃ¡fego pago (jÃ¡ existe)</h3>
-        <div class="dual-item">Resultado imediato enquanto o orÃ§amento roda</div>
+        <h3>Tráfego pago (já existe)</h3>
+        <div class="dual-item">Resultado imediato enquanto o orçamento roda</div>
         <div class="dual-item">Custo por clique pago ao Google a cada visita</div>
         <div class="dual-item">Para imediatamente se o investimento cessar</div>
-        <div class="dual-item">ROI disputado com concorrentes no leilÃ£o</div>
+        <div class="dual-item">ROI disputado com concorrentes no leilão</div>
       </div>
       <div class="dual-col seo">
-        <h3>SEO orgÃ¢nico (o que falta)</h3>
+        <h3>SEO orgânico (o que falta)</h3>
         <div class="dual-item">Resultado crescente e permanente ao longo do tempo</div>
-        <div class="dual-item">Clique sem custo de mÃ­dia apÃ³s o ranqueamento</div>
+        <div class="dual-item">Clique sem custo de mídia após o ranqueamento</div>
         <div class="dual-item">Continua gerando retorno mesmo sem verba ativa</div>
-        <div class="dual-item">ROI aumenta com o tempo â€” autoridade acumulada</div>
+        <div class="dual-item">ROI aumenta com o tempo — autoridade acumulada</div>
       </div>
     </div>
 
     <div class="sh rev" style="margin-bottom:24px">
-      <h2>Buscas que existem hoje<br>e a LedHome nÃ£o aparece.</h2>
+      <h2>Buscas que existem hoje<br>e a LedHome não aparece.</h2>
     </div>
     <div class="kw-list rev">
-      <div class="kw"><span class="kw-text">"loja de iluminaÃ§Ã£o vitÃ³ria"</span><span class="kw-tag kt-f">Alta intenÃ§Ã£o local</span></div>
+      <div class="kw"><span class="kw-text">"loja de iluminação vitória"</span><span class="kw-tag kt-f">Alta intenção local</span></div>
       <div class="kw"><span class="kw-text">"spots de embutir led"</span><span class="kw-tag kt-m">Topo de demanda</span></div>
-      <div class="kw"><span class="kw-text">"projeto de iluminaÃ§Ã£o residencial"</span><span class="kw-tag kt-f">Lead qualificado</span></div>
-      <div class="kw"><span class="kw-text">"perfil de led para sanca"</span><span class="kw-tag kt-m">IntenÃ§Ã£o tÃ©cnica</span></div>
-      <div class="kw"><span class="kw-text">"iluminaÃ§Ã£o para reforma"</span><span class="kw-tag kt-f">Momento de decisÃ£o</span></div>
+      <div class="kw"><span class="kw-text">"projeto de iluminação residencial"</span><span class="kw-tag kt-f">Lead qualificado</span></div>
+      <div class="kw"><span class="kw-text">"perfil de led para sanca"</span><span class="kw-tag kt-m">Intenção técnica</span></div>
+      <div class="kw"><span class="kw-text">"iluminação para reforma"</span><span class="kw-tag kt-f">Momento de decisão</span></div>
       <div class="kw"><span class="kw-text">"como iluminar sala de estar"</span><span class="kw-tag kt-t">Topo de funil</span></div>
     </div>
-    <p style="font-size:13px;color:var(--n600);text-align:center;margin-top:12px">Nenhum concorrente local tem presenÃ§a orgÃ¢nica forte nessas buscas. A janela estÃ¡ aberta agora.</p>
+    <p style="font-size:13px;color:var(--n600);text-align:center;margin-top:12px">Nenhum concorrente local tem presença orgânica forte nessas buscas. A janela está aberta agora.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- â•â• FASES â•â• -->
+<!-- ══ FASES ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
-      <p class="eyebrow">O plano â€” 3 fases</p>
+      <p class="eyebrow">O plano — 3 fases</p>
       <h2>Cada fase potencializa<br>a anterior.</h2>
-      <p>Fase 1 resolve o que estÃ¡ ativamente prejudicando o ranqueamento. Fase 2 cria as pÃ¡ginas que capturam demanda real. Fase 3 escala o canal orgÃ¢nico.</p>
+      <p>Fase 1 resolve o que está ativamente prejudicando o ranqueamento. Fase 2 cria as páginas que capturam demanda real. Fase 3 escala o canal orgânico.</p>
     </div>
 
     <div class="fase rev">
       <div class="fase-header">
         <div class="fase-num">1</div>
-        <div class="fase-title"><h3>CorreÃ§Ãµes tÃ©cnicas e on-page</h3><p>MÃªs 1 Â· coberto pelo setup de R$&nbsp;2.000</p></div>
+        <div class="fase-title"><h3>Correções técnicas e on-page</h3><p>Mês 1 · coberto pelo setup de R$&nbsp;2.000</p></div>
       </div>
       <div class="fase-rows">
-        <div class="frow"><strong>Remover "PRODUTO DE TESTE" de todas as categorias</strong><span>CorreÃ§Ã£o do template na Tray. Impacto simultÃ¢neo em todas as pÃ¡ginas de categoria.</span><span class="frow-tag ft-now">Semana 1</span></div>
-        <div class="frow"><strong>Reescrita de tÃ­tulos e meta descriptions</strong><span>De "Spots" para "Spots de Embutir LED | LedHome IluminaÃ§Ã£o ES" â€” com keywords e localizaÃ§Ã£o em todas as categorias.</span><span class="frow-tag ft-now">Semana 1â€“2</span></div>
-        <div class="frow"><strong>OtimizaÃ§Ã£o de imagens: WebP + lazy loading + dimensÃµes</strong><span>Resolve o LCP de 12,5s e o CLS de 0,809. Economia estimada: 2.956 KB. Performance sobe de 34 para 60+ em mobile.</span><span class="frow-tag ft-now">Semana 2â€“3</span></div>
-        <div class="frow"><strong>CorreÃ§Ã£o de 404s + noindex em pÃ¡ginas internas</strong><span>Redirect 301 para /lustres-e-pendentes. Noindex em /my-account/login, /cadastro, /loja/clic.php â€” limpa o crawl budget.</span><span class="frow-tag ft-now">Semana 1</span></div>
-        <div class="frow"><strong>Charset UTF-8 + cache + scripts assÃ­ncronos</strong><span>Resolve encoding nos snippets do Google e remove 1.080ms de bloqueio de renderizaÃ§Ã£o.</span><span class="frow-tag ft-now">Semana 2</span></div>
-        <div class="frow"><strong>Google Business Profile â€” otimizaÃ§Ã£o com keywords locais</strong><span>Ranqueamento em "loja de iluminaÃ§Ã£o VitÃ³ria" no mapa antes mesmo dos resultados orgÃ¢nicos.</span><span class="frow-tag ft-now">Semana 1</span></div>
+        <div class="frow"><strong>Remover "PRODUTO DE TESTE" de todas as categorias</strong><span>Correção do template na Tray. Impacto simultâneo em todas as páginas de categoria.</span><span class="frow-tag ft-now">Semana 1</span></div>
+        <div class="frow"><strong>Reescrita de títulos e meta descriptions</strong><span>De "Spots" para "Spots de Embutir LED | LedHome Iluminação ES" — com keywords e localização em todas as categorias.</span><span class="frow-tag ft-now">Semana 1–2</span></div>
+        <div class="frow"><strong>Otimização de imagens: WebP + lazy loading + dimensões</strong><span>Resolve o LCP de 12,5s e o CLS de 0,809. Economia estimada: 2.956 KB. Performance sobe de 34 para 60+ em mobile.</span><span class="frow-tag ft-now">Semana 2–3</span></div>
+        <div class="frow"><strong>Correção de 404s + noindex em páginas internas</strong><span>Redirect 301 para /lustres-e-pendentes. Noindex em /my-account/login, /cadastro, /loja/clic.php — limpa o crawl budget.</span><span class="frow-tag ft-now">Semana 1</span></div>
+        <div class="frow"><strong>Charset UTF-8 + cache + scripts assíncronos</strong><span>Resolve encoding nos snippets do Google e remove 1.080ms de bloqueio de renderização.</span><span class="frow-tag ft-now">Semana 2</span></div>
+        <div class="frow"><strong>Google Business Profile — otimização com keywords locais</strong><span>Ranqueamento em "loja de iluminação Vitória" no mapa antes mesmo dos resultados orgânicos.</span><span class="frow-tag ft-now">Semana 1</span></div>
       </div>
     </div>
 
     <div class="fase rev">
       <div class="fase-header">
         <div class="fase-num">2</div>
-        <div class="fase-title"><h3>ConteÃºdo estratÃ©gico</h3><p>Meses 3â€“6 Â· coberto pelo retainer de R$&nbsp;500/mÃªs</p></div>
+        <div class="fase-title"><h3>Conteúdo estratégico</h3><p>Meses 3–6 · coberto pelo retainer de R$&nbsp;500/mês</p></div>
       </div>
       <div class="fase-rows">
-        <div class="frow"><strong>/projeto-de-iluminacao-vitoria-es</strong><span>"Projeto de iluminaÃ§Ã£o vitÃ³ria ES" â€” fundo de funil, lead pronto para contratar.</span><span class="frow-tag ft-m2">MÃªs 3</span></div>
-        <div class="frow"><strong>/loja-de-iluminacao-vila-velha</strong><span>"Loja de iluminaÃ§Ã£o vila velha" â€” busca local com alta intenÃ§Ã£o de compra presencial.</span><span class="frow-tag ft-m2">MÃªs 3</span></div>
-        <div class="frow"><strong>/spots-de-embutir-led-como-escolher + /perfil-de-led-para-sanca</strong><span>Meio de funil â€” cliente comparando produtos. Alta demanda, baixa concorrÃªncia editorial local.</span><span class="frow-tag ft-m2">MÃªs 4</span></div>
-        <div class="frow"><strong>/como-iluminar-sala-de-estar + /temperatura-de-cor-guia</strong><span>Topo de funil â€” captura quem ainda estÃ¡ pesquisando. Gera autoridade temÃ¡tica no domÃ­nio.</span><span class="frow-tag ft-m2">MÃªs 5</span></div>
-        <div class="frow"><strong>/iluminacao-residencial-vitoria</strong><span>"IluminaÃ§Ã£o residencial vitÃ³ria" â€” busca local de alto valor comercial.</span><span class="frow-tag ft-m2">MÃªs 6</span></div>
+        <div class="frow"><strong>/projeto-de-iluminacao-vitoria-es</strong><span>"Projeto de iluminação vitória ES" — fundo de funil, lead pronto para contratar.</span><span class="frow-tag ft-m2">Mês 3</span></div>
+        <div class="frow"><strong>/loja-de-iluminacao-vila-velha</strong><span>"Loja de iluminação vila velha" — busca local com alta intenção de compra presencial.</span><span class="frow-tag ft-m2">Mês 3</span></div>
+        <div class="frow"><strong>/spots-de-embutir-led-como-escolher + /perfil-de-led-para-sanca</strong><span>Meio de funil — cliente comparando produtos. Alta demanda, baixa concorrência editorial local.</span><span class="frow-tag ft-m2">Mês 4</span></div>
+        <div class="frow"><strong>/como-iluminar-sala-de-estar + /temperatura-de-cor-guia</strong><span>Topo de funil — captura quem ainda está pesquisando. Gera autoridade temática no domínio.</span><span class="frow-tag ft-m2">Mês 5</span></div>
+        <div class="frow"><strong>/iluminacao-residencial-vitoria</strong><span>"Iluminação residencial vitória" — busca local de alto valor comercial.</span><span class="frow-tag ft-m2">Mês 6</span></div>
       </div>
     </div>
 
     <div class="fase rev">
       <div class="fase-header">
         <div class="fase-num">3</div>
-        <div class="fase-title"><h3>Autoridade e escala</h3><p>MÃªs 6+ Â· canal orgÃ¢nico se torna autÃ´nomo</p></div>
+        <div class="fase-title"><h3>Autoridade e escala</h3><p>Mês 6+ · canal orgânico se torna autônomo</p></div>
       </div>
       <div class="fase-rows">
-        <div class="frow"><strong>Blog tÃ©cnico: 2â€“4 artigos/mÃªs</strong><span>Guias de compra, iluminaÃ§Ã£o residencial e comercial â€” autoridade temÃ¡tica que alimenta o ranqueamento de todas as outras pÃ¡ginas.</span><span class="frow-tag ft-m3">MÃªs 6+</span></div>
-        <div class="frow"><strong>Rich snippets de produto (Schema.org)</strong><span>OtimizaÃ§Ã£o de 200+ pÃ¡ginas de produto com structured data para Google Shopping â€” visibilidade extra sem custo adicional de mÃ­dia.</span><span class="frow-tag ft-m3">MÃªs 6+</span></div>
-        <div class="frow"><strong>Link building local</strong><span>Parcerias editoriais com sites de arquitetura e decoraÃ§Ã£o do ES. Backlinks que aumentam a autoridade de domÃ­nio permanentemente.</span><span class="frow-tag ft-m3">MÃªs 7+</span></div>
+        <div class="frow"><strong>Blog técnico: 2–4 artigos/mês</strong><span>Guias de compra, iluminação residencial e comercial — autoridade temática que alimenta o ranqueamento de todas as outras páginas.</span><span class="frow-tag ft-m3">Mês 6+</span></div>
+        <div class="frow"><strong>Rich snippets de produto (Schema.org)</strong><span>Otimização de 200+ páginas de produto com structured data para Google Shopping — visibilidade extra sem custo adicional de mídia.</span><span class="frow-tag ft-m3">Mês 6+</span></div>
+        <div class="frow"><strong>Link building local</strong><span>Parcerias editoriais com sites de arquitetura e decoração do ES. Backlinks que aumentam a autoridade de domínio permanentemente.</span><span class="frow-tag ft-m3">Mês 7+</span></div>
       </div>
     </div>
   </div>
@@ -495,51 +492,51 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
 
 <div class="divider"></div>
 
-<!-- â•â• PROJEÃ‡ÃƒO â•â• -->
+<!-- ══ PROJEÇÃO ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
-      <p class="eyebrow">ProjeÃ§Ã£o â€” 12 meses</p>
-      <h2>De 3 para 300â€“500<br>keywords orgÃ¢nicas.</h2>
-      <p>ProjeÃ§Ã£o conservadora baseada em sites locais de nicho com concorrÃªncia similar ao mercado de iluminaÃ§Ã£o do ES.</p>
+      <p class="eyebrow">Projeção — 12 meses</p>
+      <h2>De 3 para 300–500<br>keywords orgânicas.</h2>
+      <p>Projeção conservadora baseada em sites locais de nicho com concorrência similar ao mercado de iluminação do ES.</p>
     </div>
     <div class="proj-rows rev">
       <div class="prow">
-        <div class="prow-header"><span class="prow-label">Hoje â€” baseline</span><span class="prow-total">3 keywords Â· 31 visitas/mÃªs</span></div>
+        <div class="prow-header"><span class="prow-label">Hoje — baseline</span><span class="prow-total">3 keywords · 31 visitas/mês</span></div>
         <div class="prow-cols">
-          <div><span class="pcol-lbl">Keywords orgÃ¢nicas</span><div class="ptrack"><div class="pfill-kw" data-w="1"></div></div><span class="pcol-nums">3</span></div>
-          <div><span class="pcol-lbl">Visitas orgÃ¢nicas/mÃªs</span><div class="ptrack"><div class="pfill-vis" data-w="1"></div></div><span class="pcol-nums">31</span></div>
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="1"></div></div><span class="pcol-nums">3</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="1"></div></div><span class="pcol-nums">31</span></div>
         </div>
       </div>
       <div class="prow">
-        <div class="prow-header"><span class="prow-label">3 meses â€” Fase 1 entregue</span><span class="prow-total">30â€“50 keywords Â· 200â€“400 visitas</span></div>
+        <div class="prow-header"><span class="prow-label">3 meses — Fase 1 entregue</span><span class="prow-total">30–50 keywords · 200–400 visitas</span></div>
         <div class="prow-cols">
-          <div><span class="pcol-lbl">Keywords orgÃ¢nicas</span><div class="ptrack"><div class="pfill-kw" data-w="10"></div></div><span class="pcol-nums">30â€“50</span></div>
-          <div><span class="pcol-lbl">Visitas orgÃ¢nicas/mÃªs</span><div class="ptrack"><div class="pfill-vis" data-w="10"></div></div><span class="pcol-nums">200â€“400</span></div>
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="10"></div></div><span class="pcol-nums">30–50</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="10"></div></div><span class="pcol-nums">200–400</span></div>
         </div>
       </div>
       <div class="prow">
-        <div class="prow-header"><span class="prow-label">6 meses â€” Fase 2 em andamento</span><span class="prow-total">100â€“200 keywords Â· 800â€“1.500 visitas</span></div>
+        <div class="prow-header"><span class="prow-label">6 meses — Fase 2 em andamento</span><span class="prow-total">100–200 keywords · 800–1.500 visitas</span></div>
         <div class="prow-cols">
-          <div><span class="pcol-lbl">Keywords orgÃ¢nicas</span><div class="ptrack"><div class="pfill-kw" data-w="40"></div></div><span class="pcol-nums">100â€“200</span></div>
-          <div><span class="pcol-lbl">Visitas orgÃ¢nicas/mÃªs</span><div class="ptrack"><div class="pfill-vis" data-w="37"></div></div><span class="pcol-nums">800â€“1.500</span></div>
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="40"></div></div><span class="pcol-nums">100–200</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="37"></div></div><span class="pcol-nums">800–1.500</span></div>
         </div>
       </div>
       <div class="prow">
-        <div class="prow-header"><span class="prow-label">12 meses â€” Fase 3 consolidada</span><span class="prow-total">300â€“500 keywords Â· 2.000â€“4.000 visitas</span></div>
+        <div class="prow-header"><span class="prow-label">12 meses — Fase 3 consolidada</span><span class="prow-total">300–500 keywords · 2.000–4.000 visitas</span></div>
         <div class="prow-cols">
-          <div><span class="pcol-lbl">Keywords orgÃ¢nicas</span><div class="ptrack"><div class="pfill-kw" data-w="100"></div></div><span class="pcol-nums">300â€“500</span></div>
-          <div><span class="pcol-lbl">Visitas orgÃ¢nicas/mÃªs</span><div class="ptrack"><div class="pfill-vis" data-w="100"></div></div><span class="pcol-nums">2.000â€“4.000</span></div>
+          <div><span class="pcol-lbl">Keywords orgânicas</span><div class="ptrack"><div class="pfill-kw" data-w="100"></div></div><span class="pcol-nums">300–500</span></div>
+          <div><span class="pcol-lbl">Visitas orgânicas/mês</span><div class="ptrack"><div class="pfill-vis" data-w="100"></div></div><span class="pcol-nums">2.000–4.000</span></div>
         </div>
       </div>
     </div>
-    <p style="font-size:13px;color:var(--n600);text-align:center">4.000 visitas Ã— 3â€“5% de conversÃ£o = 120â€“200 contatos qualificados/mÃªs sem custo de mÃ­dia.</p>
+    <p style="font-size:13px;color:var(--n600);text-align:center">4.000 visitas × 3–5% de conversão = 120–200 contatos qualificados/mês sem custo de mídia.</p>
   </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- â•â• INVESTIMENTO â•â• -->
+<!-- ══ INVESTIMENTO ══ -->
 <section id="aceitar">
   <div class="wrap">
     <div class="sh rev">
@@ -547,34 +544,34 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
       <h2>Simples e direto.</h2>
     </div>
     <div class="inv-box rev">
-      <span class="inv-badge">SEO Organum â€” LedHome</span>
+      <span class="inv-badge">SEO Organum — LedHome</span>
 
       <div class="inv-block">
-        <div class="inv-block-label">Setup Ãºnico â€” mÃªs 1</div>
+        <div class="inv-block-label">Setup único — mês 1</div>
         <div class="inv-price-row">
           <span class="inv-price">R$&nbsp;2.000</span>
-          <span class="inv-note">pagamento Ãºnico Â· pode parcelar no cartÃ£o</span>
+          <span class="inv-note">pagamento único · pode parcelar no cartão</span>
         </div>
       </div>
 
       <div class="inv-sep"></div>
 
       <div class="inv-block" style="margin-bottom:0">
-        <div class="inv-block-label">Fee mensal â€” a partir do mÃªs 2</div>
+        <div class="inv-block-label">Fee mensal — a partir do mês 2</div>
         <div class="inv-lines">
-          <div class="inv-line"><span class="inv-line-label">GestÃ£o de trÃ¡fego (jÃ¡ contratado)</span><span class="inv-line-val">R$&nbsp;1.500/mÃªs</span></div>
-          <div class="inv-line hl"><span class="inv-line-label">SEO mensal â€” conteÃºdo + monitoramento</span><span class="inv-line-val">R$&nbsp;500/mÃªs</span></div>
-          <div class="inv-line" style="background:rgba(255,255,255,.03)"><span class="inv-line-label" style="font-weight:600;color:var(--n200)">Total fee mensal</span><span class="inv-line-val" style="font-size:20px">R$&nbsp;2.000/mÃªs</span></div>
+          <div class="inv-line"><span class="inv-line-label">Gestão de tráfego (já contratado)</span><span class="inv-line-val">R$&nbsp;1.500/mês</span></div>
+          <div class="inv-line hl"><span class="inv-line-label">SEO mensal — conteúdo + monitoramento</span><span class="inv-line-val">R$&nbsp;500/mês</span></div>
+          <div class="inv-line" style="background:rgba(255,255,255,.03)"><span class="inv-line-label" style="font-weight:600;color:var(--n200)">Total fee mensal</span><span class="inv-line-val" style="font-size:20px">R$&nbsp;2.000/mês</span></div>
         </div>
         <div class="inv-obs">
-          <strong>Como funciona:</strong> R$&nbsp;2.000 de setup pago agora â†’ Fase 1 entregue em 30 dias â†’ relatÃ³rio de baseline e entrega documentada â†’ retainer de R$&nbsp;2.000/mÃªs comeÃ§a no mÃªs 2 cobrindo gestÃ£o de trÃ¡fego + SEO em uma Ãºnica fatura.
+          <strong>Como funciona:</strong> R$&nbsp;2.000 de setup pago agora → Fase 1 entregue em 30 dias → relatório de baseline e entrega documentada → retainer de R$&nbsp;2.000/mês começa no mês 2 cobrindo gestão de tráfego + SEO em uma única fatura.
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- â•â• CRONOGRAMA â•â• -->
+<!-- ══ CRONOGRAMA ══ -->
 <section>
   <div class="wrap">
     <div class="sh rev">
@@ -582,57 +579,57 @@ footer{padding:40px 20px;text-align:center;border-top:1px solid rgba(255,255,255
       <h2>O que acontece<br>semana a semana.</h2>
     </div>
     <div class="steps rev">
-      <div class="step now"><span class="step-when">Agora</span><div><strong>AprovaÃ§Ã£o e pagamento do setup</strong><span>R$&nbsp;2.000 â€” pode parcelar no cartÃ£o. InÃ­cio na mesma semana.</span></div></div>
-      <div class="step now"><span class="step-when">Semana 1</span><div><strong>CorreÃ§Ã£o do H2 "PRODUTO DE TESTE" + Google Business Profile</strong><span>Impacto em todas as categorias simultaneamente. Maior impacto por menor esforÃ§o de todo o plano.</span></div></div>
-      <div class="step now"><span class="step-when">Semana 1â€“2</span><div><strong>Reescrita de tÃ­tulos, meta descriptions, correÃ§Ã£o de 404s</strong><span>Todas as pÃ¡ginas de categoria com keywords e localizaÃ§Ã£o. Redirect 301 nos links quebrados.</span></div></div>
-      <div class="step key"><span class="step-when">Semana 2â€“3</span><div><strong>OtimizaÃ§Ã£o de imagens e performance</strong><span>WebP + lazy loading + dimensÃµes explÃ­citas. LCP de 12,5s â†’ meta abaixo de 4s. CLS de 0,809 â†’ meta abaixo de 0,1.</span></div></div>
-      <div class="step key"><span class="step-when">MÃªs 1 â€” entrega</span><div><strong>RelatÃ³rio de Fase 1 com evidÃªncias</strong><span>Score antes e depois, posiÃ§Ãµes atuais no Search Console, baseline de trÃ¡fego. Tudo documentado e verificÃ¡vel por vocÃª.</span></div></div>
-      <div class="step"><span class="step-when">MÃªs 2</span><div><strong>Retainer inicia â€” R$&nbsp;2.000/mÃªs</strong><span>Fatura unificada: gestÃ£o de trÃ¡fego + SEO. InÃ­cio da produÃ§Ã£o das pÃ¡ginas estratÃ©gicas da Fase 2.</span></div></div>
-      <div class="step"><span class="step-when">MÃªs 3â€“6</span><div><strong>7 pÃ¡ginas de conteÃºdo estratÃ©gico publicadas</strong><span>Capturando trÃ¡fego de alta intenÃ§Ã£o que hoje nenhum concorrente local estÃ¡ respondendo.</span></div></div>
-      <div class="step"><span class="step-when">MÃªs 6+</span><div><strong>Blog tÃ©cnico + 200+ produtos + link building</strong><span>Canal orgÃ¢nico se torna o de menor CPL do negÃ³cio â€” crescendo de forma autÃ´noma.</span></div></div>
+      <div class="step now"><span class="step-when">Agora</span><div><strong>Aprovação e pagamento do setup</strong><span>R$&nbsp;2.000 — pode parcelar no cartão. Início na mesma semana.</span></div></div>
+      <div class="step now"><span class="step-when">Semana 1</span><div><strong>Correção do H2 "PRODUTO DE TESTE" + Google Business Profile</strong><span>Impacto em todas as categorias simultaneamente. Maior impacto por menor esforço de todo o plano.</span></div></div>
+      <div class="step now"><span class="step-when">Semana 1–2</span><div><strong>Reescrita de títulos, meta descriptions, correção de 404s</strong><span>Todas as páginas de categoria com keywords e localização. Redirect 301 nos links quebrados.</span></div></div>
+      <div class="step key"><span class="step-when">Semana 2–3</span><div><strong>Otimização de imagens e performance</strong><span>WebP + lazy loading + dimensões explícitas. LCP de 12,5s → meta abaixo de 4s. CLS de 0,809 → meta abaixo de 0,1.</span></div></div>
+      <div class="step key"><span class="step-when">Mês 1 — entrega</span><div><strong>Relatório de Fase 1 com evidências</strong><span>Score antes e depois, posições atuais no Search Console, baseline de tráfego. Tudo documentado e verificável por você.</span></div></div>
+      <div class="step"><span class="step-when">Mês 2</span><div><strong>Retainer inicia — R$&nbsp;2.000/mês</strong><span>Fatura unificada: gestão de tráfego + SEO. Início da produção das páginas estratégicas da Fase 2.</span></div></div>
+      <div class="step"><span class="step-when">Mês 3–6</span><div><strong>7 páginas de conteúdo estratégico publicadas</strong><span>Capturando tráfego de alta intenção que hoje nenhum concorrente local está respondendo.</span></div></div>
+      <div class="step"><span class="step-when">Mês 6+</span><div><strong>Blog técnico + 200+ produtos + link building</strong><span>Canal orgânico se torna o de menor CPL do negócio — crescendo de forma autônoma.</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- â•â• CTA â•â• -->
+<!-- ══ CTA ══ -->
 <section class="cta-sec">
   <div class="wrap">
-    <h2>Pronto para o Google<br><em>saber que vocÃª existe?</em></h2>
-    <p>Clique abaixo para aceitar formalmente esta proposta. O formulÃ¡rio registra data e hora do aceite para formalizaÃ§Ã£o do contrato.</p>
-    <button class="cta-btn" onclick="openAccept()">Aceitar proposta â†’</button>
+    <h2>Pronto para o Google<br><em>saber que você existe?</em></h2>
+    <p>Clique abaixo para aceitar formalmente esta proposta. O formulário registra data e hora do aceite para formalização do contrato.</p>
+    <button class="cta-btn" onclick="openAccept()">Aceitar proposta →</button>
   </div>
 </section>
 
 <footer>
   <div class="foot-logo">Organum</div>
-  <div class="foot-sub">SEO OrgÃ¢nico Â· organum.com.br Â· Pedro Aureliano Â· Maio 2026</div>
+  <div class="foot-sub">SEO Orgânico · organum.com.br · Pedro Aureliano · Maio 2026</div>
 </footer>
 
-<!-- â•â• OVERLAY â•â• -->
+<!-- ══ OVERLAY ══ -->
 <div class="overlay" id="overlay">
   <canvas class="confetti-c" id="confettiC"></canvas>
   <div class="ov-inner">
     <div class="check-ring"><svg viewBox="0 0 36 36"><polyline points="4,18 14,28 32,8"/></svg></div>
     <h2 class="ov-title">Proposta aceita.</h2>
-    <p class="ov-sub">Preencha seus dados para formalizar. Pedro entra em contato em atÃ© 24 horas e as correÃ§Ãµes comeÃ§am na mesma semana.</p>
+    <p class="ov-sub">Preencha seus dados para formalizar. Pedro entra em contato em até 24 horas e as correções começam na mesma semana.</p>
     <div class="form-wrap" id="formWrap">
       <div class="fg"><label>Nome completo</label><input type="text" id="f_nome" placeholder="Kaio..." autocomplete="name"></div>
       <div class="fg"><label>E-mail</label><input type="email" id="f_email" placeholder="seu@email.com" autocomplete="email"></div>
       <div class="fg"><label>Telefone / WhatsApp</label><input type="tel" id="f_tel" placeholder="(27) 99999-9999" autocomplete="tel"></div>
       <div class="fg"><label>CNPJ</label><input type="text" id="f_cnpj" placeholder="00.000.000/0000-00"></div>
-      <div class="fg"><label>RazÃ£o social</label><input type="text" id="f_razao" placeholder="LedHome IluminaÃ§Ã£o..." autocomplete="organization"></div>
-      <div class="fg"><label>ObservaÃ§Ãµes (opcional)</label><textarea id="f_obs" placeholder="Alguma dÃºvida ou detalhe adicional..."></textarea></div>
+      <div class="fg"><label>Razão social</label><input type="text" id="f_razao" placeholder="LedHome Iluminação..." autocomplete="organization"></div>
+      <div class="fg"><label>Observações (opcional)</label><textarea id="f_obs" placeholder="Alguma dúvida ou detalhe adicional..."></textarea></div>
       <label class="check-lbl">
         <input type="checkbox" id="f_aceite">
-        <span class="check-txt"><strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta de SEO da Organum, incluindo valores, escopo e condiÃ§Ãµes aqui descritos. Aceite registrado em: <span id="ts"></span></span>
+        <span class="check-txt"><strong>Li e aceito os termos desta proposta.</strong> Estou ciente de que o preenchimento e envio constituem aceite formal da proposta de SEO da Organum, incluindo valores, escopo e condições aqui descritos. Aceite registrado em: <span id="ts"></span></span>
       </label>
       <button class="sub-btn" id="subBtn" onclick="submitForm()">Confirmar aceite e enviar</button>
     </div>
     <div class="success-box" id="successBox">
       <h3>Confirmado, Kaio.</h3>
-      <p>Pedro Aureliano entrarÃ¡ em contato em atÃ© 24 horas. As correÃ§Ãµes da Fase 1 comeÃ§am na mesma semana da aprovaÃ§Ã£o.</p>
+      <p>Pedro Aureliano entrará em contato em até 24 horas. As correções da Fase 1 começam na mesma semana da aprovação.</p>
     </div>
-    <button class="back-btn" onclick="closeAccept()">â† Voltar Ã  proposta</button>
+    <button class="back-btn" onclick="closeAccept()">← Voltar à proposta</button>
   </div>
 </div>
 
@@ -684,18 +681,18 @@ function submitForm(){
   const obs=document.getElementById('f_obs').value.trim();
   const aceite=document.getElementById('f_aceite').checked;
   const ts=document.getElementById('ts').textContent;
-  if(!nome||!email||!cnpj||!razao){alert('Preencha nome, e-mail, CNPJ e razÃ£o social.');return;}
+  if(!nome||!email||!cnpj||!razao){alert('Preencha nome, e-mail, CNPJ e razão social.');return;}
   if(!aceite){alert('Marque o checkbox de aceite para continuar.');return;}
   const btn=document.getElementById('subBtn');
   btn.disabled=true;btn.textContent='Enviando...';
-  const sub=encodeURIComponent('[ACEITE] Proposta SEO â€” LedHome');
+  const sub=encodeURIComponent('[ACEITE] Proposta SEO — LedHome');
   const body=encodeURIComponent(
-    'ACEITE DE PROPOSTA â€” ORGANUM SEO\n==================================\n'+
+    'ACEITE DE PROPOSTA — ORGANUM SEO\n==================================\n'+
     'Data/Hora: '+ts+'\n\n'+
-    'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: '+tel+'\nCNPJ: '+cnpj+'\nRazÃ£o Social: '+razao+'\nObservaÃ§Ãµes: '+(obs||'â€”')+'\n\n'+
-    'ESCOPO ACEITO\nCliente: LedHome IluminaÃ§Ã£o\n'+
-    'Setup SEO: R$2.000 (pagamento Ãºnico â€” mÃªs 1)\n'+
-    'Fee mensal a partir do mÃªs 2:\n  GestÃ£o de trÃ¡fego: R$1.500/mÃªs\n  SEO mensal: R$500/mÃªs\n  Total: R$2.000/mÃªs (fatura Ãºnica)'
+    'Nome: '+nome+'\nE-mail: '+email+'\nTelefone: '+tel+'\nCNPJ: '+cnpj+'\nRazão Social: '+razao+'\nObservações: '+(obs||'—')+'\n\n'+
+    'ESCOPO ACEITO\nCliente: LedHome Iluminação\n'+
+    'Setup SEO: R$2.000 (pagamento único — mês 1)\n'+
+    'Fee mensal a partir do mês 2:\n  Gestão de tráfego: R$1.500/mês\n  SEO mensal: R$500/mês\n  Total: R$2.000/mês (fatura única)'
   );
   window.location.href='mailto:pedro.aureliano95@gmail.com?subject='+sub+'&body='+body;
   setTimeout(()=>{
@@ -721,4 +718,3 @@ function stopConfetti(){run=false;cancelAnimationFrame(af);cx.clearRect(0,0,cv.w
 </script>
 </body>
 </html>
-`} />
